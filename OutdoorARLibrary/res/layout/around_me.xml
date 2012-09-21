@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="horizontal">
+
+	<RelativeLayout android:id="@+id/RelativeLayout01"
+		android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent">
+
+		<com.google.android.maps.MapView
+			android:id="@+id/mapview" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:clickable="true"
+			android:apiKey="@string/apikey" />
+
+		<RelativeLayout android:id="@+id/Message_List"
+			android:layout_height="fill_parent" android:layout_width="fill_parent"
+			android:gravity="bottom|right">
+			<LinearLayout android:id="@+id/TableRow05"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:orientation="vertical" android:gravity="top|right">
+				<LinearLayout android:id="@+id/message_display"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:background="@drawable/transborder" android:orientation="horizontal"
+					android:visibility="invisible">
+					<ProgressBar android:id="@+id/ProgressBarLoading"
+						android:layout_height="20dip" android:layout_width="20dip">
+					</ProgressBar>
+					<TextView android:id="@+id/message_text"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:layout_alignParentLeft="true" android:maxLines="10"
+						android:text="" android:textColor="#FFF" android:textStyle="bold" />
+
+				</LinearLayout>
+				<LinearLayout android:id="@+id/gps_message_dialog"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:orientation="vertical" android:background="@drawable/transborder">
+					<LinearLayout android:id="@+id/find_gps_display"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:orientation="horizontal">
+						<ProgressBar android:id="@+id/ProgressBarGPSLoading"
+							android:layout_height="20dip" android:layout_width="20dip">
+						</ProgressBar>
+						<TextView android:id="@+id/find_gps_text"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:layout_alignParentLeft="true" android:maxLines="10"
+							android:text="Finding GPS location..." android:textColor="#FFF"
+							android:textStyle="bold" />
+					</LinearLayout>
+					<LinearLayout android:id="@+id/LocationCentreDialog"
+						android:layout_height="wrap_content" android:layout_width="wrap_content"
+						android:orientation="vertical" android:layout_below="@+id/TableRow05"
+						android:visibility="gone">
+						<TextView android:id="@+id/LocationCentrePrompt"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Centre on Location?"></TextView>
+						<LinearLayout android:orientation="horizontal"
+							android:layout_height="wrap_content" android:layout_width="fill_parent">
+							<Button android:id="@+id/LocationCentreYes"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:text="Yes" android:textStyle="bold" android:textColor="#00FF00"
+								android:layout_weight="1"></Button>
+							<Button android:id="@+id/LocationCentreNo"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:text="No" android:textStyle="bold" android:textColor="#FF0000"
+								android:layout_weight="1"></Button>
+							<!--
+								<ImageButton android:id="@+id/ImageButtonNo"
+								android:layout_height="25dip" android:layout_width="25dip"
+								android:background="@android:drawable/ic_delete"> </ImageButton>
+								<ImageButton android:id="@+id/ImageButtonYes"
+								android:layout_height="25dip" android:layout_width="25dip"
+								android:background="@android:drawable/ic_input_add">
+								</ImageButton>
+							-->
+						</LinearLayout>
+					</LinearLayout>
+				</LinearLayout>
+
+
+			</LinearLayout>
+		</RelativeLayout>
+
+
+
+
+
+		<RelativeLayout android:id="@+id/RelativeLayout04"
+			android:layout_height="fill_parent" android:layout_width="fill_parent"
+			android:gravity="left|center">
+			<SlidingDrawer android:id="@+id/drawer" android:handle="@+id/handle"
+				android:content="@+id/content" android:orientation="vertical"
+				android:layout_height="wrap_content" android:layout_width="100dip">
+
+				<LinearLayout android:id="@id/handle"
+					android:layout_height="wrap_content" android:layout_width="wrap_content"
+					android:background="@drawable/markerbordercomment_thumb"
+					android:orientation="vertical">
+
+
+
+					<LinearLayout android:id="@+id/LinearLayout02"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:orientation="horizontal">
+						<ImageView android:id="@+id/IconSlide" android:src="@drawable/myscenes_thumb"
+							android:layout_gravity="left" android:visibility="visible"
+							android:layout_height="20dip" android:layout_width="20dip">
+						</ImageView>
+						<TextView android:id="@+id/TextView01"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Categories"></TextView>
+					</LinearLayout>
+					<TextView android:layout_height="wrap_content"
+						android:id="@+id/TextViewShowingResult" android:layout_width="fill_parent"
+						android:layout_gravity="center" android:text="No scene found!"
+						android:textColor="@color/white" android:textStyle="bold"
+						android:gravity="center" android:textSize="10dip"></TextView>
+				</LinearLayout>
+
+				<LinearLayout android:id="@id/content"
+					android:orientation="vertical" android:layout_width="150dip"
+					android:layout_height="wrap_content" android:background="@drawable/transborder">
+					<ScrollView android:layout_width="fill_parent"
+						android:layout_height="wrap_content">
+
+						<LinearLayout android:id="@+id/LinearLayout01"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:orientation="vertical">
+							<LinearLayout android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/LinearLayoutNoResult"
+								android:orientation="vertical">
+
+								<Button android:id="@+id/ButtonCreateanewscene"
+									android:layout_width="fill_parent" android:text="New scene"
+									android:layout_height="40dip"></Button>
+							</LinearLayout>
+							<LinearLayout android:id="@+id/CategoryList"
+								android:layout_width="fill_parent" android:layout_height="wrap_content"
+								android:orientation="vertical">
+
+
+
+							</LinearLayout>
+						</LinearLayout>
+					</ScrollView>
+				</LinearLayout>
+
+			</SlidingDrawer>
+		</RelativeLayout>
+	</RelativeLayout>
+</LinearLayout>

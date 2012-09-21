@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+	<TextView android:id="@+id/listItemName" 
+	    android:text="No name" 
+	    android:layout_width="wrap_content" 
+	    android:layout_height="wrap_content" 
+  		android:textSize="16dp" 
+  		android:padding="10dp" 
+	    android:layout_gravity="center" ></TextView>
+	<TextView android:id="@+id/listItemCategory" 
+	    android:text="No category" 
+	    android:layout_width="wrap_content" 
+	    android:layout_height="wrap_content" 
+	    android:textSize="12dp" 
+	    android:paddingBottom="10dp" 
+	    android:layout_gravity="bottom" ></TextView>
+</LinearLayout>

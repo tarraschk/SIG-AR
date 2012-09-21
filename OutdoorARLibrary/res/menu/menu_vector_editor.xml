@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_vector_new_polygon"
+          	android:title="New Polygon" />
+    <item android:id="@+id/menu_vector_new_point"
+          	android:title="New Point" />
+    <item android:id="@+id/menu_vector_new_linestring"
+          	android:title="New Linestring" />
+    <item android:id="@+id/menu_vector_save"
+          	android:title="Save" />
+    
+</menu>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:id="@+id/RelativeLayout01"
+	android:layout_width="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content" android:background="@drawable/markerbordercomment_thumb">
+
+
+
+
+
+
+
+	<ImageView android:layout_below="@id/RelativeLayout03"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:id="@+id/ImageViewPictureComment"></ImageView>
+	<TableLayout android:id="@+id/TableLayout01"
+		android:layout_height="wrap_content" android:layout_toRightOf="@+id/ImageViewPictureComment"
+		android:layout_width="fill_parent" android:layout_margin="5dip">
+
+		<RelativeLayout android:layout_height="wrap_content"
+			android:layout_width="fill_parent" android:id="@+id/RelativeLayoutInfoOfWhoCommented">
+			<RelativeLayout android:id="@+id/RelativeLayout02"
+				android:layout_height="wrap_content" android:layout_width="fill_parent"
+				android:gravity="left">
+				<TextView android:text="@+id/TextView01"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:id="@+id/TextViewusername" android:textColor="@color/white"
+					android:textStyle="italic" android:textSize="12dip"></TextView>
+			</RelativeLayout>
+			<RelativeLayout android:id="@+id/RelativeLayout04"
+				android:layout_height="wrap_content" android:layout_width="fill_parent"
+				android:gravity="center">
+				<TextView android:text="@+id/TextView02"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:id="@+id/TextViewDate" android:textColor="@color/white"
+					android:textStyle="italic" android:textSize="12dip"></TextView>
+			</RelativeLayout>
+			<RelativeLayout android:id="@+id/RelativeLayout05"
+				android:layout_height="wrap_content" android:layout_width="fill_parent"
+				android:gravity="right">
+				<RatingBar android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/RatingBarUser"
+					style="?android:attr/ratingBarStyleSmall"></RatingBar>
+			</RelativeLayout>
+		</RelativeLayout>
+		<RelativeLayout android:layout_height="wrap_content"
+			android:layout_width="fill_parent" android:gravity="left"
+			android:id="@+id/RelativeLayoutContent">
+			<TextView android:text="@+id/TextView01"
+				android:layout_height="wrap_content" android:layout_width="fill_parent"
+				android:id="@+id/TextViewContent" android:textColor="@color/white"
+				android:textStyle="bold" android:textSize="13dip"></TextView>
+		</RelativeLayout>
+	</TableLayout>
+</RelativeLayout>
+

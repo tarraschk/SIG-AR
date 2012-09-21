@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
+
+
+	<RelativeLayout android:id="@+id/Command"
+		android:gravity="bottom|right" android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:visibility="gone">
+
+		<RelativeLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/RelativeLayoutBox"
+			android:background="@drawable/markerborderblack">
+			<TableRow android:id="@+id/TableRow04" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				<RelativeLayout android:layout_height="match_parent"
+					android:layout_width="wrap_content" android:gravity="center"
+					android:id="@+id/RelativeLayoutPrevious">
+					<ImageButton android:id="@+id/ImageButtonPrevious"
+						android:layout_width="30dip" android:layout_height="40dip"
+						android:background="@drawable/arrow_left"></ImageButton>
+				</RelativeLayout>
+				<TableLayout android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/Box"
+					android:animationCache="true" android:clickable="true">
+					<TableRow android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/Firstline">
+						<RelativeLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:id="@+id/ImageModelRelativeLayout"
+							android:layout_gravity="center" android:gravity="center">
+							<ImageView android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/ImageModel"
+								android:maxHeight="100px" android:maxWidth="100px"></ImageView>
+						</RelativeLayout>
+						<RelativeLayout android:layout_below="@id/ImageModel"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/TextRelativeLayout" android:layout_gravity="center"
+							android:gravity="center">
+							<TableLayout android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/TextInformation">
+								<TextView android:text="@+id/TextView01"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									android:id="@+id/TitleComment" android:gravity="center_horizontal"
+									android:textStyle="bold" android:textColor="@color/white"></TextView>
+								<TextView android:text="@+id/TextView02"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									android:id="@+id/Comment" android:gravity="center_horizontal"
+									android:textStyle="italic" android:textColor="@color/white"></TextView>
+							</TableLayout>
+						</RelativeLayout>
+
+
+
+
+					</TableRow>
+
+					<RelativeLayout android:layout_height="wrap_content"
+						android:layout_width="fill_parent" android:id="@+id/SecondLineRelativeLayout"
+						android:gravity="right|center">
+						<TableRow android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:id="@+id/SecondLine"
+							android:visibility="gone" android:gravity="right|center">
+							<RelativeLayout android:id="@+id/RelativeLayout11"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:layout_margin="2dip" android:visibility="gone">
+								<ImageButton android:id="@+id/MovieButton"
+									android:background="@drawable/movie_thumb"
+									android:layout_height="40dip" android:layout_width="40dip"></ImageButton>
+							</RelativeLayout>
+							<RelativeLayout android:id="@+id/RelativeLayout10"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:layout_margin="2dip">
+								<ImageButton android:id="@+id/musicButton"
+									android:layout_height="40dip" android:layout_width="40dip"
+									android:background="@drawable/music_thumb"></ImageButton>
+
+							</RelativeLayout>
+
+
+
+
+
+
+							<RelativeLayout android:id="@+id/RelativeLayout01"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:layout_margin="2dip" android:visibility="gone">
+								<ImageButton android:id="@+id/archi"
+									android:background="@drawable/archi_thumb"
+									android:layout_height="40dip" android:layout_width="40dip"></ImageButton>
+							</RelativeLayout>
+							<RelativeLayout android:id="@+id/RelativeLayout02"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:layout_margin="2dip">
+								<ImageButton android:background="@drawable/toolkit_thumb"
+									android:layout_height="40dip" android:layout_width="40dip"
+									android:id="@+id/ImageButtonmodificationMode"></ImageButton>
+							</RelativeLayout>
+							<RelativeLayout android:id="@+id/RelativeLayout09"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:layout_margin="2dip">
+								<ImageButton android:id="@+id/ImageButtonmore"
+									android:layout_height="40dip" android:layout_width="40dip"
+									android:background="@drawable/moreinformation_thumb"></ImageButton>
+							</RelativeLayout>
+
+						</TableRow>
+					</RelativeLayout>
+
+					<SeekBar android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:id="@+id/ThirdLine"
+						android:visibility="gone"></SeekBar>
+
+
+
+
+
+
+					<EditText android:text="@+id/EditText01" android:id="@+id/EditText"
+						android:gravity="center" android:visibility="gone"
+						android:layout_height="wrap_content" android:layout_width="fill_parent"></EditText>
+				</TableLayout>
+
+				<RelativeLayout android:layout_width="wrap_content"
+					android:gravity="center" android:layout_height="match_parent"
+					android:id="@+id/RelativeLayoutNext">
+					<ImageButton android:id="@+id/ImageButtonNext"
+						android:layout_width="30dip" android:layout_height="40dip"
+						android:background="@drawable/arrow_right"></ImageButton>
+				</RelativeLayout>
+
+			</TableRow>
+		</RelativeLayout>
+	</RelativeLayout>
+
+
+
+	<RelativeLayout android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:addStatesFromChildren="true"
+		android:id="@+id/InterfaceModification" android:visibility="gone"
+		android:gravity="bottom|right">
+
+
+
+
+
+
+		<TableLayout android:id="@+id/TableLayout01"
+			android:background="@drawable/markerborderblack"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:gravity="bottom|right">
+			<TableRow android:id="@+id/TableRow02" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				<RelativeLayout android:id="@+id/RelativeLayout03"
+					android:layout_height="fill_parent" android:layout_width="fill_parent"
+					android:gravity="center" android:layout_marginRight="10dip">
+					<TextView android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/x"
+						android:text="x" android:gravity="center"></TextView>
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/RelativeLayout04"
+					android:layout_below="@id/x" android:layout_height="fill_parent"
+					android:layout_width="fill_parent" android:gravity="center"
+					android:layout_marginLeft="10dip" android:layout_marginRight="10dip">
+					<TextView android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/y"
+						android:text="y" android:gravity="center"></TextView>
+				</RelativeLayout>
+
+
+
+				<RelativeLayout android:id="@+id/RelativeLayout05"
+					android:layout_height="fill_parent" android:layout_width="fill_parent"
+					android:layout_marginLeft="10dip" android:gravity="center">
+					<TextView android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/z"
+						android:text="z" android:gravity="center"></TextView>
+				</RelativeLayout>
+			</TableRow>
+			<TableRow android:id="@+id/TableRow01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_marginTop="10dip">
+				<RelativeLayout android:id="@+id/LayoutVerticalSeekBar1"
+					android:gravity="center" android:layout_marginRight="10dip"
+					android:layout_height="wrap_content" android:layout_width="wrap_content">
+					<com.hitlabnz.androidar.views.slideBar.VerticalSeekBar
+						android:progressDrawable="@drawable/progress_vertical"
+						android:thumb="@drawable/seek_thumb" android:id="@+id/VerticalSeekBar1"
+						android:layout_width="30dip" android:layout_height="150dip" />
+				</RelativeLayout>
+				<RelativeLayout android:layout_below="@id/LayoutVerticalSeekBar1"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:id="@+id/LayoutVerticalSeekBar2" android:gravity="center"
+					android:layout_marginLeft="10dip" android:layout_marginRight="10dip">
+					<com.hitlabnz.androidar.views.slideBar.VerticalSeekBar
+						android:progressDrawable="@drawable/progress_vertical"
+						android:thumb="@drawable/seek_thumb" android:id="@+id/VerticalSeekBar2"
+						android:layout_height="150dip" android:layout_width="30dip" />
+				</RelativeLayout>
+				<RelativeLayout android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/LayoutVerticalSeekBar3"
+					android:gravity="center" android:layout_marginLeft="10dip">
+					<com.hitlabnz.androidar.views.slideBar.VerticalSeekBar
+						android:progressDrawable="@drawable/progress_vertical"
+						android:thumb="@drawable/seek_thumb" android:id="@+id/VerticalSeekBar3"
+						android:layout_width="30dip" android:layout_height="150dip" />
+				</RelativeLayout>
+			</TableRow>
+			<TableRow android:id="@+id/TableRow03" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_marginTop="10dip">
+				<RelativeLayout android:id="@+id/RelativeLayout06"
+					android:layout_height="fill_parent" android:layout_width="fill_parent"
+					android:layout_marginRight="10dip">
+					<ImageButton android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/ImagaButtonRotation"></ImageButton>
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/RelativeLayout07"
+					android:layout_height="fill_parent" android:layout_width="fill_parent"
+					android:layout_marginRight="10dip" android:layout_marginLeft="10dip">
+					<ImageButton android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/ImageButtonTranslation"></ImageButton>
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/RelativeLayout08"
+					android:layout_height="fill_parent" android:layout_width="fill_parent"
+					android:layout_marginLeft="10dip">
+					<ImageButton android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/ImageButtonScale"></ImageButton>
+				</RelativeLayout>
+			</TableRow>
+
+
+
+
+			<RelativeLayout android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:gravity="center"
+				android:id="@+id/RelativeLayoutOption">
+
+				<RelativeLayout android:gravity="center"
+					android:layout_height="wrap_content" android:layout_width="wrap_content"
+					android:id="@+id/RelativeLayoutSave">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Save"
+						android:gravity="center" android:id="@+id/ButtonSave"></Button>
+				</RelativeLayout>
+				<RelativeLayout android:gravity="center"
+					android:layout_height="wrap_content" android:layout_width="wrap_content"
+					android:id="@+id/RelativeLayoutCancel" android:layout_toRightOf="@+id/RelativeLayoutSave">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Cancel"
+						android:gravity="center" android:id="@+id/ButtonCancel"></Button>
+				</RelativeLayout>
+			</RelativeLayout>
+		</TableLayout>
+
+	</RelativeLayout>
+
+
+
+	<RelativeLayout android:id="@+id/MapInformationBox"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:gravity="center" android:visibility="invisible">
+		<TableLayout android:layout_below="@id/RelativeLayout01"
+			android:background="@drawable/markerbordermap" android:clickable="true"
+			android:id="@+id/TableLayoutViewFurtherInformation"
+			android:layout_height="fill_parent" android:layout_width="fill_parent"
+			android:layout_margin="5dip">
+			<RelativeLayout android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/Title">
+				<TableRow android:id="@+id/TableRow01"
+					android:layout_height="wrap_content" android:gravity="center"
+					android:layout_width="wrap_content">
+					<RelativeLayout android:layout_height="wrap_content"
+						android:gravity="center" android:layout_width="wrap_content"
+						android:id="@+id/RelativeLayoutTopImage">
+						<ImageView android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:id="@+id/Image"
+							android:layout_toLeftOf="@+id/TitleText" android:clickable="true"></ImageView>
+					</RelativeLayout>
+					<RelativeLayout android:layout_height="wrap_content"
+						android:layout_width="match_parent" android:animationCache="true"
+						android:id="@+id/RelativeLayoutTopContent">
+						<RelativeLayout android:id="@+id/RelativeLayout01"
+							android:gravity="center" android:layout_width="wrap_content"
+							android:layout_height="wrap_content">
+							<TextView android:text="@+id/TextView02" android:id="@+id/TitleText"
+								android:textSize="14dip" android:textColor="@color/white"
+								android:textStyle="bold" android:layout_toRightOf="@+id/Image"
+								android:gravity="center" android:layout_toLeftOf="@+id/Quit"
+								android:layout_width="match_parent" android:layout_height="30dip"></TextView>
+
+
+							<RelativeLayout android:id="@+id/RelativeLayout13"
+								android:layout_height="wrap_content" android:layout_width="match_parent"
+								android:gravity="center" android:layout_below="@+id/TitleText">
+								<RatingBar android:layout_below="@id/TitleText"
+									android:layout_height="wrap_content" android:layout_width="wrap_content"
+									style="?android:attr/ratingBarStyleSmall" android:clickable="true"
+									android:id="@+id/RatingBarAverageRate" android:visibility="gone">
+								</RatingBar>
+							</RelativeLayout>
+						</RelativeLayout>
+						<RelativeLayout android:id="@+id/RelativeLayout03"
+							android:gravity="top|right" android:layout_width="match_parent"
+							android:layout_height="wrap_content">
+							<ImageButton android:id="@+id/Quit"
+								android:background="@drawable/quit_thumb" android:layout_height="45dip"
+								android:layout_width="45dip"></ImageButton>
+
+						</RelativeLayout>
+					</RelativeLayout>
+				</TableRow>
+			</RelativeLayout>
+			<RelativeLayout android:layout_width="wrap_content"
+				android:id="@+id/Cursor1" android:layout_height="2dip"
+				android:background="@drawable/markerbordermap" android:padding="10dip"
+				android:layout_marginBottom="10dip" android:layout_marginLeft="20dip"
+				android:layout_marginRight="20dip" android:layout_marginTop="10dip">
+			</RelativeLayout>
+			<RelativeLayout android:layout_below="@id/Title"
+				android:layout_width="wrap_content" android:id="@+id/Body"
+				android:layout_height="fill_parent">
+				<ScrollView android:id="@+id/ScrollView01"
+					android:layout_height="wrap_content" android:layout_width="match_parent">
+
+					<TableLayout android:id="@+id/TableLayout02"
+						android:layout_height="fill_parent" android:layout_width="fill_parent">
+						<RelativeLayout android:layout_height="wrap_content"
+							android:id="@+id/RelativeLayoutDescription" android:layout_width="fill_parent"
+							android:layout_marginBottom="5dip">
+							<TextView android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/bodyText"
+								android:textColor="@color/white" android:textStyle="normal|italic"
+								android:textSize="12dip" android:text="Description: "
+								android:visibility="visible"></TextView>
+							<TextView android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:layout_below="@+id/bodyText"
+								android:id="@+id/TextViewAdress" android:text="Adress:"></TextView>
+							<TextView android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/TextViewPhone"
+								android:layout_below="@id/TextViewAdress" android:text="Phone:"></TextView>
+							<TextView android:layout_below="@id/TextViewPhone"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:id="@+id/TextViewWebsite" android:text="Website:"></TextView>
+						</RelativeLayout>
+
+						<RelativeLayout android:id="@+id/RelativeLayoutOptionModels"
+							android:visibility="gone" android:layout_height="fill_parent"
+							android:layout_width="fill_parent" android:gravity="bottom|right"
+							android:layout_marginBottom="5dip">
+
+
+							<TableRow android:id="@+id/TableRow02"
+								android:layout_height="wrap_content" android:layout_width="fill_parent"
+								android:gravity="center">
+
+
+
+
+								<ImageButton android:id="@+id/ImageButtonRateScene"
+									android:background="@drawable/ratescenebutton_thumb"
+									android:layout_height="40dip" android:layout_width="80dip"></ImageButton>
+
+
+								<ImageButton android:id="@+id/ImageButtonAddACommentOnScene"
+									android:background="@drawable/addcommentbutton_thumb"
+									android:layout_height="40dip" android:layout_width="80dip"></ImageButton>
+								<ImageButton android:id="@+id/ImageButtonModifyScene"
+									android:background="@drawable/modifyscenebutton_thumb"
+									android:layout_height="40dip" android:layout_width="80dip"></ImageButton>
+								<ImageButton android:id="@+id/ImageButtonDeleteScene"
+									android:background="@drawable/deletescenebutton_thumb"
+									android:layout_height="40dip" android:layout_width="80dip"></ImageButton>
+							</TableRow>
+						</RelativeLayout>
+						<RelativeLayout android:id="@+id/RelativeLayoutLoadingComments"
+							android:layout_height="fill_parent" android:layout_width="fill_parent"
+							android:gravity="center" android:layout_marginBottom="5dip">
+							<ProgressBar android:id="@+id/ProgressBarLoading2"
+								android:layout_height="40dip" android:layout_width="40dip">
+							</ProgressBar>
+
+						</RelativeLayout>
+						<TableLayout android:layout_height="wrap_content"
+							android:id="@+id/TableLayoutComments" android:layout_width="fill_parent"></TableLayout>
+
+					</TableLayout>
+				</ScrollView>
+			</RelativeLayout>
+
+
+		</TableLayout>
+
+	</RelativeLayout>
+	<RelativeLayout android:id="@+id/ImageZoomed"
+		android:visibility="gone" android:background="@drawable/markerbordermap"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:gravity="center">
+		<RelativeLayout android:id="@+id/RelativeLayout01"
+			android:gravity="center" android:layout_height="fill_parent"
+			android:layout_width="fill_parent" android:layout_margin="20dip">
+			<ImageView android:layout_height="fill_parent"
+				android:layout_width="fill_parent" android:clickable="true"
+				android:id="@+id/ImageViewZoomed"></ImageView>
+		</RelativeLayout>
+	</RelativeLayout>
+
+	<RelativeLayout android:id="@+id/RelativeLayoutLoading"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:visibility="invisible" android:gravity="top|left">
+		<TableRow android:id="@+id/TableRow05" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:background="@drawable/transborder">
+			<ProgressBar android:id="@+id/ProgressBarLoading"
+				android:layout_height="20dip" android:layout_width="20dip">
+			</ProgressBar>
+
+			<RelativeLayout android:id="@+id/RelativeLayout12"
+				android:layout_width="wrap_content" android:layout_height="match_parent"
+				android:gravity="center" android:layout_marginLeft="10dip"
+				android:layout_marginRight="5dip">
+				<TextView android:text="@+id/TextView01"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:id="@+id/TextViewMesageLoading" android:textColor="@color/white"
+					android:textStyle="bold|italic">
+				</TextView>
+			</RelativeLayout>
+		</TableRow>
+	</RelativeLayout>
+	<RelativeLayout android:id="@+id/RelativeLayoutCameraButtons"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:gravity="bottom" android:visibility="invisible">
+
+		<RelativeLayout android:id="@+id/RelativeLayout14"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:gravity="left">
+			<ImageButton android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/ImageButtonCancelTakePicture"
+				android:background="@drawable/cancelbutton_takepicture_thumb"></ImageButton>
+		</RelativeLayout>
+		<RelativeLayout android:id="@+id/RelativeLayout15"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:gravity="right">
+			<ImageButton android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/ImageButtonTakePicture"
+				android:background="@drawable/takepicture_thumb"></ImageButton>
+		</RelativeLayout>
+	</RelativeLayout>
+	<RelativeLayout android:id="@+id/RelativeLayoutViews"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:gravity="top|right">
+		<LinearLayout android:id="@+id/LinearLayoutViews"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:visibility="gone">
+			<LinearLayout android:id="@+id/LinearLayoutViewsExtension"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:background="@drawable/panel_picture_frame_bg_normal">
+				<ImageButton android:id="@+id/ImageButtonViews"
+					android:layout_height="50dip" android:layout_width="50dip"
+					android:background="@android:drawable/ic_menu_view"></ImageButton>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/LinearLayoutOtherViews"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:visibility="gone" android:background="@drawable/panel_picture_frame_bg_normal">
+				<ImageButton android:id="@+id/ImageButtonARView"
+					android:layout_height="50dip" android:layout_width="50dip"
+					android:background="@android:drawable/ic_menu_camera"></ImageButton>
+				<ImageButton android:id="@+id/ImageButtonVRView"
+					android:layout_height="50dip" android:layout_width="50dip"
+					android:background="@drawable/stat_notify_car_mode"></ImageButton>
+				<ImageButton android:id="@+id/ImageButtonMapView"
+					android:layout_height="50dip" android:layout_width="50dip"
+					android:background="@android:drawable/ic_menu_mapmode"></ImageButton>
+				<ImageButton android:id="@+id/ImageButtonListView"
+					android:layout_height="50dip" android:layout_width="50dip"
+					android:background="@android:drawable/ic_menu_sort_by_size"></ImageButton>
+			</LinearLayout>
+		</LinearLayout>
+	</RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:id="@+id/RelativeLayout01"
+	android:layout_width="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content" android:background="@drawable/markerbordercomment_thumb">
+
+	<LinearLayout android:id="@+id/LinearLayoutxz"
+		android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center">
+		<TextView android:text="@+id/TextView01"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:layout_weight="1" android:id="@+id/TextViewListName" android:textColor="@color/white" android:textStyle="bold" android:textSize="13dip"></TextView>
+		<TextView android:text="@+id/TextView02"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:layout_weight="2" android:id="@+id/TextViewLevelOfRight" android:layout_gravity="center" android:gravity="center" android:textSize="12dip" android:textColor="@color/white"></TextView>
+		<TextView android:text="@+id/TextView03"
+			android:layout_height="wrap_content" android:layout_weight="2"
+			android:layout_width="fill_parent" android:id="@+id/TextViewLevelOfEdit" android:layout_gravity="center" android:gravity="center" android:textSize="12dip" android:textColor="@color/white"></TextView>
+	</LinearLayout>
+</RelativeLayout>
+

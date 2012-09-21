@@ -1,0 +1,10 @@
+ <animation-list android:oneshot="false" xmlns:android="http://schemas.android.com/apk/res/android">
+  <!--  <item android:drawable="@drawable/compass_anim1" android:duration="50" />
+    <item android:drawable="@drawable/compass_anim2" android:duration="50" /> -->
+    
+  <item android:drawable="@drawable/arrow_blue_right" android:duration="50" />
+  <item android:drawable="@drawable/arrow_blue_right" android:duration="10" />
+  <!-- <item android:drawable="@drawable/arrow_right" android:duration="50" />-->
+    
+      
+ </animation-list>

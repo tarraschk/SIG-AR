@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello, OutdoorAR!</string>
+    <string name="app_name">OutdoorAR Application</string>
+	<string name="projectName">OutdoorAR</string>
+	<string name="TAR_views">Views</string>
+	<string name="TAR_setting">Settings</string>
+	<string name="TAR_about">About</string>
+</resources>

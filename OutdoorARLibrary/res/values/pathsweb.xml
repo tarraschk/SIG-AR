@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<string name="web_path_getModels">http://132.181.247.31:55391/REST_Web_project/Models/Get/</string>
+	<string name="web_path_downloadmodel">http://132.181.247.31/myo28/data/models/</string>
+	
+	<string name="web_path_getmyscenes">http://132.181.247.31/myo28/data/myscenes/</string>
+	
+	<string name="web_path_getPictures">http://132.181.247.31:55391/GetPics/</string>
+	<string name="web_path_downloadPicture">http://132.181.247.31/myo28/data/pics/</string>
+	
+	<string name="web_path_view">http://132.181.247.31/myo28/data/view/</string>
+	
+	<string name="web_path_uploadpicture">http://132.181.247.31/myo28/scene/upload_pic.php</string>
+	
+	
+	
+	
+	
+	<string name="web_path_getcomments">http://132.181.247.31:55391/REST_Web_project/Scenes/GetComments/</string>
+	<string name="web_path_getcomments_auth">http://132.181.247.31:55391/REST_Web_project/Scenes/GetCommentsAuth/</string>
+	
+	<string name="web_path_addcomment">http://132.181.247.31:55391/REST_Web_project/Scenes/Comment/AddComment/</string>
+	<string name="web_path_addcomment_auth">http://132.181.247.31:55391/REST_Web_project/Scenes/Comment/AddCommentAuth/</string>
+	<string name="web_path_modifyscene">http://132.181.247.31:55391/REST_Web_project/Scenes/Modify/</string>
+	<string name="web_path_modifyscene_auth">http://132.181.247.31:55391/REST_Web_project/Scenes/ModifyAuth/</string>
+	<string name="web_path_setrate">http://132.181.247.31:55391/REST_Web_project/Scenes/SetRate/</string>
+	<string name="web_path_setrate_auth">http://132.181.247.31:55391/REST_Web_project/Scenes/SetRateAuth/</string>
+	<string name="web_path_getscenes">http://132.181.247.31:55391/REST_Web_project/Scenes/Get/</string>
+	<string name="web_path_getscenes_v2">http://132.181.247.31:55391/REST_Web_project/Scenes/GetV2/</string>
+	<string name="web_path_getscenes_v2_auth">http://132.181.247.31:55391/REST_Web_project/Scenes/GetV2Auth/</string>
+	<string name="web_path_getscenes_of_list">http://132.181.247.31:55391/REST_Web_project/ScenesOfList/Get/</string>
+	<string name="web_path_getscenes_of_list_auth">http://132.181.247.31:55391/REST_Web_project/ScenesOfList/GetAuth/</string>
+
+	<string name="web_path_get_user_organizations">http://132.181.247.31:55391/REST_Web_project/Organizations/Get/</string>
+	<string name="web_path_get_user_organizations_auth">http://132.181.247.31:55391/REST_Web_project/Organizations/GetAuth/</string>
+	<string name="web_path_modifylistoflevel_listtoorganization">http://132.181.247.31:55391/REST_Web_project/Organization/Modify/RightToList/</string>
+	<string name="web_path_modifylistoflevel_listtoorganization_auth">http://132.181.247.31:55391/REST_Web_project/Organization/Modify/RightToListAuth/</string>
+	<string name="web_path_create_organization">http://132.181.247.31:55391/REST_Web_project/Organization/Create/</string>
+	<string name="web_path_create_organization_auth">http://132.181.247.31:55391/REST_Web_project/Organization/CreateAuth/</string>
+	
+	<string name="web_path_getmembers_ofanorganization">http://132.181.247.31:55391/REST_Web_project/Organization/GetUsers/</string>
+	<string name="web_path_getmembers_ofanorganization_auth">http://132.181.247.31:55391/REST_Web_project/Organization/GetUsersAuth/</string>
+	
+
+	
+	<string name="web_path_addscene">http://132.181.247.31:55391/REST_Web_project/Scenes/AddScene/</string>
+	<string name="web_path_addscene_v2">http://132.181.247.31:55391/REST_Web_project/Scenes/AddSceneV2/</string>
+	<string name="web_path_addscene_v2_auth">http://132.181.247.31:55391/REST_Web_project/Scenes/AddSceneV2Auth/</string>
+
+	
+	<string name="web_path_get_user_lists">http://132.181.247.31:55391/REST_Web_project/Lists/Get/</string>
+	<string name="web_path_get_user_lists_auth">http://132.181.247.31:55391/REST_Web_project/Lists/GetAuth/</string>
+	
+	<string name="web_path_get_user_lists_viewable">http://132.181.247.31:55391/REST_Web_project/Lists/GetViewable/</string>
+	<string name="web_path_get_user_lists_viewable_auth">http://132.181.247.31:55391/REST_Web_project/Lists/GetViewableAuth/</string>
+	<string name="web_path_createlist">http://132.181.247.31:55391/REST_Web_project/List/Create/</string>
+	<string name="web_path_createlist_auth">http://132.181.247.31:55391/REST_Web_project/List/CreateAuth/</string>
+		
+	<string name="sdcard_path_getcategoriesAroundUqaser">http://132.181.247.31:55391/REST_Web_project/Category/Get/</string>
+	<string name="sdcard_path_getcategoriesAroundUserAuth">http://132.181.247.31:55391/REST_Web_project/Category/GetAuth/</string>
+	<string name="sdcard_path_getcategoriesavailableInTheDatabase">http://132.181.247.31:55391/REST_Web_project/Categories/Get/</string>
+	<string name="web_path_getcategoriesPictures">http://132.181.247.31/myo28/data/Categories/</string>
+	
+	<string name="web_path_createuser">http://132.181.247.31:55391/REST_Web_project/User/Create/</string>
+	<string name="web_path_createuserAuth">http://132.181.247.31:55391/REST_Web_project/User/CreateAuth/</string>
+	<string name="web_path_checkuser">http://132.181.247.31:55391/REST_Web_project/User/Check/</string>
+	<string name="web_path_checkuser_auth">http://132.181.247.31:55391/REST_Web_project/User/CheckAuth/</string>
+	<string name="web_path_modifylistoflevel_user">http://132.181.247.31:55391/REST_Web_project/User/UpdateAccessToOrganization/</string>
+	<string name="web_path_modifylistoflevel_user_auth">http://132.181.247.31:55391/REST_Web_project/User/UpdateAccessToOrganizationAuth/</string>
+	<string name="web_path_get_users">http://132.181.247.31:55391/REST_Web_project/Users/Get/</string>
+	<string name="web_path_get_users_auth">http://132.181.247.31:55391/REST_Web_project/Users/GetAuth/</string>
+	<string name="web_path_add_user_to_organization">http://132.181.247.31:55391/REST_Web_project/User/UpgrateRightOnOrganization/</string>
+	<string name="web_path_add_user_to_organization_auth">http://132.181.247.31:55391/REST_Web_project/User/UpgrateRightOnOrganizationAuth/</string>
+	
+	
+	<string name="web_path_addpicturetocomment">http://132.181.247.31:55391/REST_Web_project/Scenes/Comment/AddPicture/</string>
+	<string name="web_path_addpicturetocomment_auth">http://132.181.247.31:55391/REST_Web_project/Scenes/Comment/AddPictureAuth/</string>
+	
+	
+	
+	
+	<string name="web_path_updateuserposition">http://132.181.247.31:55391/REST_Web_project/updateuserposition/</string>
+	
+	
+	
+	
+	<string name="web_path_default_wms_server">http://iceds.ge.ucl.ac.uk/cgi-bin/icedswms?</string>
+</resources>

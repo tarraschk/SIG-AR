@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
+
+	<RelativeLayout android:id="@+id/RelativeLayoutViews"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:gravity="top|right">
+		<LinearLayout android:id="@+id/LinearLayoutViews"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:background="@drawable/transborder">
+			<ImageButton android:id="@+id/ImageButtonViews"
+				android:layout_height="50dip" android:layout_width="50dip"
+				android:background="@android:drawable/ic_menu_view"></ImageButton>
+			<LinearLayout android:id="@+id/LinearLayoutOtherViews"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:visibility="gone">
+				<ImageButton android:id="@+id/ImageButtonARView"
+					android:layout_height="50dip" android:layout_width="50dip"></ImageButton>
+				<ImageButton android:id="@+id/ImageButtonVRView"
+					android:layout_height="50dip" android:layout_width="50dip"></ImageButton>
+				<ImageButton android:id="@+id/ImageButtonMapView"
+					android:layout_height="50dip" android:layout_width="50dip"
+					android:background="@android:drawable/ic_menu_mapmode"></ImageButton>
+				<ImageButton android:id="@+id/ImageButtonListView"
+					android:layout_height="50dip" android:layout_width="50dip"
+					android:background="@android:drawable/ic_menu_sort_by_size"></ImageButton>
+			</LinearLayout>
+		</LinearLayout>
+	</RelativeLayout>
+</LinearLayout>

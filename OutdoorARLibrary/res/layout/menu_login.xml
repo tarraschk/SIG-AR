@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		Copyright (C) 2007 The Android Open Source Project Licensed under the
+		Apache License, Version 2.0 (the "License"); you may not use this file
+		except in compliance with the License. You may obtain a copy of the
+		License at http://www.apache.org/licenses/LICENSE-2.0 Unless required
+		by applicable law or agreed to in writing, software distributed under
+		the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+		CONDITIONS OF ANY KIND, either express or implied. See the License for
+		the specific language governing permissions and limitations under the
+		License.
+	-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layoutAnimation="@anim/layout_animation_table"
+	android:animationCache="false" android:clipToPadding="false"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" android:stretchColumns="0"
+	android:background="@color/white">
+
+
+
+	<TableLayout android:id="@+id/TableLayout01"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<RelativeLayout android:id="@+id/RelativeLayout05"
+			android:layout_height="wrap_content" android:gravity="center"
+			android:padding="5dip" android:layout_width="wrap_content">
+			<LinearLayout android:id="@+id/LinearLayout02"
+				android:layout_below="@id/RelativeLayout08" android:layout_height="wrap_content"
+				android:orientation="horizontal" android:layout_width="fill_parent"
+				android:gravity="center" android:weightSum="2">
+				<ImageView android:id="@+id/ImageViewLogo"
+					android:background="@drawable/and_clear" android:layout_height="120dip"
+					android:layout_width="90dip" android:layout_gravity="center"></ImageView>
+				<TextView android:id="@+id/TextView01" android:textStyle="bold"
+					android:textColor="@color/black" android:text="AndroidAR - Login"
+					android:textSize="20dip" android:selectAllOnFocus="true"
+					android:layout_weight="1" android:layout_width="0dip"
+					android:layout_height="wrap_content" android:layout_gravity="center"
+					android:gravity="center"></TextView>
+			</LinearLayout>
+			
+		
+</RelativeLayout>
+	
+
+
+
+		<RelativeLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:gravity="center" android:id="@+id/RelativeLayoutButtonsEqual">
+			<LinearLayout android:id="@+id/LinearLayout01" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+				<Button android:layout_gravity="center_vertical|center_horizontal" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="0dip" android:padding="5dip" android:text="Create a new user" android:id="@+id/createaccount">
+				</Button>
+				<Button android:text="Log in" android:id="@+id/Login" android:layout_height="wrap_content" android:visibility="visible" android:layout_weight="1" android:layout_gravity="center_vertical|center_horizontal" android:layout_width="0dip" android:padding="5dip">
+				</Button>
+			</LinearLayout>
+		</RelativeLayout>
+
+</TableLayout>
+
+	
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="sdcard_path_projectname">/test_androidar/</string>
+	<string name="sdcard_path_models">/test_androidar/3Dmodels/</string>
+	
+	<string name="sdcard_path_my_scenes">/test_androidar/myscenes/</string>
+	
+	<string name="sdcard_path_sounds">/test_androidar/sounds/</string>
+	
+	<string name="sdcard_path_movies">/test_androidar/movies/</string>
+	
+	<string name="sdcard_path_zip">/test_androidar/zip/</string>
+	
+		<string name="sdcard_path_buffer">/test_androidar/buffer/</string>
+	<string name="sdcard_path_buffer_xml">/test_androidar/buffer/xml/</string>
+	<string name="sdcard_path_buffer_pic">/test_androidar/buffer/pic/</string>
+	<string name="sdcard_path_categories">/test_androidar/categories/</string>
+	<string name="sdcard_path_pictures">/test_androidar/pics/</string>
+	<string name="sdcard_path_view">/test_androidar/view/</string>
+	
+	
+<string name="sdcard_path_vectorfiles">/test_androidar/vectorfiles/</string>
+<string name="sdcard_path_raster">/test_androidar/raster/</string>
+</resources>

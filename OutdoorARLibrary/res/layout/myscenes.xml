@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:clipToPadding="true"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" android:background="@drawable/fullcon_solutions">
+	
+	<TableLayout android:id="@+id/TableLayout01"
+		android:layout_height="fill_parent"
+		android:clickable="true" android:background="@drawable/markerborderblack" android:layout_width="fill_parent" android:layout_marginLeft="25dip" android:layout_marginBottom="55dip" android:layout_marginRight="25dip" android:layout_marginTop="60dip">
+		
+
+		<TableRow android:id="@+id/TableRow02" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >			
+			<ScrollView android:layout_width="fill_parent" android:layout_gravity="center" android:background="@drawable/markerborderblack">
+				<RadioGroup 
+					android:id="@+id/Radiogroup_left" 
+					android:layout_height="500dip" android:layout_width="200dip">
+				</RadioGroup>
+			</ScrollView>
+			
+
+		<RelativeLayout android:id="@+id/RelativeLayout01" android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"><LinearLayout android:id="@+id/Buttongroup_right" android:orientation="vertical" android:layout_width="fill_parent" android:gravity="center" android:layout_height="fill_parent">
+				
+				
+			<Button android:layout_width="100dp" android:layout_height="40dp" android:layout_margin="10dp" android:text="Map View" android:gravity="center" android:id="@+id/ButtonMapView"/><Button android:layout_width="100dp" android:layout_height="40dp" android:layout_margin="10dp" android:text="AR View" android:gravity="center" android:id="@+id/ButtonARView"/></LinearLayout></RelativeLayout>
+<RelativeLayout android:id="@+id/RelativeLayout02" android:layout_height="fill_parent" android:layout_width="fill_parent" android:gravity="center"><Button android:gravity="center" android:layout_height="40dip" android:layout_width="100dip" android:text="Delete" android:id="@+id/Buttondelete"></Button>
+</RelativeLayout>
+</TableRow>
+		
+	</TableLayout>
+
+
+</TableLayout>

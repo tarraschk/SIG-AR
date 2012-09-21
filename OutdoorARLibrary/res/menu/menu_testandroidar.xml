@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/views"
+    	  	android:icon="@android:drawable/ic_menu_view"
+          	android:title="@string/TAR_views" />
+    <item android:id="@+id/about"
+    		android:icon="@android:drawable/ic_menu_help"
+          	android:title="@string/TAR_about" />
+	<item android:id="@+id/settings" 
+			android:icon="@android:drawable/ic_menu_preferences"
+			  android:title="@string/TAR_setting" />
+</menu>

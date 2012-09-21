@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_raster"
+          android:icon="@android:drawable/ic_menu_slideshow"
+          android:title="Raster Layers" >
+        <menu>
+            <item android:id="@+id/wms_server_select"
+                  android:title="Select WMS Server" />
+            <item android:id="@+id/wms_add_layer"
+                  android:title="Add WMS Layer" />
+            <item android:id="@+id/wms_clear_layers"
+                  android:title="Clear WMS Layers" />
+            <item android:id="@+id/raster_add_layer"
+                  android:title="Add Raster Layer" />    
+            <item android:id="@+id/raster_clear_layers"
+                  android:title="Clear Raster Layers" />
+        </menu>
+    </item>
+    <item android:id="@+id/menu_vector"
+    	  android:icon="@android:drawable/ic_menu_slideshow"
+          android:title="Vector Layers" >
+        <menu>
+            <item android:id="@+id/vector_add_layer"
+                  android:title="Add Vector Layer" />
+            <item android:id="@+id/vector_clear_layers"
+                  android:title="Clear Vector Layers" />
+        </menu>
+    </item>
+    <item android:id="@+id/menu_centre_gps"
+          android:icon="@android:drawable/ic_menu_mylocation"
+          android:title="Centre on GPS" />
+    <item android:id="@+id/menu_other_view"
+    		android:icon="@android:drawable/ic_menu_view"
+          	android:title="Views" />
+</menu>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:id="@+id/RelativeLayout01"
+	android:layout_width="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content" android:background="@drawable/markerbordercomment_thumb">
+
+	<LinearLayout android:id="@+id/LinearLayoutxz"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:gravity="center">
+		<TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:layout_weight="1" android:textColor="@color/white" android:textStyle="bold"
+			android:textSize="13dip" android:id="@+id/TextViewUserName"></TextView>
+
+		
+		<ProgressBar android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/ProgressBarSending"
+			android:visibility="invisible"></ProgressBar>
+		<Spinner android:layout_height="wrap_content"
+			android:id="@+id/SpinnerLevelOfEditOnMyList" android:layout_weight="1"
+			android:layout_width="fill_parent"></Spinner>
+	</LinearLayout>
+</RelativeLayout>

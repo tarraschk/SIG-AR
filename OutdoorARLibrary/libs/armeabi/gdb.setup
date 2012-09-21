@@ -1,0 +1,2 @@
+set solib-search-path ./obj/local/armeabi
+directory /home/laykun/Documents/android-ndk-r7/platforms/android-14/arch-arm/usr/include /home/laykun/Documents/android-ndk-r7/sources/cxx-stl/stlport/stlport /home/laykun/Documents/android-ndk-r7/sources/cxx-stl//gabi++/include jni/../FMOD_API/inc

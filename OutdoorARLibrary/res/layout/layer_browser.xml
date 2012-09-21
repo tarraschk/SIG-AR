@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:id="@+id/LayerTitle"
+		android:textStyle="bold"
+		android:layout_weight="0"/>
+		
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:id="@+id/LayerText"
+		android:layout_weight="2"/>
+	<ScrollView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<LinearLayout android:id="@+id/LayerList"
+			android:layout_width="fill_parent" android:layout_height="fill_parent">
+		</LinearLayout>
+	</ScrollView> 
+	
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="0">
+	    <Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:id="@+id/LayerBackButton"
+			android:layout_alignParentLeft="true"
+			android:text="Previous Layer"/>
+	    <Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:id="@+id/LayerChooseButton"
+			android:layout_toRightOf="@+id/LayerBackButton"
+			android:text="Choose Layer"/>
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:id="@+id/LayerNextButton"
+			android:layout_alignParentRight="true"
+			android:text="Next Layer"/>
+			
+		
+			
+	</RelativeLayout>
+</LinearLayout>

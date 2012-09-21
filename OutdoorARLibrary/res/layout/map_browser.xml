@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="horizontal">
+	<!-- Set to zero to hide (nominally 100dp) -->
+	<RelativeLayout android:id="@+id/RelativeLayout01"
+		android:layout_width="wrap_content" android:layout_height="fill_parent"
+		xmlns:android="http://schemas.android.com/apk/res/android">
+		<com.google.android.maps.MapView
+			android:id="@+id/mapview" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:clickable="true"
+			android:apiKey="@string/apikey" />
+		<TextView android:id="@+id/gps_text"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true" android:maxLines="10"
+			android:text="Finding GPS location..." android:textColor="#FFF"
+			android:textStyle="bold" android:background="@+drawable/transborder" />
+	</RelativeLayout>
+
+</LinearLayout>

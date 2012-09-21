@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout android:id="@+id/TableLayout01"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content" android:background="@drawable/markerbordercomment_thumb" android:layout_width="fill_parent">
+	<TableRow android:id="@+id/TableRow01" android:layout_below="@id/TextViewContent"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:tag="CategoryListParent">
+		<ImageView android:id="@+id/ImageView01"
+			android:layout_height="30dip" android:layout_width="30dip" android:background="@drawable/map_point" android:layout_marginRight="10dip"></ImageView>
+		<TextView android:text="@+id/TextView01"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:id="@+id/TextViewContent" android:textColor="@color/white"
+			android:textStyle="bold" android:textSize="13dip" android:layout_gravity="center"></TextView>
+	</TableRow>
+	<TableLayout android:id="@+id/TableLayoutchildren"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TableLayout>
+</TableLayout>
+

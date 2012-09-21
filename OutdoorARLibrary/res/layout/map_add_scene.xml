@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+
+	<RelativeLayout android:id="@+id/RelativeLayout01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<com.google.android.maps.MapView
+			android:id="@+id/mapview" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:clickable="true"
+			android:apiKey="@string/apikey" />
+	</RelativeLayout>
+	<RelativeLayout android:id="@+id/help_bar"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:background="@drawable/transborder">
+		<TextView android:text="@+id/TextView01"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/TextViewTitleHelpMenu" android:textColor="@color/white"
+			android:textStyle="bold" android:textSize="13dip"></TextView>
+		<TextView android:id="@+id/help_text" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+			android:layout_below="@+id/TextViewTitleHelpMenu" android:textColor="@color/white"
+			android:textStyle="italic" android:textSize="11dip" />
+		<Button android:id="@+id/next_button" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_alignParentRight="true"
+			android:visibility="invisible" android:text="" />
+		<Button android:id="@+id/help_button" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_toLeftOf="@+id/next_button"
+			android:visibility="invisible" android:text="" />
+	</RelativeLayout>
+	<RelativeLayout android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:gravity="bottom|left"
+		android:id="@+id/RelativeLayoutMenuOrder">
+		<TableLayout android:id="@+id/TableLayout01"
+			android:layout_height="wrap_content" android:background="@drawable/transborder"
+			android:layout_width="60dip">
+			<ImageButton android:id="@+id/ImageButtonPlaceTheNewScene"
+				android:background="@drawable/firststep_thumb"
+				android:layout_height="40dip" android:layout_width="40dip"
+				android:layout_margin="5dip"></ImageButton>
+			<ImageButton android:id="@+id/ImagePickCategoryAndModel"
+				android:background="@drawable/secondstep_thumb"
+				android:layout_height="40dip" android:layout_width="40dip"
+				android:layout_margin="5dip"></ImageButton>
+			<ImageButton android:id="@+id/ImageButtonFinished"
+				android:background="@drawable/thirdstep_thumb"
+				android:layout_height="40dip" android:layout_width="40dip"
+				android:layout_margin="5dip"></ImageButton>
+
+		</TableLayout>
+	</RelativeLayout>
+	<RelativeLayout android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:gravity="center"
+		android:layout_below="@+id/help_bar" android:layout_toLeftOf="@+id/ImageButtonPlaceTheNewScene"
+		android:id="@+id/RelativeLayoutSecondStep">
+		<TableLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:background="@drawable/transborder"
+			android:visibility="invisible" android:id="@+id/TableLayoutSecondStep">
+
+
+			<TableRow android:id="@+id/TableRow01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+
+
+				<RelativeLayout android:id="@+id/RelativeLayout03"
+					android:layout_width="wrap_content" android:layout_height="wrap_content">
+					<TableLayout android:id="@+id/TableLayout02"
+						android:layout_width="wrap_content" android:layout_height="wrap_content">
+						<TableRow android:id="@+id/TableRow02"
+							android:layout_width="wrap_content" android:layout_height="wrap_content">
+							<TextView android:id="@+id/TextView01"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:text="1 - Category:" android:textSize="11dip"
+								android:textStyle="bold" android:textColor="@color/white"></TextView>
+							<Spinner android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/SpinnerCategories"></Spinner>
+						</TableRow>
+						<TableRow android:id="@+id/TableRow03"
+							android:layout_width="wrap_content" android:layout_height="wrap_content">
+							<TextView android:id="@+id/TextView02"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:text="2 - Model:" android:textStyle="bold"
+								android:textSize="11dip" android:textColor="@color/white"></TextView>
+							<Spinner android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/SpinnerModels"></Spinner>
+						</TableRow>
+					</TableLayout>
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/RelativeLayout04"
+					android:layout_width="wrap_content" android:layout_height="match_parent"
+					android:gravity="center">
+					<Button android:text="@+id/Button01" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/buttonValidateSecondStep"></Button>
+				</RelativeLayout>
+			</TableRow>
+		</TableLayout>
+	</RelativeLayout>
+	<RelativeLayout android:layout_width="fill_parent"
+		android:gravity="center" android:id="@+id/RelativeLayoutThirdStep"
+		android:layout_height="fill_parent" android:layout_below="@+id/help_bar"
+		android:layout_toRightOf="@+id/TableLayout01" android:visibility="invisible"
+		android:layout_marginLeft="60dip">
+
+		<ScrollView android:id="@+id/ScrollView01"
+			android:layout_height="fill_parent" android:layout_width="fill_parent">
+			<TableLayout android:background="@drawable/transborder"
+				android:id="@+id/TableLayoutThirdStep" android:layout_height="fill_parent"
+				android:layout_width="fill_parent">
+				<TableRow android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/TableRowLoadingMessage"
+					android:visibility="gone">
+					<ProgressBar android:id="@+id/ProgressBar01"
+						android:layout_height="30dip" android:layout_width="30dip"></ProgressBar>
+					<RelativeLayout android:id="@+id/RelativeLayout06"
+						android:layout_width="wrap_content" android:layout_height="match_parent"
+						android:layout_marginLeft="10dip" android:gravity="center">
+						<TextView android:id="@+id/TextView03"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:textSize="13dip" android:textStyle="bold"
+							android:textColor="@color/white" android:text="Sending data ..."></TextView>
+					</RelativeLayout>
+				</TableRow>
+
+
+
+				<RelativeLayout android:id="@+id/RelativeLayoutEnterName"
+					android:gravity="center" android:layout_height="fill_parent"
+					android:layout_width="fill_parent">
+					<TextView android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/TextViewErrorMessage"
+						android:layout_margin="10dip" android:padding="10dip"
+						android:textColor="@color/white" android:textSize="13dip"
+						android:textStyle="bold|italic" android:visibility="gone"></TextView>
+
+					<TableLayout android:id="@+id/TableLayout04"
+						android:layout_height="wrap_content" android:layout_below="@+id/TextViewErrorMessage"
+						android:layout_width="fill_parent">
+						<EditText android:layout_height="wrap_content"
+							android:id="@+id/EditTextSceneName" android:layout_width="fill_parent"
+							android:hint="Name"></EditText>
+
+						<EditText android:layout_height="wrap_content"
+							android:id="@+id/EditTextTags" android:visibility="gone"
+							android:hint="Tags - seperated by a coma" android:layout_width="fill_parent"></EditText>
+						<EditText android:layout_height="wrap_content"
+							android:id="@+id/EditTextDescription" android:layout_width="fill_parent"
+							android:hint="Description (optional)"></EditText>
+						<EditText android:layout_height="wrap_content"
+							android:id="@+id/EditTextAdress" android:layout_width="fill_parent"
+							android:hint="Address (optional)"></EditText>
+						<EditText android:layout_height="wrap_content"
+							android:id="@+id/EditTextPhone" android:layout_width="fill_parent"
+							android:hint="Phone number (optional)"></EditText>
+						<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextEmail" android:hint="Email (optional)"></EditText><EditText android:layout_height="wrap_content"
+							android:id="@+id/EditTextwebsite" android:layout_width="fill_parent"
+							android:hint="Website (optional)"></EditText>
+						<RelativeLayout android:layout_width="wrap_content"
+							android:id="@+id/Cursor1" android:layout_height="2dip"
+							android:background="@drawable/markerbordermap" android:padding="10dip"
+							android:layout_marginBottom="10dip" android:layout_marginLeft="20dip"
+							android:layout_marginRight="20dip" android:layout_marginTop="10dip">
+						
+</RelativeLayout><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewDetqilsList" android:textSize="12dip" android:textColor="@color/white" android:textStyle="italic" android:text="If you want to bind a model to a list, select the box then select a list. (The list you pick will determine if the scene is public or private)"></TextView>
+						<LinearLayout android:layout_height="wrap_content"
+							android:id="@+id/LinearLayoutPrivateList" android:orientation="horizontal"
+							android:layout_width="fill_parent" android:gravity="center">
+							<CheckBox android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/CheckBoxPrivate"
+								android:text="Link to a list" android:layout_weight="2"></CheckBox>
+
+							<TextView android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:id="@+id/TextViewListName" android:visibility="gone"
+								android:layout_weight="2" android:text="... Select a list"></TextView>
+							<Button android:layout_height="wrap_content" android:layout_weight="1"
+								android:id="@+id/ButtonMyLists"
+								android:visibility="gone" android:text="..." android:layout_width="40dip"></Button>
+						</LinearLayout>
+						<RadioGroup android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_weight="1" android:id="@+id/RadioGroupLevelOfRIght"><RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:id="@+id/RadioButtonPublic" android:text="Public" android:enabled="false"></RadioButton>
+<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Private" android:id="@+id/RadioButtonPrivate" android:enabled="false"></RadioButton>
+</RadioGroup><LinearLayout android:layout_height="wrap_content"
+							android:id="@+id/LinearLayoutPrivateListTest" android:orientation="horizontal"
+							android:layout_width="fill_parent" android:gravity="center">
+							
+
+							
+							
+						
+</LinearLayout>
+						<RelativeLayout android:layout_width="wrap_content"
+							android:id="@+id/Cursor1" android:layout_height="2dip"
+							android:background="@drawable/markerbordermap" android:padding="10dip"
+							android:layout_marginBottom="10dip" android:layout_marginLeft="20dip"
+							android:layout_marginRight="20dip" android:layout_marginTop="10dip">
+						</RelativeLayout>
+						<Button android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:id="@+id/ButtonSendData"
+							android:layout_margin="10dip" android:text="Create">
+						</Button>
+					
+</TableLayout>
+				</RelativeLayout>
+				<RelativeLayout android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/RelativeLayoutEnd"
+					android:visibility="gone">
+					<TableLayout android:id="@+id/TableLayout03"
+						android:layout_width="wrap_content" android:layout_height="wrap_content">
+						<TextView android:id="@+id/TextView04"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Your new scene has been created succesfully !"
+							android:layout_margin="10dip"></TextView>
+						<Button android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:id="@+id/ButtonClose"
+							android:text="Close" android:layout_margin="10dip"></Button>
+					</TableLayout>
+				</RelativeLayout>
+			</TableLayout>
+		</ScrollView>
+	</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:id="@+id/RelativeLayout01"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content" android:background="@drawable/markerbordercomment_thumb" android:clickable="true" android:layout_width="fill_parent">
+	<ImageView android:layout_below="@id/RelativeLayout03"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:id="@+id/ImageViewPictureComment" android:padding="10dip"></ImageView>
+	<TableLayout android:id="@+id/TableLayout01"
+		android:layout_height="wrap_content" android:layout_toRightOf="@+id/ImageViewPictureComment"
+		android:layout_width="fill_parent" android:layout_margin="10dip">
+		<RelativeLayout android:layout_height="wrap_content"
+			android:layout_width="fill_parent" android:id="@+id/RelativeLayoutInfoOfWhoCommented">
+			<RelativeLayout android:id="@+id/RelativeLayout02"
+				android:layout_height="wrap_content" android:layout_width="fill_parent"
+				android:gravity="left">
+				<TextView android:text="@+id/TextView01"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:textColor="@color/white" android:id="@+id/TextViewTitle" android:textSize="14dip" android:textStyle="bold"></TextView>
+			</RelativeLayout>
+			<RelativeLayout android:id="@+id/RelativeLayout05"
+				android:layout_height="wrap_content" android:layout_width="fill_parent"
+				android:gravity="right">
+				<RatingBar android:layout_width="wrap_content"
+					android:layout_height="wrap_content" style="?android:attr/ratingBarStyleSmall"
+					android:id="@+id/RatingBarAverage" android:visibility="invisible"></RatingBar>
+			</RelativeLayout>
+		</RelativeLayout>
+		<RelativeLayout android:layout_height="wrap_content"
+			android:layout_width="fill_parent" android:gravity="left"
+			android:id="@+id/RelativeLayoutContent">
+			<TextView android:layout_height="wrap_content"
+				android:layout_width="fill_parent" android:textColor="@color/white" android:textSize="12dip"
+				android:textStyle="normal" android:text="... m" android:id="@+id/TextViewDistance"></TextView>
+		</RelativeLayout>
+
+	</TableLayout>
+	<RelativeLayout android:layout_height="wrap_content"
+		android:id="@+id/RelativeLayoutDescription" android:layout_width="fill_parent"
+		android:visibility="gone" android:clickable="true" android:layout_below="@+id/ImageViewPictureComment" android:padding="5dip">
+		<TextView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/bodyText"
+			android:textColor="@color/white" android:textStyle="normal|italic"
+			android:textSize="12dip" android:text="Description: "
+			android:visibility="visible"></TextView>
+		<TextView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_below="@+id/bodyText"
+			android:id="@+id/TextViewAdress" android:text="Adress:"></TextView>
+		<TextView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/TextViewPhone"
+			android:layout_below="@id/TextViewAdress" android:text="Phone:"></TextView>
+		<TextView android:layout_below="@id/TextViewPhone"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/TextViewWebsite" android:text="Website:"></TextView>
+	</RelativeLayout>
+</RelativeLayout>

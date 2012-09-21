@@ -1,0 +1,21 @@
+LICENSE TERMS
+
+This document describes the license terms for the Outdoor AR Library 
+developed by the Human Interface Technology Laboratory New Zealand (HIT Lab NZ), University of Canterbury.
+
+This copy of Outdoor AR Library is provided for NON-COMMERCIAL USE ONLY.
+If you want to use the software for commercial uses, please contact the HIT Lab NZ for licensing.
+
+http://www.hitlabnz.org
+
+
+The licensing terms of the Outdoor AR Library for Non-commercial use is as the following:
+
+Outdoor AR Library is free software: you can redistribute it and/or modify it under the terms of 
+the GNU General Public License (GPL) as published by the Free Software Foundation, 
+either version 3 of the License, or (at your option) any later version. 
+OutdoorAR Library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU General Public License for more details. 
+You should have received a copy of the GNU General Public License along with the Outdoor AR Library. 
+If not, see http://www.gnu.org/licenses.

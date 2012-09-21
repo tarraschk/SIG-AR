@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent"
+	android:layout_gravity="center" android:background="@drawable/background"
+	android:layoutAnimation="@anim/layout_animation_row_left_slide">
+	<RelativeLayout android:id="@+id/RelativeLayout01"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:gravity="center" android:layout_margin="10dip">
+
+
+		<TableRow android:id="@+id/TableRow02" android:layout_below="@id/TableLayout01"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:gravity="center">
+			<ImageView android:id="@+id/ImageView01"
+				android:background="@drawable/and_clear" android:layout_height="150dip"
+				android:layout_width="100dip"></ImageView>
+			<TableLayout android:id="@+id/TableLayout01"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:gravity="right" android:layout_marginLeft="30dip">
+				<RelativeLayout android:id="@+id/RelativeLayout02"
+					android:layout_height="fill_parent" android:layout_width="fill_parent"
+					android:gravity="center">
+					<ImageView android:layout_height="wrap_content"
+						android:id="@+id/ImageViewLogo" android:layout_width="wrap_content"
+						android:background="@drawable/logo"></ImageView>
+				</RelativeLayout>
+				<TableRow android:layout_height="fill_parent"
+					android:layout_width="fill_parent" android:gravity="center"
+					android:layout_marginTop="20dip" android:id="@+id/TableRowButtons">
+					<TableLayout android:layout_height="wrap_content"
+						android:id="@+id/TableLayoutaroundMe" android:gravity="center"
+						android:layout_gravity="center" android:layout_width="100dip"
+						android:visibility="gone">
+						<ImageButton android:layout_height="80dip"
+							android:layout_width="80dip" android:background="@drawable/aroundme_thumb"
+							android:layout_margin="10dip" android:id="@+id/ImageButtonAroundMeAR"></ImageButton>
+						<TextView android:id="@+id/TextView02"
+							android:layout_height="wrap_content" android:layout_gravity="center"
+							android:layout_width="fill_parent" android:text="Around Me"
+							android:textColor="@color/black" android:textStyle="bold"
+							android:textSize="12dip" android:gravity="center"></TextView>
+					</TableLayout>
+					<TableLayout android:layout_height="wrap_content"
+						android:id="@+id/TableLayoutMyLists" android:layout_gravity="center"
+						android:gravity="center" android:layout_width="100dip"
+						android:visibility="gone">
+						<ImageButton android:layout_width="80dip"
+							android:layout_height="80dip" android:background="@drawable/myscenes_thumb"
+							android:layout_margin="10dip" android:id="@+id/ImageButtonLocalAR"></ImageButton>
+						<TextView android:layout_height="wrap_content"
+							android:id="@+id/TextView03" android:layout_width="fill_parent"
+							android:layout_gravity="center" android:gravity="center"
+							android:text="My lists" android:textStyle="bold"
+							android:textSize="12dip" android:textColor="@color/black"></TextView>
+					</TableLayout>
+				</TableRow>
+				<RelativeLayout android:layout_width="100dip"
+					android:gravity="center" android:layout_height="100dip"
+					android:id="@+id/RelativeLayoutLoading">
+
+					<ProgressBar android:id="@+id/ProgressBarLoading"
+						android:layout_height="60dip" android:layout_width="60dip"></ProgressBar>
+				</RelativeLayout>
+			</TableLayout>
+		</TableRow>
+	</RelativeLayout>
+	<RelativeLayout android:layout_alignParentBottom="true"
+		android:id="@+id/RelativeLayout03" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:layout_margin="10dip"
+		android:gravity="bottom|center_horizontal">
+		<LinearLayout android:id="@+id/LinearLayoutInformation"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:orientation="vertical">
+			<TextView android:layout_width="wrap_content" android:id="@+id/TextViewUserName"
+				android:ellipsize="none" android:layout_height="wrap_content"
+				android:layout_alignParentTop="true" android:layout_above="@+id/TextView01"
+				android:text="Hi mate!" android:gravity="center" android:layout_gravity="center"></TextView>
+			<TextView android:layout_width="wrap_content" android:id="@+id/TextView01"
+				android:layout_height="wrap_content"
+				android:layout_alignParentTop="true" android:gravity="center" android:layout_gravity="center"></TextView>
+		</LinearLayout>
+
+
+	</RelativeLayout>
+</RelativeLayout>

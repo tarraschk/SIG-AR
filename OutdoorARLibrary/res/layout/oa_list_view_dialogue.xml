@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+    <TextView android:text="TextView" android:layout_width="match_parent" android:id="@+id/listViewText1" android:layout_gravity="center" android:layout_height="wrap_content" ></TextView>
+    <TextView android:text="TextView" android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/listViewText2" android:layout_gravity="center" ></TextView>
+    <TextView android:text="TextView" android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/listViewText3" android:layout_gravity="center" ></TextView>
+    <Button android:text="Ok" android:id="@+id/listViewButton1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center"></Button>
+    
+</LinearLayout>

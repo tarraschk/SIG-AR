@@ -1,14 +1,50 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="fill_parent"
+    android:layout_gravity="bottom"
+    android:orientation="vertical" >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
+        android:gravity="center"
+        android:text="Welcome to SIG-AR !"
         tools:context=".MainActivity" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/start_ar_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onStartARViewActivity"
+        android:text="Activité 1" />
+
+    <Button
+        android:id="@+id/start_map_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onStartMapViewActivity"
+        android:text="Activité 2" />
+
+    <Button
+        android:id="@+id/start_list_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onStartListViewActivity"
+        android:text="Activité 3" />
+    
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" 
+    android:layout_height="fill_parent" 
+    android:gravity="center">
+	    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:text="Developed by the EI3-Info team at the Ecole Centrale de Nantes (France)"
+        tools:context=".MainActivity" />
+	</RelativeLayout>
+
+</LinearLayout>

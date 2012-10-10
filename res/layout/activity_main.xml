@@ -1,50 +1,43 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="bottom"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/textView1"
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Welcome to SIG-AR !"
-        tools:context=".MainActivity" />
-
-    <Button
-        android:id="@+id/start_ar_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onStartARViewActivity"
-        android:text="Activité 1" />
-
-    <Button
-        android:id="@+id/start_map_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onStartMapViewActivity"
-        android:text="Activité 2" />
-
-    <Button
-        android:id="@+id/start_list_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onStartListViewActivity"
-        android:text="Activité 3" />
-    
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" 
-    android:layout_height="fill_parent" 
-    android:gravity="center">
-	    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:gravity="bottom"
-        android:text="Developed by the EI3-Info team at the Ecole Centrale de Nantes (France)"
-        tools:context=".MainActivity" />
-	</RelativeLayout>
+        android:gravity="end" >
 
-</LinearLayout>
+        <Button
+            android:id="@+id/start_list_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:onClick="onSettingsActivity"
+            android:text="Settings" />
+
+        <Button
+            android:id="@+id/start_map_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/start_list_btn"
+            android:onClick="onListActivity"
+            android:text="List" />
+
+        <Button
+            android:id="@+id/start_ar_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/start_map_btn"
+            android:onClick="onMapActivity"
+            android:text="Map" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

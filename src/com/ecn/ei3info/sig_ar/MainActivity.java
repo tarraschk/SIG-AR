@@ -3,15 +3,14 @@ package com.ecn.ei3info.sig_ar;
 import com.hitlabnz.outdoorar.api.OAARComponentBase;
 
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
@@ -21,28 +20,53 @@ public class MainActivity extends OAARComponentBase {
    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
 	    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
-	        buildAlertMessageNoGps();
+	       buildAlertMessageNoGps();
+	    }
+	    final ConnectivityManager manager1 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    if( manager1.getActiveNetworkInfo()==null){
+	    	buildAlertMessageNoNetwork();
 	    }
     }
-   	private void buildAlertMessageNoGps(){
+   	
+	private void buildAlertMessageNoGps(){
 	    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	    builder.setMessage("Yout GPS seems to be disabled, do you want to enable it?")
+	    builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
 	           .setCancelable(false)
 	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-	               public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+	               public void onClick(final DialogInterface dialog, final int id) {
 	                   startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 	               }
 	           })
 	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
-	               public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+	               public void onClick(final DialogInterface dialog, final int id) {
 	                    dialog.cancel();
 	               }
 	           });
 	    final AlertDialog alert = builder.create();
 	    alert.show();
 	 }
+	
+	private void buildAlertMessageNoNetwork() {
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	    builder.setMessage("Your WIFI seems to be disabled, do you want to enable it?")
+	           .setCancelable(false)
+	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	               public void onClick(final DialogInterface dialog, final int id) {
+	                   startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+	               }
+	           })
+	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
+	               public void onClick(final DialogInterface dialog, final int id) {
+	                    dialog.cancel();
+	                    //TODO add warning can't add new modele.
+	               }
+	           });
+	    final AlertDialog alert = builder.create();
+	    alert.show();
+	}
 /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,28 +1,28 @@
 package com.ecn.ei3info.sig_ar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.widget.Toast;
 
 
 //TODO modify picture
-
+//TODO center text
 public class SplashScreen extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	 
 	    setContentView(R.layout.splashscreen);
-	 
-	        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-	        Handler handler = new Handler();
+	    Handler handler = new Handler();
 	 
-	        // run a thread after 2 seconds to start the home screen
-	        handler.postDelayed(new Runnable() {
+	    // run a thread after 2 seconds to start the home screen
+	    handler.postDelayed(new Runnable() {
 	 
 	        	@Override
 	            public void run() {
@@ -40,4 +40,5 @@ public class SplashScreen extends Activity{
 	        }, 2000); // time in milliseconds (1 second = 1000 milliseconds) until the run() method will be called
 	 
 	    }
+
 }

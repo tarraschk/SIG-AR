@@ -16,7 +16,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 
 //TODO Comment
-//TODO Add "do you want to quit?"
 
 public class MainActivity extends OAARComponentBase {
 
@@ -54,22 +53,30 @@ public class MainActivity extends OAARComponentBase {
 	
 	private void buildAlertMessageNoNetwork() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	    builder.setMessage("Your WIFI seems to be disabled, do you want to enable it?")
+	    builder.setMessage("Your Network seems to be disabled, do you want to enable it?")
 	           .setCancelable(false)
-	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	           .setPositiveButton("WIFI", new DialogInterface.OnClickListener() {
 	               public void onClick(final DialogInterface dialog, final int id) {
 	                   startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+	               }
+	           })
+	           .setNeutralButton("DataRoaming", new DialogInterface.OnClickListener() {
+	               public void onClick(final DialogInterface dialog, final int id) {
+	                   startActivity(new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS));
 	               }
 	           })
 	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
 	               public void onClick(final DialogInterface dialog, final int id) {
 	                    dialog.cancel();
-	                    //TODO add warning can't add new modele.
+	                    //TODO add warning can't add new model.
 	               }
 	           });
 	    final AlertDialog alert = builder.create();
 	    alert.show();
 	}
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onBackPressed()
+	 */
 	@Override
 	public void onBackPressed() {
 	    new AlertDialog.Builder(this)
@@ -83,13 +90,13 @@ public class MainActivity extends OAARComponentBase {
 	           .setNegativeButton("No", null)
 	           .show();
 	}
-/*
-    @Override
+
+  /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
-  */  
+   */
    
     
     @Override
@@ -103,14 +110,26 @@ public class MainActivity extends OAARComponentBase {
 		addContentView(sampleUILayout, 
 			new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	}
+    /**
+     * Go to Map View
+     * @param View
+     */
     public void onMapActivity(View View){
     	Intent intent = new Intent(this, MapActivity.class);
     	startActivity(intent);
     }
+    /**
+     * Go to List View
+     * @param View
+     */
     public void onListActivity(View View){
     	Intent intent = new Intent(this, ListActivity.class);
     	startActivity(intent);
     }
+    /**
+     * Go to Settings
+     * @param View
+     */
     public void onSettingsActivity(View View){
     	Intent intent = new Intent(this, SettingsActivity.class);
     	startActivity(intent);

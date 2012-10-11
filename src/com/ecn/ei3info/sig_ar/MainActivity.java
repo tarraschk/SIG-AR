@@ -70,6 +70,19 @@ public class MainActivity extends OAARComponentBase {
 	    final AlertDialog alert = builder.create();
 	    alert.show();
 	}
+	@Override
+	public void onBackPressed() {
+	    new AlertDialog.Builder(this)
+	           .setMessage("Are you sure you want to exit?")
+	           .setCancelable(false)
+	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	               public void onClick(DialogInterface dialog, int id) {
+	                   finish();
+	               }
+	           })
+	           .setNegativeButton("No", null)
+	           .show();
+	}
 /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

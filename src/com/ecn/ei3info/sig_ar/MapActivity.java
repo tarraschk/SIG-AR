@@ -8,6 +8,10 @@ import android.widget.Toast;
 import com.hitlabnz.outdoorar.R;
 import com.hitlabnz.outdoorar.api.OAMapComponentBase;
 
+//TODO bug position
+//TODO add control
+
+
 public class MapActivity extends OAMapComponentBase{
 	@Override
 	protected String setupGoogleMapApiKey() {
@@ -35,7 +39,7 @@ public class MapActivity extends OAMapComponentBase{
 		//TODO change text
 		//TODO style
 		//TODO changer l'eau du poisson
-		
+		//TODO modify toast
 		Toast.makeText(this, "Clicked custom UI button", Toast.LENGTH_SHORT).show();
 
 		satellite = !satellite;

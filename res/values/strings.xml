@@ -3,6 +3,10 @@
     <string name="app_name">SIG-AR</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">SIG-AR</string>
-
+    <string name="title_activity_main">SIG-AR</string> 
+    <string name="satellite_image">Satellite Image Activation, click on it to activate/deactivate the satellite view</string>   
+	<string name="locationfound">Center map to the user location</string>
+	<string name="go_back">go back</string>
+	<string name="quit">Quit the application</string>
+	
 </resources>

@@ -16,12 +16,14 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 
 //TODO Comment
-
+//TODO Add button to Quit
+//TODO Delete menu bar/tablette
 public class MainActivity extends OAARComponentBase {
 
    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getActionBar().hide();
         
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
 	    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
@@ -135,6 +137,21 @@ public class MainActivity extends OAARComponentBase {
     	Intent intent = new Intent(this, SettingsActivity.class);
     	startActivity(intent);
     }
-    
+    /**
+     * Quit the application
+     * @param View
+     */
+    public void onQuit(View View){
+    	 new AlertDialog.Builder(this)
+         .setMessage("Are you sure you want to exit?")
+         .setCancelable(false)
+         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+             public void onClick(DialogInterface dialog, int id) {
+                 finish();
+             }
+         })
+         .setNegativeButton("No", null)
+         .show();
+    }
     
 }

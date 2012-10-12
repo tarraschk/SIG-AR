@@ -9,6 +9,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:gravity="end" >
 
         <Button
@@ -37,7 +39,13 @@
             android:layout_toLeftOf="@+id/start_map_btn"
             android:onClick="onMapActivity"
             android:text="Map" />
-
     </RelativeLayout>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:contentDescription="@string/quit"
+            android:onClick="onQuit"
+            android:src="@drawable/content_remove" />
 
 </RelativeLayout>

@@ -7,11 +7,10 @@ import android.widget.TextView;
 import com.hitlabnz.outdoorar.api.OAListComponentBase;
 
 public class ListActivity extends OAListComponentBase {
-	//TODO getion des données
+	//TODO gestion des données
 	//TODO style de la liste
-	//TODO mode de recherche
 	//TODO select
-	//TODO gestion de la recherche verifier classe source
+	//TODO Moteur de recherche
 	
 	@Override
 	protected void setupUILayout(View listView) {

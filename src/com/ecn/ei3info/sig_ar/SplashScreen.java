@@ -5,8 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-//TODO modify picture
-//TODO center text
+//TODO modify SplashScreen
 public class SplashScreen extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class SplashScreen extends Activity{
 	            }
 	 
 	        }, 2000); // time in milliseconds (1 second = 1000 milliseconds) until the run() method will be called
-	 
+	    //TODO Parametrer la durée du splashscreen
 	    }
 
 }

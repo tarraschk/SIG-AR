@@ -98,7 +98,8 @@ public class MainActivity extends OAARComponentBase {
     }
    */
    
-    
+    //TODO Option d'affichage du compas et de la grille
+	//TODO Modifier Interface
     @Override
 	protected void setupUILayout(View arView) {		
 		// set the plain AR view first

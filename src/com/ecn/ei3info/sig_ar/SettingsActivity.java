@@ -5,11 +5,12 @@ import android.os.Bundle;
 
 public class SettingsActivity extends Activity {
 
+	//TODO completer about
+	
 	 public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        //TODO parametrer vue
-	        //TODO completer about
-	        //
+	        //TODO Modifier l'interface
+	        
 	        setContentView(R.layout.activity_settings);
 	 }
 	

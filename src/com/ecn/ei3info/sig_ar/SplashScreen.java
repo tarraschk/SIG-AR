@@ -24,8 +24,7 @@ public class SplashScreen extends Activity{
 	    // run a thread after 2 seconds to start the home screen
 	    handler.postDelayed(new Runnable() {
 	 
-	        	@Override
-	            public void run() {
+	        	public void run() {
 	 
 	                // make sure we close the splash screen so the user won't come back when it presses back key
 	                finish();

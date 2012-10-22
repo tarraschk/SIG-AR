@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 //TODO Comment
 //TODO Add button to Quit
@@ -70,7 +71,8 @@ public class MainActivity extends OAARComponentBase {
 	           })
 	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
 	               public void onClick(final DialogInterface dialog, final int id) {
-	                    dialog.cancel();
+	            	   Toast.makeText(MainActivity.this, "No data will be downloaded", Toast.LENGTH_SHORT).show();
+	            	   dialog.cancel();
 	                    //TODO add warning can't add new model.
 	               }
 	           });

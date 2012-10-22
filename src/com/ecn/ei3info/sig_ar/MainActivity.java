@@ -25,7 +25,7 @@ public class MainActivity extends OAARComponentBase {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //getActionBar().hide();
-        
+        // modifications 
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
 	    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
 	       buildAlertMessageNoGps();

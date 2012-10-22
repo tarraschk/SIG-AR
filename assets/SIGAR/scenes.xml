@@ -1,20 +1,20 @@
 <scenes>
     <scene>
         <id>1</id>
-        <name>Basket Ball in XML</name>
-        <category>Ball</category>    
-        <description>This is a basket ball.</description>
-        <creator>HITLabNZ</creator>  
+        <name>CubeECN</name>
+        <category>smile</category>    
+        <description>un cube avec ECN dessus.</description>
+        <creator>BMR</creator>
         <models>
             <number>1</number>
             <model>
-                <name_model>Basket Ball</name_model>
-                <id_model>BasketBall</id_model>
+                <name_model>CubeECN</name_model>
+                <id_model>CubeECN</id_model>
                 <type>main</type>
                 <location>
-                    <longitude>-1.5479694440629745</longitude>
-                    <latitude>47.24826111157735</latitude>
-                     <altitude>1</altitude>
+                    <longitude>-1.547013888887</longitude>
+                    <latitude>47.248122222688465</latitude>
+                    <altitude>1</altitude>
                 </location>
                 <transformation>
                     <translation>
@@ -42,5 +42,8 @@
                 </animation>
             </model>
         </models>
+		<extraAttribs>
+			<a>tr</a>
+		</extraAttribs>
     </scene>
  </scenes>

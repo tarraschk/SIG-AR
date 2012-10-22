@@ -1,6 +1,7 @@
 package com.ecn.ei3info.sig_ar;
 
 import com.hitlabnz.outdoorar.api.OAARComponentBase;
+import com.hitlabnz.outdoorar.data.OADataManager;
 
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -76,6 +77,15 @@ public class MainActivity extends OAARComponentBase {
 	    final AlertDialog alert = builder.create();
 	    alert.show();
 	}
+	
+	
+	@Override
+	protected OADataManager setupDataManager() {
+		// set custom working path instead of using the default path - "OutdoorAR"
+		return DataManagerAssets.getInstance(this);
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onBackPressed()
 	 */
@@ -147,7 +157,8 @@ public class MainActivity extends OAARComponentBase {
          .setCancelable(false)
          .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
              public void onClick(DialogInterface dialog, int id) {
-                 finish();
+                 //TODO save data to xml (copy to back button)
+            	 finish();
              }
          })
          .setNegativeButton("No", null)

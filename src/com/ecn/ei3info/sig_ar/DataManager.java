@@ -2,10 +2,21 @@ package com.ecn.ei3info.sig_ar;
 
 import com.hitlabnz.outdoorar.data.OADataManager;
 
+
 public class DataManager extends OADataManager{
 	
-	private static final String DEFAULT_WORKING_PATH = "SIGAR";
+	private static DataManager singletonInstance = null;
+	//protected static String workingPath="SIGAR";
 	
-	//TODO add folder to model management 
-	//TODO Generate Xml file
+	public DataManager(String workingPath){
+		super(workingPath);
+	}
+	
+	public static DataManager getInstance() {
+		if(DataManager.singletonInstance == null)
+			DataManager.singletonInstance = new DataManager("SIGAR");
+		return DataManager.singletonInstance;
+	}
+	
+		//TODO Generate Xml file
 }

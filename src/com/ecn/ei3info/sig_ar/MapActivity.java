@@ -1,23 +1,50 @@
 package com.ecn.ei3info.sig_ar;
 
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.hitlabnz.outdoorar.R;
 import com.hitlabnz.outdoorar.api.OAMapComponentBase;
+import com.hitlabnz.outdoorar.data.OADataManager;
 
 //TODO add control
 //TODO Add Back button
+//TODO recalculer la position à l'ouverture de l'activité
 
 public class MapActivity extends OAMapComponentBase{
 	@Override
 	protected String setupGoogleMapApiKey() {
 		return "0-uPrjI4lrnXjC_4g9gP5Scy7hauxOZEVlkGBvw";
-		
 	}
+	
+	@Override
+	protected OADataManager setupDataManager() {
+		// use a singleton instance of a custom data manager
+		// in this way, you can share the same data manager with other components
+		//return DataManager.getInstance();
+		//return new DataManager("SIGAR");
+		//OADataManagerAssets dm = new OADataManagerAssets("SIGAR", this);
+		//dm.setScenesFile("sample_scenes.db"); // you can also choose a custom scene file
+		DataManagerAssets dm=DataManagerAssets.getInstance(this);
+
+		Log.w("myApp", Integer.toString(dm.getSceneCount()));
+//		Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));
+
+		return dm;
+	}
+	
+	public void onCreate(Bundle bundle) {
+		  super.onCreate(bundle);
+		  //automatic sleep mode deactivated
+		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+	}
+	
 	
 	//TODO Add Map Control View
 	//TODO Add slide Layout
@@ -52,6 +79,13 @@ public class MapActivity extends OAMapComponentBase{
 	
 	public void onCenterLocation(View view) {
 		centerToUserLocation();
+		//TODO Add toast indication of centering
+			
+		Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));
+		Log.w("myApp", this.getDataManager().getSceneList().get(0).name);
+		Log.w("myApp", Integer.toString(this.getDataManager().getSceneList().get(0).getId()));
+		Log.w("myApp", this.getDataManager().getSceneList().get(0).getExtraAttrib("a"));
+		
 	}
 	public void onGoBack(View view) {
 		super.onBackPressed();
@@ -59,6 +93,4 @@ public class MapActivity extends OAMapComponentBase{
 	protected int setupOptions(){
 		return OAMapComponentBase.OPTION_START_WITH_SATELLITE_IMAGE;
 	}
-	
-	
 }

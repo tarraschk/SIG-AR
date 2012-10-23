@@ -1,5 +1,6 @@
 package com.ecn.ei3info.sig_ar;
 
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.hitlabnz.outdoorar.R;
 import com.hitlabnz.outdoorar.api.OAMapComponentBase;
 import com.hitlabnz.outdoorar.data.OADataManager;
 

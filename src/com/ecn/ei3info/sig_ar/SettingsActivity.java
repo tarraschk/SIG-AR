@@ -3,6 +3,8 @@ package com.ecn.ei3info.sig_ar;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.hitlabnz.outdoorar.R;
+
 public class SettingsActivity extends Activity {
 
 	//TODO completer about

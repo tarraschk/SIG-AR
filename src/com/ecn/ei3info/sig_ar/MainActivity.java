@@ -46,6 +46,7 @@ public class MainActivity extends OAARComponentBase {
 	                   startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 	               }
 	           })
+	           //TODO Centrer les textes
 	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
 	               public void onClick(final DialogInterface dialog, final int id) {
 	                    dialog.cancel();
@@ -63,6 +64,8 @@ public class MainActivity extends OAARComponentBase {
 	               public void onClick(final DialogInterface dialog, final int id) {
 	                   startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
 	               }
+		           //TODO Centrer les textes
+
 	           })
 	           .setNeutralButton("DataRoaming", new DialogInterface.OnClickListener() {
 	               public void onClick(final DialogInterface dialog, final int id) {
@@ -101,6 +104,8 @@ public class MainActivity extends OAARComponentBase {
 	                   finish();
 	               }
 	           })
+	           	           //TODO Centrer les textes
+
 	           .setNegativeButton("No", null)
 	           .show();
 	}

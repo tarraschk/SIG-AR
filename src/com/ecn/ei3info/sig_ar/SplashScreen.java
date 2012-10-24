@@ -18,23 +18,20 @@ public class SplashScreen extends Activity{
 	    setContentView(R.layout.splashscreen);
 	    //automatic sleep mode deactivated
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-	    //Handler handler = new Handler();
-	    
-	    
+		
 	    //Test de l'initialisation
-	   // DataManagerAssets.getInstance(this);
-
+	    DataManagerAssets.getInstance(this);
+	    
+	    //Start video splashscreen
 	    VideoView videos = (VideoView) findViewById(R.id.splashVideo);
         String  str= "android.resource://com.ecn.ei3info.sig_ar/"+R.raw.intro;
-
         Uri uri=Uri.parse(str);
         videos.setVideoURI(uri);
-
         videos.start();
         videos.setOnCompletionListener( CompletionListener );
-
-		
     }
+	
+	//Finish activity after the completion of video and start MainActivity
 	MediaPlayer.OnCompletionListener CompletionListener= new MediaPlayer.OnCompletionListener(){
 
 	  @Override

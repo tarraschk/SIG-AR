@@ -234,8 +234,8 @@ public class DataXMLParser {
 				model.name = readText(parser);
 			} else if (name1.equals("id_model")) {
 				model.id = readText(parser);
-			} else if (name1.equals("type")) {
-				model.setModelType( Integer.parseInt(readText(parser)));
+			//} else if (name1.equals("type")) {
+				//model.setModelType(Integer.parseInt(readText(parser)));
 			} else if (name1.equals("transformation")) {
 				model.addTransform(readTransformation(parser));
 			} else if (name1.equals("animation")) {
@@ -284,7 +284,7 @@ public class DataXMLParser {
 	private double readDouble(XmlPullParser parser) throws IOException, XmlPullParserException {
 		double result = 0;
 		if (parser.next() == XmlPullParser.TEXT) {
-			result = Double.parseDouble(parser.getText());
+			result = Double.parseDouble(parser.getText().toString());
 			parser.nextTag();
 		}
 		return result;

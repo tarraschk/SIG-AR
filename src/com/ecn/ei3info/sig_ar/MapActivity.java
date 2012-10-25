@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.hitlabnz.outdoorar.api.OAMapComponentBase;
+import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
 //TODO add control
@@ -31,12 +32,17 @@ public class MapActivity extends OAMapComponentBase{
 		//return new DataManager("SIGAR");
 		//OADataManagerAssets dm = new OADataManagerAssets("SIGAR", this);
 		//dm.setScenesFile("sample_scenes.db"); // you can also choose a custom scene file
-		DataManager dm=DataManager.getInstance();
+		DataManager MAP=new DataManager("SIGAR");
+		for(OAScene c:DataManager.getInstance().getSceneList()){
+			if(((Scene) c).isActivated()){
+				MAP.addScene(c);
+			}
+		}
 
-		Log.w("myApp", Integer.toString(dm.getSceneCount()));
+		//Log.w("myApp", Integer.toString(dm.getSceneCount()));
 //		Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));
 
-		return dm;
+		return MAP;
 	}
 	
 	public void onCreate(Bundle bundle) {

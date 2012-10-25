@@ -1,6 +1,7 @@
 package com.ecn.ei3info.sig_ar;
 
 import com.hitlabnz.outdoorar.api.OAARComponentBase;
+import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
 import android.location.LocationManager;
@@ -86,7 +87,13 @@ public class MainActivity extends OAARComponentBase {
 	@Override
 	protected OADataManager setupDataManager() {
 		// set custom working path instead of using the default path - "OutdoorAR"
-		return DataManager.getInstance();
+		DataManager AR=new DataManager("SIGAR");
+		for(OAScene c:DataManager.getInstance().getSceneList()){
+			if(((Scene) c).isActivated()){
+				AR.addScene(c);
+			}
+		}
+		return AR;// DataManager.getInstance();
 		
 	}
 	

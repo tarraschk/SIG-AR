@@ -32,6 +32,38 @@ public class Scene extends OAScene{
 	
 	
 	/**
+	 * @return the activated
+	 */
+	public boolean isActivated() {
+		return activated;
+	}
+
+
+	/**
+	 * @param activated the activated to set
+	 */
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
+
+	/**
+	 * @return the modelVisible
+	 */
+	public String getModelVisible() {
+		return modelVisible;
+	}
+
+
+	/**
+	 * @param modelVisible the modelVisible to set
+	 */
+	public void setModelVisible(String modelVisible) {
+		this.modelVisible = modelVisible;
+	}
+
+
+	/**
 	 * @param sceneData
 	 */
 	public Scene(SceneData sceneData) {
@@ -84,9 +116,9 @@ public class Scene extends OAScene{
 		Log.w("myScenes", "category: "+category);
 		Log.w("myScenes", "creator: "+creator);
 		Log.w("myScenes", "location");
-		Log.w("myScenes", "  longitude: "+Double.toString(location.getLongitude()));
-		Log.w("myScenes", "  latitude: "+Double.toString(location.getLatitude()));
-		Log.w("myScenes", "  altitude: "+Double.toString(location.getAltitude()));
+	//	Log.w("myScenes", "  longitude: "+Double.toString(location.getLongitude()));
+		//Log.w("myScenes", "  latitude: "+Double.toString(location.getLatitude()));
+		//Log.w("myScenes", "  altitude: "+Double.toString(location.getAltitude()));
 		Log.w("myScenes", "Model visible: "+modelVisible);
 		Log.w("myScenes", "Models:");
 		for(ModelData m:models){

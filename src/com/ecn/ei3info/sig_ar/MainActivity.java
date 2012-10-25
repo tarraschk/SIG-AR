@@ -86,7 +86,8 @@ public class MainActivity extends OAARComponentBase {
 	@Override
 	protected OADataManager setupDataManager() {
 		// set custom working path instead of using the default path - "OutdoorAR"
-		return DataManagerAssets.getInstance(this);
+		return DataManager.getInstance();
+		
 	}
 	
 	

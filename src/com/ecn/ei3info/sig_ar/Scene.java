@@ -1,9 +1,15 @@
 package com.ecn.ei3info.sig_ar;
 
+import java.util.List;
+
+import android.util.Log;
+
+import com.hitlabnz.androidar.data.ModelData;
 import com.hitlabnz.androidar.data.SceneData;
+import com.hitlabnz.androidar.data.SceneLocation;
 import com.hitlabnz.outdoorar.api.OAScene;
 
-public class Scene extends SceneData{
+public class Scene extends OAScene{
 	
 	/**
 	 * 
@@ -11,14 +17,85 @@ public class Scene extends SceneData{
 	private static final long serialVersionUID = 1L;
 	
 	
-	public String region;
 	public boolean activated;
+	public String modelVisible;
 
 	//TODO ajouter les informations supplémentaires des scènes.
 	
+	/**
+	 * 
+	 */
 	public Scene(){
 		//TODO completer les constructeurs de scene
 		super();
+	}
+	
+	
+	/**
+	 * @param sceneData
+	 */
+	public Scene(SceneData sceneData) {
+		super(sceneData);
+		// TODO Auto-generated constructor stub
+	}
+
+
+	/**
+	 * @param location
+	 * @param _id
+	 * @param _name
+	 * @param _description
+	 * @param _creator
+	 */
+	public Scene(SceneLocation location, int _id, String _name,
+			String _description, String _creator) {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	/**
+	 * 
+	 * @param Name
+	 * @param ID
+	 * @param Description
+	 * @param Category
+	 * @param Creator
+	 * @param Activated
+	 */
+	public Scene( int ID,String Name, String Description, String Category, String Creator, boolean Activated, String ModelVisible, SceneLocation Location, List<ModelData> models){
+		this.id=ID;
+		this.name=Name;
+		this.description=Description;
+		this.category=Category;
+		this.creator=Creator;
+		this.activated=Activated;
+		this.modelVisible=ModelVisible;
+		this.location=Location;
+		this.models=models;
+		
+		
+	}
+
+	// methode de developpement ASUPPRIMER
+	public void logScene(){
+		Log.w("myScenes", "name: "+name);
+		Log.w("myScenes", "id: "+Integer.toString(id));
+		Log.w("myScenes", "description: "+description);
+		Log.w("myScenes", "activated: "+activated);
+		Log.w("myScenes", "category: "+category);
+		Log.w("myScenes", "creator: "+creator);
+		Log.w("myScenes", "location");
+		Log.w("myScenes", "  longitude: "+Double.toString(location.getLongitude()));
+		Log.w("myScenes", "  latitude: "+Double.toString(location.getLatitude()));
+		Log.w("myScenes", "  altitude: "+Double.toString(location.getAltitude()));
+		Log.w("myScenes", "Model visible: "+modelVisible);
+		Log.w("myScenes", "Models:");
+		for(ModelData m:models){
+			Log.w("myScenes", "Model: "+m.name);
+			Log.w("myScenes", "Model id: "+m.id);
+		}
+		
+
+
 	}
 	
 	

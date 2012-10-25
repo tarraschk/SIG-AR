@@ -24,18 +24,21 @@ public class SplashScreen extends Activity{
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
 	    //Test de l'initialisation
-	    DataManagerAssets.getInstance(this);
-	    DataXMLParser test= new DataXMLParser();
+//	    DataManagerAssets.getInstance(this);
+	
+		
+		DataXMLParser test= new DataXMLParser();
 	    
 	    try {
-			test.parse(getAssets().open("SIGAR/scenes.xml"));
-		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+	    	DataManager.getInstance().addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));
+	    } catch (XmlPullParserException e) {
+	    	// TODO Auto-generated catch block
+	    	e.printStackTrace();
+	    } catch (IOException e) {
+	    	// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    
 	    
 	    //Start video splashscreen
 	    VideoView videos = (VideoView) findViewById(R.id.splashVideo);

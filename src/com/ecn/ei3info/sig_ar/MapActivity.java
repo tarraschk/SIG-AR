@@ -31,7 +31,7 @@ public class MapActivity extends OAMapComponentBase{
 		//return new DataManager("SIGAR");
 		//OADataManagerAssets dm = new OADataManagerAssets("SIGAR", this);
 		//dm.setScenesFile("sample_scenes.db"); // you can also choose a custom scene file
-		DataManagerAssets dm=DataManagerAssets.getInstance(this);
+		DataManager dm=DataManager.getInstance();
 
 		Log.w("myApp", Integer.toString(dm.getSceneCount()));
 //		Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));

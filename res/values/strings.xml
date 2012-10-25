@@ -8,5 +8,6 @@
 	<string name="locationfound">Center map to the user location</string>
 	<string name="go_back">go back</string>
 	<string name="quit">Quit the application</string>
+	<color name="black">#000000</color>
 	
 </resources>

@@ -76,7 +76,6 @@ public class MainActivity extends OAARComponentBase {
 	               public void onClick(final DialogInterface dialog, final int id) {
 	            	   Toast.makeText(MainActivity.this, "No data will be downloaded", Toast.LENGTH_SHORT).show();
 	            	   dialog.cancel();
-	                    //TODO add warning can't add new model.
 	               }
 	           });
 	    final AlertDialog alert = builder.create();

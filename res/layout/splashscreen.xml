@@ -6,7 +6,8 @@
     android:orientation="horizontal"
     android:layout_gravity="center"
   	android:gravity="center"
-    android:theme="@android:style/Theme.NoTitleBar" >
+    android:theme="@android:style/Theme.NoTitleBar"
+    android:background="@color/black" >
 
   <VideoView
       android:id="@+id/splashVideo"

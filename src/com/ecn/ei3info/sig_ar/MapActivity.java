@@ -84,6 +84,8 @@ public class MapActivity extends OAMapComponentBase{
 		Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));
 		Log.w("myApp", this.getDataManager().getSceneList().get(0).name);
 		Log.w("myApp", Integer.toString(this.getDataManager().getSceneList().get(0).getId()));
+		
+		//this.getDataManager().getSceneList().get(0).addExtraAttrib("a", "true");
 		Log.w("myApp", this.getDataManager().getSceneList().get(0).getExtraAttrib("a"));
 		
 	}

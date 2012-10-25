@@ -1,6 +1,10 @@
 package com.ecn.ei3info.sig_ar;
 
 
+import java.io.IOException;
+
+import org.xmlpull.v1.XmlPullParserException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -21,6 +25,17 @@ public class SplashScreen extends Activity{
 		
 	    //Test de l'initialisation
 	    DataManagerAssets.getInstance(this);
+	    DataXMLParser test= new DataXMLParser();
+	    
+	    try {
+			test.parse(getAssets().open("SIGAR/scenes.xml"));
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    
 	    //Start video splashscreen
 	    VideoView videos = (VideoView) findViewById(R.id.splashVideo);

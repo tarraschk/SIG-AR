@@ -5,22 +5,35 @@ import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
 
 public class DataManager extends OADataManager{
 	
-	private static DataManager singletonInstance = null;
+	static DataManager singletonInstance = null;
 	//protected static String workingPath="SIGAR";
 	
 	public DataManager(String workingPath){
 		super(workingPath);
 	}
 	
-	public static DataManager getInstance() {
-		if(DataManager.singletonInstance == null)
+	public static DataManager getInstance(boolean a) {
+		if(DataManager.singletonInstance == null){
 			DataManager.singletonInstance = new DataManager("SIGAR");
-		return DataManager.singletonInstance;
+		}
+		if(a){
+			DataManager MAP=new DataManager("SIGAR");
+			for(OAScene c:DataManager.singletonInstance.getSceneList()){
+				if(((Scene) c).isActivated()){
+					MAP.addScene(c);
+				}
+			}
+			return MAP;
+		}else{
+			return DataManager.singletonInstance;	
+		}
+
 	}
 
 	/* (non-Javadoc)

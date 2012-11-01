@@ -30,7 +30,7 @@ public class SplashScreen extends Activity{
 		DataXMLParser test= new DataXMLParser();
 	    
 	    try {
-	    	DataManager.getInstance().addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));
+	    	DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));
 	    } catch (XmlPullParserException e) {
 	    	// TODO Auto-generated catch block
 	    	e.printStackTrace();

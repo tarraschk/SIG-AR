@@ -8,6 +8,8 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 //TODO Comment
 //TODO Add button to Quit
 //TODO Delete menu bar/tablette
+@TargetApi(16)
 public class MainActivity extends OAARComponentBase {
 
    @Override
@@ -87,14 +90,14 @@ public class MainActivity extends OAARComponentBase {
 	@Override
 	protected OADataManager setupDataManager() {
 		// set custom working path instead of using the default path - "OutdoorAR"
-		DataManager AR=new DataManager("SIGAR");
-		for(OAScene c:DataManager.getInstance().getSceneList()){
+		/*DataManager AR=new DataManager("SIGAR");
+		for(OAScene c:DataManager.getInstance(false).getSceneList()){
 			if(((Scene) c).isActivated()){
 				AR.addScene(c);
 			}
 		}
-		return AR;// DataManager.getInstance();
-		
+		return AR;// DataManager.getInstance();*/
+		return DataManager.getInstance(true);
 	}
 	
 	
@@ -141,9 +144,12 @@ public class MainActivity extends OAARComponentBase {
      * Go to Map View
      * @param View
      */
-    public void onMapActivity(View View){
+   // @TargetApi(16)
+	public void onMapActivity(View View){
     	Intent intent = new Intent(this, MapActivity.class);
-    	startActivity(intent);
+    //	  ActivityOptions options = ActivityOptions.makeScaleUpAnimation(View, 0,
+    	//	      0, View.getWidth(), View.getHeight());
+    	startActivity(intent);// , options.toBundle());
     }
     /**
      * Go to List View

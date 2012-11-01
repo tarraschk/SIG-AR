@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hitlabnz.outdoorar.api.OAListComponentBase;
+import com.hitlabnz.outdoorar.data.OADataManager;
 
 public class ListActivity extends OAListComponentBase {
 	//TODO gestion des données
@@ -21,7 +22,7 @@ public class ListActivity extends OAListComponentBase {
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
 	
-	@Override
+	/*@Override
 	protected void setupUILayout(View listView) {
 
 		// create custom UI layout with a title text
@@ -37,5 +38,16 @@ public class ListActivity extends OAListComponentBase {
 
 		// set the custom UI layout
 		setContentView(sampleUIlayout);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.hitlabnz.outdoorar.api.OAListComponentBase#setupDataManager()
+	 */
+	@Override
+	protected OADataManager setupDataManager() {
+		// TODO Auto-generated method stub
+		return DataManager.getInstance(false);
 	}	
+	
+	
 }

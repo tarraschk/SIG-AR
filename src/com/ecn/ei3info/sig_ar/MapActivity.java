@@ -19,6 +19,7 @@ import com.hitlabnz.outdoorar.data.OADataManager;
 //TODO recalculer la position à l'ouverture de l'activité
 
 public class MapActivity extends OAMapComponentBase{
+	protected boolean plot=true;
 	@Override
 	protected String setupGoogleMapApiKey() {
 		return "0-uPrjI4lrnXjC_4g9gP5Scy7hauxOZEVlkGBvw";
@@ -32,17 +33,22 @@ public class MapActivity extends OAMapComponentBase{
 		//return new DataManager("SIGAR");
 		//OADataManagerAssets dm = new OADataManagerAssets("SIGAR", this);
 		//dm.setScenesFile("sample_scenes.db"); // you can also choose a custom scene file
-		DataManager MAP=new DataManager("SIGAR");
-		for(OAScene c:DataManager.getInstance().getSceneList()){
-			if(((Scene) c).isActivated()){
-				MAP.addScene(c);
+		/*if(a){
+			DataManager MAP=new DataManager("SIGAR");
+			for(OAScene c:DataManager.singletonInstance.getSceneList()){
+				if(((Scene) c).isActivated()){
+					MAP.addScene(c);
+				}
 			}
+			return MAP;
+		}else{
+			return DataManager.singletonInstance;	
 		}
-
 		//Log.w("myApp", Integer.toString(dm.getSceneCount()));
-//		Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));
+		//Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));
 
-		return MAP;
+		//return MAP;*/
+		return DataManager.getInstance(plot);
 	}
 	
 	public void onCreate(Bundle bundle) {
@@ -68,7 +74,10 @@ public class MapActivity extends OAMapComponentBase{
 		addContentView(sampleUILayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));	
 	}
 	
-	// handler for the button in the custom UI layout
+	protected int setupOptions(){
+		return OAMapComponentBase.OPTION_START_WITH_SATELLITE_IMAGE;
+	}
+	
 	boolean satellite = true;
 	
 	public void onMapView(View view) {
@@ -92,13 +101,58 @@ public class MapActivity extends OAMapComponentBase{
 		Log.w("myApp", Integer.toString(this.getDataManager().getSceneList().get(0).getId()));
 		
 		//this.getDataManager().getSceneList().get(0).addExtraAttrib("a", "true");
-		Log.w("myApp", this.getDataManager().getSceneList().get(0).getExtraAttrib("a"));
+		//Log.w("myApp", this.getDataManager().getSceneList().get(0).getExtraAttrib("a"));
 		
 	}
+	
 	public void onGoBack(View view) {
 		super.onBackPressed();
+		this.plot=false;
 	}	
-	protected int setupOptions(){
-		return OAMapComponentBase.OPTION_START_WITH_SATELLITE_IMAGE;
+	
+	
+	
+	/* (non-Javadoc)
+	 * @see com.hitlabnz.outdoorar.api.OAMapComponentBase#setupScenes(com.hitlabnz.outdoorar.data.OADataManager)
+	 
+	@Override
+	protected void setupScenes(OADataManager dataManager) {
+		// TODO Auto-generated method stub
+		for(OAScene c:this.getDataManager().getSceneList()){
+			if(((Scene) c).isActivated()){
+				MAP.addScene(c);
+			}
+		}
+	
+	}*/
+
+	boolean modify = false;
+	public void onMapModification(View view) {
+		if (modify){
+			this.plot=true;
+			//this.setupDataManager();
+			//DataManager.getInstance(plot).startLoading();
+			for(OAScene c:DataManager.singletonInstance.getSceneList()){
+				if(!((Scene) c).isActivated()){
+					this.getDataManager().removeScene(c);
+				}
+			}
+			//this.setupScenes(DataManager.getInstance(plot));
+			this.sceneUpdated();
+		}else{
+			this.plot=false;
+			//this.setupDataManager();
+			//this.setupScenes(DataManager.getInstance(plot));
+			for(OAScene c:DataManager.singletonInstance.getSceneList()){
+				if(!((Scene) c).isActivated()){
+					this.getDataManager().addScene(c);
+				}
+			}
+			this.sceneUpdated();
+
+		}
+		Log.w("myScene", Boolean.toString(this.plot));
+
+		modify=!modify;
 	}
 }

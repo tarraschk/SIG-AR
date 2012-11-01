@@ -7,6 +7,7 @@
     <string name="satellite_image">Satellite Image Activation, click on it to activate/deactivate the satellite view</string>   
 	<string name="locationfound">Center map to the user location</string>
 	<string name="go_back">go back</string>
+	<string name="map_modification">Modify content of map and AR view</string>
 	<string name="quit">Quit the application</string>
 	<color name="black">#000000</color>
 	

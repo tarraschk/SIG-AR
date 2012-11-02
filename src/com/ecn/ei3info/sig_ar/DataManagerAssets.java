@@ -1,12 +1,8 @@
 package com.ecn.ei3info.sig_ar;
 
-import java.util.List;
-
 import android.content.Context;
 import android.util.Log;
 
-import com.hitlabnz.androidar.data.SceneData;
-import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManagerAssets;
 
 public class DataManagerAssets extends OADataManagerAssets{

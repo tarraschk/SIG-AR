@@ -1,15 +1,12 @@
 package com.ecn.ei3info.sig_ar;
 
 import com.hitlabnz.outdoorar.api.OAARComponentBase;
-import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
-
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.annotation.TargetApi;
-import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;

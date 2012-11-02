@@ -1,10 +1,5 @@
 package com.ecn.ei3info.sig_ar;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.xmlpull.v1.XmlPullParserException;
-
 import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
@@ -51,11 +46,9 @@ public class DataManager extends OADataManager{
 	@Override
 	protected void loadScenes() {
 		super.loadScenes();
-			
-		
-		
 	}
 
+	
 	
 	
 	

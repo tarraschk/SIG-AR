@@ -9,7 +9,7 @@ import com.hitlabnz.androidar.data.SceneData;
 import com.hitlabnz.androidar.data.SceneLocation;
 import com.hitlabnz.outdoorar.api.OAScene;
 
-public class Scene extends OAScene{
+public class Scene extends OAScene implements Comparable<Scene>{
 	
 	/**
 	 * 
@@ -130,6 +130,11 @@ public class Scene extends OAScene{
 
 	}
 	
+
+	public int compareTo(Scene another) {
+		return this.getName().compareTo(another.getName());
+	}
+
 	
 	
 }

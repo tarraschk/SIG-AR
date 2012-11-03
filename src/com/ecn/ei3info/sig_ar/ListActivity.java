@@ -25,7 +25,7 @@ public class ListActivity extends Activity{
 		  //  setListAdapter(new SceneArrayAdapter(this, MOBILE_OS));
 			
 		    final ListView lv = (ListView) findViewById(R.id.listView1);
-	        lv.setAdapter(new SceneArrayAdapter(this, R.layout.list_scene, DataManager.getInstance(false).getSceneList()));
+	        lv.setAdapter(new SceneArrayAdapter(this, R.layout.list_scene, DataManager.getInstance(false).getSceneList2()));
 		  
 		  
 	}

@@ -1,5 +1,6 @@
 package com.ecn.ei3info.sig_ar;
 
+import java.util.Collections;
 import java.util.List;
 
 import android.app.Activity;
@@ -28,14 +29,15 @@ public class SceneArrayAdapter extends BaseAdapter{
 	
 	private Activity parentActivity;
 	private int itemLayoutId;
-	private List<OAScene> dataSource;
+	private List<Scene> dataSource;
 	private LayoutInflater inflater;
 
 	// constructor for adapter
-	public SceneArrayAdapter(Activity activity, int layoutId, List<OAScene> ds){
+	public SceneArrayAdapter(Activity activity, int layoutId, List<Scene> ds){
 		parentActivity = activity;
 		itemLayoutId = layoutId;
 		dataSource = ds;
+		Collections.sort(dataSource);
 		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 

@@ -1,6 +1,7 @@
 package com.ecn.ei3info.sig_ar;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
@@ -13,9 +14,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.hitlabnz.outdoorar.api.OAScene;
-//ArrayAdapter<Scene> 
 
 public class SceneArrayAdapter extends BaseAdapter{
 /*	private final Context context;
@@ -37,7 +35,8 @@ public class SceneArrayAdapter extends BaseAdapter{
 		parentActivity = activity;
 		itemLayoutId = layoutId;
 		dataSource = ds;
-		Collections.sort(dataSource);
+		//sortData();
+		//Collections.sort(dataSource);
 		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
@@ -78,6 +77,22 @@ public class SceneArrayAdapter extends BaseAdapter{
 		}
 		return view;
 		}
+	
+	public void sortData(String string){
+		if(string.equals("Name")){
+			Collections.sort(dataSource, new Comparator<Scene>(){
+				public int compare( Scene s1, Scene s2 ) {
+					return s1.getName().compareTo( s2.getName() );
+				}
+			});						
+		}else if(string.equals("Category")){
+			Collections.sort(dataSource, new Comparator<Scene>(){
+				public int compare( Scene s1, Scene s2 ) {
+					return s1.getCategory().compareTo( s2.getCategory() );
+				}
+			});	
+		}	
+	}
 	
 	
 	/*

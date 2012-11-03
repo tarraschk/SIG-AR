@@ -23,6 +23,28 @@
 		</models>
 	</scene>
 	<scene>
+		<id>3</id>
+		<name>aaa</name>
+		<category>Ball</category>
+		<description>un cube avec ECN dessus.</description>
+		<creator>BMR</creator>
+		<activated>true</activated>
+		<model_visible>CubeECN</model_visible>
+		<location>
+			<longitude>-1.547013888587</longitude>
+			<latitude>47.248122222688465</latitude>
+			<altitude>1</altitude>
+		</location>
+		<models>
+			<number>1</number>
+			<model>
+				<name_model>CubeECN</name_model>
+				<id_model>CubeECN</id_model>
+				<type>1</type>
+			</model>
+		</models>
+	</scene>
+	<scene>
 		<id>2</id>
 		<name>Basket Ball in XML</name>
 		<category>Ball</category>
@@ -41,7 +63,6 @@
 				<name_model>Basket Ball</name_model>
 				<id_model>BasketBall</id_model>
 				<type>main</type>
-
 				<transformation>
 					<translation>
 						<X>0</X>
@@ -66,6 +87,28 @@
 						<Z>0</Z>
 					</rotation>
 				</animation>
+			</model>
+		</models>
+	</scene>
+	<scene>
+		<id>3</id>
+		<name>aaa</name>
+		<category>Ball</category>
+		<description>un cube avec ECN dessus.</description>
+		<creator>BMR</creator>
+		<activated>true</activated>
+		<model_visible>CubeECN</model_visible>
+		<location>
+			<longitude>-1.547013888587</longitude>
+			<latitude>47.248122222688465</latitude>
+			<altitude>1</altitude>
+		</location>
+		<models>
+			<number>1</number>
+			<model>
+				<name_model>CubeECN</name_model>
+				<id_model>CubeECN</id_model>
+				<type>1</type>
 			</model>
 		</models>
 	</scene>

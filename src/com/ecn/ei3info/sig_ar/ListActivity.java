@@ -4,31 +4,59 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
-public class ListActivity extends Activity{
+public class ListActivity extends Activity implements OnItemSelectedListener {
 	//TODO gestion des données
 	//TODO style de la liste
-	//TODO select
 	//TODO Moteur de recherche
 	
-	//remove extends oaListCOmponent???
-	
+	protected SceneArrayAdapter SAA;
+	protected ListView lv ;
 	
 	@Override
 	public void onCreate(Bundle bundle) {
-		  super.onCreate(bundle);
-		  //automatic sleep mode deactivated
-		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		  
-		  setContentView(R.layout.activity_list);
-		  //  setListAdapter(new SceneArrayAdapter(this, MOBILE_OS));
-			
-		    final ListView lv = (ListView) findViewById(R.id.listView1);
-	        lv.setAdapter(new SceneArrayAdapter(this, R.layout.list_scene, DataManager.getInstance(false).getSceneList2()));
-		  
-		  
+		super.onCreate(bundle);
+		//automatic sleep mode deactivated
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+		setContentView(R.layout.activity_list);
+		//  setListAdapter(new SceneArrayAdapter(this, MOBILE_OS));
+
+		SAA=new SceneArrayAdapter(this, R.layout.list_scene, DataManager.getInstance(false).getSceneList2());
+		
+		lv = (ListView) findViewById(R.id.listView1);
+		lv.setAdapter(SAA);
+
+		Spinner spinner = (Spinner) findViewById(R.id.sort_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.sort_array, android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
+		spinner.setOnItemSelectedListener(this);
+		
+		
 	}
+	
+	 public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+	        // An item was selected. You can retrieve the selected item using
+	        // parent.getItemAtPosition(pos)
+		 	SAA.sortData(parent.getItemAtPosition(pos).toString());
+		 	lv.setAdapter(SAA);
+		 	
+	    }
+
+	    public void onNothingSelected(AdapterView<?> parent) {
+	        // Another interface callback
+	    }
+	
+	
 	
 	/*protected void onListItemClick(ListView l, View v, int position, long id){
 		super.onListItemClick(l, v, position, id);
@@ -73,5 +101,6 @@ public class ListActivity extends Activity{
 	
 	public void onGoBack(View view) {
 		super.onBackPressed();
-	}	
+	}
+
 }

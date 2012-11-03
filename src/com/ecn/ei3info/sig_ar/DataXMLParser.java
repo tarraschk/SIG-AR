@@ -35,7 +35,7 @@ public class DataXMLParser {
 	}
 	private List<Scene> readScenes(XmlPullParser parser) throws XmlPullParserException, IOException {
 		List<Scene> scenes = new ArrayList<Scene>();
-// renomer la methode
+
 		//changer type de return pour un datamanager...
 		parser.require(XmlPullParser.START_TAG, ns, "scenes");
 		while (parser.next() != XmlPullParser.END_TAG) {

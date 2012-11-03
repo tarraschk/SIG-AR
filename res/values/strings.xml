@@ -11,4 +11,10 @@
 	<string name="quit">Quit the application</string>
 	<color name="black">#000000</color>
 	
+    <string-array name="sort_array">
+        <item>Name</item>
+        <item>Category</item>
+    </string-array>
+	
+	
 </resources>

@@ -132,7 +132,10 @@ public class Scene extends OAScene implements Comparable<Scene>{
 	
 
 	public int compareTo(Scene another) {
-		return this.getName().compareTo(another.getName());
+		
+			return this.getName().compareTo(another.getName());
+		
+		
 	}
 
 	

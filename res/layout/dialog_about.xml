@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent" android:layout_height="match_parent"
-	android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
 	<TextView android:id="@+id/textView1" android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:text="About"
 		android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	<ScrollView android:id="@+id/scrollView1"
-		android:layout_width="wrap_content" android:layout_height="match_parent">
+	<ScrollView
+	    android:id="@+id/scrollView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+		
+			<TextView
+			    android:id="@+id/textView2"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:text="Rien n'était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons, formaient une harmonie telle qu'il n'y en eut jamais en enfer. Les canons renversèrent d'abord à peu près six mille hommes de chaque côté ; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d'hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu'il put pendant cette boucherie héroïque.Rien n'était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons, formaient une harmonie telle qu'il n'y en eut jamais en enfer. Les canons renversèrent d'abord à peu près six mille hommes de chaque côté ; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d'hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu'il put pendant cette boucherie héroïque.Rien n'était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons, formaient une harmonie telle qu'il n'y en eut jamais en enfer. Les canons renversèrent d'abord à peu près six mille hommes de chaque côté ; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d'hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu'il put pendant cette boucherie héroïque.Rien n'était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons, formaient une harmonie telle qu'il n'y en eut jamais en enfer. Les canons renversèrent d'abord à peu près six mille hommes de chaque côté ; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d'hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu'il put pendant cette boucherie héroïque."
+			    android:textAppearance="?android:attr/textAppearanceSmall" />
 
-		<LinearLayout android:layout_width="match_parent"
-			android:layout_height="wrap_content">
-
-			<TextView android:id="@+id/textView2" android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="résignent, la mort dans l'âme, à les perdre dans la forêt. Heureusement, le plus petit de la fratrie, âgé de sept ans, surnommé Petit Poucet en raison de sa petite taille, espionne la conversation. Prévoyant, il se munit de petits cailloux blancs qu'il laissera tomber un à un derrière afin que lui et ses frères puissent retrouver leur chemin. Le lendemain, le père met son sinistre plan à exécution. Mais le Petit Poucet et ses frères regagnent vite leur logis grâce aux cailloux semés en chemin. Les parents sont heureux de les revoir car entre-temps, le seigneur du village avait enfin remboursé aux bûcherons l'argent qu'il leur devait. Mais ce bonheur ne dure que le temps de cette prospérité éphémère.
-Lorsqu'ils se retrouvent dans la précarité première, les parents décident à nouveau d'abandonner leurs sept enfants dans la forêt. Ils s'assurent de fermer la porte de la maison à clef afin que le Petit Poucet ne puisse pas aller ramasser des cailloux. Il tente donc à la place, au moment du trajet, de laisser tomber des petits morceaux du pain que leur mère leur a donné à lui et à ses frères, mais le pain est mangé par des oiseaux. C'est ainsi que lui et ses frères se retrouvent perdus dans la forêt. Ils arrivent alors devant une chaumière et demandent à y loger. La femme habit"
-				android:textAppearance="?android:attr/textAppearanceSmall" />
-
-		</LinearLayout>
 	</ScrollView>
 
 

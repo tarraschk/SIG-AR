@@ -45,5 +45,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/sort_spinner"
+        android:layout_marginRight="40dp"
+        android:layout_toLeftOf="@+id/sort_spinner"
+        android:text="Sort by:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
     
 </RelativeLayout>

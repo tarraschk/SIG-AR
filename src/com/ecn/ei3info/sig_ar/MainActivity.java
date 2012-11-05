@@ -18,12 +18,13 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 //TODO Comment
-//TODO Add button to Quit
 //TODO Delete menu bar/tablette
 @TargetApi(16)
 public class MainActivity extends OAARComponentBase {
-
-   @Override
+	
+	public static int options=0x01;
+	
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //getActionBar().hide();
@@ -98,6 +99,34 @@ public class MainActivity extends OAARComponentBase {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see com.hitlabnz.outdoorar.api.OAARComponentBase#setupOptions()
+	 */
+	@Override
+	protected int setupOptions() {
+		// TODO Auto-generated method stub
+		return ( options);
+	}
+
+	public void updateOptions(){
+		setupOptions();
+	}
+	
+	/**
+	 * @return the options
+	 */
+	public static int getOptions() {
+		return options;
+	}
+
+	
+	/**
+	 * @param options the options to set
+	 */
+	public static void setOptions(int options) {
+		MainActivity.options = options;
+	}
+
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onBackPressed()
 	 */

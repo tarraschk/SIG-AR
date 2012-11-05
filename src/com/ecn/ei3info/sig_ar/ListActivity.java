@@ -1,6 +1,9 @@
 package com.ecn.ei3info.sig_ar;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -8,7 +11,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class ListActivity extends Activity implements OnItemSelectedListener {
 	//TODO gestion des données
@@ -41,6 +46,18 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
 		
+		
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+	    SearchView searchView = (SearchView) findViewById(R.id.searchView1);
+	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+	  //  searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+
+		Intent intent = getIntent();
+	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+	      String query = intent.getStringExtra(SearchManager.QUERY);
+   	   Toast.makeText(ListActivity.this, query, Toast.LENGTH_SHORT).show();
+	      //  doMySearch(query);
+	    }
 		
 	}
 	

@@ -174,6 +174,8 @@ public class SceneArrayAdapter extends BaseAdapter{
 	public int getViewTypeCount(){
 		return 1;
 	}
+
+	
 	
 	
 }

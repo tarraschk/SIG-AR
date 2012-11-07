@@ -21,7 +21,7 @@
         android:layout_alignBottom="@+id/checkBox1"
         android:layout_marginRight="36dp"
         android:layout_toLeftOf="@+id/checkBox1"
-        android:text="@+id/label"
+        android:text="category"
         android:textSize="30px" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="38dp"
-        android:text="@+id/label"
+        android:text="name"
         android:textSize="30px" />
 
     <ImageView

@@ -1,10 +1,16 @@
 package com.ecn.ei3info.sig_ar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -46,18 +52,64 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
 		
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+	    SearchView searchView = (SearchView) findViewById(R.id.searchView1);
+	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+	    searchView.setBackgroundColor(Color.RED);
+	    
+		 Intent intent = getIntent();
+		    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+		      String query = intent.getStringExtra(SearchManager.QUERY);
+		      doMySearch(query);
+		    }
 		
+		
+		
+	}
+	
+	
+	public void doMySearch(String query){
+
+		List<Scene> listResult = new ArrayList<Scene>();
+		
+		for (Scene c:DataManager.getInstance(false).getSceneList2()){
+			if (c.getName().startsWith(query)){
+				listResult.add(c);
+			}
+		}
+		
+		SceneArrayAdapter SAAsearchresult=new SceneArrayAdapter(this, R.layout.list_scene,listResult );
+		
+	 	lv.setAdapter(SAAsearchresult);
+	}
+	
+	
+	
+		public boolean onCreateOptionsMenu(Menu menu) {
+		  
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 	    SearchView searchView = (SearchView) findViewById(R.id.searchView1);
 	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 	  //  searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
 
-		Intent intent = getIntent();
+		/*Intent intent = getIntent();
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	      String query = intent.getStringExtra(SearchManager.QUERY);
    	   Toast.makeText(ListActivity.this, query, Toast.LENGTH_SHORT).show();
 	      //  doMySearch(query);
-	    }
+	    }*/
+	    return true;
+	    
+	    
+           
+	    
+
+
+	     /*  if(null!=searchManager ) {   
+	         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+	        }
+
+*/	    
 		
 	}
 	

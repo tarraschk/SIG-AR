@@ -40,7 +40,9 @@
 		 <activity
             android:name=".ListActivity"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"> 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <meta-data android:name="android.app.searchable"
+                   android:resource="@xml/searchable"/> 
         </activity>
          <activity
             android:name=".SettingsActivity"

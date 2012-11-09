@@ -1,0 +1,192 @@
+<class-diagram version="1.0.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.Scene" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/Scene.java" binary="false">    
+    <position height="264" width="484" x="907" y="1393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.MapActivity" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/MapActivity.java" binary="false">    
+    <position height="281" width="232" x="635" y="953"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.MainActivity" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/MainActivity.java" binary="false">    
+    <position height="247" width="232" x="42" y="953"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.ListActivity" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/ListActivity.java" binary="false">    
+    <position height="111" width="148" x="42" y="1697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.SettingsActivity" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/SettingsActivity.java" binary="false">    
+    <position height="94" width="148" x="230" y="1697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.SplashScreen" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/SplashScreen.java" binary="false">    
+    <position height="111" width="260" x="418" y="1697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="com.hitlabnz.outdoorar.api.OAMapComponentBase" 
+    project="SIG-AR" file="/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/bin/outdoorarlibrary.jar" 
+    binary="true">    
+    <position height="876" width="338" x="635" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="com.hitlabnz.outdoorar.api.OAARComponentBase" 
+    project="SIG-AR" file="/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/bin/outdoorarlibrary.jar" 
+    binary="true">    
+    <position height="723" width="303" x="42" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="android.app.Activity" project="SIG-AR" 
+    file="/Users/bastienmarichalragot/Developer/android-sdk-macosx/platforms/android-16/android.jar" binary="true">    
+    <position height="208" width="250" x="251" y="1393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="10" corner="BOTTOM_RIGHT" language="java" name="com.hitlabnz.androidar.data.SceneData" project="SIG-AR" 
+    file="/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/libs/androidarlibrary.jar" binary="true">    
+    <position height="723" width="296" x="718" y="1697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="11" corner="BOTTOM_RIGHT" language="java" name="com.hitlabnz.androidar.data.ModelData" project="SIG-AR" 
+    file="/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/libs/androidarlibrary.jar" binary="true">    
+    <position height="434" width="294" x="1035" y="2460"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="12" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.SceneArrayAdapter" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/SceneArrayAdapter.java" binary="false">    
+    <position height="247" width="281" x="314" y="953"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="13" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.DataManager" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/DataManager.java" binary="false">    
+    <position height="128" width="218" x="907" y="953"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="14" corner="BOTTOM_RIGHT" language="java" name="com.ecn.ei3info.sig_ar.DataXMLParser" project="SIG-AR" 
+    file="/SIG-AR/src/com/ecn/ei3info/sig_ar/DataXMLParser.java" binary="false">    
+    <position height="400" width="300" x="1175" y="953"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <dependency id="15">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <generalization id="16">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="18">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="19" name="models"/>      
+      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="21">    
+    <bendpoint x="1044" y="1697"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="25">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="26" name="singletonInstance"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="29">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="30" name="parentActivity"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

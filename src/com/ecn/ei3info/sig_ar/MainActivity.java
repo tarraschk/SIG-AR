@@ -5,7 +5,6 @@ import com.hitlabnz.outdoorar.data.OADataManager;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -13,37 +12,27 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.LayoutAnimationController;
-import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 //TODO Comment
 //TODO Delete menu bar/tablette
 @TargetApi(16)
-public class MainActivity extends OAARComponentBase implements OnTouchListener {
+public class MainActivity extends OAARComponentBase {
 	
 	public static int options=0x01;
-	public RelativeLayout sampleUILayout;
-	public Handler l;
+	protected Boolean GPSAlert;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.GPSAlert = getIntent().getBooleanExtra("GPSAlert", false);
         //getActionBar().hide();
-        
-
-        
         // modifications 
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
-	    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+	    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) && GPSAlert==false ){
 	       buildAlertMessageNoGps();
 	    }
 	    final ConnectivityManager manager1 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -65,6 +54,7 @@ public class MainActivity extends OAARComponentBase implements OnTouchListener {
 	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
 	               public void onClick(final DialogInterface dialog, final int id) {
 	                    dialog.cancel();
+	                    GPSAlert=true;
 	               }
 	           });
 	    final AlertDialog alert = builder.create();
@@ -175,39 +165,9 @@ public class MainActivity extends OAARComponentBase implements OnTouchListener {
 		
 		// then load and add the custom UI on top of the AR view
 		LayoutInflater controlInflater = LayoutInflater.from(getBaseContext());
-		 sampleUILayout = (RelativeLayout)controlInflater.inflate(R.layout.activity_main, null);
+		RelativeLayout sampleUILayout = (RelativeLayout)controlInflater.inflate(R.layout.activity_main, null);
 		addContentView(sampleUILayout, 
 			new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-
-		// add listener to enable the UI with touch
-		arView.setOnTouchListener(this);
-		//Set time life of UI
-		l= new Handler();
-		
-		AnimationSet set = new AnimationSet(true);
-
-		  Animation animation = new AlphaAnimation(0.0f, 1.0f);
-		  animation.setDuration(100);
-		  set.addAnimation(animation);
-		  
-		  //bloc de translation conserver si besoin...
-		 /* animation = new TranslateAnimation(
-		      Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
-		      Animation.RELATIVE_TO_SELF, -1.0f, Animation.RELATIVE_TO_SELF, 0.0f
-		  );
-		  animation.setDuration(500);
-		  set.addAnimation(animation);*/
-
-		  LayoutAnimationController controller =
-		      new LayoutAnimationController(set, 0.25f);
-		
-		sampleUILayout.setLayoutAnimation(controller);
-		l.postDelayed(new Runnable(){
-			@Override
-			public void run() {
-				sampleUILayout.setVisibility(View.GONE);
-			}
-		}, 6000);
 	}
     /**
      * Go to Map View
@@ -253,40 +213,5 @@ public class MainActivity extends OAARComponentBase implements OnTouchListener {
          .setNegativeButton("No", null)
          .show();
     }
-
-    
-    //TODO modifier la durée et proposer une parametrisation dans la fentre des settings
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		sampleUILayout.setVisibility(View.VISIBLE);
-		
-		AnimationSet set = new AnimationSet(true);
-
-		  Animation animation = new AlphaAnimation(0.0f, 1.0f);
-		  animation.setDuration(100);
-		  set.addAnimation(animation);
-
-		 /* animation = new TranslateAnimation(
-		      Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
-		      Animation.RELATIVE_TO_SELF, -1.0f, Animation.RELATIVE_TO_SELF, 0.0f
-		  );
-		  animation.setDuration(500);
-		  set.addAnimation(animation);*/
-
-		  LayoutAnimationController controller =
-		      new LayoutAnimationController(set, 0.25f);
-		
-		sampleUILayout.setLayoutAnimation(controller);
-		
-		l= new Handler();
-
-		l.postDelayed(new Runnable(){
-			@Override
-			public void run() {
-				sampleUILayout.setVisibility(View.GONE);
-			}
-		}, 3000);
-		return false;
-	}
     
 }

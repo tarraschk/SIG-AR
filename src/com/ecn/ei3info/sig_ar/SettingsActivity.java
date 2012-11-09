@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -120,4 +121,12 @@ public class SettingsActivity extends Activity {
 		 public void onGoBack(View view) {
 			 super.onBackPressed();
 		 }
+		 
+		@Override
+		public void onBackPressed() {
+			super.onBackPressed();
+			Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+			intent.putExtra("GPSAlert", true); 
+			startActivity(intent);
+		}
 }

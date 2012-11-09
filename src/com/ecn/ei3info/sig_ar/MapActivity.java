@@ -1,6 +1,7 @@
 package com.ecn.ei3info.sig_ar;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -109,6 +110,14 @@ public class MapActivity extends OAMapComponentBase{
 		super.onBackPressed();
 		this.plot=false;
 	}	
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent intent = new Intent(MapActivity.this, MainActivity.class);
+		intent.putExtra("GPSAlert", true); 
+		startActivity(intent);
+	}
 	
 	
 	

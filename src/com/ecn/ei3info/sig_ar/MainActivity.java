@@ -23,14 +23,16 @@ import android.widget.Toast;
 public class MainActivity extends OAARComponentBase {
 	
 	public static int options=0x01;
+	protected Boolean GPSAlert;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.GPSAlert = getIntent().getBooleanExtra("GPSAlert", false);
         //getActionBar().hide();
         // modifications 
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
-	    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+	    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) && GPSAlert==false ){
 	       buildAlertMessageNoGps();
 	    }
 	    final ConnectivityManager manager1 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -52,6 +54,7 @@ public class MainActivity extends OAARComponentBase {
 	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
 	               public void onClick(final DialogInterface dialog, final int id) {
 	                    dialog.cancel();
+	                    GPSAlert=true;
 	               }
 	           });
 	    final AlertDialog alert = builder.create();

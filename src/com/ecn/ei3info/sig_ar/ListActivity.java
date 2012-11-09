@@ -171,5 +171,12 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 	public void onGoBack(View view) {
 		super.onBackPressed();
 	}
-
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent intent = new Intent(ListActivity.this, MainActivity.class);
+		intent.putExtra("GPSAlert", true); 
+		startActivity(intent);
+	}
 }

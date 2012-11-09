@@ -56,6 +56,7 @@ public class SplashScreen extends Activity{
 	  public void onCompletion(MediaPlayer arg0) {
 	   //Toast.makeText(SplashScreen.this, "End of Video",Toast.LENGTH_LONG).show();
 		  Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+		  intent.putExtra("GPSAlert",false);
 	      startActivity(intent);
 	      finish();
 	  }

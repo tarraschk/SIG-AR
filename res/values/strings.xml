@@ -11,6 +11,15 @@
 	<string name="quit">Quit the application</string>
 	<color name="black">#000000</color>
 	
+	<string name="label_latitude">Latitude</string>
+	<string name="label_longitude">Longitude</string>
+	<string name="label_altitude">Altitude</string>
+	<string name="label_angle">Angle</string>
+	
+	<string name="label_name">Name</string>
+	<string name="label_category">Category</string>
+	
+	
     <string-array name="sort_array">
         <item>Name</item>
         <item>Category</item>

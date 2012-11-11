@@ -19,9 +19,53 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox1"
         android:layout_alignBottom="@+id/checkBox1"
-        android:layout_marginRight="36dp"
+        android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/checkBox1"
-        android:text="category"
+        android:text="@string/label_category"
+        android:textSize="30px" />
+    
+        <TextView
+        android:id="@+id/scene_latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBox1"
+        android:layout_alignBottom="@+id/checkBox1"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/scene_category"
+        android:text="@string/label_latitude"
+        android:textSize="30px" />
+        
+         <TextView
+        android:id="@+id/scene_longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBox1"
+        android:layout_alignBottom="@+id/checkBox1"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/scene_latitude"
+        android:text="@string/label_longitude"
+        android:textSize="30px" />
+         
+             <TextView
+        android:id="@+id/scene_altitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBox1"
+        android:layout_alignBottom="@+id/checkBox1"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/scene_longitude"
+        android:text="@string/label_altitude"
+        android:textSize="30px" />
+             
+                 <TextView
+        android:id="@+id/scene_angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBox1"
+        android:layout_alignBottom="@+id/checkBox1"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/scene_altitude"
+        android:text="@string/label_angle"
         android:textSize="30px" />
 
     <TextView
@@ -30,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="38dp"
-        android:text="name"
+        android:text="@string/label_name"
         android:textSize="30px" />
 
     <ImageView

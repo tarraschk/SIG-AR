@@ -59,6 +59,15 @@ public class SceneArrayAdapter extends BaseAdapter{
 			String data2=dataSource.get(pos).getCategory();
 			textView2.setText(data2);
 			
+			TextView textView_latitude = (TextView)view.findViewById(R.id.scene_latitude);
+			double data3=dataSource.get(pos).getLatitude();
+			textView_latitude.setText(data3+"");
+			
+			TextView textView_longitude = (TextView)view.findViewById(R.id.scene_longitude);
+			data3=dataSource.get(pos).getLongitude();
+			textView_longitude.setText(data3+"");
+						
+			
 			final CheckBox cbox= (CheckBox) view.findViewById(R.id.checkBox1);
 			cbox.setChecked( ((Scene) dataSource.get(pos)).isActivated());
 			cbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

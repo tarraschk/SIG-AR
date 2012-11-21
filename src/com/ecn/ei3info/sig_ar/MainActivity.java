@@ -44,7 +44,7 @@ public class MainActivity extends OAARComponentBase {
 	private void buildAlertMessageNoGps(){
 		LayoutInflater inflater = this.getLayoutInflater();
 	    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	    builder.setView(inflater.inflate(R.layout.dialog_about, null));
+	    builder.setView(inflater.inflate(R.layout.dialog_custom, null));
 	    builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
 	           .setCancelable(false)
 	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {

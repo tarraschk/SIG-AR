@@ -167,9 +167,21 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		// TODO Auto-generated method stub
 		return DataManager.getInstance(false);
 	}*/	
-	
+	/**
+	 * Navigation button, go back to MainActivity
+	 * @param view
+	 */
 	public void onGoBack(View view) {
 		super.onBackPressed();
 	}
+	
+	/**
+	 * Start ManageModelActivity, screen to add or delete data model resources
+	 * @param View
+	 */
+	public void onManageModel(View View){
+    	Intent intent = new Intent(this, ManageModelActivity.class);
+    	startActivity(intent);
+    }
 
 }

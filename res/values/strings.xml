@@ -10,6 +10,11 @@
 	<string name="map_modification">Modify content of map and AR view</string>
 	<string name="quit">Quit the application</string>
 	<color name="black">#000000</color>
+	<color name="blue">#5ce9ff</color>
+	<color name="green">#a3e815</color>
+	<color name="red">#e84700</color>
+	<color name="orange1">#ff934c</color>
+	<color name="orange2">#f4d26c</color>
 	
 	<string name="label_latitude">Latitude</string>
 	<string name="label_longitude">Longitude</string>

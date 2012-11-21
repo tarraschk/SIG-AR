@@ -1,14 +1,20 @@
 package com.ecn.ei3info.sig_ar;
 
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hitlabnz.outdoorar.api.OAMapComponentBase;
@@ -164,4 +170,51 @@ public class MapActivity extends OAMapComponentBase{
 
 		modify=!modify;
 	}
+	 
+	public void onEditModel(View view){
+		
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.custom_modifymodel);
+		dialog.setTitle("Title...");
+
+		// set the custom dialog components - text, image and button
+		TextView text = (TextView) dialog.findViewById(R.id.modelname);
+		text.setText(DataManager.singletonInstance.getSceneList().get(0).getName());
+	
+		
+		//NumberPicker latitude=(NumberPicker) dialog.findViewById(R.id.numberPickerLatitude);
+		//latitude.setDisplayedValues(DataManager.singletonInstance.getSceneList().get(0).getLatitude());
+		
+		final EditText latitude= (EditText) dialog.findViewById(R.id.latitude); 
+		latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLatitude()));
+		
+		Button okButton = (Button) dialog.findViewById(R.id.ok);
+		// if button is clicked, close the custom dialog
+		okButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				//TODO completer les donnée modifées
+				DataManager.singletonInstance.getSceneList2().get(0).setLatitude(Double.parseDouble(latitude.getText().toString()));
+				
+				
+				//geere les exception
+				dialog.dismiss();
+			}
+		});
+
+		Button cancelButton = (Button) dialog.findViewById(R.id.cancel);
+		// if button is clicked, close the custom dialog
+		cancelButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		
+		dialog.show();
+		
+		
+	}
+	
 }

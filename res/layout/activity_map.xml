@@ -25,6 +25,13 @@
             android:contentDescription="@string/locationfound"
             android:onClick="onCenterLocation"
             android:src="@drawable/locationfound" />
+        <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" 
+        android:onClick="onEditModel"/>
     </LinearLayout>
 
     <ImageButton
@@ -41,5 +48,7 @@
         android:contentDescription="@string/map_modification"
         android:onClick="onMapModification"
         android:src="@drawable/action_settings" />
+
+    
 
 </FrameLayout>

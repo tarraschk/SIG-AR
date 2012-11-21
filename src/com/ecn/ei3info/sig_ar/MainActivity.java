@@ -24,7 +24,9 @@ public class MainActivity extends OAARComponentBase {
 	
 	public static int options=0x01;
 	protected Boolean GPSAlert;
-	
+	/**
+	 * 
+	 */
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,26 +42,45 @@ public class MainActivity extends OAARComponentBase {
 	    	buildAlertMessageNoNetwork();
 	    }
     }
-   	
+   	/**
+   	 * 
+   	 */
 	private void buildAlertMessageNoGps(){
-		LayoutInflater inflater = this.getLayoutInflater();
 	    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	    builder.setView(inflater.inflate(R.layout.dialog_custom, null));
+		//LayoutInflater inflater = this.getLayoutInflater();
 	    builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
 	           .setCancelable(false)
-	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-	               public void onClick(final DialogInterface dialog, final int id) {
-	                   startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-	               }
-	           })
-	           //TODO Centrer les textes
-	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
+	           //.setView(inflater.inflate(R.layout.dialog_custom, null))
+	             .setNegativeButton("No", new DialogInterface.OnClickListener() {
 	               public void onClick(final DialogInterface dialog, final int id) {
 	                    dialog.cancel();
 	                    GPSAlert=true;
 	               }
+	           })
+	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	               public void onClick(final DialogInterface dialog, final int id) {
+	                   startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+	               }
 	           });
 	    final AlertDialog alert = builder.create();
+
+	/*   Button button = (Button) findViewById(R.id.button1);
+ 
+		// add button listener
+		button.setOnClickListener(new OnClickListener() {
+ 
+		  @Override
+		  public void onClick(View arg0) {
+              startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+              }
+		  });*/
+	           
+	           /*
+	            * 
+	           
+	            */
+	           //TODO Centrer les textes
+	         
 	    alert.show();
 	 }
 	

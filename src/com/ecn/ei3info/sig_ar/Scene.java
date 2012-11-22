@@ -20,7 +20,7 @@ public class Scene extends OAScene implements Comparable<Scene>{
 	public boolean activated;
 	public String modelVisible;
 
-	//TODO ajouter les informations supplémentaires des scènes.
+	//TODO ajouter les informations suppl≈Ωmentaires des scÔøΩnes.
 	
 	/**
 	 * 
@@ -134,6 +134,11 @@ public class Scene extends OAScene implements Comparable<Scene>{
 		this.location.setLatitude(latitude);
 	}
 	
+	public void setLongitude(double longitude) {
+		this.location.setLongitude(longitude);
+	}
+	
+	// public void setScale()
 
 	public int compareTo(Scene another) {
 		

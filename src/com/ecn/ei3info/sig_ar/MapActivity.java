@@ -188,6 +188,9 @@ public class MapActivity extends OAMapComponentBase{
 		final EditText latitude= (EditText) dialog.findViewById(R.id.latitude); 
 		latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLatitude()));
 		
+		final EditText longitude= (EditText) dialog.findViewById(R.id.longitude); 
+		latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLongitude()));
+		
 		Button okButton = (Button) dialog.findViewById(R.id.ok);
 		// if button is clicked, close the custom dialog
 		okButton.setOnClickListener(new OnClickListener() {
@@ -196,6 +199,7 @@ public class MapActivity extends OAMapComponentBase{
 				
 				//TODO completer les donnée modifées
 				DataManager.singletonInstance.getSceneList2().get(0).setLatitude(Double.parseDouble(latitude.getText().toString()));
+				DataManager.singletonInstance.getSceneList2().get(0).setLongitude(Double.parseDouble(longitude.getText().toString()));
 				
 				
 				//geere les exception

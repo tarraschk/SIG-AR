@@ -138,6 +138,10 @@ public class Scene extends OAScene implements Comparable<Scene>{
 		this.location.setLongitude(longitude);
 	}
 	
+	public void setAltitude(double altitude) {
+		this.location.setAltitude(altitude);
+	}
+	
 	// public void setScale()
 
 	public int compareTo(Scene another) {

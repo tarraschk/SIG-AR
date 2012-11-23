@@ -189,7 +189,10 @@ public class MapActivity extends OAMapComponentBase{
 		latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLatitude()));
 		
 		final EditText longitude= (EditText) dialog.findViewById(R.id.longitude); 
-		latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLongitude()));
+		longitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLongitude()));
+		
+		final EditText altitude= (EditText) dialog.findViewById(R.id.altitude); 
+		altitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).location.getAltitude()));
 		
 		Button okButton = (Button) dialog.findViewById(R.id.ok);
 		// if button is clicked, close the custom dialog
@@ -200,9 +203,9 @@ public class MapActivity extends OAMapComponentBase{
 				//TODO completer les donnée modifées
 				DataManager.singletonInstance.getSceneList2().get(0).setLatitude(Double.parseDouble(latitude.getText().toString()));
 				DataManager.singletonInstance.getSceneList2().get(0).setLongitude(Double.parseDouble(longitude.getText().toString()));
+				DataManager.singletonInstance.getSceneList2().get(0).setAltitude(Double.parseDouble(altitude.getText().toString()));
 				
-				
-				//geere les exception
+				//gere les exceptions
 				dialog.dismiss();
 			}
 		});

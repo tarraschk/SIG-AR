@@ -23,7 +23,7 @@
         android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/checkBox1"
         android:scaleType="fitXY"
-        android:src="@drawable/android_edit" 
+        android:src="@drawable/content_edit" 
 
  />
     

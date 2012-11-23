@@ -1,5 +1,6 @@
 package com.ecn.ei3info.sig_ar;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -15,29 +16,21 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SceneArrayAdapter extends BaseAdapter{
-/*	private final Context context;
-	private final DataManager listscene;
- 
-	public SceneArrayAdapter(Context context, DataManager dataManager) {
-		super();
-		this.context = context;
-		this.listscene = dataManager;
-	}*/
+public class PGSQLArrayAdapter extends BaseAdapter{
 	
 	private Activity parentActivity;
 	private int itemLayoutId;
-	private List<Scene> dataSource;
+	private ArrayList<ModelInfo> dataSource;
 	private LayoutInflater inflater;
 
 	// constructor for adapter
-	public SceneArrayAdapter(Activity activity, int layoutId, List<Scene> ds){
+	public PGSQLArrayAdapter(Activity activity, int layoutId, ArrayList<ModelInfo> ds){
 		parentActivity = activity;
 		itemLayoutId = layoutId;
 		dataSource = ds;
 		//sortData();
 		//Collections.sort(dataSource);
-		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflater = (LayoutInflater) parentActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
@@ -48,27 +41,24 @@ public class SceneArrayAdapter extends BaseAdapter{
 
 			view = inflater.inflate(itemLayoutId, parentView, false);
 			
-			TextView textView = (TextView)view.findViewById(R.id.scene_name);
+			TextView textView = (TextView)view.findViewById(R.id.textViewName);
 			String data = dataSource.get(pos).getName();
 			textView.setText(data);
 
-			ImageView imageView = (ImageView) view.findViewById(R.id.icons);
-			//imageView.setImageResource(dataSource);
-			
-			TextView textView2 = (TextView)view.findViewById(R.id.scene_category);
+			TextView textView2 = (TextView)view.findViewById(R.id.textViewCategory);
 			String data2=dataSource.get(pos).getCategory();
 			textView2.setText(data2);
 			
-			TextView textView_latitude = (TextView)view.findViewById(R.id.scene_latitude);
+			TextView textView_latitude = (TextView)view.findViewById(R.id.textViewLatitude);
 			double data3=dataSource.get(pos).getLatitude();
 			textView_latitude.setText(data3+"");
 			
-			TextView textView_longitude = (TextView)view.findViewById(R.id.scene_longitude);
+			TextView textView_longitude = (TextView)view.findViewById(R.id.textViewLongitude);
 			data3=dataSource.get(pos).getLongitude();
 			textView_longitude.setText(data3+"");
 
 
-			final CheckBox cbox= (CheckBox) view.findViewById(R.id.checkBox1);
+			/*final CheckBox cbox= (CheckBox) view.findViewById(R.id.checkBox1);
 			cbox.setChecked( ((Scene) dataSource.get(pos)).isActivated());
 			cbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -80,14 +70,14 @@ public class SceneArrayAdapter extends BaseAdapter{
 
 				}
 			});
-			cbox.setTag(dataSource.get(pos));
+			cbox.setTag(dataSource.get(pos));*/
 		}else{
 			view = convertView;
 		}
 		return view;
 	}
 	
-	public void sortData(String string){
+	/*public void sortData(String string){
 		if(string.equals("Name")){
 			Collections.sort(dataSource, new Comparator<Scene>(){
 				public int compare( Scene s1, Scene s2 ) {

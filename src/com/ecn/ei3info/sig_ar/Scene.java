@@ -129,11 +129,17 @@ public class Scene extends OAScene implements Comparable<Scene>{
 
 
 	}
-	
+	/**
+	 * Set the latitude of the scene
+	 * @param latitude
+	 */
 	public void setLatitude(double latitude){
 		this.location.setLatitude(latitude);
 	}
-	
+	/**
+	 * Set the longitude of the scene
+	 * @param longitude
+	 */
 	public void setLongitude(double longitude) {
 		this.location.setLongitude(longitude);
 	}

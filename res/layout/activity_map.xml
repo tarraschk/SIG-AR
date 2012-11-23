@@ -2,14 +2,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
     android:background="@android:color/transparent"
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/button_toggler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end">
-        
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,13 +29,32 @@
             android:contentDescription="@string/locationfound"
             android:onClick="onCenterLocation"
             android:src="@drawable/locationfound" />
+
         <Button
-        android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" 
-        android:onClick="onEditModel"/>
+            android:id="@+id/button1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onEditModel"
+            android:text="Button" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:contentDescription="@string/map_modification"
+            android:onClick="onMapModification"
+            android:src="@drawable/action_settings" />
+        
+        
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:contentDescription="@string/map_modification"
+
+            android:src="@drawable/action_settings" />
+        
     </LinearLayout>
 
     <ImageButton
@@ -46,9 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:contentDescription="@string/map_modification"
-        android:onClick="onMapModification"
+        android:onClick="onDisplayButtons"
         android:src="@drawable/action_settings" />
-
-    
 
 </FrameLayout>

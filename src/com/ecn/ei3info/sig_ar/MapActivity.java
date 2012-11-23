@@ -27,6 +27,8 @@ import com.hitlabnz.outdoorar.data.OADataManager;
 
 public class MapActivity extends OAMapComponentBase{
 	protected boolean plot=true;
+	protected static boolean toogler = false;
+	View buttonToogle ;
 	@Override
 	protected String setupGoogleMapApiKey() {
 		return "0-uPrjI4lrnXjC_4g9gP5Scy7hauxOZEVlkGBvw";
@@ -60,6 +62,8 @@ public class MapActivity extends OAMapComponentBase{
 	
 	public void onCreate(Bundle bundle) {
 		  super.onCreate(bundle);
+		  buttonToogle = (View)findViewById(R.id.button_toggler);
+		  		  
 		  //automatic sleep mode deactivated
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
@@ -97,6 +101,13 @@ public class MapActivity extends OAMapComponentBase{
 			this.setMapStyle(MAP_STYLE_DEFAULT);
 			Toast.makeText(this, "Satellite Image Deactivated", Toast.LENGTH_SHORT).show();
 		}
+	}
+	
+	@Override
+	protected void onSceneSelected(OAScene scene) {
+		super.onSceneSelected(scene);
+		Toast.makeText(this, "Votre scene est à la longitude" + scene.location.getLongitude() + "et à la latitude" + scene.location.getLatitude()  , Toast.LENGTH_LONG).show();
+	
 	}
 	
 	public void onCenterLocation(View view) {
@@ -140,6 +151,9 @@ public class MapActivity extends OAMapComponentBase{
 		}
 	
 	}*/
+	
+	
+	public 
 
 	boolean modify = false;
 	public void onMapModification(View view) {
@@ -170,6 +184,18 @@ public class MapActivity extends OAMapComponentBase{
 
 		modify=!modify;
 	}
+
+	//Toogle button view
+	public void onDisplayButtons(View view) {
+		toogler = !toogler;
+
+		if(toogler)
+			buttonToogle.setVisibility(View.VISIBLE);
+		else
+			buttonToogle.setVisibility(View.GONE);
+	}
+
+	
 	 
 	public void onEditModel(View view){
 		

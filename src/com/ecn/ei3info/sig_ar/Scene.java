@@ -2,6 +2,7 @@ package com.ecn.ei3info.sig_ar;
 
 import java.util.List;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.hitlabnz.androidar.data.ModelData;
@@ -147,6 +148,10 @@ public class Scene extends OAScene implements Comparable<Scene>{
 	public void setAltitude(double altitude) {
 		this.location.setAltitude(altitude);
 	}
+	
+	
+	
+	
 	
 	// public void setScale()
 

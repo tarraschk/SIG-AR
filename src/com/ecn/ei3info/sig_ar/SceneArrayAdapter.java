@@ -8,10 +8,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -81,6 +83,16 @@ public class SceneArrayAdapter extends BaseAdapter{
 				}
 			});
 			cbox.setTag(dataSource.get(pos));
+			
+			ImageButton editButton= (ImageButton) view.findViewById(R.id.button_modify);
+			editButton.setOnClickListener(new OnClickListener(){
+				public void onClick(View arg0){
+					// AURORE copie-colle ton code ici en utilisant cette commande p™ur recuperer a scene a modifier
+					//(Scene) dataSource.get(pos)
+				}
+			} );
+			
+			
 		}else{
 			view = convertView;
 		}

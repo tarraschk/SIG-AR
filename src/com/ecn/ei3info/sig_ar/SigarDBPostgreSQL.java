@@ -21,8 +21,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 /**
@@ -33,11 +40,23 @@ import android.widget.Toast;
 public class SigarDBPostgreSQL extends Activity {
 
 	protected Activity a;
+	//pas uitl c'est champ?
 
 	protected TextView tvStatus;
-	protected TextView tv;
-	protected TextView tv2;
 	protected ListView lvResult;
+	protected Button searchButton;
+	protected EditText inputQuery;
+
+	protected ProgressBar progress;
+	
+	protected String status;
+	protected String infoConnection;
+	protected ArrayList<ModelInfo>result;
+
+	// requete telporaire a modifier en parametre
+	private static String sql="Select id_scene, nom_scene, description, nom_category, gps_longitude, gps_latitude, gps_altitude from scene, category where scene.id_category=category.id_category;";
+
+
 
 	/** Called when the activity is first created. 
 	 * This method create the layout and start connection to database if you are connected to network.
@@ -46,27 +65,32 @@ public class SigarDBPostgreSQL extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		// set UI layout
 		setContentView(R.layout.sigardbpgsql);
+		//automatic sleep mode deactivated
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		a=this;
 
 		tvStatus=(TextView) this.findViewById(R.id.tvStatus);
+		inputQuery= (EditText) this.findViewById(R.id.inputQuery);
+		searchButton= (Button) this.findViewById(R.id.searchButton);
 		lvResult=(ListView) this.findViewById(R.id.listViewResult);
-		//a modifier les fieds ci dessous
-		tv = (TextView) this.findViewById(R.id.tv);
+		progress= (ProgressBar) this.findViewById(R.id.progressBar);
 
-		tv2 = (TextView) this.findViewById(R.id.tv2);
+		inputQuery.setEnabled(false);
+		searchButton.setEnabled(false);
 
 		//TODO tester la connectivity avant de lancr les requete
 		// ajouter requete query au lancement 
-		
-		
-		
+
+
+
 		if(((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){
 			buildAlertMessageNoNetwork();
-		}
+		}else{
 			new PGSQLConnection().execute();
-		
+		}
 
 	}
 	/**
@@ -102,46 +126,41 @@ public class SigarDBPostgreSQL extends Activity {
 		alert.show();	
 
 	}
-	
-	
-	
-	/* (non-Javadoc)
+
+
+
+	/**
 	 * @see android.app.Activity#onRestart()
 	 */
 	@Override
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
-		while( ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){
+		if( ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){
 			buildAlertMessageNoNetwork();
 		}
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	/**
 	 *	PGSQLConnection allow you to contact database and query new models. 
 	 * @author bastienmarichalragot
 	 *
 	 */
-	private class PGSQLConnection extends AsyncTask<String, Void, ArrayList<ModelInfo>> {
+	private class PGSQLConnection extends AsyncTask<String, Void, Void> {
 
-		protected String status;
-		protected ArrayList<ModelInfo>result;
-
-		// requete telporaire a modifier en parametre
-		private static final String sql="Select id_scene, nom_scene, description, nom_category, gps_longitude, gps_latitude, gps_altitude from scene, category where scene.id_category=category.id_category;";
 
 		@Override
-		protected ArrayList<ModelInfo> doInBackground(String... arg0) {
-			// TODO Auto-generated method stub
+		protected Void doInBackground(String... arg0) {
+			// TODO info de connection db
 
 			try {
 				Class.forName("org.postgresql.Driver");
@@ -155,31 +174,13 @@ public class SigarDBPostgreSQL extends Activity {
 				//tv2.setText("jdbc:postgresql://192.168.0.2/postgres"+"postgres"+"alessio");
 				DatabaseMetaData dbmd;
 				dbmd = c.getMetaData(); //get MetaData to confirm connection
-				//	result= "Connection to"+dbmd.getDatabaseProductName()+" "+dbmd.getDatabaseProductVersion()+"successful.\n";
+				infoConnection= "Connection to"+dbmd.getDatabaseProductName()+" "+dbmd.getDatabaseProductVersion()+"successful.\n";
 
 				if (c != null){
 					Log.w("myApp","connection reussie");
-					//	Log.w("myApp",result);
+
 					status="connected";
 
-					// modifier test du result non null pus iteration....
-					Statement st = c.createStatement();
-					ResultSet rs =  st.executeQuery(sql);
-					result= new ArrayList<ModelInfo>();
-					if (rs!=null) {
-						while(rs.next()){
-							int id=rs.getInt(1);
-							String name=rs.getString(2);
-							String dsc=rs.getString(3);
-							String cat=rs.getString(4);
-							double gps= rs.getDouble(5);
-							//rs.getDouble(7);
-							//rs.getDouble(7)));
-							result.add(new ModelInfo(id,name,dsc,cat,gps,gps,gps));
-						}
-					}
-					rs.close();
-					// deconnection database
 					c.close();
 
 				}else{
@@ -197,20 +198,137 @@ public class SigarDBPostgreSQL extends Activity {
 				cnfe.printStackTrace();
 			}
 
-			return result;
+			return null;
 		}
+
 		//implementer la fonctionnalité onprogressbar...
 
-		protected void onPostExecute(ArrayList<ModelInfo> result) {
+
+
+		
+
+		/**
+		 * Method called after at the end of AsyncTask PGSQLConnection.
+		 * To display information of connection 
+		 */
+		protected void onPostExecute(Void result) {
 			//tv.setText(result);
 			tvStatus.setText(status);
-			lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
+			//lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
+			//TODO add toast with connecion information. 
+			//TODO modify enable search button 
+
+			Toast.makeText(SigarDBPostgreSQL.this, infoConnection, Toast.LENGTH_SHORT).show();
+			
+			
+			if(status.equals("connected")){
+				searchButton.setEnabled(true);
+				inputQuery.setEnabled(true);
+				searchButton.setFocusable(true);
+				progress.setVisibility(a.getCurrentFocus().GONE);
+			}
 
 
 		}
+	}//end of PGSLConnection
+
+	private class PGSQLQuery extends AsyncTask<String, Void, ArrayList<ModelInfo>> {
+
+		
+		
+		/* (non-Javadoc)
+		 * @see android.os.AsyncTask#onPreExecute()
+		 */
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			progress.setVisibility(a.getCurrentFocus().VISIBLE);
+
+		}
+
+		@Override
+		protected ArrayList<ModelInfo> doInBackground(String... params) {
+
+			//TODO modify code to connect db
+			try {
+				Class.forName("org.postgresql.Driver");
+
+				Connection c = DriverManager.getConnection("jdbc:postgresql://54.246.97.87:5432/sigar_test","sigar", "rubyECN#2013");
+
+				DatabaseMetaData dbmd= c.getMetaData(); //get MetaData to confirm connection
+
+				if (c != null){
+					Log.w("myApp","connection reussie");
+					//	Log.w("myApp",result);
+					status="connected";
+
+					Statement st = c.createStatement();
+					ResultSet rs =  st.executeQuery(sql);
+					result= new ArrayList<ModelInfo>();
+					if (rs!=null) {
+						while(rs.next()){
+							int id=rs.getInt(1);
+							String name=rs.getString(2);
+							String dsc=rs.getString(3);
+							String cat=rs.getString(4);
+							String aut=rs.getString(5);
+							double gpslong= rs.getDouble(6);
+							double gpslat= rs.getDouble(7);
+							double gpsalt=rs.getDouble(8);
+							result.add(new ModelInfo(id,name,dsc,cat,aut,gpslat,gpslong,gpsalt));
+						}
+					}
+					rs.close();
+					// deconnection database
+					c.close();
+				}
+			} catch (SQLException se) {
+				//tv.setText("Couldn't connect: print out a stack trace and exit.");
+				se.printStackTrace();
+				Log.w("myApp",se);
+				// TODO retour d'erreur
+				//System.exit(1);
+			} catch (ClassNotFoundException cnfe) {
+				//tv.setText("Couldn't find driver class:");
+				//System.err.println("Couldn't find driver class:");
+				cnfe.printStackTrace();
+			}
+			return result;
+		}
+
+		/**
+		 * Method called after at the end of AsyncTask PGSQLQuery.
+		 * To display the result of query
+		 */
+		protected void onPostExecute(ArrayList<ModelInfo> result) {
+			//tv.setText(result);
+			//tvStatus.setText(status);
+
+			//TODO modify toast with result query 
 
 
+			Toast.makeText(SigarDBPostgreSQL.this, infoConnection, Toast.LENGTH_SHORT).show();
 
+			lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
+			progress.setVisibility(a.getCurrentFocus().GONE);
+
+
+		}		
+	}
+	public void onGoSearch(View view){
+
+
+		sql="SELECT id_scene, name_scene, description, name_category,name_person, gps_longitude, gps_latitude, gps_altitude" +
+				" FROM scene, category, person" +
+				" WHERE scene.id_category=category.id_category AND" +
+				" scene.id_author=person.id_person AND"+
+				" scene.name_scene LIKE '%"+inputQuery.getText().toString()+"%' OR" +
+				" scene.description LIKE '%"+inputQuery.getText().toString()+"%' OR" +
+				" category.name_category LIKE '%"+inputQuery.getText().toString()+"%' OR" +
+				" person.name_person LIKE '%"+inputQuery.getText().toString()+"%';";
+
+		new PGSQLQuery().execute();
 
 	}
 

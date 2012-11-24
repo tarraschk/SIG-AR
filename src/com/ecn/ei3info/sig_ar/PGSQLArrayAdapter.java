@@ -49,13 +49,13 @@ public class PGSQLArrayAdapter extends BaseAdapter{
 			String data2=dataSource.get(pos).getCategory();
 			textView2.setText(data2);
 			
-			TextView textView_latitude = (TextView)view.findViewById(R.id.textViewLatitude);
-			double data3=dataSource.get(pos).getLatitude();
-			textView_latitude.setText(data3+"");
+			TextView textView_latitude = (TextView)view.findViewById(R.id.textViewAuthor);
+			String data3=dataSource.get(pos).getAuthor();
+			textView_latitude.setText(data3);
 			
-			TextView textView_longitude = (TextView)view.findViewById(R.id.textViewLongitude);
-			data3=dataSource.get(pos).getLongitude();
-			textView_longitude.setText(data3+"");
+			TextView textView_longitude = (TextView)view.findViewById(R.id.textViewDescription);
+			data3=dataSource.get(pos).getDescription();
+			textView_longitude.setText(data3);
 
 
 			/*final CheckBox cbox= (CheckBox) view.findViewById(R.id.checkBox1);

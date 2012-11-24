@@ -8,6 +8,7 @@ public class ModelInfo {
 	protected String Name;
 	protected String Description;
 	protected String Category;
+	protected String Author;
 	protected double Latitude;
 	protected double Longitude;
 	protected double Altitude;
@@ -20,16 +21,29 @@ public class ModelInfo {
 	 * @param longitude
 	 * @param altitude
 	 */
-	public ModelInfo(int id, String name, String description, String category,
+	public ModelInfo(int id, String name, String description, String category,String author,
 			double latitude, double longitude, double altitude) {
 		super();
 		this.id = id;
 		Name = name;
 		Description = description;
 		Category = category;
+		Author=author;
 		Latitude = latitude;
 		Longitude = longitude;
 		Altitude = altitude;
+	}
+	/**
+	 * @return the author
+	 */
+	public String getAuthor() {
+		return Author;
+	}
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(String author) {
+		Author = author;
 	}
 	/**
 	 * @return the id

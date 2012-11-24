@@ -201,7 +201,7 @@ public class MapActivity extends OAMapComponentBase{
 		
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.custom_modifymodel);
-		dialog.setTitle("Title...");
+		dialog.setTitle("Modify your model");
 
 		// set the custom dialog components - text, image and button
 		TextView text = (TextView) dialog.findViewById(R.id.modelname);

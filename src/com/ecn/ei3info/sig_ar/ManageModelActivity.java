@@ -2,11 +2,14 @@ package com.ecn.ei3info.sig_ar;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * 20 nov 2012
@@ -15,7 +18,7 @@ import android.widget.ArrayAdapter;
  * @author bastienmarichalragot
  * @version 1
  */
-public class ManageModelActivity extends ListActivity {
+public class ManageModelActivity extends Activity {
 	
 	/**
 	 * Called when the activty is first created
@@ -25,25 +28,35 @@ public class ManageModelActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		 setContentView(R.layout.managemodelactivity);
+
+		
         ArrayList<String> results = new ArrayList<String>();
         
 		SigarDB database= new SigarDB(this);
-	    SQLiteDatabase sqlDB = database.getWritableDatabase();
+	    SQLiteDatabase sqlDB = database.getReadableDatabase();
 
-        Cursor c = sqlDB.rawQuery("SELECT id_category, nom_category FROM category", null);
+        Cursor c = sqlDB.rawQuery("SELECT id_category, name_category FROM category ;", null);
+        Log.w("myApp",c.toString());
+
+
+       // if (c != null ) {
+
+
+        c.moveToFirst();
+        while (c.isAfterLast() == false) {
+        		
+        		String firstName = c.getString(c.getColumnIndex("id_category"));
+        		Log.w("myApp",firstName);
+        		Log.w("myApp",Integer.toString(c.getCount()));
+        		int age = c.getInt(c.getColumnIndex("name_category"));
+        		results.add("" + firstName + ",Age: " + age);
+        		c.moveToNext();
+        	};
+        //}
     	
-    	if (c != null ) {
-    		if  (c.moveToFirst()) {
-    			do {
-    				String firstName = c.getString(c.getColumnIndex("id_category"));
-    				int age = c.getInt(c.getColumnIndex("nom_category"));
-    				results.add("" + firstName + ",Age: " + age);
-    			}while (c.moveToNext());
-    		} 
-    	}
-    	
-        
-    	this.setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+        //ListView lv= (ListView) this.findViewById(R.id.list);
+    	//lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.test,results));
 
 	}
 }

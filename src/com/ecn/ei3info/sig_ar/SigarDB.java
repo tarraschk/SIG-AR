@@ -14,13 +14,15 @@ public class SigarDB extends SQLiteOpenHelper {
 	
 	
 	// Database creation sql statement
-	private static final String DATABASE_CREATE = "create table category(" +
-			"id_category integer primary key , " + 
-			"nom_category text not null);"+
+	private static final String DATABASE_CREATE = "CREATE TABLE category(" 
+														+"id_category integer primary key not null , " 
+														+"name_category text not null);" 
+														//+" PRIMARY KEY (id_category));"
+													+" INSERT INTO category(name_category) VALUES ('test');";/*
 			
-			"CREATE TABLE icon (" +
-			"id_icone integer primary key  NOT NULL," +
-			"file_icone blob);"+
+												+"CREATE TABLE icon (" +
+					"id_icone integer primary key  NOT NULL," +
+					"file_icone blob);"+
 			
 			"create table  objet3d (" +
 			"id_objet3d integer primary key NOT NULL," +
@@ -68,9 +70,9 @@ public class SigarDB extends SQLiteOpenHelper {
 		    "nom_texture character varying(45),"+
 		    "file_texture bytea,"+
 		    "id_objet3d integer NOT NULL"+
-		");"+
+		");"+*/
 		    
-"INSERT INTO category Values (1,'test');";
+
 
 // supprimer les insert pour la mise en prod
 

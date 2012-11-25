@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -12,8 +13,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -89,8 +92,52 @@ public class SceneArrayAdapter extends BaseAdapter{
 			ImageButton editButton= (ImageButton) view.findViewById(R.id.button_modify);
 			editButton.setOnClickListener(new OnClickListener(){
 				public void onClick(View arg0){
-					// AURORE copie-colle ton code ici en utilisant cette commande pôur recuperer a scene a modifier
-					//(Scene) dataSource.get(pos)
+					
+					final Dialog dialog = new Dialog(activity);
+					dialog.setContentView(R.layout.custom_modifymodel);
+					dialog.setTitle("Modify your model");
+
+					// set the custom dialog components - text, image and button
+					TextView text = (TextView) dialog.findViewById(R.id.modelname);
+					text.setText(dataSource.get(pos).getName());
+								
+					final EditText latitude= (EditText) dialog.findViewById(R.id.latitude); 
+					latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLatitude()));
+					
+					final EditText longitude= (EditText) dialog.findViewById(R.id.longitude); 
+					longitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLongitude()));
+					
+					final EditText altitude= (EditText) dialog.findViewById(R.id.altitude); 
+					altitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).location.getAltitude()));
+					
+					Button okButton = (Button) dialog.findViewById(R.id.ok);
+					// if button is clicked, close the custom dialog
+					okButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							
+							//TODO completer les donnée modifées
+							DataManager.singletonInstance.getSceneList2().get(0).setLatitude(Double.parseDouble(latitude.getText().toString()));
+							DataManager.singletonInstance.getSceneList2().get(0).setLongitude(Double.parseDouble(longitude.getText().toString()));
+							DataManager.singletonInstance.getSceneList2().get(0).setAltitude(Double.parseDouble(altitude.getText().toString()));
+							
+							//gere les exceptions
+							dialog.dismiss();
+						}
+					});
+
+					Button cancelButton = (Button) dialog.findViewById(R.id.cancel);
+					// if button is clicked, close the custom dialog
+					cancelButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+						}
+					});
+					
+					dialog.show();
+					
+					
 				}
 			} );
 			

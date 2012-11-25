@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -55,7 +56,8 @@ public class SceneArrayAdapter extends BaseAdapter{
 			textView.setText(data);
 
 			ImageView imageView = (ImageView) view.findViewById(R.id.icons);
-			//imageView.setImageResource(dataSource);
+			Drawable icon= dataSource.get(pos).getIcon();
+			imageView.setImageDrawable(icon);
 			
 			TextView textView2 = (TextView)view.findViewById(R.id.scene_category);
 			String data2=dataSource.get(pos).getCategory();

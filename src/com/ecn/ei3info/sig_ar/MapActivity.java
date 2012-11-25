@@ -1,5 +1,8 @@
 package com.ecn.ei3info.sig_ar;
-
+/**
+ *  
+ *
+ */
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,7 +16,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,15 +24,24 @@ import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
 //TODO add control
-//TODO Add Back button
 //TODO recalculer la position à l'ouverture de l'activité
-
+/**
+ * 
+ * 
+ * @author bastienmarichalragot
+ * @version  1
+ */
 public class MapActivity extends OAMapComponentBase{
 	protected boolean plot=true;
 	protected static boolean toogler = false;
 	View buttonToogle ;
+	
+	/**
+	 * Save your Google Map API Key.
+	 */
 	@Override
 	protected String setupGoogleMapApiKey() {
+		//TODO delete this key before finish project
 		return "0-uPrjI4lrnXjC_4g9gP5Scy7hauxOZEVlkGBvw";
 	}
 	
@@ -109,25 +120,37 @@ public class MapActivity extends OAMapComponentBase{
 		Toast.makeText(this, "Votre scene est ‡ la longitude" + scene.location.getLongitude() + "et ‡ la latitude" + scene.location.getLatitude()  , Toast.LENGTH_LONG).show();
 	
 	}
-	
+	/**
+	 * Method associate to imageButton to refocus the map on your position.
+	 * @param view
+	 */
 	public void onCenterLocation(View view) {
-		centerToUserLocation();
-		//TODO Add toast indication of centering
-			
+		centerToUserLocation();		
+		Toast.makeText(this, "Map refocused on your position.", Toast.LENGTH_LONG).show();
+
+		/// TODO Supprimer au nettoyage 
+		/*
 		Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));
 		Log.w("myApp", this.getDataManager().getSceneList().get(0).name);
 		Log.w("myApp", Integer.toString(this.getDataManager().getSceneList().get(0).getId()));
-		
+		*/
 		//this.getDataManager().getSceneList().get(0).addExtraAttrib("a", "true");
 		//Log.w("myApp", this.getDataManager().getSceneList().get(0).getExtraAttrib("a"));
 		
 	}
-	
+	/**
+	 * Method called when you press on GoBackButton. 
+	 * Quit mapActivity and return to AR view.
+	 * @param view
+	 */
 	public void onGoBack(View view) {
 		super.onBackPressed();
 		this.plot=false;
 	}	
-	
+	/**
+	 * Method called when you press on BackButton of the tablet. 
+	 * Quit mapActivity and return to AR view.
+	 */
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
@@ -153,7 +176,6 @@ public class MapActivity extends OAMapComponentBase{
 	}*/
 	
 	
-	public 
 
 	boolean modify = false;
 	public void onMapModification(View view) {

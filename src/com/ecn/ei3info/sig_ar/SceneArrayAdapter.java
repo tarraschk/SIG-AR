@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.hitlabnz.androidar.data.Coordinate;
+import com.hitlabnz.androidar.data.representation.model.Transform;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -110,6 +113,16 @@ public class SceneArrayAdapter extends BaseAdapter{
 					final EditText altitude= (EditText) dialog.findViewById(R.id.altitude); 
 					altitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).location.getAltitude()));
 					
+					final EditText scalex= (EditText) dialog.findViewById(R.id.scalex);
+					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getX()));
+					
+					final EditText scaley= (EditText) dialog.findViewById(R.id.scalex);
+					scaley.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getY()));
+					
+					final EditText scalez= (EditText) dialog.findViewById(R.id.scalex);
+					scalez.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getZ()));
+					
+					
 					Button okButton = (Button) dialog.findViewById(R.id.ok);
 					// if button is clicked, close the custom dialog
 					okButton.setOnClickListener(new OnClickListener() {
@@ -117,9 +130,17 @@ public class SceneArrayAdapter extends BaseAdapter{
 						public void onClick(View v) {
 							
 							//TODO completer les donnée modifées
-							DataManager.singletonInstance.getSceneList2().get(0).setLatitude(Double.parseDouble(latitude.getText().toString()));
-							DataManager.singletonInstance.getSceneList2().get(0).setLongitude(Double.parseDouble(longitude.getText().toString()));
-							DataManager.singletonInstance.getSceneList2().get(0).setAltitude(Double.parseDouble(altitude.getText().toString()));
+							DataManager.singletonInstance.getSceneList2().get(pos).setLatitude(Double.parseDouble(latitude.getText().toString()));
+							DataManager.singletonInstance.getSceneList2().get(pos).setLongitude(Double.parseDouble(longitude.getText().toString()));
+							DataManager.singletonInstance.getSceneList2().get(pos).setAltitude(Double.parseDouble(altitude.getText().toString()));
+							
+							float x = Float.valueOf(scalex.getText().toString().trim()).floatValue();
+							float y = Float.valueOf(scaley.getText().toString().trim()).floatValue();
+							float z = Float.valueOf(scalez.getText().toString().trim()).floatValue();;
+							Transform modelTransform = new Transform();
+							modelTransform.setScale(new Coordinate(x,y,z));
+							
+							dataSource.get(pos).models.get(0).addTransform(modelTransform);
 							
 							//gere les exceptions
 							dialog.dismiss();

@@ -154,6 +154,16 @@ public class Scene extends OAScene implements Comparable<Scene>{
 	}
 	
 	
+	public double getDistance(double latitude, double longitude) {
+		//equatorial radius of Earth. No precision necessary, we'll use the distance to compare distances
+		double r=6371000.0 ;
+		double latitudeScene = this.location.getLatitude();
+		double longitudeScene = this.location.getLongitude();
+		double theta = longitude - longitudeScene;
+		double dist = Math.sin(Math.toRadians(latitudeScene)) * Math.sin(Math.toRadians(latitude)) + Math.cos(Math.toRadians(latitudeScene)) * Math.cos(Math.toRadians(latitude)) * Math.cos(Math.toRadians(theta));
+        dist = Math.abs(Math.round(Math.toDegrees(Math.acos(dist)) * 2*Math.PI * r /360 ));
+		return dist;
+	}
 	
 	// public void setScale()
 

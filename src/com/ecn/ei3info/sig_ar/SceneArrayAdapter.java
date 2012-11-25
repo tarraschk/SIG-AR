@@ -47,7 +47,7 @@ public class SceneArrayAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public View getView(int pos, View convertView, ViewGroup parentView){
+	public View getView(final int pos, View convertView, ViewGroup parentView){
 		View view = null;
 		if(convertView == null){
 			//LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -93,7 +93,7 @@ public class SceneArrayAdapter extends BaseAdapter{
 			editButton.setOnClickListener(new OnClickListener(){
 				public void onClick(View arg0){
 					
-					final Dialog dialog = new Dialog(activity);
+					final Dialog dialog = new Dialog(arg0.getContext());
 					dialog.setContentView(R.layout.custom_modifymodel);
 					dialog.setTitle("Modify your model");
 

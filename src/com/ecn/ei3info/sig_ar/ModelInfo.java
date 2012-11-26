@@ -12,6 +12,7 @@ public class ModelInfo {
 	protected double Latitude;
 	protected double Longitude;
 	protected double Altitude;
+	protected boolean already=false;
 	/**
 	 * @param id
 	 * @param name
@@ -32,6 +33,25 @@ public class ModelInfo {
 		Latitude = latitude;
 		Longitude = longitude;
 		Altitude = altitude;
+		
+		for(Scene c:DataManager.getInstance(false).getSceneList2()){
+			if(c.getId()==id){
+				already=true;
+			}
+		}
+		
+	}
+	/**
+	 * @return the already
+	 */
+	public boolean isAlready() {
+		return already;
+	}
+	/**
+	 * @param already the already to set
+	 */
+	public void setAlready(boolean already) {
+		this.already = already;
 	}
 	/**
 	 * @return the author

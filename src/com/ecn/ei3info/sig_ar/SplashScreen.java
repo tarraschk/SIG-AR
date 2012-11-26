@@ -39,7 +39,7 @@ public class SplashScreen extends Activity{
 	
 		
 		DataXMLParser test= new DataXMLParser();
-		//SigarDB database= new SigarDB(this);
+		SigarDB database= new SigarDB(this);
 	    //SQLiteDatabase sqlDB = database.getWritableDatabase();
 
 	    

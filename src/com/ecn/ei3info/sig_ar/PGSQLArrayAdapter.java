@@ -33,6 +33,8 @@ public class PGSQLArrayAdapter extends BaseAdapter{
 		inflater = (LayoutInflater) parentActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
+	
+	
 	@Override
 	public View getView(int pos, View convertView, ViewGroup parentView){
 		View view = null;
@@ -49,15 +51,21 @@ public class PGSQLArrayAdapter extends BaseAdapter{
 			String data2=dataSource.get(pos).getCategory();
 			textView2.setText(data2);
 			
-			TextView textView_latitude = (TextView)view.findViewById(R.id.textViewAuthor);
+			TextView textView_author = (TextView)view.findViewById(R.id.textViewAuthor);
 			String data3=dataSource.get(pos).getAuthor();
-			textView_latitude.setText(data3);
+			textView_author.setText(data3);
 			
-			TextView textView_longitude = (TextView)view.findViewById(R.id.textViewDescription);
+			TextView textView_description = (TextView)view.findViewById(R.id.textViewDescription);
 			data3=dataSource.get(pos).getDescription();
-			textView_longitude.setText(data3);
+			textView_description.setText(data3);
 
-
+			ImageView already= (ImageView) view.findViewById(R.id.imageAlready);
+			if(dataSource.get(pos).isAlready()){
+				
+			}else{
+				already.setImageResource(R.drawable.collections_collection);
+			}
+			
 			/*final CheckBox cbox= (CheckBox) view.findViewById(R.id.checkBox1);
 			cbox.setChecked( ((Scene) dataSource.get(pos)).isActivated());
 			cbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -121,23 +129,8 @@ public class PGSQLArrayAdapter extends BaseAdapter{
 		}
  */
 		/*return rowView;
-	}*/
-
-	/*public DataManager getListscene() {
-		return listscene;
 	}
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public long getItemId(int position) {

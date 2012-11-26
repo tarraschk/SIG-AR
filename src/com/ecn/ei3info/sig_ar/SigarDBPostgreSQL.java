@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +26,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -56,7 +59,20 @@ public class SigarDBPostgreSQL extends Activity {
 	// requete telporaire a modifier en parametre
 	private static String sql="Select id_scene, nom_scene, description, nom_category, gps_longitude, gps_latitude, gps_altitude from scene, category where scene.id_category=category.id_category;";
 
-
+	//TODO completer sql
+	private static String sqlgetAll="SELECT id_scene, " +
+									"name_scene, " +
+									"description, " +
+									"name_category, " +
+									"name_person, " +
+									"gps_longitude, " +
+									"gps_latitude, " +
+									"gps_altitude, " +
+									""+
+				" FROM scene, category, person" +
+				" WHERE scene.id_category=category.id_category AND" +
+				" scene.id_author=person.id_person AND";
+				
 
 	/** Called when the activity is first created. 
 	 * This method create the layout and start connection to database if you are connected to network.
@@ -70,6 +86,7 @@ public class SigarDBPostgreSQL extends Activity {
 		//automatic sleep mode deactivated
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+		//initialization of attributes
 		a=this;
 
 		tvStatus=(TextView) this.findViewById(R.id.tvStatus);
@@ -82,10 +99,9 @@ public class SigarDBPostgreSQL extends Activity {
 		searchButton.setEnabled(false);
 
 		//TODO tester la connectivity avant de lancr les requete
-		// ajouter requete query au lancement 
 
 
-
+		// marche vraiment as :(
 		if(((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){
 			buildAlertMessageNoNetwork();
 		}else{
@@ -127,9 +143,8 @@ public class SigarDBPostgreSQL extends Activity {
 
 	}
 
-
-
 	/**
+	 * Method call when you goback on PGSQLManagzr
 	 * @see android.app.Activity#onRestart()
 	 */
 	@Override
@@ -144,12 +159,6 @@ public class SigarDBPostgreSQL extends Activity {
 
 
 
-
-
-
-
-
-
 	/**
 	 *	PGSQLConnection allow you to contact database and query new models. 
 	 * @author bastienmarichalragot
@@ -157,7 +166,9 @@ public class SigarDBPostgreSQL extends Activity {
 	 */
 	private class PGSQLConnection extends AsyncTask<String, Void, Void> {
 
-
+		/**
+		 * execute connection 
+		 */
 		@Override
 		protected Void doInBackground(String... arg0) {
 			// TODO info de connection db
@@ -232,6 +243,11 @@ public class SigarDBPostgreSQL extends Activity {
 		}
 	}//end of PGSLConnection
 
+	/**
+	 * PGSQLQuery class in order to query the database
+	 * @author bastienmarichalragot
+	 *
+	 */
 	private class PGSQLQuery extends AsyncTask<String, Void, ArrayList<ModelInfo>> {
 
 		
@@ -246,11 +262,126 @@ public class SigarDBPostgreSQL extends Activity {
 			progress.setVisibility(a.getCurrentFocus().VISIBLE);
 
 		}
-
+		
+		/**
+		 * excute script sql o query database
+		 */
 		@Override
 		protected ArrayList<ModelInfo> doInBackground(String... params) {
 
 			//TODO modify code to connect db
+			try {
+				Class.forName("org.postgresql.Driver");
+
+				Connection c = DriverManager.getConnection("jdbc:postgresql://54.246.97.87:5432/sigar_test","sigar", "rubyECN#2013");
+
+				DatabaseMetaData dbmd= c.getMetaData(); //get MetaData to confirm connection
+
+				if (c != null){
+					Log.w("myApp","connection reussie");
+					//	Log.w("myApp",result);
+					status="connected";
+
+					Statement st = c.createStatement();
+					ResultSet rs =  st.executeQuery(sql);
+					result= new ArrayList<ModelInfo>();
+					// faire un test sur le nombre de ligne de resultat
+					// uniquaement si taille=1
+					
+					// crere un nouveau type pour concaten la totalité des données ou alors tableau
+					
+					if (rs!=null) {
+						while(rs.next()){
+							int id=rs.getInt(1);
+							String name=rs.getString(2);
+							String dsc=rs.getString(3);
+							String cat=rs.getString(4);
+							String aut=rs.getString(5);
+							double gpslong= rs.getDouble(6);
+							double gpslat= rs.getDouble(7);
+							double gpsalt=rs.getDouble(8);
+							result.add(new ModelInfo(id,name,dsc,cat,aut,gpslat,gpslong,gpsalt));
+						}
+					}
+					rs.close();
+					// deconnection database
+					c.close();
+				}
+			} catch (SQLException se) {
+				//tv.setText("Couldn't connect: print out a stack trace and exit.");
+				se.printStackTrace();
+				Log.w("myApp",se);
+				// TODO retour d'erreur
+				//System.exit(1);
+			} catch (ClassNotFoundException cnfe) {
+				//tv.setText("Couldn't find driver class:");
+				//System.err.println("Couldn't find driver class:");
+				cnfe.printStackTrace();
+			}
+			return result;
+		}
+
+		/**
+		 * Method called after at the end of AsyncTask PGSQLQuery.
+		 * To display the result of query
+		 */
+		protected void onPostExecute(final ArrayList<ModelInfo> result) {
+			//tv.setText(result);
+			//tvStatus.setText(status);
+
+			//TODO modify toast with result query 
+
+
+			Toast.makeText(SigarDBPostgreSQL.this, infoConnection, Toast.LENGTH_SHORT).show();
+
+			lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
+			progress.setVisibility(a.getCurrentFocus().GONE);
+			// user click on a result to choose if he want import it
+			lvResult.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(final AdapterView<?> parent, View view, final int position,long id) {
+					// display a dialog to ask user
+					
+					//TODO faire apparaitre les id deja compros et modifier la boite de dialog
+					final AlertDialog.Builder builder = new AlertDialog.Builder(a);
+					builder.setMessage("Do you want to import this scene on your device?")
+							.setCancelable(false)
+							.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+								public void onClick(final DialogInterface dialog, final int id) {
+									//startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+									
+									//TODO add import file
+									
+									Toast.makeText(a, result.get(position).getName(), Toast.LENGTH_SHORT).show();
+
+									
+									
+								}
+							})
+							.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+								public void onClick(final DialogInterface dialog, final int id) {
+									dialog.cancel();
+								}
+					});
+					final AlertDialog alert = builder.create();
+					alert.show();
+
+				}
+
+			});
+
+
+		}		
+	}
+	
+	
+	private class PGSQLImport extends AsyncTask<Integer, Void, Void> {
+		//modifier peut etre le resulta pour afficher les resultat en toast?
+		//reactuliser la list a la fin de l'import
+		@Override
+		protected Void doInBackground(Integer... params) {
+			// TODO Auto-generated method stub
+			
 			try {
 				Class.forName("org.postgresql.Driver");
 
@@ -294,28 +425,19 @@ public class SigarDBPostgreSQL extends Activity {
 				//System.err.println("Couldn't find driver class:");
 				cnfe.printStackTrace();
 			}
-			return result;
+			
+			
+			
+			return null;
 		}
-
-		/**
-		 * Method called after at the end of AsyncTask PGSQLQuery.
-		 * To display the result of query
-		 */
-		protected void onPostExecute(ArrayList<ModelInfo> result) {
-			//tv.setText(result);
-			//tvStatus.setText(status);
-
-			//TODO modify toast with result query 
-
-
-			Toast.makeText(SigarDBPostgreSQL.this, infoConnection, Toast.LENGTH_SHORT).show();
-
-			lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
-			progress.setVisibility(a.getCurrentFocus().GONE);
-
-
-		}		
+	
 	}
+
+	
+	
+	
+	
+	
 	public void onGoSearch(View view){
 
 

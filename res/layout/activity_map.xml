@@ -68,7 +68,7 @@
 	        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 	        android:onClick="onPositionUp"
-            android:src="@drawable/action_up" 
+            android:src="@drawable/navigation_collapse" 
 		 />
             
         <ImageButton
@@ -78,7 +78,7 @@
            	android:layout_below="@id/button_up"
            	android:layout_alignParentLeft="true"
 	        android:onClick="onPositionLeft"
-            android:src="@drawable/action_left" 
+            android:src="@drawable/navigation_previous_item" 
 		 />
         
          <ImageButton
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
 	        android:layout_alignParentRight="true"
 	        android:onClick="onPositionRight"
-            android:src="@drawable/action_right" 
+            android:src="@drawable/navigation_next_item" 
 		 />
 
         <ImageButton
@@ -97,7 +97,7 @@
 			android:layout_below="@id/button_left"
             android:layout_centerHorizontal="true"
 	        android:onClick="onPositionDown"
-            android:src="@drawable/action_down" 
+            android:src="@drawable/navigation_expand" 
 		 />
          
                  

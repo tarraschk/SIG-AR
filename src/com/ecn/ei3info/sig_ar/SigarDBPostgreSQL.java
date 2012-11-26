@@ -171,13 +171,8 @@ public class SigarDBPostgreSQL extends Activity {
 			try {
 				Class.forName("org.postgresql.Driver");
 
-				//tv.setText("Registered the driver ok, so let's make a connection.");
+				Connection c =  DriverManager.getConnection("jdbc:postgresql://54.246.97.87:5432/sigar_test","sigar", "rubyECN#2013");
 
-				Connection c = null;
-
-				c = DriverManager.getConnection("jdbc:postgresql://54.246.97.87:5432/sigar_test","sigar", "rubyECN#2013");
-
-				//tv2.setText("jdbc:postgresql://192.168.0.2/postgres"+"postgres"+"alessio");
 				DatabaseMetaData dbmd;
 				dbmd = c.getMetaData(); //get MetaData to confirm connection
 				infoConnection= "Connection to"+dbmd.getDatabaseProductName()+" "+dbmd.getDatabaseProductVersion()+"successful.\n";

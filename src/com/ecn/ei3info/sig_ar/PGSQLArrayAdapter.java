@@ -59,11 +59,13 @@ public class PGSQLArrayAdapter extends BaseAdapter{
 			data3=dataSource.get(pos).getDescription();
 			textView_description.setText(data3);
 
+			
+			// icon in order to inform that you have already imported the model
 			ImageView already= (ImageView) view.findViewById(R.id.imageAlready);
 			if(dataSource.get(pos).isAlready()){
-				
+				already.setImageResource(R.drawable.collections_collection_w);
 			}else{
-				already.setImageResource(R.drawable.collections_collection);
+				already.setImageResource(R.drawable.collections_collection_b);
 			}
 			
 			/*final CheckBox cbox= (CheckBox) view.findViewById(R.id.checkBox1);

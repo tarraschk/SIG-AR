@@ -36,7 +36,7 @@ public class ManageModelActivity extends Activity {
 		SigarDB database= new SigarDB(this);
 	    SQLiteDatabase sqlDB = database.getReadableDatabase();
 
-        Cursor c = sqlDB.rawQuery("SELECT id_category, name_category FROM category ;", null);
+        Cursor c = sqlDB.rawQuery("SELECT * FROM category ;", null);
         Log.w("myApp",c.toString());
 
 
@@ -44,13 +44,19 @@ public class ManageModelActivity extends Activity {
 
 
         c.moveToFirst();
+        Log.w("myApp",c.toString());
+		Log.w("myApp",Integer.toString(c.getCount()));
+
+
         while (c.isAfterLast() == false) {
         		
         		String firstName = c.getString(c.getColumnIndex("id_category"));
         		Log.w("myApp",firstName);
         		Log.w("myApp",Integer.toString(c.getCount()));
-        		int age = c.getInt(c.getColumnIndex("name_category"));
+        		String age = c.getString(c.getColumnIndex("name_category"));
         		results.add("" + firstName + ",Age: " + age);
+        		Log.w("myApp",(age));
+
         		c.moveToNext();
         	};
         //}

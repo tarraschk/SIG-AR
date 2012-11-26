@@ -125,7 +125,7 @@ public class SettingsActivity extends Activity {
 		public void onBackPressed() {
 			super.onBackPressed();
 			Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-			intent.putExtra("GPSAlert", true); 
+			//intent.putExtra("GPSAlert", true); 
 			startActivity(intent);
 		}
 }

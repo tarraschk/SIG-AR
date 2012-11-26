@@ -29,7 +29,7 @@ import android.widget.Toast;
 public class MainActivity extends OAARComponentBase {
 
 	public static int options=0x01;
-	protected Boolean GPSAlert;
+	public static Boolean GPSAlert=false;
 	/**
 	 *  Called when the activity is first created. 
 	 *  
@@ -37,7 +37,7 @@ public class MainActivity extends OAARComponentBase {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.GPSAlert = getIntent().getBooleanExtra("GPSAlert", false);
+		//this.GPSAlert = getIntent().getBooleanExtra("GPSAlert", false);
 		//getActionBar().hide();
 		// modifications 
 		final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );

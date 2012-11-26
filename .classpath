@@ -5,5 +5,7 @@
 	<classpathentry exported="true" kind="src" path="/OutdoorARLibrary"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Aurore/libraryAR/oalib_v1_0_b4.zip"/>
+	<classpathentry exported="true" kind="lib" path="libs/postgresql-8.4-703.jdbc3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

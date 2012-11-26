@@ -156,11 +156,15 @@ public class SceneArrayAdapter extends BaseAdapter{
 							
 							modelTransform.setRotation(new Coordinate(rx,ry,rz));
 							
+<<<<<<< HEAD
 							//dataSource.get(pos).models.get(0).addTransform(modelTransform);
 							
 							dataSource.get(pos).models.get(0).getTransforms().remove(0);
 							
 							dataSource.get(pos).models.get(0).getTransforms().add(modelTransform);
+=======
+							dataSource.get(pos).models.get(0).addTransform(modelTransform);
+>>>>>>> branch 'master' of https://github.com/tarraschk/SIG-AR.git
 							
 							//gere les exceptions
 							dialog.dismiss();

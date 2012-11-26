@@ -155,7 +155,7 @@ public class MapActivity extends OAMapComponentBase{
 	public void onBackPressed() {
 		super.onBackPressed();
 		Intent intent = new Intent(MapActivity.this, MainActivity.class);
-		intent.putExtra("GPSAlert", true); 
+		//intent.putExtra("GPSAlert", true); 
 		startActivity(intent);
 	}
 	

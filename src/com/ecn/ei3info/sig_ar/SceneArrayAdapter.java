@@ -156,7 +156,11 @@ public class SceneArrayAdapter extends BaseAdapter{
 							
 							modelTransform.setRotation(new Coordinate(rx,ry,rz));
 							
-							dataSource.get(pos).models.get(0).addTransform(modelTransform);
+							//dataSource.get(pos).models.get(0).addTransform(modelTransform);
+							
+							dataSource.get(pos).models.get(0).getTransforms().remove(0);
+							
+							dataSource.get(pos).models.get(0).getTransforms().add(modelTransform);
 							
 							//gere les exceptions
 							dialog.dismiss();

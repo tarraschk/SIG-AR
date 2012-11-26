@@ -101,19 +101,16 @@ public class SigarDBPostgreSQL extends Activity {
 		//TODO tester la connectivity avant de lancr les requete
 
 
-		// marche vraiment as :(
-		if(((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){
-			buildAlertMessageNoNetwork();
-		}else{
-			new PGSQLConnection().execute();
-		}
+		
+		new PGSQLConnection().execute();
+		
 
 	}
 	/**
 	 * Show alert message to manage connectivity. 
 	 * Detected if you are connected to network and allow you to activated it if necessary.
 	 */
-	private void buildAlertMessageNoNetwork() {
+	/*private void buildAlertMessageNoNetwork() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("Your Network seems to be disabled, you must enable it if you wnat download new scenes")
 		.setCancelable(false)
@@ -135,13 +132,13 @@ public class SigarDBPostgreSQL extends Activity {
 				/*Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
 				intent.putExtra("GPSAlert",false);
 				startActivity(intent);
-				finish();*/
+				finish();
 			}
 		});
 		final AlertDialog alert = builder.create();
 		alert.show();	
 
-	}
+	}*/
 
 	/**
 	 * Method call when you goback on PGSQLManagzr
@@ -151,9 +148,7 @@ public class SigarDBPostgreSQL extends Activity {
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
-		if( ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){
-			buildAlertMessageNoNetwork();
-		}
+		
 
 	}
 

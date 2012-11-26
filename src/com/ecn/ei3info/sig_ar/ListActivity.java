@@ -8,6 +8,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -28,16 +30,27 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 
 	protected SceneArrayAdapter SAA;
 	protected ListView lv ;
+	protected ImageButton addButton;
 
 	@Override
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		//automatic sleep mode deactivated
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
+		//Set the UI layout
 		setContentView(R.layout.activity_list);
-		//  setListAdapter(new SceneArrayAdapter(this, MOBILE_OS));
+		
+		
+		addButton= (ImageButton) this.findViewById(R.id.addButton);
+		
+		if (((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){
+			addButton.setEnabled(false);
+		}else{
+			addButton.setEnabled(true);
+		}
 
+		
+		
 		SAA=new SceneArrayAdapter(this, R.layout.list_scene, DataManager.getInstance(false).getSceneList2());
 
 		lv = (ListView) findViewById(R.id.listView1);

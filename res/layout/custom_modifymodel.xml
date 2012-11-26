@@ -100,7 +100,7 @@
             android:layout_width="0dip"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Rotation Y:"
+            android:text="Rot Y:"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </TableRow>

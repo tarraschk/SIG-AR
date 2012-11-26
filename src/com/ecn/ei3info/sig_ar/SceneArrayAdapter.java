@@ -114,13 +114,13 @@ public class SceneArrayAdapter extends BaseAdapter{
 					altitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).location.getAltitude()));
 					
 					final EditText scalex= (EditText) dialog.findViewById(R.id.scalex);
-					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getX()));
+					//scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getX()));
 					
-					final EditText scaley= (EditText) dialog.findViewById(R.id.scalex);
-					scaley.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getY()));
+					final EditText scaley= (EditText) dialog.findViewById(R.id.scaley);
+					//scaley.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getY()));
 					
-					final EditText scalez= (EditText) dialog.findViewById(R.id.scalex);
-					scalez.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getZ()));
+					final EditText scalez= (EditText) dialog.findViewById(R.id.scalez);
+					//scalez.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getZ()));
 					
 					
 					Button okButton = (Button) dialog.findViewById(R.id.ok);

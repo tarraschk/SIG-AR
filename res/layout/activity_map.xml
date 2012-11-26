@@ -52,10 +52,57 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:contentDescription="@string/map_modification"
-
             android:src="@drawable/action_settings" />
-        
     </LinearLayout>
+
+    
+    		 
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="end">
+        
+
+        <ImageButton
+        	android:id="@+id/button_up"
+	        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	        android:onClick="onPositionUp"
+            android:src="@drawable/action_up" 
+		 />
+            
+        <ImageButton
+        	android:id="@+id/button_left"
+	        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           	android:layout_below="@id/button_up"
+           	android:layout_alignParentLeft="true"
+	        android:onClick="onPositionLeft"
+            android:src="@drawable/action_left" 
+		 />
+        
+         <ImageButton
+        	android:id="@+id/button_right"
+	        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:onClick="onPositionRight"
+            android:src="@drawable/action_right" 
+		 />
+
+        <ImageButton
+        	android:id="@+id/button_down"
+	        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_below="@id/button_left"
+            android:layout_centerHorizontal="true"
+	        android:onClick="onPositionDown"
+            android:src="@drawable/action_down" 
+		 />
+         
+                 
+	</RelativeLayout>
+    
 
     <ImageButton
         android:layout_width="wrap_content"

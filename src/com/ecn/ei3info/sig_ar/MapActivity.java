@@ -272,4 +272,33 @@ public class MapActivity extends OAMapComponentBase{
 		
 	}
 	
+	
+	
+	
+	public void onPositionUp(View view){
+		double lat=0;
+		double lng=0;
+		// latitude augmente
+		// ajouter un "booléen" différenciant : modif position, modèle ou rien du tout (boutons cachés)
+		if(getSensorManager().isMockLocationEnabled())
+			getSensorManager().disableMockLocation();
+		else
+			getSensorManager().enableMockLocation(lat, lng);
+		
+	}
+
+	public void onPositionDown(View view){
+		// latitude diminue
+	}
+	
+	public void onPositionLeft(View view){
+		// longitude augmente
+	}
+	
+	public void onPositionRight(View view){
+		// longitude diminue
+	}
+	
+
+	
 }

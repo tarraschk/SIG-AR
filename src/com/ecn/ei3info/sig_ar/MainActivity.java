@@ -19,75 +19,112 @@ import android.widget.Toast;
 
 //TODO Comment
 //TODO Delete menu bar/tablette
+
+/**
+ * Main activity is activated after splashscreen. Show AR view with old selected scene. 
+ * @author bastienmarichalragot
+ *	@version 1
+ */
 @TargetApi(16)
 public class MainActivity extends OAARComponentBase {
-	
+
 	public static int options=0x01;
-	protected Boolean GPSAlert;
-	
+	public static Boolean GPSAlert=false;
+	/**
+	 *  Called when the activity is first created. 
+	 *  
+	 */
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.GPSAlert = getIntent().getBooleanExtra("GPSAlert", false);
-        //getActionBar().hide();
-        // modifications 
-        final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
-	    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) && GPSAlert==false ){
-	       buildAlertMessageNoGps();
-	    }
-	    final ConnectivityManager manager1 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-	    if( manager1.getActiveNetworkInfo()==null){
-	    	buildAlertMessageNoNetwork();
-	    }
-    }
-   	
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		//this.GPSAlert = getIntent().getBooleanExtra("GPSAlert", false);
+		//getActionBar().hide();
+		// modifications 
+		final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+		if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) && GPSAlert==false ){
+			buildAlertMessageNoGps();
+		}
+		final ConnectivityManager manager1 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		if( manager1.getActiveNetworkInfo()==null){
+			buildAlertMessageNoNetwork();
+		}
+	}
+	/**
+	 * Show alert message to manage GPS positioning. 
+	 * Detected if your GPS is activated and allow you to switch on GPS Positioning if is necessary.
+	 */
 	private void buildAlertMessageNoGps(){
-	    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	    builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
-	           .setCancelable(false)
-	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-	               public void onClick(final DialogInterface dialog, final int id) {
-	                   startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-	               }
-	           })
-	           //TODO Centrer les textes
-	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
-	               public void onClick(final DialogInterface dialog, final int id) {
-	                    dialog.cancel();
-	                    GPSAlert=true;
-	               }
-	           });
-	    final AlertDialog alert = builder.create();
-	    alert.show();
-	 }
-	
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		//LayoutInflater inflater = this.getLayoutInflater();
+		builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+		.setCancelable(false)
+		//.setView(inflater.inflate(R.layout.dialog_custom, null))
+		.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			public void onClick(final DialogInterface dialog, final int id) {
+				dialog.cancel();
+				GPSAlert=true;
+			}
+		})
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(final DialogInterface dialog, final int id) {
+				startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+			}
+		});
+		final AlertDialog alert = builder.create();
+
+		/*   Button button = (Button) findViewById(R.id.button1);
+
+		// add button listener
+		button.setOnClickListener(new OnClickListener() {
+
+		  @Override
+		  public void onClick(View arg0) {
+              startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+              }
+		  });*/
+
+		/*
+		 * 
+
+		 */
+		//TODO Centrer les textes
+
+		alert.show();
+	}
+	/**
+	 * Show alert message to manage connectivity. 
+	 * Detected if you are connected to network and allow you to activated it if necessary.
+	 */
 	private void buildAlertMessageNoNetwork() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	    builder.setMessage("Your Network seems to be disabled, do you want to enable it?")
-	           .setCancelable(false)
-	           .setPositiveButton("WIFI", new DialogInterface.OnClickListener() {
-	               public void onClick(final DialogInterface dialog, final int id) {
-	                   startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-	               }
-		           //TODO Centrer les textes
+		builder.setMessage("Your Network seems to be disabled, do you want to enable it?")
+		.setCancelable(false)
+		.setPositiveButton("WIFI", new DialogInterface.OnClickListener() {
+			public void onClick(final DialogInterface dialog, final int id) {
+				startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+			}
+			//TODO Centrer les textes
 
-	           })
-	           .setNeutralButton("DataRoaming", new DialogInterface.OnClickListener() {
-	               public void onClick(final DialogInterface dialog, final int id) {
-	                   startActivity(new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS));
-	               }
-	           })
-	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
-	               public void onClick(final DialogInterface dialog, final int id) {
-	            	   Toast.makeText(MainActivity.this, "No data will be downloaded", Toast.LENGTH_SHORT).show();
-	            	   dialog.cancel();
-	               }
-	           });
-	    final AlertDialog alert = builder.create();
-	    alert.show();
+		})
+		.setNeutralButton("DataRoaming", new DialogInterface.OnClickListener() {
+			public void onClick(final DialogInterface dialog, final int id) {
+				startActivity(new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS));
+			}
+		})
+		.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			public void onClick(final DialogInterface dialog, final int id) {
+				Toast.makeText(MainActivity.this, "No data will be downloaded", Toast.LENGTH_SHORT).show();
+				dialog.cancel();
+			}
+		});
+		final AlertDialog alert = builder.create();
+		alert.show();
 	}
-	
-	
+	/**
+	 * Setup DataManager: load model data and activate scenes.
+	 * this method simply use the getInstance of DataManager.
+	 * @see DataManager
+	 */
 	@Override
 	protected OADataManager setupDataManager() {
 		// set custom working path instead of using the default path - "OutdoorAR"
@@ -99,10 +136,9 @@ public class MainActivity extends OAARComponentBase {
 		}
 		return AR;// DataManager.getInstance();*/
 		return DataManager.getInstance(true);
-	}
-	
-	
-	/* (non-Javadoc)
+	}	
+	/**
+	 * Set up options to the AR Layout
 	 * @see com.hitlabnz.outdoorar.api.OAARComponentBase#setupOptions()
 	 */
 	@Override
@@ -110,19 +146,18 @@ public class MainActivity extends OAARComponentBase {
 		// TODO Auto-generated method stub
 		return ( options);
 	}
-
+	/**
+	 * 
+	 */
 	public void updateOptions(){
 		setupOptions();
 	}
-	
 	/**
 	 * @return the options
 	 */
 	public static int getOptions() {
 		return options;
 	}
-
-	
 	/**
 	 * @param options the options to set
 	 */
@@ -130,88 +165,95 @@ public class MainActivity extends OAARComponentBase {
 		MainActivity.options = options;
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onBackPressed()
-	 */
-	@Override
-	public void onBackPressed() {
-	    new AlertDialog.Builder(this)
-	           .setMessage("Are you sure you want to exit?")
-	           .setCancelable(false)
-	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-	               public void onClick(DialogInterface dialog, int id) {
-	                   finish();
-	               }
-	           })
-	           	           //TODO Centrer les textes
 
-	           .setNegativeButton("No", null)
-	           .show();
-	}
 
-  /*  @Override
+	/*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
-   */
-   
-    //TODO Option d'affichage du compas et de la grille
+	 */
+
+	//TODO Option d'affichage du compas et de la grille
 	//TODO Modifier Interface
-    @Override
+
+	/**
+	 * Set up UI Layout for AR View.
+	 * Add ControlButton
+	 */
+	@Override
 	protected void setupUILayout(View arView) {		
 		// set the plain AR view first
 		setContentView(arView);
-		
+
 		// then load and add the custom UI on top of the AR view
 		LayoutInflater controlInflater = LayoutInflater.from(getBaseContext());
 		RelativeLayout sampleUILayout = (RelativeLayout)controlInflater.inflate(R.layout.activity_main, null);
 		addContentView(sampleUILayout, 
-			new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-	}
-    /**
-     * Go to Map View
-     * @param View
-     */
-   // @TargetApi(16)
+				new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+	} 
+	/**
+	 * Go to Map View
+	 * @param View
+	 */
+	// @TargetApi(16)
 	public void onMapActivity(View View){
-    	Intent intent = new Intent(this, MapActivity.class);
-    //	  ActivityOptions options = ActivityOptions.makeScaleUpAnimation(View, 0,
-    	//	      0, View.getWidth(), View.getHeight());
-    	startActivity(intent);// , options.toBundle());
-    }
-    /**
-     * Go to List View
-     * @param View
-     */
-    public void onListActivity(View View){
-    	Intent intent = new Intent(this, ListActivity.class);
-    	startActivity(intent);
-    }
-    /**
-     * Go to Settings
-     * @param View
-     */
-    public void onSettingsActivity(View View){
-    	Intent intent = new Intent(this, SettingsActivity.class);
-    	startActivity(intent);
-    }
-    /**
-     * Quit the application
-     * @param View
-     */
-    public void onQuit(View View){
-    	 new AlertDialog.Builder(this)
-         .setMessage("Are you sure you want to exit?")
-         .setCancelable(false)
-         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-             public void onClick(DialogInterface dialog, int id) {
-                 //TODO save data to xml (copy to back button)
-            	 finish();
-             }
-         })
-         .setNegativeButton("No", null)
-         .show();
-    }
-    
+		Intent intent = new Intent(this, MapActivity.class);
+		//	  ActivityOptions options = ActivityOptions.makeScaleUpAnimation(View, 0,
+		//	      0, View.getWidth(), View.getHeight());
+		startActivity(intent);// , options.toBundle());
+	}
+	/**
+	 * Go to List View
+	 * @param View
+	 */
+	public void onListActivity(View View){
+		Intent intent = new Intent(this, ListActivity.class);
+		startActivity(intent);
+	}
+	/**
+	 * Go to Settings
+	 * @param View
+	 */
+	public void onSettingsActivity(View View){
+		Intent intent = new Intent(this, SettingsActivity.class);
+		startActivity(intent);
+	}
+	/**
+	 * Go back and quit application
+	 * @see android.app.Activity#onBackPressed()
+	 */
+	@Override
+	public void onBackPressed() {
+		new AlertDialog.Builder(this)
+		.setMessage("Are you sure you want to exit?")
+		.setCancelable(false)
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				finish();
+			}
+		})
+		//TODO Centrer les textes
+
+		.setNegativeButton("No", null)
+		.show();
+	}
+	/**
+	 * Quit the application
+	 * @param View
+	 */
+	public void onQuit(View View){
+		new AlertDialog.Builder(this)
+		.setMessage("Are you sure you want to exit?")
+		.setCancelable(false)
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				//TODO save data to xml (copy to back button)
+				finish();
+			}
+		})
+		.setNegativeButton("No", null)
+		.show();
+	}
+
 }

@@ -4,14 +4,23 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.hitlabnz.androidar.data.Coordinate;
+import com.hitlabnz.androidar.data.representation.model.Transform;
+
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,7 +50,7 @@ public class SceneArrayAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public View getView(int pos, View convertView, ViewGroup parentView){
+	public View getView(final int pos, View convertView, ViewGroup parentView){
 		View view = null;
 		if(convertView == null){
 			//LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -53,7 +62,8 @@ public class SceneArrayAdapter extends BaseAdapter{
 			textView.setText(data);
 
 			ImageView imageView = (ImageView) view.findViewById(R.id.icons);
-			//imageView.setImageResource(dataSource);
+			Drawable icon= dataSource.get(pos).getIcon();
+			imageView.setImageDrawable(icon);
 			
 			TextView textView2 = (TextView)view.findViewById(R.id.scene_category);
 			String data2=dataSource.get(pos).getCategory();
@@ -66,26 +76,122 @@ public class SceneArrayAdapter extends BaseAdapter{
 			TextView textView_longitude = (TextView)view.findViewById(R.id.scene_longitude);
 			data3=dataSource.get(pos).getLongitude();
 			textView_longitude.setText(data3+"");
-						
-			
+
+
 			final CheckBox cbox= (CheckBox) view.findViewById(R.id.checkBox1);
 			cbox.setChecked( ((Scene) dataSource.get(pos)).isActivated());
 			cbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-	            @Override
-	            public void onCheckedChanged(CompoundButton buttonView,
-	                boolean isChecked) {
-	               Scene sc = (Scene) cbox.getTag();
-	              sc.setActivated(buttonView.isChecked());
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView,
+						boolean isChecked) {
+					Scene sc = (Scene) cbox.getTag();
+					sc.setActivated(buttonView.isChecked());
 
-	            }
-	          });
+				}
+			});
 			cbox.setTag(dataSource.get(pos));
+			
+			ImageButton editButton= (ImageButton) view.findViewById(R.id.button_modify);
+			editButton.setOnClickListener(new OnClickListener(){
+				public void onClick(View arg0){
+					
+					final Dialog dialog = new Dialog(arg0.getContext());
+					dialog.setContentView(R.layout.custom_modifymodel);
+					dialog.setTitle("Modify your model");
+
+					// set the custom dialog components - text, image and button
+					TextView text = (TextView) dialog.findViewById(R.id.modelname);
+					text.setText(dataSource.get(pos).getName());
+								
+					final EditText latitude= (EditText) dialog.findViewById(R.id.latitude); 
+					latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLatitude()));
+					
+					final EditText longitude= (EditText) dialog.findViewById(R.id.longitude); 
+					longitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLongitude()));
+					
+					final EditText altitude= (EditText) dialog.findViewById(R.id.altitude); 
+					altitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).location.getAltitude()));
+					
+					final EditText scalex= (EditText) dialog.findViewById(R.id.scalex);
+					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getX()));
+					
+					final EditText scaley= (EditText) dialog.findViewById(R.id.scaley);
+					scaley.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getY()));
+					
+					final EditText scalez= (EditText) dialog.findViewById(R.id.scalez);
+					scalez.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getZ()));
+					
+					final EditText rotx= (EditText) dialog.findViewById(R.id.rotx);
+					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getX()));
+					
+					final EditText roty= (EditText) dialog.findViewById(R.id.roty);
+					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getY()));
+					
+					final EditText rotz= (EditText) dialog.findViewById(R.id.rotz);
+					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getZ()));
+					
+					
+					Button okButton = (Button) dialog.findViewById(R.id.ok);
+					// if button is clicked, close the custom dialog
+					okButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							
+							//TODO completer les donnée modifées
+							DataManager.singletonInstance.getSceneList2().get(pos).setLatitude(Double.parseDouble(latitude.getText().toString()));
+							DataManager.singletonInstance.getSceneList2().get(pos).setLongitude(Double.parseDouble(longitude.getText().toString()));
+							DataManager.singletonInstance.getSceneList2().get(pos).setAltitude(Double.parseDouble(altitude.getText().toString()));
+							
+							float x = Float.valueOf(scalex.getText().toString().trim()).floatValue();
+							float y = Float.valueOf(scaley.getText().toString().trim()).floatValue();
+							float z = Float.valueOf(scalez.getText().toString().trim()).floatValue();;
+							Transform modelTransform = new Transform();
+							modelTransform.setScale(new Coordinate(x,y,z));
+							
+							
+							float rx = Float.valueOf(rotx.getText().toString().trim()).floatValue();
+							float ry = Float.valueOf(roty.getText().toString().trim()).floatValue();
+							float rz = Float.valueOf(rotz.getText().toString().trim()).floatValue();;
+							
+							modelTransform.setRotation(new Coordinate(rx,ry,rz));
+							
+
+							//dataSource.get(pos).models.get(0).addTransform(modelTransform);
+							
+							dataSource.get(pos).models.get(0).getTransforms().remove(0);
+							
+							dataSource.get(pos).models.get(0).getTransforms().add(modelTransform);
+
+							dataSource.get(pos).models.get(0).addTransform(modelTransform);
+
+							
+							//gere les exceptions
+							dialog.dismiss();
+						}
+					});
+
+					Button cancelButton = (Button) dialog.findViewById(R.id.cancel);
+					// if button is clicked, close the custom dialog
+					cancelButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+						}
+					});
+					
+					dialog.show();
+					
+					
+				}
+			} );
+			
+			
 		}else{
 			view = convertView;
 		}
 		return view;
-		}
+	}
 	
 	public void sortData(String string){
 		if(string.equals("Name")){

@@ -57,5 +57,27 @@
         android:layout_toLeftOf="@+id/sort_spinner"
         android:text="Sort by:"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="Add/Delete" 
+        android:onClick="onManageModel"
+        />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="33dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:contentDescription="AMODIFIEr"
+        android:onClick="onAddModelPGSQL"
+        android:src="@drawable/content_new" />
     
 </RelativeLayout>

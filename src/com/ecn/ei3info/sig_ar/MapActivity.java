@@ -1,14 +1,22 @@
 package com.ecn.ei3info.sig_ar;
+/**
+ *  
+ *
+ */
 
-
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hitlabnz.outdoorar.api.OAMapComponentBase;
@@ -16,13 +24,24 @@ import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
 //TODO add control
-//TODO Add Back button
 //TODO recalculer la position ˆ l'ouverture de l'activitŽ
-
+/**
+ * 
+ * 
+ * @author bastienmarichalragot
+ * @version  1
+ */
 public class MapActivity extends OAMapComponentBase{
 	protected boolean plot=true;
+	protected static boolean toogler = false;
+	View buttonToogle ;
+	
+	/**
+	 * Save your Google Map API Key.
+	 */
 	@Override
 	protected String setupGoogleMapApiKey() {
+		//TODO delete this key before finish project
 		return "0-uPrjI4lrnXjC_4g9gP5Scy7hauxOZEVlkGBvw";
 	}
 	
@@ -54,6 +73,8 @@ public class MapActivity extends OAMapComponentBase{
 	
 	public void onCreate(Bundle bundle) {
 		  super.onCreate(bundle);
+		  buttonToogle = (View)findViewById(R.id.button_toggler);
+		  		  
 		  //automatic sleep mode deactivated
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
@@ -93,29 +114,48 @@ public class MapActivity extends OAMapComponentBase{
 		}
 	}
 	
+	@Override
+	protected void onSceneSelected(OAScene scene) {
+		super.onSceneSelected(scene);
+		Toast.makeText(this, "Votre scene est à la longitude" + scene.location.getLongitude() + "et à la latitude" + scene.location.getLatitude()  , Toast.LENGTH_LONG).show();
+	
+	}
+	/**
+	 * Method associate to imageButton to refocus the map on your position.
+	 * @param view
+	 */
 	public void onCenterLocation(View view) {
-		centerToUserLocation();
-		//TODO Add toast indication of centering
-			
+		centerToUserLocation();		
+		Toast.makeText(this, "Map refocused on your position.", Toast.LENGTH_LONG).show();
+
+		/// TODO Supprimer au nettoyage 
+		/*
 		Log.w("myApp", Integer.toString(this.getDataManager().getSceneCount()));
 		Log.w("myApp", this.getDataManager().getSceneList().get(0).name);
 		Log.w("myApp", Integer.toString(this.getDataManager().getSceneList().get(0).getId()));
-		
+		*/
 		//this.getDataManager().getSceneList().get(0).addExtraAttrib("a", "true");
 		//Log.w("myApp", this.getDataManager().getSceneList().get(0).getExtraAttrib("a"));
 		
 	}
-	
+	/**
+	 * Method called when you press on GoBackButton. 
+	 * Quit mapActivity and return to AR view.
+	 * @param view
+	 */
 	public void onGoBack(View view) {
 		super.onBackPressed();
 		this.plot=false;
 	}	
-	
+	/**
+	 * Method called when you press on BackButton of the tablet. 
+	 * Quit mapActivity and return to AR view.
+	 */
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 		Intent intent = new Intent(MapActivity.this, MainActivity.class);
-		intent.putExtra("GPSAlert", true); 
+		//intent.putExtra("GPSAlert", true); 
 		startActivity(intent);
 	}
 	
@@ -134,6 +174,8 @@ public class MapActivity extends OAMapComponentBase{
 		}
 	
 	}*/
+	
+	
 
 	boolean modify = false;
 	public void onMapModification(View view) {
@@ -164,4 +206,99 @@ public class MapActivity extends OAMapComponentBase{
 
 		modify=!modify;
 	}
+
+	//Toogle button view
+	public void onDisplayButtons(View view) {
+		toogler = !toogler;
+
+		if(toogler)
+			buttonToogle.setVisibility(View.VISIBLE);
+		else
+			buttonToogle.setVisibility(View.GONE);
+	}
+
+	
+	 
+	public void onEditModel(View view){
+		
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.custom_modifymodel);
+		dialog.setTitle("Modify your model");
+
+		// set the custom dialog components - text, image and button
+		TextView text = (TextView) dialog.findViewById(R.id.modelname);
+		text.setText(DataManager.singletonInstance.getSceneList().get(0).getName());
+	
+		
+		//NumberPicker latitude=(NumberPicker) dialog.findViewById(R.id.numberPickerLatitude);
+		//latitude.setDisplayedValues(DataManager.singletonInstance.getSceneList().get(0).getLatitude());
+		
+		final EditText latitude= (EditText) dialog.findViewById(R.id.latitude); 
+		latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLatitude()));
+		
+		final EditText longitude= (EditText) dialog.findViewById(R.id.longitude); 
+		longitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLongitude()));
+		
+		final EditText altitude= (EditText) dialog.findViewById(R.id.altitude); 
+		altitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).location.getAltitude()));
+		
+		Button okButton = (Button) dialog.findViewById(R.id.ok);
+		// if button is clicked, close the custom dialog
+		okButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				//TODO completer les donnŽe modifŽes
+				DataManager.singletonInstance.getSceneList2().get(0).setLatitude(Double.parseDouble(latitude.getText().toString()));
+				DataManager.singletonInstance.getSceneList2().get(0).setLongitude(Double.parseDouble(longitude.getText().toString()));
+				DataManager.singletonInstance.getSceneList2().get(0).setAltitude(Double.parseDouble(altitude.getText().toString()));
+				
+				//gere les exceptions
+				dialog.dismiss();
+			}
+		});
+
+		Button cancelButton = (Button) dialog.findViewById(R.id.cancel);
+		// if button is clicked, close the custom dialog
+		cancelButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		
+		dialog.show();
+		
+		
+	}
+	
+	
+	
+	
+	public void onPositionUp(View view){
+		double lat=0;
+		double lng=0;
+		// latitude augmente
+		// ajouter un "booléen" différenciant : modif position, modèle ou rien du tout (boutons cachés)
+		if(getSensorManager().isMockLocationEnabled())
+			getSensorManager().disableMockLocation();
+		else
+			getSensorManager().enableMockLocation(lat, lng);
+		
+	}
+
+	public void onPositionDown(View view){
+		// latitude diminue
+	}
+	
+	public void onPositionLeft(View view){
+		// longitude augmente
+	}
+	
+	public void onPositionRight(View view){
+		// longitude diminue
+	}
+	
+
+	
 }

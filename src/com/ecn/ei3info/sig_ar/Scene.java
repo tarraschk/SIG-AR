@@ -2,6 +2,7 @@ package com.ecn.ei3info.sig_ar;
 
 import java.util.List;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.hitlabnz.androidar.data.ModelData;
@@ -20,7 +21,7 @@ public class Scene extends OAScene implements Comparable<Scene>{
 	public boolean activated;
 	public String modelVisible;
 
-	//TODO ajouter les informations supplémentaires des scènes.
+	//TODO ajouter les informations suppl≈Ωmentaires des scÔøΩnes.
 	
 	/**
 	 * 
@@ -129,7 +130,42 @@ public class Scene extends OAScene implements Comparable<Scene>{
 
 
 	}
+	/**
+	 * Set the latitude of the scene
+	 * @param latitude
+	 */
+	public void setLatitude(double latitude){
+		this.location.setLatitude(latitude);
+	}
+	/**
+	 * Set the longitude of the scene
+	 * @param longitude
+	 */
+	public void setLongitude(double longitude) {
+		this.location.setLongitude(longitude);
+	}
 	
+	public void setAltitude(double altitude) {
+		this.location.setAltitude(altitude);
+	}
+	
+	public Drawable getIcon(){
+		return DataManager.getInstance(false).getIcon(category);
+	}
+	
+	
+	public double getDistance(double latitude, double longitude) {
+		//equatorial radius of Earth. No precision necessary, we'll use the distance to compare distances
+		double r=6371000.0 ;
+		double latitudeScene = this.location.getLatitude();
+		double longitudeScene = this.location.getLongitude();
+		double theta = longitude - longitudeScene;
+		double dist = Math.sin(Math.toRadians(latitudeScene)) * Math.sin(Math.toRadians(latitude)) + Math.cos(Math.toRadians(latitudeScene)) * Math.cos(Math.toRadians(latitude)) * Math.cos(Math.toRadians(theta));
+        dist = Math.abs(Math.round(Math.toDegrees(Math.acos(dist)) * 2*Math.PI * r /360 ));
+		return dist;
+	}
+	
+	// public void setScale()
 
 	public int compareTo(Scene another) {
 		

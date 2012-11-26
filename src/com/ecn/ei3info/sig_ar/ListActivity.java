@@ -25,10 +25,10 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 	//TODO gestion des données
 	//TODO style de la liste
 	//TODO Moteur de recherche
-	
+
 	protected SceneArrayAdapter SAA;
 	protected ListView lv ;
-	
+
 	@Override
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
@@ -39,7 +39,7 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		//  setListAdapter(new SceneArrayAdapter(this, MOBILE_OS));
 
 		SAA=new SceneArrayAdapter(this, R.layout.list_scene, DataManager.getInstance(false).getSceneList2());
-		
+
 		lv = (ListView) findViewById(R.id.listView1);
 		lv.setAdapter(SAA);
 
@@ -51,46 +51,46 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
-		
+
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-	    SearchView searchView = (SearchView) findViewById(R.id.searchView1);
-	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-	    searchView.setBackgroundColor(Color.RED);
-	    
-		 Intent intent = getIntent();
-		    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-		      String query = intent.getStringExtra(SearchManager.QUERY);
-		      doMySearch(query);
-		    }
-		
-		
-		
+		SearchView searchView = (SearchView) findViewById(R.id.searchView1);
+		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+		searchView.setBackgroundColor(Color.RED);
+
+		Intent intent = getIntent();
+		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+			String query = intent.getStringExtra(SearchManager.QUERY);
+			doMySearch(query);
+		}
+
+
+
 	}
-	
-	
+
+
 	public void doMySearch(String query){
 
 		List<Scene> listResult = new ArrayList<Scene>();
-		
+
 		for (Scene c:DataManager.getInstance(false).getSceneList2()){
 			if (c.getName().startsWith(query)){
 				listResult.add(c);
 			}
 		}
-		
+
 		SceneArrayAdapter SAAsearchresult=new SceneArrayAdapter(this, R.layout.list_scene,listResult );
-		
-	 	lv.setAdapter(SAAsearchresult);
+
+		lv.setAdapter(SAAsearchresult);
 	}
-	
-	
-	
-		public boolean onCreateOptionsMenu(Menu menu) {
-		  
+
+
+
+	public boolean onCreateOptionsMenu(Menu menu) {
+
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-	    SearchView searchView = (SearchView) findViewById(R.id.searchView1);
-	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-	  //  searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+		SearchView searchView = (SearchView) findViewById(R.id.searchView1);
+		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+		//  searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
 
 		/*Intent intent = getIntent();
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -98,47 +98,47 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
    	   Toast.makeText(ListActivity.this, query, Toast.LENGTH_SHORT).show();
 	      //  doMySearch(query);
 	    }*/
-	    return true;
-	    
-	    
-           
-	    
+		return true;
 
 
-	     /*  if(null!=searchManager ) {   
+
+
+
+
+		/*  if(null!=searchManager ) {   
 	         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 	        }
 
-*/	    
-		
-	}
-	
-	 public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-	        // An item was selected. You can retrieve the selected item using
-	        // parent.getItemAtPosition(pos)
-		 	SAA.sortData(parent.getItemAtPosition(pos).toString());
-		 	lv.setAdapter(SAA);
-		 	
-	    }
+		 */	    
 
-	    public void onNothingSelected(AdapterView<?> parent) {
-	        // Another interface callback
-	    }
-	
-	
-	
+	}
+
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		// An item was selected. You can retrieve the selected item using
+		// parent.getItemAtPosition(pos)
+		SAA.sortData(parent.getItemAtPosition(pos).toString());
+		lv.setAdapter(SAA);
+
+	}
+
+	public void onNothingSelected(AdapterView<?> parent) {
+		// Another interface callback
+	}
+
+
+
 	/*protected void onListItemClick(ListView l, View v, int position, long id){
 		super.onListItemClick(l, v, position, id);
 		selected=position;				
 	}*/
-	
-	
+
+
 	//@Override
-	
+
 	//protected void setupUILayout(View listView) {
 
-		// create custom UI layout with a title text
-		/*LinearLayout sampleUIlayout = new LinearLayout(this);
+	// create custom UI layout with a title text
+	/*LinearLayout sampleUIlayout = new LinearLayout(this);
 		sampleUIlayout.setOrientation(LinearLayout.VERTICAL);
 		TextView titleText = new TextView(this);
 		titleText.setText("List");
@@ -150,26 +150,42 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 
 		// set the custom UI layout
 		setContentView(sampleUIlayout);
-		
-		
+
+
 		LayoutInflater controlInflater = LayoutInflater.from(getBaseContext());
 		RelativeLayout sampleUILayout = (RelativeLayout)controlInflater.inflate(R.layout.activity_list, null);
 		addContentView(sampleUILayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));*/
-	   
- 
-	
+
+
+
 
 	/* (non-Javadoc)
 	 * @see com.hitlabnz.outdoorar.api.OAListComponentBase#setupDataManager()
 	 */
-/*	@Override
+	/*	@Override
 	protected OADataManager setupDataManager() {
 		// TODO Auto-generated method stub
 		return DataManager.getInstance(false);
 	}*/	
-	
+	/**
+	 * Navigation button, go back to MainActivity
+	 * @param view
+	 */
 	public void onGoBack(View view) {
 		super.onBackPressed();
 	}
 
+	/**
+	 * Start ManageModelActivity, screen to add or delete data model resources
+	 * @param View
+	 */
+	public void onManageModel(View View){
+		Intent intent = new Intent(this, ManageModelActivity.class);
+		startActivity(intent);
+	}
+
+	public void onAddModelPGSQL(View view){
+		Intent intent = new Intent(this, SigarDBPostgreSQL.class);
+		startActivity(intent);
+	}
 }

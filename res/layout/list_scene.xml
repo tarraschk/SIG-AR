@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:gravity="end|fill_horizontal"
     android:padding="5dp" >
+    
+
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -13,6 +15,19 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true" />
 
+    <ImageButton
+        android:id="@+id/button_modify"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/checkBox1"
+        android:scaleType="fitXY"
+        android:src="@drawable/content_edit" 
+
+ />
+    
+    
     <TextView
         android:id="@+id/scene_category"
         android:layout_width="wrap_content"
@@ -20,7 +35,7 @@
         android:layout_alignBaseline="@+id/checkBox1"
         android:layout_alignBottom="@+id/checkBox1"
         android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/checkBox1"
+        android:layout_toLeftOf="@+id/button_modify"
         android:text="@string/label_category"
         android:textSize="30px" />
     

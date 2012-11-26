@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" >
+    
+            <TextView
+                android:id="@+id/titlemodelname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Model name:" />
+
+            <TextView
+                android:id="@+id/modelname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/titlemodifymodel"
+                android:layout_alignTop="@+id/titlemodelname"
+                android:layout_toRightOf="@+id/titlemodelname"
+                android:text="displayedmodelname" />
+        
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/titlemodelname">
+
+    <TableRow>
+        <TextView
+            android:id="@+id/titlelongitude"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Longitude:" />
+        <TextView
+            android:id="@+id/titlescalex"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Scale X:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/titlerotx"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Rot X:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        </TableRow>
+        
+    	<TableRow >
+    	    <EditText
+            android:id="@+id/longitude"
+            android:layout_height="wrap_content"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+            <EditText
+            android:id="@+id/scalex"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+            <EditText
+            android:id="@+id/rotx"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+    	</TableRow>
+        
+        <TableRow>
+        <TextView
+            android:id="@+id/titlelatitude"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Latitude:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/titlescaley"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Scale Y:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/titleroty"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Rot Y:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        </TableRow>
+        
+        <TableRow >
+            <EditText
+            android:id="@+id/latitude"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+            <EditText
+            android:id="@+id/scaley"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+            <EditText
+            android:id="@+id/roty"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+        </TableRow>
+        
+        <TableRow >
+        <TextView
+            android:id="@+id/titlealtitude"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Altitude:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+       	<TextView
+            android:id="@+id/titlescalez"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Scale Z:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+       	<TextView
+            android:id="@+id/titlerotz"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Rotation Z:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    	</TableRow>
+    	
+        <TableRow>
+            <EditText
+            android:id="@+id/altitude"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+            <EditText
+            android:id="@+id/scalez"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+            <EditText
+            android:id="@+id/rotz"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+        </TableRow>
+        
+        
+    </TableLayout>
+    
+    		
+
+    	<Button
+        	android:id="@+id/cancel"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_below="@+id/tableLayout1"
+        	android:layout_alignRight="@+id/tableLayout1"
+        	android:text="Cancel" />
+    	<Button
+        	android:id="@+id/ok"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignTop="@+id/cancel"
+        	android:layout_toLeftOf="@+id/cancel"
+        	android:text="OK" />
+    
+</RelativeLayout>

@@ -435,10 +435,10 @@ public class SigarDBPostgreSQL extends Activity {
 				" FROM scene, category, person" +
 				" WHERE scene.id_category=category.id_category AND" +
 				" scene.id_author=person.id_person AND"+
-				" scene.name_scene LIKE '%"+inputQuery.getText().toString()+"%' OR" +
+				" (scene.name_scene LIKE '%"+inputQuery.getText().toString()+"%' OR" +
 				" scene.description LIKE '%"+inputQuery.getText().toString()+"%' OR" +
 				" category.name_category LIKE '%"+inputQuery.getText().toString()+"%' OR" +
-				" person.name_person LIKE '%"+inputQuery.getText().toString()+"%';";
+				" person.name_person LIKE '%"+inputQuery.getText().toString()+"%');";
 
 		new PGSQLQuery().execute();
 

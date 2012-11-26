@@ -118,9 +118,20 @@ public class SceneArrayAdapter extends BaseAdapter{
 					
 					final EditText scaley= (EditText) dialog.findViewById(R.id.scaley);
 					//scaley.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getY()));
+					scaley.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getY()));
 					
 					final EditText scalez= (EditText) dialog.findViewById(R.id.scalez);
 					//scalez.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getZ()));
+					scalez.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getZ()));
+					
+					final EditText rotx= (EditText) dialog.findViewById(R.id.rotx);
+					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getX()));
+					
+					final EditText roty= (EditText) dialog.findViewById(R.id.roty);
+					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getY()));
+					
+					final EditText rotz= (EditText) dialog.findViewById(R.id.rotz);
+					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getZ()));
 					
 					
 					Button okButton = (Button) dialog.findViewById(R.id.ok);
@@ -139,6 +150,13 @@ public class SceneArrayAdapter extends BaseAdapter{
 							float z = Float.valueOf(scalez.getText().toString().trim()).floatValue();;
 							Transform modelTransform = new Transform();
 							modelTransform.setScale(new Coordinate(x,y,z));
+							
+							
+							float rx = Float.valueOf(rotx.getText().toString().trim()).floatValue();
+							float ry = Float.valueOf(roty.getText().toString().trim()).floatValue();
+							float rz = Float.valueOf(rotz.getText().toString().trim()).floatValue();;
+							
+							modelTransform.setRotation(new Coordinate(rx,ry,rz));
 							
 							dataSource.get(pos).models.get(0).addTransform(modelTransform);
 							

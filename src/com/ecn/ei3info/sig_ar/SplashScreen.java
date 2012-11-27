@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -40,8 +41,11 @@ public class SplashScreen extends Activity{
 		
 		DataXMLParser test= new DataXMLParser();
 		SigarDB database= new SigarDB(this);
-	    //SQLiteDatabase sqlDB = database.getWritableDatabase();
-
+	    SQLiteDatabase sqlDB = database.getWritableDatabase();
+	    
+	   /*Cursor cursor= sqlDB.query("scene", null,null, null,null, null, null);
+	   cursor.moveToFirst();
+	   Log.w("myApp",Integer.toString(cursor.getInt(1)));*/
 	    
 	    try {
 	    	DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));

@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:orientation="vertical"
-        android:visibility="visible" >
+        android:visibility="visible"
+        android:background="#40000000"
+         >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,10 +39,10 @@
    
         
         </LinearLayout>
- <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" >
+ 	<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
             
 
         <ImageButton
@@ -48,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:contentDescription="@string/map_modification"
-            android:onClick="onMapModification"
-            android:src="@drawable/action_settings" />
+            android:onClick="onAddDesactivatedScenetoMap"
+            android:src="@drawable/av_add_to_queue" />
         
         
         <ImageButton
@@ -57,16 +59,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:contentDescription="@string/map_modification"
-            android:src="@drawable/action_settings" />
-</LinearLayout>
-        <LinearLayout
-            android:id="@+id/modificationControlLayout"
-            android:layout_width="match_parent"
+            android:onClick="onEditScene"
+            android:src="@drawable/content_edit" />
+        
+        
+        <ImageButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_gravity="bottom|end"
+            android:contentDescription="@string/map_modification"
+            android:onClick="onUserPositionModification"
+            android:src="@drawable/location_place" />
+        
+	</LinearLayout>
+     <LinearLayout
+         android:id="@+id/modificationControlLayout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical" >
         
     		 
-	<RelativeLayout
+		<RelativeLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="end">

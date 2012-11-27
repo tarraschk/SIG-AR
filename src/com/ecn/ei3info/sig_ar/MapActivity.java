@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,8 +33,22 @@ import com.hitlabnz.outdoorar.data.OADataManager;
  * @version  1
  */
 public class MapActivity extends OAMapComponentBase{
+	
 	protected boolean plot=true;
 	protected static boolean toogler = false;
+	
+	protected double mockLocationLong;
+	protected double mockLocationLat;
+	protected double mockLocationAlt;
+	
+	protected static int modificationMode=0;
+	// 0 --> modification mode disable
+	// 1 --> modification user position 
+	// 2 --> modification scene
+	// 3 -->
+	
+	protected LinearLayout modificationControl;
+	
 	View buttonToogle ;
 	
 	/**
@@ -74,7 +89,11 @@ public class MapActivity extends OAMapComponentBase{
 	public void onCreate(Bundle bundle) {
 		  super.onCreate(bundle);
 		  buttonToogle = (View)findViewById(R.id.button_toggler);
-		  		  
+		  
+		  modificationControl= (LinearLayout) findViewById(R.id.modificationControlLayout);
+		 //TODO verifier cet ligne de code currentfocus???
+		  modificationControl.setVisibility(this.getCurrentFocus().GONE);
+		  
 		  //automatic sleep mode deactivated
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
@@ -175,10 +194,20 @@ public class MapActivity extends OAMapComponentBase{
 	
 	}*/
 	
-	
+
+	//Toogle button view
+	public void onDisplayButtons(View view) {
+		toogler = !toogler;
+
+		if(toogler)
+			buttonToogle.setVisibility(View.VISIBLE);
+		else
+			buttonToogle.setVisibility(View.GONE);
+	}
+
 
 	boolean modify = false;
-	public void onMapModification(View view) {
+	public void onAddDesactivatedScenetoMap(View view) {
 		if (modify){
 			this.plot=true;
 			//this.setupDataManager();
@@ -207,68 +236,23 @@ public class MapActivity extends OAMapComponentBase{
 		modify=!modify;
 	}
 
-	//Toogle button view
-	public void onDisplayButtons(View view) {
-		toogler = !toogler;
+	
+	//TODO change the xml to toggle button with custom style cf: http://www.mokasocial.com/2011/07/sexily-styled-toggle-buttons-for-android/
+	
+	public void onUserPositionModification(View view){
+		modificationMode=1;
+		modificationControl.setVisibility(view.VISIBLE);
+		
+		mockLocationLong= getSensorManager().getCurrentLocation().getLongitude();
+		mockLocationLat= getSensorManager().getCurrentLocation().getLatitude();
+		mockLocationAlt= getSensorManager().getCurrentLocation().getAltitude();
 
-		if(toogler)
-			buttonToogle.setVisibility(View.VISIBLE);
-		else
-			buttonToogle.setVisibility(View.GONE);
 	}
-
 	
-	 
-	public void onEditModel(View view){
-		
-		final Dialog dialog = new Dialog(this);
-		dialog.setContentView(R.layout.custom_modifymodel);
-		dialog.setTitle("Modify your model");
-
-		// set the custom dialog components - text, image and button
-		TextView text = (TextView) dialog.findViewById(R.id.modelname);
-		text.setText(DataManager.singletonInstance.getSceneList().get(0).getName());
 	
-		
-		//NumberPicker latitude=(NumberPicker) dialog.findViewById(R.id.numberPickerLatitude);
-		//latitude.setDisplayedValues(DataManager.singletonInstance.getSceneList().get(0).getLatitude());
-		
-		final EditText latitude= (EditText) dialog.findViewById(R.id.latitude); 
-		latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLatitude()));
-		
-		final EditText longitude= (EditText) dialog.findViewById(R.id.longitude); 
-		longitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLongitude()));
-		
-		final EditText altitude= (EditText) dialog.findViewById(R.id.altitude); 
-		altitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).location.getAltitude()));
-		
-		Button okButton = (Button) dialog.findViewById(R.id.ok);
-		// if button is clicked, close the custom dialog
-		okButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				
-				//TODO completer les donnŽe modifŽes
-				DataManager.singletonInstance.getSceneList2().get(0).setLatitude(Double.parseDouble(latitude.getText().toString()));
-				DataManager.singletonInstance.getSceneList2().get(0).setLongitude(Double.parseDouble(longitude.getText().toString()));
-				DataManager.singletonInstance.getSceneList2().get(0).setAltitude(Double.parseDouble(altitude.getText().toString()));
-				
-				//gere les exceptions
-				dialog.dismiss();
-			}
-		});
-
-		Button cancelButton = (Button) dialog.findViewById(R.id.cancel);
-		// if button is clicked, close the custom dialog
-		cancelButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				dialog.dismiss();
-			}
-		});
-		
-		dialog.show();
-		
+	public void onEditScene(View view){
+		modificationMode=2;
+		modificationControl.setVisibility(view.VISIBLE);
 		
 	}
 	
@@ -278,12 +262,15 @@ public class MapActivity extends OAMapComponentBase{
 	public void onPositionUp(View view){
 		double lat=0;
 		double lng=0;
+		
+		
+		mockLocationLat=mockLocationLat+0.1;
 		// latitude augmente
 		// ajouter un "booléen" différenciant : modif position, modèle ou rien du tout (boutons cachés)
-		if(getSensorManager().isMockLocationEnabled())
+		/*if(getSensorManager().isMockLocationEnabled())
 			getSensorManager().disableMockLocation();
-		else
-			getSensorManager().enableMockLocation(lat, lng);
+		else*/
+			getSensorManager().enableMockLocation(mockLocationLat, mockLocationLong);
 		
 	}
 

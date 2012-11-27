@@ -106,9 +106,9 @@ public class SigarDBPostgreSQL extends Activity {
 	private static String sqlgetAllTexture="SELECT id_texture, " +
 													"name_texture, " +
 													"file_texture, " +
-													"id_object3d" +
+													"id_object3d " +
 											"FROM texture " +
-											"WHERE id_objec3d=";
+											"WHERE id_object3d=";
 	
 
 	/** Called when the activity is first created. 
@@ -495,7 +495,7 @@ public class SigarDBPostgreSQL extends Activity {
 							//TODO insert object3D
 
 							Statement st2 = c.createStatement();
-							ResultSet rs2 =  st2.executeQuery(sqlgetAllTexture+ id_object3d+" ;");
+							ResultSet rs2 =  st2.executeQuery(sqlgetAllTexture+ Integer.toString(id_object3d)+" ;");
 							if (rs2!=null) {
 								while(rs2.next()){
 									int id_texture=rs2.getInt(1);
@@ -519,10 +519,11 @@ public class SigarDBPostgreSQL extends Activity {
 						SQLiteDatabase sqlDB = database.getWritableDatabase();
 
 
-						String sqlInsertScene="INSERT INTO scene " +
+						String sqlInsertScene="INSERT INTO scene (id_scene,name_scene,description,id_category,id_icon,activation,gps_longitude,gps_latitude,gps_altitude,id_author,date_creation,id_object3d," +
+								"translation_x,translation_y,translation_z,rotation_x,rotation_y,rotation_z,scale_x,scale_y,scale_z ) " +
 								"VALUES ("+Integer.toString(id_scene)+
 								", '"+name_scene+"', '"+description+
-								"', "+Integer.toString(id_category)+", "+Integer.toString(id_icon)+", "+Boolean.toString(activation)+
+								"', "+Integer.toString(id_category)+", "+Integer.toString(id_icon)+", "+Integer.toString((activation)?1:0)+
 								", "+Double.toString(gpslong)+", "+Double.toString(gpslat)+", "+Double.toString(gpsalt)+
 								", "+Integer.toString(id_author)+", '"+date_creation.toString()+"', "+Integer.toString(id_object3d)+
 								", "+Float.toString(translation_x)+", "+Float.toString(translation_y)+", "+Float.toString(translation_z)+
@@ -536,6 +537,9 @@ public class SigarDBPostgreSQL extends Activity {
 						
 						// c'est la grosse merde!!
 					}
+					
+					//TODO ajouter prgress bar durant l'iport
+					//plus un toast de resultat
 					rs.close();
 					// deconnection database
 					c.close();

@@ -63,8 +63,12 @@ public class SceneArrayAdapter extends BaseAdapter{
 
 			ImageView imageView = (ImageView) view.findViewById(R.id.icons);
 			Drawable icon= dataSource.get(pos).getIcon();
-			imageView.setImageDrawable(icon);
-			
+			if(icon==null){
+				imageView.setImageResource(R.drawable.action_help);
+			}else{
+				imageView.setImageDrawable(icon);
+			}
+						
 			TextView textView2 = (TextView)view.findViewById(R.id.scene_category);
 			String data2=dataSource.get(pos).getCategory();
 			textView2.setText(data2);

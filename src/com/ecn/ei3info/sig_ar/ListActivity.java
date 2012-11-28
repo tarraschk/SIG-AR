@@ -40,7 +40,6 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		//Set the UI layout
 		setContentView(R.layout.activity_list);
 		
-		
 		addButton= (ImageButton) this.findViewById(R.id.addButton);
 		
 		if (((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){

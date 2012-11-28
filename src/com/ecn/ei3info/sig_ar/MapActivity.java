@@ -6,8 +6,10 @@ package com.ecn.ei3info.sig_ar;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +22,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hitlabnz.androidar.viewcomponents.MapViewComponent;
 import com.hitlabnz.outdoorar.api.OAMapComponentBase;
+import com.hitlabnz.outdoorar.api.OAMapViewComponent;
 import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
@@ -37,17 +41,23 @@ public class MapActivity extends OAMapComponentBase{
 	protected boolean plot=true;
 	protected static boolean toogler = false;
 	
-	protected double mockLocationLong;
-	protected double mockLocationLat;
-	protected double mockLocationAlt;
+	protected static double mockLocationLong;
+	protected static double mockLocationLat;
+	protected static double mockLocationAlt;
 	
 	protected static int modificationMode=0;
 	// 0 --> modification mode disable
 	// 1 --> modification user position 
 	// 2 --> modification scene
 	// 3 -->
+	protected int idSceneOnEdition=0;
 	
+	protected MapViewComponent mapview;
 	protected LinearLayout modificationControl;
+	protected TextView modifInfo;
+	
+	protected float[] googleZoom={0,156542,78271,39135,19567,9783,4891,2445,1222,611,305,152,76,38,19,(float) 9.55,(float) 4.77,(float) 2.38,(float) 1.19,(float) 0.59,(float) 0.29,(float) 0.15,(float)0.07};
+		//{21282,16355,10064,5540,2909,1485,752,378,190,95,48,24,12,6,3,(float) 1.48,(float) 0.74,(float) 0.37,(float) 0.19};
 	
 	View buttonToogle ;
 	
@@ -94,6 +104,9 @@ public class MapActivity extends OAMapComponentBase{
 		 //TODO verifier cet ligne de code currentfocus???
 		  modificationControl.setVisibility(this.getCurrentFocus().GONE);
 		  
+		  modifInfo= (TextView) findViewById(R.id.modificationInfo);
+		  
+		  
 		  //automatic sleep mode deactivated
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
@@ -111,6 +124,7 @@ public class MapActivity extends OAMapComponentBase{
 		FrameLayout sampleUILayout = (FrameLayout)controlInflater.inflate(R.layout.activity_map, null);
 		//Set the plain Map View
 		setContentView(mapView);
+		mapview=(MapViewComponent) mapView;
 		//Set the control button
 		addContentView(sampleUILayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));	
 	}
@@ -137,7 +151,12 @@ public class MapActivity extends OAMapComponentBase{
 	protected void onSceneSelected(OAScene scene) {
 		super.onSceneSelected(scene);
 		Toast.makeText(this, "Votre scene est à la longitude" + scene.location.getLongitude() + "et à la latitude" + scene.location.getLatitude()  , Toast.LENGTH_LONG).show();
-	
+		if (modificationMode==2){
+			idSceneOnEdition= scene.getId();
+			modifInfo.setText("Edit scene: "+  DataManager.getInstance(false).getScene(idSceneOnEdition).getName());
+			Log.w("myApp",Integer.toString(idSceneOnEdition));
+		}
+		
 	}
 	/**
 	 * Method associate to imageButton to refocus the map on your position.
@@ -240,12 +259,18 @@ public class MapActivity extends OAMapComponentBase{
 	//TODO change the xml to toggle button with custom style cf: http://www.mokasocial.com/2011/07/sexily-styled-toggle-buttons-for-android/
 	
 	public void onUserPositionModification(View view){
+		//TODO enable les autres bouton 
+		
 		modificationMode=1;
 		modificationControl.setVisibility(view.VISIBLE);
+		
+		modifInfo.setText("You can modify your current positon.");
 		
 		mockLocationLong= getSensorManager().getCurrentLocation().getLongitude();
 		mockLocationLat= getSensorManager().getCurrentLocation().getLatitude();
 		mockLocationAlt= getSensorManager().getCurrentLocation().getAltitude();
+		
+		Toast.makeText(MapActivity.this, "You can change your position", Toast.LENGTH_SHORT).show();
 
 	}
 	
@@ -254,38 +279,137 @@ public class MapActivity extends OAMapComponentBase{
 		modificationMode=2;
 		modificationControl.setVisibility(view.VISIBLE);
 		
+		modifInfo.setText("Edit scene: ??");
+		
+		Toast.makeText(MapActivity.this, "Selected a scene on map then edit it with control buttons.", Toast.LENGTH_SHORT).show();
+		Log.w("myApp","Modificationmode"+Integer.toString(modificationMode));
+		
 	}
 	
-	
-	
-	
 	public void onPositionUp(View view){
-		double lat=0;
-		double lng=0;
-		
-		
-		mockLocationLat=mockLocationLat+0.1;
-		// latitude augmente
-		// ajouter un "booléen" différenciant : modif position, modèle ou rien du tout (boutons cachés)
-		/*if(getSensorManager().isMockLocationEnabled())
+		//Modify Latitude of object
+		double deltaalt=calculateDeltaGps();
+		//Modify position with MockLocation
+		if (modificationMode==1){
+			mockLocationLat=mockLocationLat+deltaalt;
+			// latitude augmente
+			// ajouter un "booléen" différenciant : modif position, modèle ou rien du tout (boutons cachés)
+			/*if(getSensorManager().isMockLocationEnabled())
 			getSensorManager().disableMockLocation();
 		else*/
 			getSensorManager().enableMockLocation(mockLocationLat, mockLocationLong);
-		
+		}else if (modificationMode==2){
+			if(idSceneOnEdition==0){
+				Toast.makeText(MapActivity.this, "Please select a scene to edit.", Toast.LENGTH_SHORT).show();
+			}else{
+			 
+				((Scene) DataManager.getInstance(false).getScene(idSceneOnEdition)).setLatitude(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()+deltaalt);
+				Log.w("myApp",Double.toString(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()+deltaalt));
+				Log.w("myApp",Double.toString(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()));
+				Log.w("myApp","delta alt: "+Double.toString(deltaalt));
+			}
+		}
+		sceneUpdated();
 	}
 
 	public void onPositionDown(View view){
-		// latitude diminue
+		//Modify Latitude of object
+		double deltaalt=calculateDeltaGps();
+		//Modify position with MockLocation
+		if (modificationMode==1){
+			mockLocationLat=mockLocationLat-deltaalt;
+			getSensorManager().enableMockLocation(mockLocationLat, mockLocationLong);
+		}else if (modificationMode==2){
+			if(idSceneOnEdition==0){
+				Toast.makeText(MapActivity.this, "Please select a scene to edit.", Toast.LENGTH_SHORT).show();
+			}else{
+			 
+				((Scene) DataManager.getInstance(false).getScene(idSceneOnEdition)).setLatitude(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()-deltaalt);
+				Log.w("myApp",Double.toString(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()-deltaalt));
+				Log.w("myApp",Double.toString(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()));
+				Log.w("myApp","delta alt: "+Double.toString(deltaalt));
+			}
+		}
+		sceneUpdated();
 	}
 	
 	public void onPositionLeft(View view){
-		// longitude augmente
+		//Modify Latitude of object
+		double deltaalt=calculateDeltaGps();
+		//Modify position with MockLocation
+		if (modificationMode==1){
+			mockLocationLong=mockLocationLong-deltaalt;
+			// latitude augmente
+			// ajouter un "booléen" différenciant : modif position, modèle ou rien du tout (boutons cachés)
+			/*if(getSensorManager().isMockLocationEnabled())
+			getSensorManager().disableMockLocation();
+		else*/
+			getSensorManager().enableMockLocation(mockLocationLat, mockLocationLong);
+		}else if (modificationMode==2){
+			if(idSceneOnEdition==0){
+				Toast.makeText(MapActivity.this, "Please select a scene to edit.", Toast.LENGTH_SHORT).show();
+			}else{
+			 
+				((Scene) DataManager.getInstance(false).getScene(idSceneOnEdition)).setLongitude(DataManager.getInstance(false).getScene(idSceneOnEdition).getLongitude()-deltaalt);
+				Log.w("myApp",Double.toString(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()-deltaalt));
+				Log.w("myApp",Double.toString(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()));
+				Log.w("myApp","delta alt: "+Double.toString(deltaalt));
+			}
+		}
+		sceneUpdated();	
 	}
 	
 	public void onPositionRight(View view){
-		// longitude diminue
+		//Modify Latitude of object
+		double deltaalt=calculateDeltaGps();
+		//Modify position with MockLocation
+		if (modificationMode==1){
+			mockLocationLong=mockLocationLong+deltaalt;
+			getSensorManager().enableMockLocation(mockLocationLat, mockLocationLong);
+		}else if (modificationMode==2){
+			if(idSceneOnEdition==0){
+				Toast.makeText(MapActivity.this, "Please select a scene to edit.", Toast.LENGTH_SHORT).show();
+			}else{
+			 
+				((Scene) DataManager.getInstance(false).getScene(idSceneOnEdition)).setLongitude(DataManager.getInstance(false).getScene(idSceneOnEdition).getLongitude()+deltaalt);
+				Log.w("myApp",Double.toString(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()-deltaalt));
+				Log.w("myApp",Double.toString(DataManager.getInstance(false).getScene(idSceneOnEdition).getLatitude()));
+				Log.w("myApp","delta alt: "+Double.toString(deltaalt));
+			}
+		}
+		sceneUpdated();
 	}
 	
-
+	public void onValidationofMofication(View view){
+		
+	}
 	
+	public void onCancellationofMofication(View view){
+		
+	}
+	/**
+	 * method call to estimate the GPS coordinate delta to add to  
+	 * @return
+	 */
+	private double calculateDeltaGps(){
+		double delta=0;
+		double R=6371000;
+		Log.w("myApp",Integer.toString( mapview.getMapView().getZoomLevel()));
+
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int height = size.y;
+
+		int zoomlevel=mapview.getMapView().getZoomLevel();
+
+		float realscale= googleZoom[zoomlevel]*height;
+		Log.w("myApp","taille reelle"+Float.toString( realscale));
+		
+		//delta=realscale/(100000*R);
+		//get 63 click to browse the screen
+		delta=2*Math.atan(realscale/(63*R));
+		
+		return delta;
+	}
 }

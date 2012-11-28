@@ -48,6 +48,12 @@ public class MainActivity extends OAARComponentBase {
 		if( manager1.getActiveNetworkInfo()==null){
 			buildAlertMessageNoNetwork();
 		}
+		//TODO ca ne marchera pas!!!!
+		if(MapActivity.modificationMode==1){
+			getSensorManager().enableMockLocation(MapActivity.mockLocationLat, MapActivity.mockLocationLong);
+		}
+
+		
 	}
 	/**
 	 * Show alert message to manage GPS positioning. 

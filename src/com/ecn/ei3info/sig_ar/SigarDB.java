@@ -68,7 +68,7 @@ public class SigarDB extends SQLiteOpenHelper {
 													    +"rotation_z real, "
 													    +"echelle_x real, "
 													    +"echelle_y real, "
-													    +"echelle_z real "
+													    +"echelle_z real, "
 													    +"FOREIGN KEY (id_category) REFERENCES category(id_category), "
 													    +"FOREIGN KEY (id_icon) REFERENCES icon(id_icon), "
 													    +"FOREIGN KEY (id_author) REFERENCES person(id_person), "

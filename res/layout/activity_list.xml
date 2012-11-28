@@ -3,8 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     tools:listitem="@android:layout/simple_list_item_checked" >
-
+    
+     <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="List View"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    
+    
     <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
@@ -13,71 +25,108 @@
         android:onClick="onGoBack"
         android:src="@drawable/content_undo" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageButton1"
-        android:layout_centerHorizontal="true"
-        android:text="List View"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <SearchView
-        android:id="@+id/searchView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-         >
-        
-    </SearchView>
-
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imageButton1"
-        android:layout_marginTop="32dp" >
+        android:layout_below="@+id/columnheaderlayout"
+         >
     </ListView>
 
-    <Spinner
-        android:id="@+id/sort_spinner"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/spinnerlayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageButton1"
+        android:orientation="horizontal" >
+         
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="40dp"
+            android:text="Sort by:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <Spinner
+            android:id="@+id/sort_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/sort_spinner"
-        android:layout_marginRight="40dp"
-        android:layout_toLeftOf="@+id/sort_spinner"
-        android:text="Sort by:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <Button
-        android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView2"
-        android:text="Add/Delete" 
-        android:onClick="onManageModel"
-        />
+   		
+        
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="33dp"
-        android:layout_toRightOf="@+id/textView1"
         android:contentDescription="AMODIFIEr"
         android:onClick="onAddModelPGSQL"
         android:src="@drawable/content_new" />
+
+    <SearchView
+        android:id="@+id/searchView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/addButton"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/addButton" >
+
+    </SearchView>
+
+    <LinearLayout
+        android:id="@+id/columnheaderlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinnerlayout"
+        android:orientation="horizontal" >
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:text="Icon"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:text="Category"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:text="Altitude"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:text="Longitude"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:text="Latitude"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        
+    </LinearLayout>
     
 </RelativeLayout>

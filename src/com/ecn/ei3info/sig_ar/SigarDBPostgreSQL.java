@@ -2,6 +2,10 @@ package com.ecn.ei3info.sig_ar;
 
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -22,6 +26,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -479,7 +484,6 @@ public class SigarDBPostgreSQL extends Activity {
 						float scale_y=rs.getFloat(24);
 						float scale_z=rs.getFloat(25);
 
-						// TODO nouvelle requete pour choper le obejct 3D et les textures.....
 
 						Statement st1 = c.createStatement();
 						ResultSet rs1 =  st1.executeQuery(sqlgetObject3d+ id_object3d+" ;");
@@ -492,8 +496,31 @@ public class SigarDBPostgreSQL extends Activity {
 							Timestamp date_creation_object3d=rs1.getTimestamp(6);
 							int id_author_object3d=rs1.getInt(7);
 
-							//TODO insert object3D
+							//TODO insert object3D to sqlite
 
+							//Add file to sdcard directory
+							File exst = Environment.getExternalStorageDirectory();
+					    	String exstPath = exst.getPath();
+					    	//create directory for model
+					    	File objectfolder = new File(exstPath+"/SIGAR/3Dmodels/"+Integer.toString(id_object3d));
+					    	objectfolder.mkdir();
+							
+					    	//add file obj, mtl to folder
+					    	File fileobj = new File(objectfolder, "model.obj"); //Getting a file within the dir.
+					    	FileOutputStream outobj = new FileOutputStream(fileobj); //Use the stream as usual to write into the file.
+					    
+					    	outobj.write(file_obj.read());
+					    	outobj.close();
+					    	
+					    	File filemtl = new File(objectfolder, "model.mtl"); //Getting a file within the dir.
+					    	FileOutputStream outmtl = new FileOutputStream(filemtl); //Use the stream as usual to write into the file.
+					    
+					    	outmtl.write(file_mtl.read());
+					    	outmtl.close();
+
+					    	
+					    	
+							//Query to obtain all associated textures
 							Statement st2 = c.createStatement();
 							ResultSet rs2 =  st2.executeQuery(sqlgetAllTexture+ Integer.toString(id_object3d)+" ;");
 							if (rs2!=null) {
@@ -501,7 +528,11 @@ public class SigarDBPostgreSQL extends Activity {
 									int id_texture=rs2.getInt(1);
 									String name_texture=rs2.getString(2);
 									InputStream file_texture=rs2.getBinaryStream(3);
-									//TODO insert texture to table
+									//TODO insert texture to table in sqlite
+									
+									
+									//
+									
 								}
 								
 							}else{
@@ -515,7 +546,7 @@ public class SigarDBPostgreSQL extends Activity {
 
 						// insert into SQLite DB
 
-						SigarDB database= new SigarDB(a);
+						/*SigarDB database= new SigarDB(a);
 						SQLiteDatabase sqlDB = database.getWritableDatabase();
 
 
@@ -530,9 +561,17 @@ public class SigarDBPostgreSQL extends Activity {
 								", "+Float.toString(rotation_x)+", "+Float.toString(rotation_y)+", "+Float.toString(rotation_z)+
 						    							", "+Float.toString(scale_x)+", "+Float.toString(scale_y)+", "+Float.toString(scale_z)+"); ";
 						    
-						    sqlDB.execSQL(sqlInsertScene);
-						    
+						sqlDB.execSQL(sqlInsertScene);
+						*/
+
+				    	
+
 						
+
+
+
+
+						    
 					}else{
 						
 						// c'est la grosse merde!!
@@ -554,6 +593,12 @@ public class SigarDBPostgreSQL extends Activity {
 				//tv.setText("Couldn't find driver class:");
 				//System.err.println("Couldn't find driver class:");
 				cnfe.printStackTrace();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 			

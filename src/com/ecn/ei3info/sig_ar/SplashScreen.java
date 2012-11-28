@@ -1,9 +1,12 @@
 package com.ecn.ei3info.sig_ar;
 
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -16,6 +19,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.VideoView;
@@ -54,18 +58,57 @@ public class SplashScreen extends Activity{
 	    	//getDir("/SIGAR", 0);
 	    	
 	    	File mydir = getDir("SIGAR", Context.MODE_PRIVATE); //Creating an internal dir;
-	    	File fileWithinMyDir = new File(mydir, "myfile"); //Getting a file within the dir.
-	    	FileOutputStream out = new FileOutputStream(fileWithinMyDir); //Use the stream as usual to write into the file.
+	    //	File fileWithinMyDir = new File(mydir, "myfile.txt"); //Getting a file within the dir.
+	    	//FileOutputStream out = new FileOutputStream(fileWithinMyDir); //Use the stream as usual to write into the file.
 	    	
-	    	String string = "hello world!";
+	    	//String string = "hello world!";
 
-	    	out.write(string.getBytes());
-	    	out.close();
 	    	
 	    	
+	    	String[] a=fileList();
 	    	//File file = new File(this.getFilesDir(), "hello.txt");
 	    	//Log.w("myApp",getFilesDir().toString());
-	    	//Log.w("myApp",file.get)
+	    	int i=0;
+	    	for(i=0;i<a.length;i++){
+	    		Log.w("myApp",a[i]);	
+	    	}
+	    	/*//InputStream instream = openFileInput("SIGAR/myfile.txt");
+	    	 if (instream != null) {
+	    	      // prepare the file for reading
+	    	      InputStreamReader inputreader = new InputStreamReader(instream);
+	    	      BufferedReader buffreader = new BufferedReader(inputreader);
+	    	                 
+	    	      String line;
+	    	 
+	    	      // read every line of the file into the line-variable, on line at the time
+	    	      while (( line = buffreader.readLine()) != null) {
+	    	        // do something with the settings from the file
+	    	    	  Log.w("myApp",line);
+	    	      }
+	    	 }
+	    	 instream.close();*/
+	    	
+	    	File exst = Environment.getExternalStorageDirectory();
+	    	String exstPath = exst.getPath();
+
+	    	File sigar = new File(exstPath+"/SIGAR");
+	    	sigar.mkdir();
+
+	    	File models= new File(sigar.getPath()+"/3Dmodels");
+	    	models.mkdir();
+
+	    	File icons=new File(sigar.getPath()+"/icons");
+	    	icons.mkdir();
+		    	
+	    	  /*  File fileWithinMyDir = new File(sigar, "myfile.txt");
+	    	    FileOutputStream out = new FileOutputStream(fileWithinMyDir); //Use the stream as usual to write into the file.
+		    	
+		    	String string = "hello world!";
+	    	  
+		    	out.write(string.getBytes());
+		    	out.close();
+		    	
+	    	//    Log.w("myApp", Boolean.toString(success));*/
 	    	
 	    } catch (XmlPullParserException e) {
 	    	// TODO Auto-generated catch block

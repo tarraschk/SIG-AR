@@ -13,34 +13,36 @@
         android:layout_alignParentTop="true"
         android:gravity="end" >
 
-        <Button
+        <ImageButton
+	        android:id="@+id/start_settings_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentRight="true"
+	        android:onClick="onSettingsActivity"
+	        android:src="@drawable/action_settings" />
+
+       <ImageButton
             android:id="@+id/start_list_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:onClick="onSettingsActivity"
-            android:text="Settings" />
-
-        <Button
-            android:id="@+id/start_map_btn"
+            android:layout_toLeftOf="@+id/start_settings_btn"
+            android:onClick="onListActivity"
+            android:src="@drawable/device_access_storage"/>
+         
+		<ImageButton
+		    android:id="@+id/start_map_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@+id/start_list_btn"
-            android:onClick="onListActivity"
-            android:text="List" />
-
-        <Button
-            android:id="@+id/start_ar_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/start_map_btn"
             android:onClick="onMapActivity"
-            android:text="Map" />
+			android:src="@drawable/location_web_site"/>       
     </RelativeLayout>
+    
     <ImageButton
+          	android:id="@+id/start_ar_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

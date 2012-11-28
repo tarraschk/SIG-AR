@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.hitlabnz.androidar.data.Coordinate;
 import com.hitlabnz.androidar.data.representation.model.Transform;
+import com.hitlabnz.androidar.data.representation.vector.Vector3f;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -150,9 +151,9 @@ public class SceneArrayAdapter extends BaseAdapter{
 							float x = Float.valueOf(scalex.getText().toString().trim()).floatValue();
 							float y = Float.valueOf(scaley.getText().toString().trim()).floatValue();
 							float z = Float.valueOf(scalez.getText().toString().trim()).floatValue();;
+							
 							Transform modelTransform = new Transform();
 							modelTransform.setScale(new Coordinate(x,y,z));
-							
 							
 							float rx = Float.valueOf(rotx.getText().toString().trim()).floatValue();
 							float ry = Float.valueOf(roty.getText().toString().trim()).floatValue();
@@ -160,14 +161,17 @@ public class SceneArrayAdapter extends BaseAdapter{
 							
 							modelTransform.setRotation(new Coordinate(rx,ry,rz));
 							
-
 							//dataSource.get(pos).models.get(0).addTransform(modelTransform);
 							
-							dataSource.get(pos).models.get(0).getTransforms().remove(0);
+							dataSource.get(pos).models.get(0).getTransforms().clear();
 							
 							dataSource.get(pos).models.get(0).getTransforms().add(modelTransform);
 
-							dataSource.get(pos).models.get(0).addTransform(modelTransform);
+							//dataSource.get(pos).models.get(0).addTransform(modelTransform);
+							
+							//Vector3f scale = new Vector3f(x,y,z);
+							//Vector3f rotation = new Vector3f(rx,ry,rz);
+							//dataSource.get(pos).models.get(0).getTransforms().get(0).setScale(scale);
 
 							
 							//gere les exceptions

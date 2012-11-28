@@ -149,6 +149,10 @@ public class Scene extends OAScene implements Comparable<Scene>{
 		this.location.setAltitude(altitude);
 	}
 	
+	public double getAltitude(){
+		return this.location.getAltitude();
+	}
+	
 	public Drawable getIcon(){
 		return DataManager.getInstance(false).getIcon(category);
 	}

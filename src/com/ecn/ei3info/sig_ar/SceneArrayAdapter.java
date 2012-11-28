@@ -56,6 +56,8 @@ public class SceneArrayAdapter extends BaseAdapter{
 		if(convertView == null){
 			//LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+			
+			//TODO en fcontion de la taille de l'ecran ne pas afficher toutes les infos
 			view = inflater.inflate(itemLayoutId, parentView, false);
 			
 			TextView textView = (TextView)view.findViewById(R.id.scene_name);
@@ -82,6 +84,10 @@ public class SceneArrayAdapter extends BaseAdapter{
 			data3=dataSource.get(pos).getLongitude();
 			textView_longitude.setText(data3+"");
 
+
+			TextView textView_altitude = (TextView)view.findViewById(R.id.scene_altitude);
+			data3=dataSource.get(pos).getAltitude();
+			textView_altitude.setText(data3+"");
 
 			final CheckBox cbox= (CheckBox) view.findViewById(R.id.checkBox1);
 			cbox.setChecked( ((Scene) dataSource.get(pos)).isActivated());

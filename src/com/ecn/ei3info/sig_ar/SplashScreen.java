@@ -47,10 +47,10 @@ public class SplashScreen extends Activity{
 		SigarDB database= new SigarDB(this);
 	    SQLiteDatabase sqlDB = database.getWritableDatabase();
 	    
-	   /*Cursor cursor= sqlDB.query("scene", null,null, null,null, null, null);
+	/*   Cursor cursor= sqlDB.rawQuery("SELECT * FROM scene;",new String[] { "id" });
 	   cursor.moveToFirst();
-	   Log.w("myApp",Integer.toString(cursor.getInt(1)));*/
-	    
+	   Log.w("myApp",Integer.toString(cursor.getInt(1)));
+	  */  
 	    try {
 	    	DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));
 	    	Log.w("myApp",DataManager.getInstance(false).getWorkingPath());

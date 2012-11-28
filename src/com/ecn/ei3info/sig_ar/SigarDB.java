@@ -12,7 +12,7 @@ import android.util.Log;
 public class SigarDB extends SQLiteOpenHelper {
 	
 	private static final String DATABASE_NAME = "sigar.db";
-	private static final int DATABASE_VERSION = 24;
+	private static final int DATABASE_VERSION = 28;
 
 	
 	
@@ -52,7 +52,7 @@ public class SigarDB extends SQLiteOpenHelper {
 													    +"name_scene text, "
 													    +"description text, "
 													    +"id_category integer NOT NULL, "
-													    +"id_icon integer NOT NULL "
+													    +"id_icon integer NOT NULL, "
 													    +"activation integer,  "
 													    +"gps_longitude real, " 
 													    +"gps_latitude real, "
@@ -68,11 +68,12 @@ public class SigarDB extends SQLiteOpenHelper {
 													    +"rotation_z real, "
 													    +"echelle_x real, "
 													    +"echelle_y real, "
-													    +"echelle_z real, "
-													    +"FOREIGN KEY (id_category) REFERENCES category(id_category), "
+													    +"echelle_z real "
+												//add coma
+													    /*  +"FOREIGN KEY (id_category) REFERENCES category(id_category), "
 													    +"FOREIGN KEY (id_icon) REFERENCES icon(id_icon), "
 													    +"FOREIGN KEY (id_author) REFERENCES person(id_person), "
-													    +"FOREIGN KEY (id_object3D) REFERENCES object3D(id_object3D)" 
+													    +"FOREIGN KEY (id_object3D) REFERENCES object3D(id_object3D)" */
 												+");";
 						// check numeric format to sqlite??
 	
@@ -80,8 +81,8 @@ public class SigarDB extends SQLiteOpenHelper {
 													"INSERT INTO person(name_person, firstname_person) VALUES ('MARICHAL', 'BASTIEN');" +
 													"INSERT INTO icon(id_icon) VALUES (1);" +
 													"INSERT INTO object3d VALUES (1,'monpremierobjet3D','','fichiermtl','','',1);" +
-													"INSERT INTO texture(name_texture,id_object3d) VALUES ('texturetest',1);";
-													//"INSERT INTO scene VALUES (1,'scene1','truc de test',1,1,false,,'','','',1,'',1,'','','','','','','','','');";
+													"INSERT INTO texture(name_texture,id_object3d) VALUES ('texturetest',1);"+
+													"INSERT INTO scene VALUES (1,'scene1','truc de test',1,1,false,,'','','',1,'',1,'','','','','','','','','');";
 													
 			
 												

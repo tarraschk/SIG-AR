@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/libs/includes.jar:/Users/bastienmarichalragot/git/SIG-AR/libs/postgresql-8.4-703.jdbc3.jar:/Users/bastienmarichalragot/Developer/android-sdk-macosx/sources/android-16:/Users/bastienmarichalragot/Developer/android-sdk-macosx/tools/support/annotations.jar:/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/libs/androidarlibrary.jar:/Users/bastienmarichalragot/git/SIG-AR/libs/android-support-v4.jar:/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/bin/outdoorarlibrary.jar:/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/bin/classes" destdir="/Users/bastienmarichalragot/git/SIG-AR/doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.ecn.ei3info.sig_ar,com.hitlabnz.outdoorar" source="1.6" sourcepath="/Users/bastienmarichalragot/git/SIG-AR/src:/Users/bastienmarichalragot/git/SIG-AR/gen" splitindex="true" use="true" version="true">
+            <link href="file:/Users/bastienmarichalragot/Documents/workspacenew/OutdoorARLibrary/"/>
+            <link href="file:/Users/bastienmarichalragot/Developer/android-sdk-macosx/docs/reference"/>
+            <link href="file:/Users/bastienmarichalragot/git/SIG-AR/doc/"/>
+        </javadoc>
+    </target>
+</project>

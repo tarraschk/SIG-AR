@@ -1,12 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scenes>
 	<scene>
+		<id>8</id>
+		<name>housebis</name>
+		<category>smile</category>
+		<description>lmrngmekrbgja</description>
+		<creator>BMR</creator>
+		<activated>true</activated>
+		<model_visible>housebis</model_visible>
+		<location>
+			<longitude>-1.547013888587</longitude>
+			<latitude>47.248122222688465</latitude>
+			<altitude>1</altitude>
+		</location>
+		<models>
+			<number>1</number>
+			<model>
+				<name_model>housebis</name_model>
+				<id_model>housebis</id_model>
+				<type>1</type>
+			</model>
+		</models>
+	</scene>
+	<scene>
+		<id>6</id>
+		<name>house</name>
+		<category>smile</category>
+		<description>une grosse maison</description>
+		<creator>BMR</creator>
+		<activated>false</activated>
+		<model_visible>house</model_visible>
+		<location>
+			<longitude>-1.547013888587</longitude>
+			<latitude>47.248122222688465</latitude>
+			<altitude>1</altitude>
+		</location>
+		<models>
+			<number>1</number>
+			<model>
+				<name_model>house</name_model>
+				<id_model>house</id_model>
+				<type>1</type>
+			</model>
+		</models>
+	</scene>
+	<scene>
 		<id>10</id>
 		<name>CubeECN</name>
 		<category>smile</category>
 		<description>un cube avec ECN dessus.</description>
 		<creator>BMR</creator>
-		<activated>true</activated>
+		<activated>false</activated>
 		<model_visible>CubeECN</model_visible>
 		<location>
 			<longitude>-1.547013888887</longitude>
@@ -24,12 +68,12 @@
 	</scene>
 	<scene>
 		<id>3</id>
-		<name>aaa</name>
+		<name>Basket Ball</name>
 		<category>Ball</category>
-		<description>un cube avec ECN dessus.</description>
+		<description>...</description>
 		<creator>BMR</creator>
-		<activated>true</activated>
-		<model_visible>CubeECN</model_visible>
+		<activated>false</activated>
+		<model_visible>BasketBall</model_visible>
 		<location>
 			<longitude>-1.547013888587</longitude>
 			<latitude>47.248122222688465</latitude>
@@ -38,66 +82,20 @@
 		<models>
 			<number>1</number>
 			<model>
-				<name_model>CubeECN</name_model>
-				<id_model>CubeECN</id_model>
+				<name_model>BasketBall</name_model>
+				<id_model>BasketBall</id_model>
 				<type>1</type>
 			</model>
 		</models>
 	</scene>
 	<scene>
-		<id>2</id>
-		<name>Basket Ball in XML</name>
-		<category>Ball</category>
-		<description>This is a basket ball.</description>
-		<creator>HITLabNZ</creator>
-		<activated>false</activated>
-		<model_visible>BasketBall</model_visible>
-		<location>
-			<longitude>-1.5479694440629745</longitude>
-			<latitude>47.24826111157735</latitude>
-			<altitude>1</altitude>
-		</location>
-		<models>
-			<number>1</number>
-			<model>
-				<name_model>Basket Ball</name_model>
-				<id_model>BasketBall</id_model>
-				<type>main</type>
-				<transformation>
-					<translation>
-						<X>0</X>
-						<Y>0</Y>
-						<Z>0</Z>
-					</translation>
-					<rotation>
-						<X>0</X>
-						<Y>0</Y>
-						<Z>0</Z>
-					</rotation>
-					<scale>
-						<X>1.0</X>
-						<Y>1.0</Y>
-						<Z>1.0</Z>
-					</scale>
-				</transformation>
-				<animation>
-					<rotation>
-						<X>0</X>
-						<Y>0</Y>
-						<Z>0</Z>
-					</rotation>
-				</animation>
-			</model>
-		</models>
-	</scene>
-	<scene>
-		<id>3</id>
-		<name>aaa</name>
-		<category>Ball</category>
-		<description>un cube avec ECN dessus.</description>
+		<id>4</id>
+		<name>cottage</name>
+		<category>smile</category>
+		<description>un cottage dans la foret</description>
 		<creator>BMR</creator>
-		<activated>true</activated>
-		<model_visible>CubeECN</model_visible>
+		<activated>false</activated>
+		<model_visible>cottage</model_visible>
 		<location>
 			<longitude>-1.547013888587</longitude>
 			<latitude>47.248122222688465</latitude>
@@ -106,8 +104,8 @@
 		<models>
 			<number>1</number>
 			<model>
-				<name_model>CubeECN</name_model>
-				<id_model>CubeECN</id_model>
+				<name_model>cottage</name_model>
+				<id_model>cottage</id_model>
 				<type>1</type>
 			</model>
 		</models>

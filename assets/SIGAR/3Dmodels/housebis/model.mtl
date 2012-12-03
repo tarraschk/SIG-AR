@@ -1,0 +1,57 @@
+# Alias Wavefront MTL File Exported from SketchUp
+# with OBJexporter (c) 2010/2011 TIG
+# Made for 'Sans titre.obj'
+
+newmtl Default_Material
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+
+newmtl Black
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+
+newmtl Revtement_bardage_blanc
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+map_Kd Revtement_bardage_blanc.jpg
+
+newmtl Couverturetoit_bardeaux_bois
+Ka 0.000000 0.000000 0.000000
+Kd 0.615686 0.572549 0.431373
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+map_Kd Couverturetoit_bardeaux_bois.jpg
+
+newmtl images
+Ka 0.000000 0.000000 0.000000
+Kd 0.411765 0.478431 0.474510
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+map_Kd images.jpeg
+
+newmtl Couverturetoit_bardeaux_proprits_GAF
+Ka 0.000000 0.000000 0.000000
+Kd 0.317647 0.305882 0.290196
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+map_Kd Couverturetoit_bardeaux_proprits_GAF.jpg
+
+newmtl Ivory
+Ka 0.000000 0.000000 0.000000
+Kd 0.960784 0.960784 0.960784
+Ks 0.000000 0.000000 0.000000
+d 0.100000
+
+newmtl Gray_Glass1
+Ka 0.000000 0.000000 0.000000
+Kd 0.156863 0.156863 0.156863
+Ks 0.000000 0.000000 0.000000
+d 0.790000
+
+#EOF

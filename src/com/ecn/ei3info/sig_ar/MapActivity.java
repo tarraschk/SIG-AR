@@ -8,16 +8,21 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +60,16 @@ public class MapActivity extends OAMapComponentBase{
 	protected MapViewComponent mapview;
 	protected LinearLayout modificationControl;
 	protected TextView modifInfo;
+	
+	
+	private Handler repeatUpdateHandler = new Handler();
+	//TODO regler la vitesse des appuiye long... 
+	private int REP_DELAY =200;
+	private boolean mUp = false;
+	private boolean mDown = false;
+	private boolean mRight = false;
+	private boolean mLeft = false;
+	
 	
 	protected float[] googleZoom={0,156542,78271,39135,19567,9783,4891,2445,1222,611,305,152,76,38,19,(float) 9.55,(float) 4.77,(float) 2.38,(float) 1.19,(float) 0.59,(float) 0.29,(float) 0.15,(float)0.07};
 		//{21282,16355,10064,5540,2909,1485,752,378,190,95,48,24,12,6,3,(float) 1.48,(float) 0.74,(float) 0.37,(float) 0.19};
@@ -98,6 +113,9 @@ public class MapActivity extends OAMapComponentBase{
 	
 	public void onCreate(Bundle bundle) {
 		  super.onCreate(bundle);
+		  //automatic sleep mode deactivated
+		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
 		  buttonToogle = (View)findViewById(R.id.button_toggler);
 		  
 		  modificationControl= (LinearLayout) findViewById(R.id.modificationControlLayout);
@@ -106,9 +124,115 @@ public class MapActivity extends OAMapComponentBase{
 		  
 		  modifInfo= (TextView) findViewById(R.id.modificationInfo);
 		  
+		  final ImageButton up=(ImageButton) findViewById(R.id.button_up);
+		  final ImageButton down=(ImageButton) findViewById(R.id.button_down);
+		  final ImageButton left=(ImageButton) findViewById(R.id.button_left);
+		  final ImageButton right=(ImageButton) findViewById(R.id.button_right);
+		 
 		  
-		  //automatic sleep mode deactivated
-		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		  
+		  class RptUpdater implements Runnable {
+		      public void run() {
+		          if( mUp){
+		              onPositionUp(mapview);
+		              repeatUpdateHandler.postDelayed( new RptUpdater(), REP_DELAY );
+		          } else if( mDown ){
+		        	  onPositionDown(mapview);
+		              repeatUpdateHandler.postDelayed( new RptUpdater(), REP_DELAY );
+		          } else if (mLeft){
+		        	  onPositionLeft(mapview);
+		              repeatUpdateHandler.postDelayed( new RptUpdater(), REP_DELAY );
+		          } else if (mRight){
+		        	  onPositionRight(mapview);
+		              repeatUpdateHandler.postDelayed( new RptUpdater(), REP_DELAY );
+		          }
+		      }
+		  }
+
+		  up.setOnLongClickListener( 
+				  new View.OnLongClickListener(){
+					  public boolean onLongClick(View arg0) {
+						  mUp = true;
+						  repeatUpdateHandler.post( new RptUpdater() );
+						  return false;
+					  }
+				  }
+				  );   
+
+		  up.setOnTouchListener( new View.OnTouchListener() {
+			  public boolean onTouch(View v, MotionEvent event) {
+				  if( (event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL) 
+						  && mUp){
+					  mUp = false;
+				  }
+				  return false;
+			  }
+		  });  
+
+		  
+
+		  down.setOnLongClickListener( 
+				  new View.OnLongClickListener(){
+					  public boolean onLongClick(View arg0) {
+						  mDown = true;
+						  repeatUpdateHandler.post( new RptUpdater() );
+						  return false;
+					  }
+				  }
+				  );   
+
+		  down.setOnTouchListener( new View.OnTouchListener() {
+			  public boolean onTouch(View v, MotionEvent event) {
+				  if( (event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL) 
+						  && mDown){
+					  mDown = false;
+				  }
+				  return false;
+			  }
+		  });  
+
+
+		  right.setOnLongClickListener( 
+				  new View.OnLongClickListener(){
+					  public boolean onLongClick(View arg0) {
+						  mRight = true;
+						  repeatUpdateHandler.post( new RptUpdater() );
+						  return false;
+					  }
+				  }
+				  );   
+
+		  right.setOnTouchListener( new View.OnTouchListener() {
+			  public boolean onTouch(View v, MotionEvent event) {
+				  if( (event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL) 
+						  && mRight){
+					  mRight = false;
+				  }
+				  return false;
+			  }
+		  });  
+
+
+		  left.setOnLongClickListener( 
+				  new View.OnLongClickListener(){
+					  public boolean onLongClick(View arg0) {
+						  mLeft = true;
+						  repeatUpdateHandler.post( new RptUpdater() );
+						  return false;
+					  }
+				  }
+				  );   
+
+		  left.setOnTouchListener( new View.OnTouchListener() {
+			  public boolean onTouch(View v, MotionEvent event) {
+				  if( (event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL) 
+						  && mLeft){
+					  mLeft = false;
+				  }
+				  return false;
+			  }
+		  });  
+
 	}
 	
 	
@@ -133,8 +257,11 @@ public class MapActivity extends OAMapComponentBase{
 		return OAMapComponentBase.OPTION_START_WITH_SATELLITE_IMAGE;
 	}
 	
+	/**
+	 * Button to control map view, enable sattelite view
+	 * @param view
+	 */
 	boolean satellite = true;
-	
 	public void onMapView(View view) {
 		satellite = !satellite;
 		if(satellite){
@@ -387,6 +514,8 @@ public class MapActivity extends OAMapComponentBase{
 	public void onCancellationofMofication(View view){
 		
 	}
+	
+	//TODO centralizer la taille de l'ecran dans la fonction ci dessous
 	/**
 	 * method call to estimate the GPS coordinate delta to add to  
 	 * @return
@@ -406,7 +535,6 @@ public class MapActivity extends OAMapComponentBase{
 		float realscale= googleZoom[zoomlevel]*height;
 		Log.w("myApp","taille reelle"+Float.toString( realscale));
 		
-		//delta=realscale/(100000*R);
 		//get 63 click to browse the screen
 		delta=2*Math.atan(realscale/(63*R));
 		

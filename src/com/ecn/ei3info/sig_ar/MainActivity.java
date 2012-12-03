@@ -1,6 +1,7 @@
 package com.ecn.ei3info.sig_ar;
 
 import com.hitlabnz.outdoorar.api.OAARComponentBase;
+import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -127,11 +128,12 @@ public class MainActivity extends OAARComponentBase {
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onRestart()
 	 */
-	/*@Override
+	@Override
 	protected void onRestart() {
-		super.onRestart();
-		setupDataManager();
-	}*/
+		onCreate(null);
+		//super.onRestart();
+		//setupScenes(DataManager.getInstance(true));
+	}
 	
 	
 	/*@Override
@@ -212,6 +214,28 @@ public class MainActivity extends OAARComponentBase {
 		addContentView(sampleUILayout, 
 				new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	} 
+	/* (non-Javadoc)
+	 * @see com.hitlabnz.outdoorar.api.OAARComponentBase#onSceneSelected(com.hitlabnz.outdoorar.api.OAScene)
+	 */
+	@Override
+	protected void onSceneSelected(OAScene scene) {
+		// TODO Auto-generated method stub
+		super.onSceneSelected(scene);
+		
+		Toast.makeText(MainActivity.this, scene.getName()+" est seclectionnée", Toast.LENGTH_SHORT).show();
+
+	}
+	/* (non-Javadoc)
+	 * @see com.hitlabnz.outdoorar.api.OAARComponentBase#onTouchedScene(com.hitlabnz.outdoorar.api.OAScene)
+	 */
+	@Override
+	protected void onTouchedScene(OAScene scene) {
+		// TODO Auto-generated method stub
+		super.onTouchedScene(scene);
+		
+		Toast.makeText(MainActivity.this, scene.getName()+" est seclect'tgtthththionnée", Toast.LENGTH_SHORT).show();
+	
+	}
 	/**
 	 * Go to Map View
 	 * @param View

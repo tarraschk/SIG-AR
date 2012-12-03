@@ -6,7 +6,7 @@
 		<category>smile</category>
 		<description>lmrngmekrbgja</description>
 		<creator>BMR</creator>
-		<activated>true</activated>
+		<activated>false</activated>
 		<model_visible>housebis</model_visible>
 		<location>
 			<longitude>-1.547013888587</longitude>
@@ -50,7 +50,7 @@
 		<category>smile</category>
 		<description>un cube avec ECN dessus.</description>
 		<creator>BMR</creator>
-		<activated>false</activated>
+		<activated>true</activated>
 		<model_visible>CubeECN</model_visible>
 		<location>
 			<longitude>-1.547013888887</longitude>

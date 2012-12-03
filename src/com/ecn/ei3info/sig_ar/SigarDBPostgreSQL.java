@@ -2,6 +2,7 @@ package com.ecn.ei3info.sig_ar;
 
 
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -67,6 +68,28 @@ public class SigarDBPostgreSQL extends Activity {
 	private static String sql="Select id_scene, nom_scene, description, nom_category, gps_longitude, gps_latitude, gps_altitude from scene, category where scene.id_category=category.id_category;";
 
 	//TODO completer sql
+	// TODO creat SQL query from a text file
+	/// piste de code
+	/*
+	 * try {
+BufferedReader in = new BufferedReader(new FileReader(aSQLScriptFilePath));
+String str;
+StringBuffer sb = new StringBuffer();
+while ((str = in.readLine()) != null) {
+sb.append(str + "\n ");
+}
+in.close();
+stmt.executeUpdate(sb.toString());
+isScriptExecuted = true;
+} catch (Exception e) {
+System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e.getMessage());
+} 
+	 */
+	
+	
+	
+	
+	///
 	private static String sqlgetAll="SELECT id_scene, " +
 									"name_scene, " +
 									"description, " +
@@ -273,7 +296,7 @@ public class SigarDBPostgreSQL extends Activity {
 
 
 		}
-	}//end of PGSLConnection
+	}//end of PGSQLConnection
 
 	/**
 	 * PGSQLQuery class in order to query the database
@@ -492,7 +515,8 @@ public class SigarDBPostgreSQL extends Activity {
 							String name_object=rs1.getString(2);
 							InputStream file_obj=rs1.getBinaryStream(3);
 							String name_mtl=rs1.getString(4);
-							InputStream file_mtl=rs1.getBinaryStream(5);
+							
+							ByteArrayInputStream file_mtl=(ByteArrayInputStream) rs1.getBinaryStream(5);
 							Timestamp date_creation_object3d=rs1.getTimestamp(6);
 							int id_author_object3d=rs1.getInt(7);
 
@@ -505,20 +529,37 @@ public class SigarDBPostgreSQL extends Activity {
 					    	File objectfolder = new File(exstPath+"/SIGAR/3Dmodels/"+Integer.toString(id_object3d));
 					    	objectfolder.mkdir();
 							
+					    	//TODO create a new methode and change the follow code
 					    	//add file obj, mtl to folder
 					    	File fileobj = new File(objectfolder, "model.obj"); //Getting a file within the dir.
 					    	FileOutputStream outobj = new FileOutputStream(fileobj); //Use the stream as usual to write into the file.
-					    
-					    	outobj.write(file_obj.read());
+					  
+					    	int read = 0;
+					    	byte[] bytes = new byte[1024];
+					     
+					    	while ((read = file_obj.read(bytes)) != -1) {
+					    		outobj.write(bytes, 0, read);
+					    	}
+					     
+					    	file_obj.close();
+					    	outobj.flush();
 					    	outobj.close();
+					    	
 					    	
 					    	File filemtl = new File(objectfolder, "model.mtl"); //Getting a file within the dir.
 					    	FileOutputStream outmtl = new FileOutputStream(filemtl); //Use the stream as usual to write into the file.
 					    
-					    	outmtl.write(file_mtl.read());
+					    	int readmtl = 0;
+					    	byte[] bytesmtl = new byte[1024];
+					    	Log.w("myapp",Integer.toString(file_mtl.read()));
+					    	while ((readmtl = file_mtl.read(bytesmtl)) != -1) {
+					    		outmtl.write(bytesmtl, 0, readmtl);
+					    	}
+					     
+					    	file_mtl.close();
+					    	outmtl.flush();
 					    	outmtl.close();
-
-					    	
+					 	
 					    	
 							//Query to obtain all associated textures
 							Statement st2 = c.createStatement();
@@ -527,7 +568,7 @@ public class SigarDBPostgreSQL extends Activity {
 								while(rs2.next()){
 									int id_texture=rs2.getInt(1);
 									String name_texture=rs2.getString(2);
-									InputStream file_texture=rs2.getBinaryStream(3);
+									//InputStream file_texture=rs2.getBinaryStream(3);
 									//TODO insert texture to table in sqlite
 									
 									

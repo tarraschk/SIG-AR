@@ -46,11 +46,14 @@ public class SplashScreen extends Activity{
 		DataXMLParser test= new DataXMLParser();
 		SigarDB database= new SigarDB(this);
 	    SQLiteDatabase sqlDB = database.getWritableDatabase();
+	    Log.w("mysqlite",Boolean.toString(sqlDB!=null));
+	    Log.w("DBpath",sqlDB.getPath());
+	    Log.w("myapp",sqlDB.toString());
+	    Log.w("fff: ",Boolean.toString(sqlDB.isOpen()));
+	    //Cursor cursor= sqlDB.rawQuery("SELECT * FROM category;",new String[] { "id" });
+	  	//cursor.moveToFirst();
+	  	//Log.w("myApp",Integer.toString(cursor.getInt(1)));
 	    
-	/*   Cursor cursor= sqlDB.rawQuery("SELECT * FROM scene;",new String[] { "id" });
-	   cursor.moveToFirst();
-	   Log.w("myApp",Integer.toString(cursor.getInt(1)));
-	  */  
 	    try {
 	    	DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));
 	    	Log.w("myApp",DataManager.getInstance(false).getWorkingPath());

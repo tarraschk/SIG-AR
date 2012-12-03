@@ -52,8 +52,6 @@ public class MainActivity extends OAARComponentBase {
 		if(MapActivity.modificationMode==1){
 			getSensorManager().enableMockLocation(MapActivity.mockLocationLat, MapActivity.mockLocationLong);
 		}
-
-		
 	}
 	/**
 	 * Show alert message to manage GPS positioning. 
@@ -126,6 +124,22 @@ public class MainActivity extends OAARComponentBase {
 		final AlertDialog alert = builder.create();
 		alert.show();
 	}
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onRestart()
+	 */
+	/*@Override
+	protected void onRestart() {
+		super.onRestart();
+		setupDataManager();
+	}*/
+	
+	
+	/*@Override
+	protected void onResume() {
+		super.onRestart();
+		setupDataManager();
+	}*/
+	
 	/**
 	 * Setup DataManager: load model data and activate scenes.
 	 * this method simply use the getInstance of DataManager.

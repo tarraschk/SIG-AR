@@ -125,22 +125,22 @@ public class SceneArrayAdapter extends BaseAdapter{
 					altitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).location.getAltitude()));
 					
 					final EditText scalex= (EditText) dialog.findViewById(R.id.scalex);
-					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getX()));
+					//scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getX()));
 					
 					final EditText scaley= (EditText) dialog.findViewById(R.id.scaley);
-					scaley.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getY()));
+					//scaley.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getY()));
 					
 					final EditText scalez= (EditText) dialog.findViewById(R.id.scalez);
-					scalez.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getZ()));
+					//scalez.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getScale().getZ()));
 					
 					final EditText rotx= (EditText) dialog.findViewById(R.id.rotx);
-					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getX()));
+					//scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getX()));
 					
 					final EditText roty= (EditText) dialog.findViewById(R.id.roty);
-					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getY()));
+					//scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getY()));
 					
 					final EditText rotz= (EditText) dialog.findViewById(R.id.rotz);
-					scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getZ()));
+					//scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getZ()));
 					
 					
 					Button okButton = (Button) dialog.findViewById(R.id.ok);
@@ -170,8 +170,8 @@ public class SceneArrayAdapter extends BaseAdapter{
 							//dataSource.get(pos).models.get(0).addTransform(modelTransform);
 							
 							dataSource.get(pos).models.get(0).getTransforms().clear();
-							
-							dataSource.get(pos).models.get(0).getTransforms().add(modelTransform);
+							dataSource.get(pos).addTransform(modelTransform);
+							//dataSource.get(pos).models.get(0).getTransforms().add(modelTransform);
 
 							//dataSource.get(pos).models.get(0).addTransform(modelTransform);
 							
@@ -193,10 +193,7 @@ public class SceneArrayAdapter extends BaseAdapter{
 							dialog.dismiss();
 						}
 					});
-					
-					dialog.show();
-					
-					
+					dialog.show();	
 				}
 			} );
 			

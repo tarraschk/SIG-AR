@@ -1,21 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
-<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
-    <header 
-        android:fragment=".MapActivity"
-        android:title="@string/prefs_arview"
-        android:summary="@string/prefs_summ_arview" >
-        <extra android:name="settings" android:value="arview"/>
-    </header>
-    <header 
-        android:fragment="com.example.prefs.SettingsActivity$SettingsDataBase"
-        android:title="@string/prefs_database"
-        android:summary="@string/prefs_summ_database" >
-        <extra android:name="settings" android:value="database" />
-    </header>
-    <header 
-        android:fragment="com.example.prefs.SettingsActivity$SettingsAbout"
-        android:title="@string/prefs_about"
-        android:summary="@string/prefs_summ_about">
-        <extra android:name="settings" android:value="about"/>
-    </header>
-</preference-headers>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory 
+        android:title="@string/pref_arview"
+        android:key="pref_key_arview">
+        <CheckBoxPreference
+            android:key="pref_key_arview1"
+            android:summary="Preference related to compass"
+            android:title="Hide Compass"
+            android:defaultValue="false" />
+        <CheckBoxPreference
+            android:key="pref_key_arview2"
+            android:summary="Preference related to grid"
+            android:title="Hide Grid"
+            android:defaultValue="false" />
+        <CheckBoxPreference
+            android:key="pref_key_arview3"
+            android:summary="Preference related to light"
+            android:title="Disable default light"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory 
+        android:title="@string/pref_database"
+        android:key="pref_key_database">
+        <CheckBoxPreference
+            android:key="pref_key_database1"
+            android:summary="summary"
+            android:title="title1"
+            android:defaultValue="false" />
+        <Preference 
+            android:key="pref_key_database2"
+            android:dependency="pref_key_auto_delete"
+            android:summary="summary"
+            android:title="title2"/>
+        <Preference 
+            android:key="pref_key_database3"
+            android:dependency="pref_key_auto_delete"
+            android:summary="summary"
+            android:title="title3"/>
+    </PreferenceCategory>
+    
+    <PreferenceCategory 
+        android:title="@string/pref_about"
+        android:key="pref_key_about">
+         <CheckBoxPreference
+            android:key="pref_key_about1"
+            android:summary="summary"
+            android:title="title1"
+            android:defaultValue="false" />
+        <Preference 
+            android:key="pref_key_about2"
+            android:dependency="pref_key_auto_delete"
+            android:summary="summary"
+            android:title="title2"/>
+        <Preference 
+            android:key="pref_key_about3"
+            android:dependency="pref_key_auto_delete"
+            android:summary="summary"
+            android:title="title3"/>
+    </PreferenceCategory>
+    
+</PreferenceScreen>

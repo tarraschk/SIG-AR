@@ -38,7 +38,7 @@
             android:layout_width="0dip"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Longitude:" />
+            android:text="@string/label_longitude" />
         <TextView
             android:id="@+id/titlescalex"
             android:layout_width="0dip"
@@ -85,7 +85,7 @@
             android:layout_width="0dip"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Latitude:"
+            android:text="@string/label_latitude"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
@@ -135,7 +135,7 @@
             android:layout_width="0dip"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Altitude:"
+            android:text="@string/label_altitude"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
        	<TextView
@@ -181,23 +181,24 @@
         
         
     </TableLayout>
-    
-    		
 
     	<Button
         	android:id="@+id/cancel"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_marginLeft="20dp"
+        	android:layout_width="20dp"
+        	android:layout_height="20dp"
+        	android:layout_marginLeft="5dp"
         	android:layout_below="@+id/tableLayout1"
         	android:layout_alignRight="@+id/tableLayout1"
-        	android:text="Cancel" />
+        	android:background="@drawable/navigation_cancel"
+        	/>
     	<Button
         	android:id="@+id/ok"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
+        	android:layout_width="20dp"
+        	android:layout_height="20dp"
         	android:layout_alignTop="@+id/cancel"
         	android:layout_toLeftOf="@+id/cancel"
-        	android:text="OK" />
+        	android:background="@drawable/navigation_accept"
+        	/>
+
     
 </RelativeLayout>

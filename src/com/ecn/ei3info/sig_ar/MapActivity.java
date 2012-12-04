@@ -130,7 +130,6 @@ public class MapActivity extends OAMapComponentBase{
 		  final ImageButton right=(ImageButton) findViewById(R.id.button_right);
 		 
 		  
-		  
 		  class RptUpdater implements Runnable {
 		      public void run() {
 		          if( mUp){
@@ -168,8 +167,6 @@ public class MapActivity extends OAMapComponentBase{
 				  return false;
 			  }
 		  });  
-
-		  
 
 		  down.setOnLongClickListener( 
 				  new View.OnLongClickListener(){

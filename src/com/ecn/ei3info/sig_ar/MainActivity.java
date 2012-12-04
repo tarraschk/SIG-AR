@@ -260,7 +260,7 @@ public class MainActivity extends OAARComponentBase {
 	 * @param View
 	 */
 	public void onSettingsActivity(View View){
-		Intent intent = new Intent(this, SettingsActivity.class);
+		Intent intent = new Intent(this, SettingsActivityOld.class);
 		startActivity(intent);
 	}
 	/**

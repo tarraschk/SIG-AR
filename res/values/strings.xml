@@ -25,6 +25,13 @@
 	<string name="label_name">Name</string>
 	<string name="label_category">Category</string>
 	
+	<string name="prefs_arview">AR view</string>
+	<string name="prefs_database">Database</string>
+	<string name="prefs_about">About</string>
+	<string name="prefs_summ_arview">Preferences related to AR view</string>
+	<string name="prefs_summ_database">Preferences related to Database</string>
+	<string name="prefs_summ_about">About</string>
+	
 	
     <string-array name="sort_array">
         <item>Name</item>

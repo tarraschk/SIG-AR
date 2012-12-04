@@ -185,7 +185,23 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 	 */
 	public void onGoBack(View view) {
 		super.onBackPressed();
+		Intent intent = new Intent(ListActivity.this, MainActivity.class);
+		startActivity(intent);
+		finish();
 	}
+	
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onBackPressed()
+	 */
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent intent = new Intent(ListActivity.this, MainActivity.class);
+		startActivity(intent);
+		finish();
+	}
+
 
 	/**
 	 * Start ManageModelActivity, screen to add or delete data model resources

@@ -128,12 +128,12 @@ public class MainActivity extends OAARComponentBase {
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onRestart()
 	 */
-	@Override
+	/*@Override
 	protected void onRestart() {
 		onCreate(null);
 		//super.onRestart();
 		//setupScenes(DataManager.getInstance(true));
-	}
+	}*/
 	
 	
 	/*@Override
@@ -240,12 +240,10 @@ public class MainActivity extends OAARComponentBase {
 	 * Go to Map View
 	 * @param View
 	 */
-	// @TargetApi(16)
 	public void onMapActivity(View View){
 		Intent intent = new Intent(this, MapActivity.class);
-		//	  ActivityOptions options = ActivityOptions.makeScaleUpAnimation(View, 0,
-		//	      0, View.getWidth(), View.getHeight());
-		startActivity(intent);// , options.toBundle());
+		startActivity(intent);
+		finish();
 	}
 	/**
 	 * Go to List View
@@ -254,13 +252,14 @@ public class MainActivity extends OAARComponentBase {
 	public void onListActivity(View View){
 		Intent intent = new Intent(this, ListActivity.class);
 		startActivity(intent);
+		finish();
 	}
 	/**
 	 * Go to Settings
 	 * @param View
 	 */
 	public void onSettingsActivity(View View){
-		Intent intent = new Intent(this, SettingsActivityOld.class);
+		Intent intent = new Intent(this, SettingsActivity.class);
 		startActivity(intent);
 	}
 	/**

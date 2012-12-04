@@ -17,8 +17,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -74,7 +80,7 @@ public class MapActivity extends OAMapComponentBase{
 	protected float[] googleZoom={0,156542,78271,39135,19567,9783,4891,2445,1222,611,305,152,76,38,19,(float) 9.55,(float) 4.77,(float) 2.38,(float) 1.19,(float) 0.59,(float) 0.29,(float) 0.15,(float)0.07};
 		//{21282,16355,10064,5540,2909,1485,752,378,190,95,48,24,12,6,3,(float) 1.48,(float) 0.74,(float) 0.37,(float) 0.19};
 	
-	View buttonToogle ;
+	protected LinearLayout slidercontrol ;
 	
 	/**
 	 * Save your Google Map API Key.
@@ -116,7 +122,9 @@ public class MapActivity extends OAMapComponentBase{
 		  //automatic sleep mode deactivated
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-		  buttonToogle = (View)findViewById(R.id.button_toggler);
+		  slidercontrol = (LinearLayout)findViewById(R.id.slider_control);
+		  
+		  slideIN(slidercontrol);
 		  
 		  modificationControl= (LinearLayout) findViewById(R.id.modificationControlLayout);
 		 //TODO verifier cet ligne de code currentfocus???
@@ -233,6 +241,40 @@ public class MapActivity extends OAMapComponentBase{
 	}
 	
 	
+	
+	
+    public static void slideIN(ViewGroup panel) {
+
+    	AnimationSet set = new AnimationSet(true);
+    	Animation animation = new AlphaAnimation(0.0f, 1.0f);
+    	animation.setDuration(100);
+    	set.addAnimation(animation);
+    	animation = new TranslateAnimation(
+    			Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f,
+    			Animation.RELATIVE_TO_SELF, -0.0f, Animation.RELATIVE_TO_SELF, 0.0f
+    			);
+    	animation.setDuration(500);
+    	set.addAnimation(animation);
+    	panel.startAnimation(set);
+    }
+
+	
+    public static void slideOUT(ViewGroup panel) {
+
+    	AnimationSet set = new AnimationSet(true);
+    	Animation animation = new AlphaAnimation(1.0f, 0.0f);
+    	animation.setDuration(100);
+    	set.addAnimation(animation);
+    	animation = new TranslateAnimation(
+    			Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 1.0f,
+    			Animation.RELATIVE_TO_SELF, -0.0f, Animation.RELATIVE_TO_SELF, 0.0f
+    			);
+    	animation.setDuration(500);
+    	set.addAnimation(animation);
+    	panel.startAnimation(set);
+    }
+    
+    
 	//TODO Add Map Control View
 	//TODO Add slide Layout
 	/**
@@ -270,7 +312,7 @@ public class MapActivity extends OAMapComponentBase{
 			Toast.makeText(this, "Satellite Image Deactivated", Toast.LENGTH_SHORT).show();
 		}
 	}
-	
+/*	
 	@Override
 	protected void onSceneSelected(OAScene scene) {
 		super.onSceneSelected(scene);
@@ -281,7 +323,7 @@ public class MapActivity extends OAMapComponentBase{
 			Log.w("myApp",Integer.toString(idSceneOnEdition));
 		}
 		
-	}
+	}*/
 	/**
 	 * Method associate to imageButton to refocus the map on your position.
 	 * @param view
@@ -307,6 +349,8 @@ public class MapActivity extends OAMapComponentBase{
 	 */
 	public void onGoBack(View view) {
 		super.onBackPressed();
+		Intent intent = new Intent(MapActivity.this, MainActivity.class);
+		startActivity(intent);
 		this.plot=false;
 	}	
 	/**
@@ -317,8 +361,8 @@ public class MapActivity extends OAMapComponentBase{
 	public void onBackPressed() {
 		super.onBackPressed();
 		Intent intent = new Intent(MapActivity.this, MainActivity.class);
-		//intent.putExtra("GPSAlert", true); 
 		startActivity(intent);
+		this.plot=false;
 	}
 	
 	
@@ -342,10 +386,10 @@ public class MapActivity extends OAMapComponentBase{
 	public void onDisplayButtons(View view) {
 		toogler = !toogler;
 
-		if(toogler)
+	/*	if(toogler)
 			buttonToogle.setVisibility(View.VISIBLE);
 		else
-			buttonToogle.setVisibility(View.GONE);
+			buttonToogle.setVisibility(View.GONE)*/;
 	}
 
 
@@ -537,4 +581,7 @@ public class MapActivity extends OAMapComponentBase{
 		
 		return delta;
 	}
+
+	
+	
 }

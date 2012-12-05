@@ -3,6 +3,11 @@ package com.ecn.ei3info.sig_ar;
 import com.hitlabnz.outdoorar.api.OAARComponentBase;
 import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
+
+import fr.maraumax.customtabs.MainActivity;
+import fr.maraumax.customtabs.MapActivity;
+import fr.maraumax.customtabs.R;
+import fr.maraumax.customtabs.SettingsActivity;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -35,6 +40,7 @@ public class MainActivity extends OAARComponentBase {
 	 *  Called when the activity is first created. 
 	 *  
 	 */
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,6 +59,15 @@ public class MainActivity extends OAARComponentBase {
 		if(MapActivity.modificationMode==1){
 			getSensorManager().enableMockLocation(MapActivity.mockLocationLat, MapActivity.mockLocationLong);
 		}
+		
+		
+		//Les 5 lignes suivantes sont pour la barre de navigation
+		setContentView(R.layout.main);
+        this.tabHost = getTabHost();
+        setupTab("AR View", "tab1", new Intent().setClass(this, MainActivity.class));
+        setupTab("Map", "tab2", new Intent().setClass(this, MapActivity.class));
+        setupTab("Settings", "tab3", new Intent().setClass(this, SettingsActivity.class));
+    }
 	}
 	/**
 	 * Show alert message to manage GPS positioning. 

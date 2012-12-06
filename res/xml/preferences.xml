@@ -3,17 +3,17 @@
         android:title="@string/pref_arview"
         android:key="pref_key_arview">
         <CheckBoxPreference
-            android:key="pref_key_arview1"
+            android:key="pref_key_compass"
             android:summary="Preference related to compass"
             android:title="Hide Compass"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
         <CheckBoxPreference
-            android:key="pref_key_arview2"
+            android:key="pref_key_grid"
             android:summary="Preference related to grid"
             android:title="Hide Grid"
             android:defaultValue="false" />
         <CheckBoxPreference
-            android:key="pref_key_arview3"
+            android:key="pref_key_light"
             android:summary="Preference related to light"
             android:title="Disable default light"
             android:defaultValue="false" />
@@ -27,36 +27,15 @@
             android:summary="summary"
             android:title="title1"
             android:defaultValue="false" />
-        <Preference 
-            android:key="pref_key_database2"
-            android:dependency="pref_key_auto_delete"
-            android:summary="summary"
-            android:title="title2"/>
-        <Preference 
-            android:key="pref_key_database3"
-            android:dependency="pref_key_auto_delete"
-            android:summary="summary"
-            android:title="title3"/>
     </PreferenceCategory>
     
     <PreferenceCategory 
         android:title="@string/pref_about"
         android:key="pref_key_about">
-         <CheckBoxPreference
-            android:key="pref_key_about1"
-            android:summary="summary"
-            android:title="title1"
-            android:defaultValue="false" />
-        <Preference 
-            android:key="pref_key_about2"
-            android:dependency="pref_key_auto_delete"
-            android:summary="summary"
-            android:title="title2"/>
-        <Preference 
-            android:key="pref_key_about3"
-            android:dependency="pref_key_auto_delete"
-            android:summary="summary"
-            android:title="title3"/>
+         <PreferenceScreen
+            android:key="pref_key_about"
+            android:title="About"
+            android:layout="@layout/dialog_about" />
     </PreferenceCategory>
     
 </PreferenceScreen>

@@ -184,20 +184,22 @@
 
     	<Button
         	android:id="@+id/cancel"
-        	android:layout_width="20dp"
-        	android:layout_height="20dp"
+        	android:text="cancel"
+        	android:layout_height="30dp"
+        	android:layout_width="80dp"
         	android:layout_marginLeft="5dp"
         	android:layout_below="@+id/tableLayout1"
         	android:layout_alignRight="@+id/tableLayout1"
-        	android:background="@drawable/navigation_cancel"
+        	android:background="@drawable/textbtn"
         	/>
     	<Button
         	android:id="@+id/ok"
-        	android:layout_width="20dp"
-        	android:layout_height="20dp"
+        	android:text="ok"
+        	android:layout_height="30dp"
+        	android:layout_width="80dp"
         	android:layout_alignTop="@+id/cancel"
         	android:layout_toLeftOf="@+id/cancel"
-        	android:background="@drawable/navigation_accept"
+        	android:background="@drawable/textbtn"
         	/>
 
     

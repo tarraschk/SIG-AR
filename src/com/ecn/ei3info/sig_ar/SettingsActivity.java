@@ -3,6 +3,7 @@ package com.ecn.ei3info.sig_ar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
@@ -49,5 +50,18 @@ public class SettingsActivity extends Activity {
 				
 			}
 	    }
+
+		/* (non-Javadoc)
+		 * @see android.app.Activity#onBackPressed()
+		 */
+		@Override
+		public void onBackPressed() {
+			super.onBackPressed();
+			Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+			startActivity(intent);
+		}
+	    
+	    
+	    
 }
     

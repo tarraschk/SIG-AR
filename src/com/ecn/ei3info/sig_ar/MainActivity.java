@@ -4,10 +4,10 @@ import com.hitlabnz.outdoorar.api.OAARComponentBase;
 import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
-import fr.maraumax.customtabs.MainActivity;
-import fr.maraumax.customtabs.MapActivity;
-import fr.maraumax.customtabs.R;
-import fr.maraumax.customtabs.SettingsActivity;
+//import fr.maraumax.customtabs.MainActivity;
+//import fr.maraumax.customtabs.MapActivity;
+//import fr.maraumax.customtabs.R;
+//import fr.maraumax.customtabs.SettingsActivity;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -62,13 +62,13 @@ public class MainActivity extends OAARComponentBase {
 		
 		
 		//Les 5 lignes suivantes sont pour la barre de navigation
-		setContentView(R.layout.main);
-        this.tabHost = getTabHost();
-        setupTab("AR View", "tab1", new Intent().setClass(this, MainActivity.class));
-        setupTab("Map", "tab2", new Intent().setClass(this, MapActivity.class));
-        setupTab("Settings", "tab3", new Intent().setClass(this, SettingsActivity.class));
+		setContentView(R.layout.activity_main);
+        //this.tabHost = getTabHost();
+        //setupTab("AR View", "tab1", new Intent().setClass(this, MainActivity.class));
+        //setupTab("Map", "tab2", new Intent().setClass(this, MapActivity.class));
+        //setupTab("Settings", "tab3", new Intent().setClass(this, SettingsActivity.class));
     }
-	}
+	
 	/**
 	 * Show alert message to manage GPS positioning. 
 	 * Detected if your GPS is activated and allow you to switch on GPS Positioning if is necessary.
@@ -237,7 +237,7 @@ public class MainActivity extends OAARComponentBase {
 		// TODO Auto-generated method stub
 		super.onSceneSelected(scene);
 		
-		Toast.makeText(MainActivity.this, scene.getName()+" est seclectionnŽe", Toast.LENGTH_SHORT).show();
+		Toast.makeText(MainActivity.this, scene.getName()+" est seclectionnï¿½e", Toast.LENGTH_SHORT).show();
 
 	}
 	/* (non-Javadoc)
@@ -248,7 +248,7 @@ public class MainActivity extends OAARComponentBase {
 		// TODO Auto-generated method stub
 		super.onTouchedScene(scene);
 		
-		Toast.makeText(MainActivity.this, scene.getName()+" est seclect'tgtthththionnŽe", Toast.LENGTH_SHORT).show();
+		Toast.makeText(MainActivity.this, scene.getName()+" est seclect'tgtthththionnï¿½e", Toast.LENGTH_SHORT).show();
 	
 	}
 	/**
@@ -276,6 +276,7 @@ public class MainActivity extends OAARComponentBase {
 	public void onSettingsActivity(View View){
 		Intent intent = new Intent(this, SettingsActivity.class);
 		startActivity(intent);
+                finish();
 	}
 	/**
 	 * Go back and quit application

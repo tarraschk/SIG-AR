@@ -566,10 +566,27 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 							ResultSet rs2 =  st2.executeQuery(sqlgetAllTexture+ Integer.toString(id_object3d)+" ;");
 							if (rs2!=null) {
 								while(rs2.next()){
+
 									int id_texture=rs2.getInt(1);
+							    	Log.w("myapp",Integer.toString(id_texture));
+
 									String name_texture=rs2.getString(2);
-									//InputStream file_texture=rs2.getBinaryStream(3);
+									InputStream file_texture=rs2.getBinaryStream(3);
 									//TODO insert texture to table in sqlite
+									
+									File filetexture = new File(objectfolder, name_texture); //Getting a file within the dir.
+							    	FileOutputStream outtexture = new FileOutputStream(filetexture); //Use the stream as usual to write into the file.
+							    
+							    	int readtexture = 0;
+							    	byte[] bytestexture = new byte[1024];
+							    	//Log.w("myapp",Integer.toString(file_mtl.read()));
+							    	while ((readtexture = file_texture.read(bytestexture)) != -1) {
+							    		outtexture.write(bytestexture, 0, readtexture);
+							    	}
+							     
+							    	file_texture.close();
+							    	outtexture.flush();
+							    	outtexture.close();
 									
 									
 									//

@@ -164,11 +164,5 @@
         android:onClick="onGoBack"
         android:src="@drawable/content_undo" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:onClick="onDisplayButtons"
-        android:src="@drawable/action_settings" />
 
 </FrameLayout>

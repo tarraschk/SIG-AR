@@ -53,11 +53,12 @@ public class SplashScreen extends Activity{
 			Log.w("DBpath",sqlDB.getPath());
 			Log.w("myapp",sqlDB.toString());
 			Log.w("fff: ",Boolean.toString(sqlDB.isOpen()));
-			Cursor cursor= sqlDB.rawQuery("SELECT * FROM icon;",null);
+			/*Cursor cursor= sqlDB.rawQuery("SELECT * FROM scene;",null);
 			cursor.moveToFirst();
 			Log.w("myApp",Integer.toString(cursor.getInt(1)));
 			Log.w("myApp",Integer.toString(cursor.getCount()));
-	    
+			Log.w("mydb",cursor.getString(2));
+	    */
 			DataXMLParser test= new DataXMLParser();
 			File exst = Environment.getExternalStorageDirectory();
 	    	String exstPath = exst.getPath();
@@ -69,7 +70,7 @@ public class SplashScreen extends Activity{
 	    	//getDir("/SIGAR", 0);
 	    	
 	    	File mydir = getDir("SIGAR", Context.MODE_PRIVATE); //Creating an internal dir;
-	    //	File fileWithinMyDir = new File(mydir, "myfile.txt"); //Getting a file within the dir.
+	    	File fileWithinMyDir = new File(mydir, "myfile.txt"); //Getting a file within the dir.
 	    	//FileOutputStream out = new FileOutputStream(fileWithinMyDir); //Use the stream as usual to write into the file.
 	    	
 	    	//String string = "hello world!";
@@ -81,7 +82,7 @@ public class SplashScreen extends Activity{
 	    	//Log.w("myApp",getFilesDir().toString());
 	    	int i=0;
 	    	for(i=0;i<a.length;i++){
-	    		Log.w("myApp",a[i]);	
+	    		Log.w("myff",a[i]);	
 	    	}
 	    	/*//InputStream instream = openFileInput("SIGAR/myfile.txt");
 	    	 if (instream != null) {
@@ -99,9 +100,22 @@ public class SplashScreen extends Activity{
 	    	 }
 	    	 instream.close();*/
 	    	
-	    //	File exst = Environment.getExternalStorageDirectory();
-	    	//String exstPath = exst.getPath();
+	    	// create folder structure on internal storage
 
+	    	File inst = getFilesDir();
+	    	File insigar = new File(inst+"/SIGAR");
+	    	insigar.mkdir();
+	    	
+	    	File inmodels= new File(insigar.getPath()+"/3Dmodels");
+	    	inmodels.mkdir();
+
+	    	File inicons=new File(insigar.getPath()+"/icons");
+	    	inicons.mkdir();
+	    	// create folder structure on external storage (sdcard)
+	    	
+	    //File exst = Environment.getExternalStorageDirectory();
+	    	//String exstPath = exst.getPath();
+	    		    	
 	    	File sigar = new File(exstPath+"/SIGAR");
 	    	sigar.mkdir();
 

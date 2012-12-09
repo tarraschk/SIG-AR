@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.sql.Timestamp;
 
 import android.content.Context;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -12,14 +13,14 @@ import android.util.Log;
 public class SigarDB extends SQLiteOpenHelper {
 	
 	private static final String DATABASE_NAME = "sigar.db";
-	private static final int DATABASE_VERSION = 32;
+	private static final int DATABASE_VERSION = 41;
 
 	
 	
 	// Database creation sql statement
 	private static final String DATABASE_CREATE = "CREATE TABLE category(" 
 														+"id_category integer primary key NOT NULL, " 
-														+"name_category text NOT NULL" 
+														+"name_category TEXT NOT NULL" 
 												+"); "
 												+"CREATE TABLE icon (" 
 														+"id_icon integer primary key  NOT NULL, " 
@@ -30,7 +31,7 @@ public class SigarDB extends SQLiteOpenHelper {
 														+"name_person text, "
 														+"firstname_person text "
 												+"); "
-												+"CREATE TABLE  object3d (" 
+												+"CREATE TABLE object3d (" 
 														+"id_object3d integer primary key NOT NULL, " 
 														+"name_object text NOT NULL, " 
 														+"file_obj blob, " 
@@ -47,7 +48,7 @@ public class SigarDB extends SQLiteOpenHelper {
 													    +"id_object3d integer NOT NULL "
 														//+"FOREIGN KEY(id_object3D) REFERENCES object3D(id_object3D)" 
 												+"); "
-												+"CREATE TABLE sceneXXX ( "
+												+"CREATE TABLE scene ( "
 													    +"id_scene integer primary key, "
 													    +"name_scene text, "
 													    +"description text, "
@@ -81,8 +82,8 @@ public class SigarDB extends SQLiteOpenHelper {
 													"INSERT INTO person(name_person, firstname_person) VALUES ('MARICHAL', 'BASTIEN');" +
 													"INSERT INTO icon(id_icon) VALUES (1);" +
 													"INSERT INTO object3d VALUES (1,'monpremierobjet3D','','fichiermtl','','',1);" +
-													"INSERT INTO texture(name_texture,id_object3d) VALUES ('texturetest',1);";
-													//"INSERT INTO scene VALUES (1,'scene1','truc de test',1,1,false,,'','','',1,'',1,'','','','','','','','','');";
+													"INSERT INTO texture(name_texture,id_object3d) VALUES ('texturetest',1);"+
+													"INSERT INTO scene VALUES (1,'scene1','truc de test',1,1,false,'0','0','0',1,'0',1,'0','0','0','0','0','0','0','0','0');";
 													
 			
 												
@@ -110,10 +111,17 @@ public class SigarDB extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase database) {
+		try{
 		database.execSQL(DATABASE_CREATE);
 		database.execSQL(DATABASE_INSERT);
 		Log.w("myApp",DATABASE_CREATE);
 		Log.w("myApp","Creation DB");
+		}catch(SQLException e){
+			e.printStackTrace();
+			Log.w("dtdhd","dafuk");
+			
+		}
+		
 	}
 
 	@Override

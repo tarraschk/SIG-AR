@@ -1,26 +1,28 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory 
         android:title="@string/pref_arview"
+        android:layout="@layout/prefcategory"
         android:key="pref_key_arview">
         <CheckBoxPreference
             android:key="pref_key_compass"
-            android:summary="Preference related to compass"
+            android:summary="@string/prefs_summ_arview1"
             android:title="Hide Compass"
             android:defaultValue="true" />
         <CheckBoxPreference
             android:key="pref_key_grid"
-            android:summary="Preference related to grid"
+            android:summary="@string/prefs_summ_arview2"
             android:title="Hide Grid"
             android:defaultValue="false" />
         <CheckBoxPreference
             android:key="pref_key_light"
-            android:summary="Preference related to light"
+            android:summary="@string/prefs_summ_arview3"
             android:title="Disable default light"
             android:defaultValue="false" />
     </PreferenceCategory>
     
     <PreferenceCategory 
         android:title="@string/pref_database"
+        android:layout="@layout/prefcategory"
         android:key="pref_key_database">
         <CheckBoxPreference
             android:key="pref_key_database1"
@@ -31,11 +33,14 @@
     
     <PreferenceCategory 
         android:title="@string/pref_about"
+        android:layout="@layout/prefcategory"
         android:key="pref_key_about">
-         <PreferenceScreen
-            android:key="pref_key_about"
-            android:title="About"
-            android:layout="@layout/dialog_about" />
+        <DialogPreference
+                android:title="About"
+                android:summary="Click here to learn more about this project"
+                android:key="readabout"
+                android:dialogLayout="@layout/dialog_about"
+                android:positiveButtonText="OK" />
     </PreferenceCategory>
     
 </PreferenceScreen>

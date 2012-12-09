@@ -49,6 +49,7 @@
          <activity
             android:name="com.ecn.ei3info.sig_ar.SettingsActivity"
             android:screenOrientation="landscape"
+            android:label="@string/settings"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"> 
         </activity>
         <activity

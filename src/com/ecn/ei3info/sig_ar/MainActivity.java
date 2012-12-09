@@ -62,7 +62,7 @@ public class MainActivity extends OAARComponentBase {
 		
 		
 		//Les 5 lignes suivantes sont pour la barre de navigation
-		setContentView(R.layout.activity_main);
+		//setContentView(R.layout.activity_main);
         //this.tabHost = getTabHost();
         //setupTab("AR View", "tab1", new Intent().setClass(this, MainActivity.class));
         //setupTab("Map", "tab2", new Intent().setClass(this, MapActivity.class));

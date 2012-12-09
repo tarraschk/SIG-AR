@@ -47,7 +47,7 @@
                    android:resource="@xml/searchable"/> 
         </activity>
          <activity
-            android:name="com.ecn.ei3info.sig_ar.SettingsActivity"
+            android:name=".SettingsActivity"
             android:screenOrientation="landscape"
             android:label="@string/settings"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"> 

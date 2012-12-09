@@ -53,9 +53,10 @@ public class SplashScreen extends Activity{
 			Log.w("DBpath",sqlDB.getPath());
 			Log.w("myapp",sqlDB.toString());
 			Log.w("fff: ",Boolean.toString(sqlDB.isOpen()));
-			Cursor cursor= sqlDB.rawQuery("SELECT * FROM category;",null);
+			Cursor cursor= sqlDB.rawQuery("SELECT * FROM icon;",null);
 			cursor.moveToFirst();
 			Log.w("myApp",Integer.toString(cursor.getInt(1)));
+			Log.w("myApp",Integer.toString(cursor.getCount()));
 	    
 			DataXMLParser test= new DataXMLParser();
 			File exst = Environment.getExternalStorageDirectory();

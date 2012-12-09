@@ -86,6 +86,7 @@ public class SplashScreen extends Activity{
 	    	File icons=new File(sigar.getPath()+"/icons");
 	    	icons.mkdir();
 			
+	    //	File asset=new File(getAssets().);
 			
 			//DataManager.setWorkingPath(insigar.getPath());
 			

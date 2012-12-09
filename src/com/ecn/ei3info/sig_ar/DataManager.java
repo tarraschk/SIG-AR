@@ -14,15 +14,11 @@ public class DataManager extends OADataManager{
 	static DataManager singletonInstance = null;
 	
 	protected static String workingPath="SIGAR";
-	protected static String modelPath = "";
-	protected static String iconPath = "";
+	//protected static String modelPath = "";
+	//protected static String iconPath = "";
 	
 	//private static final String MODELS_DIRECTORY = "3Dmodels";
 	//private static final String ICONS_DIRECTORY = "icons";
-	
-
-	
-	
 	
 	//protected ArrayList<Scene> scenes = new ArrayList<Scene>();;
 	
@@ -53,9 +49,9 @@ public class DataManager extends OADataManager{
 	 */
 	protected void setWorkingPath(String path) {
 		// TODO Auto-generated method stub
-		//super.setWorkingPath(path);
+		super.setWorkingPath(path);
 		//workingPath=path;
-		super.setWorkingPath(Environment.getExternalStorageDirectory().toString() + "/" + path);
+		//super.setWorkingPath(Environment.getExternalStorageDirectory().toString() + "/" + path);
 		
 		/*workingPath = path;
 		

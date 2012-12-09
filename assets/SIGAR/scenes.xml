@@ -47,7 +47,7 @@
 	<scene>
 		<id>10</id>
 		<name>CubeECN</name>
-		<category>smile</category>
+		<category>ecn</category>
 		<description>un cube avec ECN dessus.</description>
 		<creator>BMR</creator>
 		<activated>true</activated>

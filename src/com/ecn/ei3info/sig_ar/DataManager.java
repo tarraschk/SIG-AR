@@ -3,6 +3,8 @@ package com.ecn.ei3info.sig_ar;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Environment;
+
 import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
 
@@ -41,7 +43,10 @@ public class DataManager extends OADataManager{
 	@Override
 	protected void setWorkingPath(String path) {
 		// TODO Auto-generated method stub
-		super.setWorkingPath(path);
+		//super.setWorkingPath(path);
+		
+		super.setWorkingPath(Environment.getExternalStorageDirectory().toString() + "/" + path);
+		
 	}
 
 	/* (non-Javadoc)

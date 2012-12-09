@@ -3,6 +3,7 @@ package com.ecn.ei3info.sig_ar;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +16,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -43,19 +45,24 @@ public class SplashScreen extends Activity{
 //	    DataManagerAssets.getInstance(this);
 	
 		
-		DataXMLParser test= new DataXMLParser();
-		SigarDB database= new SigarDB(this);
-	    SQLiteDatabase sqlDB = database.getWritableDatabase();
-	    Log.w("mysqlite",Boolean.toString(sqlDB!=null));
-	    Log.w("DBpath",sqlDB.getPath());
-	    Log.w("myapp",sqlDB.toString());
-	    Log.w("fff: ",Boolean.toString(sqlDB.isOpen()));
-	    //Cursor cursor= sqlDB.rawQuery("SELECT * FROM category;",new String[] { "id" });
-	  	//cursor.moveToFirst();
-	  	//Log.w("myApp",Integer.toString(cursor.getInt(1)));
+		try {
+			
+			SigarDB database= new SigarDB(this);
+			SQLiteDatabase sqlDB = database.getWritableDatabase();
+			Log.w("mysqlite",Boolean.toString(sqlDB!=null));
+			Log.w("DBpath",sqlDB.getPath());
+			Log.w("myapp",sqlDB.toString());
+			Log.w("fff: ",Boolean.toString(sqlDB.isOpen()));
+			Cursor cursor= sqlDB.rawQuery("SELECT * FROM category;",null);
+			cursor.moveToFirst();
+			Log.w("myApp",Integer.toString(cursor.getInt(1)));
 	    
-	    try {
-	    	DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));
+			DataXMLParser test= new DataXMLParser();
+			File exst = Environment.getExternalStorageDirectory();
+	    	String exstPath = exst.getPath();
+	    	//File xmlfile = new File(exstPath+"/SIGAR/scene.xml");
+	    	InputStream input = new FileInputStream(exstPath+"/SIGAR/scenes.xml");
+	    	DataManager.getInstance(false).addScenes(test.parse(input));//getAssets().open("SIGAR/scenes.xml")));
 	    	Log.w("myApp",DataManager.getInstance(false).getWorkingPath());
 	    	
 	    	//getDir("/SIGAR", 0);
@@ -91,8 +98,8 @@ public class SplashScreen extends Activity{
 	    	 }
 	    	 instream.close();*/
 	    	
-	    	File exst = Environment.getExternalStorageDirectory();
-	    	String exstPath = exst.getPath();
+	    //	File exst = Environment.getExternalStorageDirectory();
+	    	//String exstPath = exst.getPath();
 
 	    	File sigar = new File(exstPath+"/SIGAR");
 	    	sigar.mkdir();
@@ -119,6 +126,9 @@ public class SplashScreen extends Activity{
 	    } catch (IOException e) {
 	    	// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch(SQLException e){
+			e.printStackTrace();
+			Log.w("SQL EXCEPTION", "FUCK");
 		}
 	    
 	    

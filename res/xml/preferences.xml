@@ -35,12 +35,10 @@
         android:title="@string/pref_about"
         android:layout="@layout/prefcategory"
         android:key="pref_key_about">
-        <DialogPreference
+        <Preference
                 android:title="About"
                 android:summary="Click here to learn more about this project"
-                android:key="readabout"
-                android:dialogLayout="@layout/dialog_about"
-                android:positiveButtonText="OK" />
+                android:key="readabout"/>
     </PreferenceCategory>
     
 </PreferenceScreen>

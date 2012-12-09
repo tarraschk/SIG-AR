@@ -24,9 +24,27 @@ public class SettingsActivity extends Activity {
 	        @Override
 	        public void onCreate(Bundle savedInstanceState) {
 	            super.onCreate(savedInstanceState);
-
-	            // Load the preferences from an XML resource
 	            addPreferencesFromResource(R.xml.preferences);
+	            
+	            // Pour ouvrir la pop-up "About" lors d'un clic sur la préférence readabout
+	            Preference readabout = (Preference) findPreference("readabout");
+	            
+	            readabout.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+                    public boolean onPreferenceClick(Preference preference) {
+                    	LayoutInflater inflater = this.getLayoutInflater();
+                		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                		builder.setView(inflater.inflate(R.layout.dialog_about, null));
+                		builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                	           public void onClick(DialogInterface dialog, int id) {
+                	        	   dialog.cancel();
+                	           }
+                	           });
+                		 AlertDialog dialog = builder.create();
+                		 dialog.show();
+                		 return false;
+                		 }
+	        });
+	            
 	        }
 	        
 		    @Override

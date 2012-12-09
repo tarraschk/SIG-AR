@@ -80,8 +80,7 @@ public class Scene extends OAScene implements Comparable<Scene>{
 	 * @param _description
 	 * @param _creator
 	 */
-	public Scene(SceneLocation location, int _id, String _name,
-			String _description, String _creator) {
+	public Scene(SceneLocation location, int _id, String _name, String _description, String _creator) {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -104,7 +103,7 @@ public class Scene extends OAScene implements Comparable<Scene>{
 		this.modelVisible=ModelVisible;
 		this.location=Location;
 		this.models=models;
-		
+		//TODO add transfrom!!!!!!!!!!
 		
 	}
 

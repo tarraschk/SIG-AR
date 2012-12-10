@@ -116,8 +116,8 @@ public class SceneArrayAdapter extends BaseAdapter{
 					TextView text = (TextView) dialog.findViewById(R.id.modelname);
 					text.setText(dataSource.get(pos).getName());
 					
-					TextView textid = (TextView) dialog.findViewById(R.id.id);
-					textid.setText(dataSource.get(pos).getId());
+					TextView textid = (TextView) dialog.findViewById(R.id.modelid);
+					textid.setText(Integer.toString(dataSource.get(pos).getId()));
 					
 					TextView description = (TextView) dialog.findViewById(R.id.description);
 					description.setText(dataSource.get(pos).getDescription());

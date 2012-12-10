@@ -59,18 +59,50 @@ public class SplashScreen extends Activity{
 			Log.w("myApp",Integer.toString(cursor.getCount()));
 			Log.w("mydb",cursor.getString(2));
 	    */
-			DataXMLParser test= new DataXMLParser();
+			
+			
+			// create folder structure on internal storage
+
+	    	File inst = getFilesDir();
+	    	File insigar = new File(inst+"/SIGAR");
+	    	insigar.mkdir();
+	    	
+	    	File inmodels= new File(insigar.getPath()+"/3Dmodels");
+	    	inmodels.mkdir();
+
+	    	File inicons=new File(insigar.getPath()+"/icons");
+	    	inicons.mkdir();
+	    	// create folder structure on external storage (sdcard)
+	    	
+	    	
 			File exst = Environment.getExternalStorageDirectory();
-	    	String exstPath = exst.getPath();
+	    	String exstPath = exst.getPath();	    	
+	    	File sigar = new File(exstPath+"/SIGAR");
+	    	sigar.mkdir();
+
+	    	File models= new File(sigar.getPath()+"/3Dmodels");
+	    	models.mkdir();
+
+	    	File icons=new File(sigar.getPath()+"/icons");
+	    	icons.mkdir();
+			
+	    //	File asset=new File(getAssets().);
+			
+			//DataManager.setWorkingPath(insigar.getPath());
+			
+			DataXMLParser test= new DataXMLParser();
+	
+	    	
+	    	
 	    	//File xmlfile = new File(exstPath+"/SIGAR/scene.xml");
 	    	InputStream input = new FileInputStream(exstPath+"/SIGAR/scenes.xml");
 	    	DataManager.getInstance(false).addScenes(test.parse(input));//getAssets().open("SIGAR/scenes.xml")));
-	    	Log.w("myApp",DataManager.getInstance(false).getWorkingPath());
+	    	Log.w("DATAmanager workingpath",DataManager.getInstance(false).getWorkingPath());
 	    	
 	    	//getDir("/SIGAR", 0);
 	    	
-	    	File mydir = getDir("SIGAR", Context.MODE_PRIVATE); //Creating an internal dir;
-	    	File fileWithinMyDir = new File(mydir, "myfile.txt"); //Getting a file within the dir.
+	    	//File mydir = getDir("SIGAR", Context.MODE_PRIVATE); //Creating an internal dir;
+	    	//File fileWithinMyDir = new File(mydir, "myfile.txt"); //Getting a file within the dir.
 	    	//FileOutputStream out = new FileOutputStream(fileWithinMyDir); //Use the stream as usual to write into the file.
 	    	
 	    	//String string = "hello world!";
@@ -100,30 +132,7 @@ public class SplashScreen extends Activity{
 	    	 }
 	    	 instream.close();*/
 	    	
-	    	// create folder structure on internal storage
-
-	    	File inst = getFilesDir();
-	    	File insigar = new File(inst+"/SIGAR");
-	    	insigar.mkdir();
 	    	
-	    	File inmodels= new File(insigar.getPath()+"/3Dmodels");
-	    	inmodels.mkdir();
-
-	    	File inicons=new File(insigar.getPath()+"/icons");
-	    	inicons.mkdir();
-	    	// create folder structure on external storage (sdcard)
-	    	
-	    //File exst = Environment.getExternalStorageDirectory();
-	    	//String exstPath = exst.getPath();
-	    		    	
-	    	File sigar = new File(exstPath+"/SIGAR");
-	    	sigar.mkdir();
-
-	    	File models= new File(sigar.getPath()+"/3Dmodels");
-	    	models.mkdir();
-
-	    	File icons=new File(sigar.getPath()+"/icons");
-	    	icons.mkdir();
 		    	
 	    	  /*  File fileWithinMyDir = new File(sigar, "myfile.txt");
 	    	    FileOutputStream out = new FileOutputStream(fileWithinMyDir); //Use the stream as usual to write into the file.
@@ -136,10 +145,8 @@ public class SplashScreen extends Activity{
 	    	//    Log.w("myApp", Boolean.toString(success));*/
 	    	
 	    } catch (XmlPullParserException e) {
-	    	// TODO Auto-generated catch block
 	    	e.printStackTrace();
 	    } catch (IOException e) {
-	    	// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch(SQLException e){
 			e.printStackTrace();

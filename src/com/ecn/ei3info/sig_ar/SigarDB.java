@@ -174,7 +174,7 @@ public class SigarDB extends SQLiteOpenHelper {
 
 		database.execSQL(DATABASE_INSERT);
 		database.execSQL("INSERT INTO icon(id_icon) VALUES (1);");
-		database.execSQL("INSERT INTO scene VALUES (1,'scene1','truc de test',1,1,false,'0','0','0',1,'0',1,'0','0','0','0','0','0','0','0','0');");
+//		database.execSQL("INSERT INTO scene VALUES (1,'scene1','truc de test',1,1,false,'0','0','0',1,'0',1,'0','0','0','0','0','0','0','0','0');");
 
 
 		Log.w("myApp",DATABASE_CREATE);
@@ -198,7 +198,5 @@ public class SigarDB extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS android_metadata");
 		onCreate(db);
 		Log.w("myApp","Update");
-
 	}
-	
 }

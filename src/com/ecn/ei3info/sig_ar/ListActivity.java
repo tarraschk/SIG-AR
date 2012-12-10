@@ -203,6 +203,8 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 	}
 
 
+	
+
 	/**
 	 * Start ManageModelActivity, screen to add or delete data model resources
 	 * @param View
@@ -210,10 +212,12 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 	public void onManageModel(View View){
 		Intent intent = new Intent(this, ManageModelActivity.class);
 		startActivity(intent);
+		
 	}
 
 	public void onAddModelPGSQL(View view){
 		Intent intent = new Intent(this, SigarDBPostgreSQL.class);
 		startActivity(intent);
+		finish();
 	}
 }

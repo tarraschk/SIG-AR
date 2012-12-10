@@ -226,8 +226,7 @@ public class MainActivity extends OAARComponentBase {
 		// then load and add the custom UI on top of the AR view
 		LayoutInflater controlInflater = LayoutInflater.from(getBaseContext());
 		RelativeLayout sampleUILayout = (RelativeLayout)controlInflater.inflate(R.layout.activity_main, null);
-		addContentView(sampleUILayout, 
-				new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+		addContentView(sampleUILayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	} 
 	/* (non-Javadoc)
 	 * @see com.hitlabnz.outdoorar.api.OAARComponentBase#onSceneSelected(com.hitlabnz.outdoorar.api.OAScene)
@@ -276,7 +275,7 @@ public class MainActivity extends OAARComponentBase {
 	public void onSettingsActivity(View View){
 		Intent intent = new Intent(this, SettingsActivity.class);
 		startActivity(intent);
-                finish();
+        finish();
 	}
 	/**
 	 * Go back and quit application

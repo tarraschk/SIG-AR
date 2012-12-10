@@ -16,6 +16,12 @@ import java.sql.SQLException;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
+
+import com.hitlabnz.androidar.data.Coordinate;
+import com.hitlabnz.androidar.data.ModelData;
+import com.hitlabnz.androidar.data.SceneLocation;
+import com.hitlabnz.androidar.data.representation.model.Transform;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -479,7 +485,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						String name_category=rs.getString(5);
 
 						int id_icon=rs.getInt(6);
-						InputStream file_icon=rs.getBinaryStream(7);//rs.getBlob(7);
+						InputStream file_icon=rs.getBinaryStream(7);
 
 						int id_author=rs.getInt(8);
 						String name_person=rs.getString(9);
@@ -506,8 +512,34 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						float scale_x=rs.getFloat(23);
 						float scale_y=rs.getFloat(24);
 						float scale_z=rs.getFloat(25);
+//						telchargement des donner
+						//creation des dossiers
+						File exst = Environment.getExternalStorageDirectory();
+				    	String exstPath = exst.getPath();
+				    	
 
-
+				    	File inst = getFilesDir();
+				    	String instPath = inst.getPath();
+						
+				    	File inicon = new File(instPath+"/SIGAR/icons");
+						
+			
+				    	File infileicon = new File(inicon, Integer.toString(id_icon)); //Getting a file within the dir.
+				    	FileOutputStream inouticon = new FileOutputStream(infileicon); //Use the stream as usual to write into the file.
+				  
+				    	int inread1 = 0;
+				    	byte[] inbytes1 = new byte[1024];
+				     
+				    	while ((inread1 = file_icon.read(inbytes1)) != -1) {
+				    		inouticon.write(inbytes1, 0, inread1);
+				    	}
+				     
+				    	file_icon.close();
+				    	inouticon.flush();
+				    	inouticon.close();
+				    	
+				    	
+						
 						Statement st1 = c.createStatement();
 						ResultSet rs1 =  st1.executeQuery(sqlgetObject3d+ id_object3d+" ;");
 						if (rs1!=null) {
@@ -516,15 +548,14 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 							InputStream file_obj=rs1.getBinaryStream(3);
 							String name_mtl=rs1.getString(4);
 							
-							ByteArrayInputStream file_mtl=(ByteArrayInputStream) rs1.getBinaryStream(5);
+							InputStream file_mtl= rs1.getBinaryStream(5);
 							Timestamp date_creation_object3d=rs1.getTimestamp(6);
 							int id_author_object3d=rs1.getInt(7);
 
 							//TODO insert object3D to sqlite
 
 							//Add file to sdcard directory
-							File exst = Environment.getExternalStorageDirectory();
-					    	String exstPath = exst.getPath();
+					    	
 					    	//create directory for model
 					    	File objectfolder = new File(exstPath+"/SIGAR/3Dmodels/"+Integer.toString(id_object3d));
 					    	objectfolder.mkdir();
@@ -541,9 +572,32 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 					    		outobj.write(bytes, 0, read);
 					    	}
 					     
-					    	file_obj.close();
+					    	//file_obj.close();
 					    	outobj.flush();
 					    	outobj.close();
+					    	
+					    	
+					    	//create directory for model
+					    	File inobjectfolder = new File(instPath+"/SIGAR/3Dmodels/"+Integer.toString(id_object3d));
+					    	inobjectfolder.mkdir();
+							
+					    	//TODO create a new methode and change the follow code
+					    	//add file obj, mtl to folder
+					    	File infileobj = new File(inobjectfolder, "model.obj"); //Getting a file within the dir.
+					    	FileOutputStream inoutobj = new FileOutputStream(infileobj); //Use the stream as usual to write into the file.
+					  
+					    	int inread = 0;
+					    	byte[] inbytes = new byte[1024];
+					     
+					    	while ((inread = file_obj.read(inbytes)) != -1) {
+					    		inoutobj.write(inbytes, 0, inread);
+					    	}
+					     
+					    	file_obj.close();
+					    	inoutobj.flush();
+					    	inoutobj.close();
+					    	
+					    	
 					    	
 					    	
 					    	File filemtl = new File(objectfolder, "model.mtl"); //Getting a file within the dir.
@@ -566,41 +620,58 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 							ResultSet rs2 =  st2.executeQuery(sqlgetAllTexture+ Integer.toString(id_object3d)+" ;");
 							if (rs2!=null) {
 								while(rs2.next()){
-
+									
 									int id_texture=rs2.getInt(1);
 							    	Log.w("myapp",Integer.toString(id_texture));
-
+							    	
 									String name_texture=rs2.getString(2);
 									InputStream file_texture=rs2.getBinaryStream(3);
 									//TODO insert texture to table in sqlite
 									
 									File filetexture = new File(objectfolder, name_texture); //Getting a file within the dir.
 							    	FileOutputStream outtexture = new FileOutputStream(filetexture); //Use the stream as usual to write into the file.
-							    
+							    	
 							    	int readtexture = 0;
 							    	byte[] bytestexture = new byte[1024];
 							    	//Log.w("myapp",Integer.toString(file_mtl.read()));
 							    	while ((readtexture = file_texture.read(bytestexture)) != -1) {
 							    		outtexture.write(bytestexture, 0, readtexture);
 							    	}
-							     
+							    	
 							    	file_texture.close();
 							    	outtexture.flush();
 							    	outtexture.close();
 									
 									
-									//
-									
 								}
-								
 							}else{
 								// alors la on est vraiment dans la merde!!!
 							}
 						}else{
 							// c'est encore plus la merde
 						}
+						SceneLocation Location= new SceneLocation();
+						Location.setAltitude(gpsalt);
+						Location.setLongitude(gpslong);
+						Location.setLatitude(gpslat);
+						
+						List<ModelData> models=new ArrayList<ModelData>();
+						ModelData model= new ModelData();
+						
+						model.name=Integer.toString(id_object3d);
+						model.id=Integer.toString(id_object3d);
+						
+						Transform transform=new Transform();
 
-
+						transform.setTranslation(new Coordinate(translation_x,translation_y,translation_z));
+						transform.setScale(new Coordinate(scale_x,scale_y,scale_z));
+						transform.setRotation(new Coordinate(rotation_x,rotation_y,rotation_z));
+						
+						
+						model.addTransform(transform);
+						models.add(model);
+						
+						DataManager.getInstance(false).addScene(new Scene( id_scene, name_scene, description, name_category, name_person, activation, "inutil", Location, models));
 
 						// insert into SQLite DB
 
@@ -672,8 +743,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 	
 	
 	public void onGoSearch(View view){
-
-
+		
 		sql="SELECT id_scene, name_scene, description, name_category,name_person, gps_longitude, gps_latitude, gps_altitude" +
 				" FROM scene, category, person" +
 				" WHERE scene.id_category=category.id_category AND" +
@@ -687,8 +757,24 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 
 	}
 
+	/**
+	 * 
+	 * @see android.app.Activity#onBackPressed()
+	 */
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
+		startActivity(intent);
+		finish();
+	}
+
+	
 	public void onGoBack(View view) {
 		super.onBackPressed();
+		Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
+		startActivity(intent);
+		finish();
 	}
 }
 

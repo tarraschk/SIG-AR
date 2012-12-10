@@ -112,8 +112,15 @@ public class SceneArrayAdapter extends BaseAdapter{
 					dialog.setTitle("Modify your model");
 
 					// set the custom dialog components - text, image and button
+					
 					TextView text = (TextView) dialog.findViewById(R.id.modelname);
 					text.setText(dataSource.get(pos).getName());
+					
+					TextView textid = (TextView) dialog.findViewById(R.id.id);
+					textid.setText(dataSource.get(pos).getId());
+					
+					TextView description = (TextView) dialog.findViewById(R.id.description);
+					description.setText(dataSource.get(pos).getDescription());
 								
 					final EditText latitude= (EditText) dialog.findViewById(R.id.latitude); 
 					latitude.setText( String.valueOf(DataManager.singletonInstance.getSceneList().get(0).getLatitude()));
@@ -143,7 +150,7 @@ public class SceneArrayAdapter extends BaseAdapter{
 					//scalex.setText(String.valueOf(dataSource.get(pos).getTransforms().get(0).getRotation().getZ()));
 					
 					
-					Button okButton = (Button) dialog.findViewById(R.id.ok);
+					ImageButton okButton = (ImageButton) dialog.findViewById(R.id.ok);
 					// if button is clicked, close the custom dialog
 					okButton.setOnClickListener(new OnClickListener() {
 						@Override
@@ -185,7 +192,7 @@ public class SceneArrayAdapter extends BaseAdapter{
 						}
 					});
 
-					Button cancelButton = (Button) dialog.findViewById(R.id.cancel);
+					ImageButton cancelButton = (ImageButton) dialog.findViewById(R.id.cancel);
 					// if button is clicked, close the custom dialog
 					cancelButton.setOnClickListener(new OnClickListener() {
 						@Override

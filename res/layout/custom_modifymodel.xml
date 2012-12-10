@@ -18,11 +18,41 @@
                 android:id="@+id/modelname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="15dp"
                 android:layout_below="@+id/titlemodifymodel"
                 android:layout_alignTop="@+id/titlemodelname"
                 android:layout_toRightOf="@+id/titlemodelname"
-                android:text="displayedmodelname" />
+                android:text="displayedmodelname" />            
+                
+            <TextView
+                android:id="@+id/titleid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/titlemodelname"
+                android:text="Id :" />
+
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/titlemodelname"
+                android:layout_alignTop="@+id/titleid"
+                android:layout_toRightOf="@+id/titleid"
+                android:text="displayedid" />
+            
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/titleid"
+                android:text="description" />
+            
+            
         
     <TableLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,7 +60,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tableLayout1"
         android:layout_margin="10dp"
-        android:layout_below="@+id/titlemodelname">
+        android:layout_below="@+id/description">
 
     <TableRow>
         <TextView
@@ -182,24 +212,27 @@
         
     </TableLayout>
 
-    	<Button
+
+    	<ImageButton
         	android:id="@+id/cancel"
-        	android:text="cancel"
-        	android:layout_height="30dp"
-        	android:layout_width="80dp"
+       	 	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:contentDescription="cancel"
         	android:layout_marginLeft="5dp"
-        	android:layout_below="@+id/tableLayout1"
+       		android:layout_below="@+id/tableLayout1"
         	android:layout_alignRight="@+id/tableLayout1"
-        	android:background="@drawable/textbtn"
+        	android:onClick="onGoBack"
+        	android:src="@drawable/navigation_cancel" 
         	/>
-    	<Button
+    	
+    	<ImageButton
         	android:id="@+id/ok"
-        	android:text="ok"
-        	android:layout_height="30dp"
-        	android:layout_width="80dp"
+        	android:contentDescription="ok"
+        	android:layout_height="wrap_content"
+        	android:layout_width="wrap_content"
         	android:layout_alignTop="@+id/cancel"
         	android:layout_toLeftOf="@+id/cancel"
-        	android:background="@drawable/textbtn"
+        	android:src="@drawable/navigation_accept"
         	/>
 
     

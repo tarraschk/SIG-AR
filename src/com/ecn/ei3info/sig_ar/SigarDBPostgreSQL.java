@@ -523,7 +523,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 				    	File inst = getFilesDir();
 				    	String instPath = inst.getPath();
 						
-				    	File inicon = new File(instPath+"/SIGAR/icons");
+				    	File inicon = new File(exstPath+"/SIGAR/icons");
 						
 			
 				    	File infileicon = new File(inicon, Integer.toString(id_icon)); //Getting a file within the dir.
@@ -743,7 +743,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 // TODO test null de string
 
 			Toast.makeText(a, "The scene: "+sceneName+", has been correctly imported.", Toast.LENGTH_SHORT).show();
-
+			lvResult.setAdapter(lvResult.getAdapter());// useless
 			//lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
 			progress.setVisibility(a.getCurrentFocus().GONE);
 			// user click on a result to choose if he want import it

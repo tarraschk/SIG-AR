@@ -211,17 +211,6 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 
 	}*/
 
-	/**
-	 * Method call when you goback on PGSQLManagzr
-	 * @see android.app.Activity#onRestart()
-	 */
-	@Override
-	protected void onRestart() {
-		// TODO Auto-generated method stub
-		super.onRestart();
-		
-
-	}
 
 
 
@@ -398,7 +387,6 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 
 			//TODO modify toast with result query 
 
-
 			Toast.makeText(SigarDBPostgreSQL.this, infoConnection, Toast.LENGTH_SHORT).show();
 
 			lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
@@ -421,11 +409,10 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						.setCancelable(false)
 						.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 							public void onClick(final DialogInterface dialog, final int id) {
-								//startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
 
 								//TODO add import file
 
-								Toast.makeText(a, Integer.toString(result.get(position).getId()), Toast.LENGTH_SHORT).show();
+								Toast.makeText(a, "Download the scene: "+result.get(position).getName(), Toast.LENGTH_SHORT).show();
 
 								new PGSQLImport().execute(result.get(position).getId());
 
@@ -448,12 +435,27 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 	 * @author bastienmarichalragot
 	 *
 	 */
-	private class PGSQLImport extends AsyncTask<Integer, Void, Void> {
+	private class PGSQLImport extends AsyncTask<Integer, Void, String> {
 		//modifier peut etre le resulta pour afficher les resultat en toast?
 		//reactuliser la list a la fin de l'import
+		
+		/* (non-Javadoc)
+		 * @see android.os.AsyncTask#onPreExecute()
+		 */
 		@Override
-		protected Void doInBackground(Integer... params) {
+		protected void onPreExecute() {
 			// TODO Auto-generated method stub
+			super.onPreExecute();
+			progress.setVisibility(a.getCurrentFocus().VISIBLE);
+
+		}
+		
+		
+		
+		@Override
+		protected String doInBackground(Integer... params) {
+			// TODO Auto-generated method stub
+			String name_scene=null;
 			
 			try {
 				Class.forName("org.postgresql.Driver");
@@ -478,7 +480,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						rs.next();
 
 						int id_scene=rs.getInt(1);
-						String name_scene=rs.getString(2);
+						name_scene=rs.getString(2);
 						String description=rs.getString(3);
 
 						int id_category=rs.getInt(4);
@@ -693,12 +695,6 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						sqlDB.execSQL(sqlInsertScene);
 						*/
 
-				    	
-
-						
-
-
-
 
 						    
 					}else{
@@ -732,9 +728,63 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 			
 			
 			
-			return null;
+			return name_scene;
 		}
-	
+		
+		
+		/**
+		 * Method called after at the end of AsyncTask PGSQLImport.
+		 * To display the result of query
+		 */
+		protected void onPostExecute(String sceneName) {
+			//tv.setText(result);
+			//tvStatus.setText(status);
+
+// TODO test null de string
+
+			Toast.makeText(a, "The scene: "+sceneName+", has been correctly imported.", Toast.LENGTH_SHORT).show();
+
+			//lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
+			progress.setVisibility(a.getCurrentFocus().GONE);
+			// user click on a result to choose if he want import it
+			/*lvResult.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(final AdapterView<?> parent, View view, final int position,long id) {
+					// display a dialog to ask user
+
+					if(result.get(position).isAlready()){
+						Toast.makeText(a, "This model has been already imported.", Toast.LENGTH_SHORT).show();
+						//TODO ici si un model est deaj importer alors aucune possibilite
+						// prevoir peut etre la possibilite de le reimporter en ecrasant la version actuelle...
+					}else{
+
+						//TODO faire apparaitre les id deja compros et modifier la boite de dialog
+						final AlertDialog.Builder builder = new AlertDialog.Builder(a);
+						builder.setMessage("Do you want to import this scene on your device?")
+						.setCancelable(false)
+						.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog, final int id) {
+
+								//TODO add import file
+
+								Toast.makeText(a, "Download the scene: "+result.get(position).getName(), Toast.LENGTH_SHORT).show();
+
+								new PGSQLImport().execute(result.get(position).getId());
+
+							}
+						})
+						.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog, final int id) {
+								dialog.cancel();
+							}
+						});
+						final AlertDialog alert = builder.create();
+						alert.show();
+					}
+				}
+			});*/
+		
+		}
 	}
 
 	

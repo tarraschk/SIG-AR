@@ -242,14 +242,14 @@ public class MainActivity extends OAARComponentBase {
 	/* (non-Javadoc)
 	 * @see com.hitlabnz.outdoorar.api.OAARComponentBase#onTouchedScene(com.hitlabnz.outdoorar.api.OAScene)
 	 */
-	@Override
+/*	@Override
 	protected void onTouchedScene(OAScene scene) {
 		// TODO Auto-generated method stub
 		super.onTouchedScene(scene);
 		
 		Toast.makeText(MainActivity.this, scene.getName()+" est seclect'tgtthththionn�e", Toast.LENGTH_SHORT).show();
 	
-	}
+	}*/
 	/**
 	 * Go to Map View
 	 * @param View

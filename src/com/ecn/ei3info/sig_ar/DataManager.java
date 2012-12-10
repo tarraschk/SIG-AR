@@ -7,9 +7,11 @@ import android.os.Environment;
 
 import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
+import com.hitlabnz.outdoorar.data.OADataManagerAssets;
+import com.hitlabnz.outdoorar.data.OADataManagerLocal;
 
 
-public class DataManager extends OADataManager{
+public class DataManager extends OADataManagerLocal{
 	
 	static DataManager singletonInstance = null;
 	
@@ -21,11 +23,29 @@ public class DataManager extends OADataManager{
 	//private static final String ICONS_DIRECTORY = "icons";
 	
 	//protected ArrayList<Scene> scenes = new ArrayList<Scene>();;
+
+	//public DataManager(String Path){
+		//super(Path);
+		//init();
+		//super(Path);
+	//}
 	
-	public DataManager(String Path){
-		super(Path);
+	/**
+	 * 
+	 */
+	public DataManager() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
+
+	/**
+	 * @param workingPath
+	 */
+	public DataManager(String workingPath) {
+		super(workingPath);
+		// TODO Auto-generated constructor stub
+	}
+
 	public static DataManager getInstance(boolean a) {
 		if(DataManager.singletonInstance == null){
 			DataManager.singletonInstance = new DataManager("SIGAR");
@@ -47,10 +67,10 @@ public class DataManager extends OADataManager{
 	/** 
 	 * @see com.hitlabnz.outdoorar.data.OADataManager#setWorkingPath(java.lang.String)
 	 */
-	@Override
+	/*@Override
 	protected void setWorkingPath(String path) {
 		// TODO Auto-generated method stub
-		super.setWorkingPath(path);
+		//super.setWorkingPath(path);
 		//workingPath=path;
 		//super.setWorkingPath(Environment.getExternalStorageDirectory().toString() + "/" + path);
 		
@@ -61,9 +81,9 @@ public class DataManager extends OADataManager{
 		
 		modelPath = workingPath + MODELS_DIRECTORY + "/";
 		iconPath  = workingPath + ICONS_DIRECTORY + "/";
-	*/
+	
 		
-	}
+	}*/
 
 	/* (non-Javadoc)
 	 * @see com.hitlabnz.outdoorar.data.OADataManager#loadScenes()
@@ -86,10 +106,6 @@ public class DataManager extends OADataManager{
 		}
 		return ls;
 	}
-
-	
-	
-	
 	
 		//TODO Generate Xml file
 }

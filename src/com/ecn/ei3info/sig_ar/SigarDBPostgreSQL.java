@@ -763,7 +763,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 	 */
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
+		//super.onBackPressed();
 		Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
 		startActivity(intent);
 		finish();
@@ -771,7 +771,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 
 	
 	public void onGoBack(View view) {
-		super.onBackPressed();
+		//super.onBackPressed();
 		Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
 		startActivity(intent);
 		finish();

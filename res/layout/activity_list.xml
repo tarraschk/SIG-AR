@@ -77,7 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/addButton"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/addButton" >
+        android:layout_toLeftOf="@+id/addButton"
+        android:visibility="gone" >
 
     </SearchView>
 

@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scenes>
 	<scene>
-		<id>8</id>
-		<name>housebis</name>
-		<category>smile</category>
-		<description>lmrngmekrbgja</description>
-		<creator>BMR</creator>
-		<activated>false</activated>
-		<model_visible>housebis</model_visible>
-		<location>
-			<longitude>-1.547013888587</longitude>
-			<latitude>47.248122222688465</latitude>
-			<altitude>1</altitude>
-		</location>
-		<models>
-			<number>1</number>
-			<model>
-				<name_model>housebis</name_model>
-				<id_model>housebis</id_model>
-				<type>1</type>
-			</model>
-		</models>
-	</scene>
-	<scene>
-		<id>6</id>
-		<name>house</name>
-		<category>smile</category>
-		<description>une grosse maison</description>
-		<creator>BMR</creator>
-		<activated>false</activated>
-		<model_visible>house</model_visible>
-		<location>
-			<longitude>-1.547013888587</longitude>
-			<latitude>47.248122222688465</latitude>
-			<altitude>1</altitude>
-		</location>
-		<models>
-			<number>1</number>
-			<model>
-				<name_model>house</name_model>
-				<id_model>house</id_model>
-				<type>1</type>
-			</model>
-		</models>
-	</scene>
-	<scene>
 		<id>10</id>
 		<name>CubeECN</name>
 		<category>ecn</category>
@@ -84,28 +40,6 @@
 			<model>
 				<name_model>BasketBall</name_model>
 				<id_model>BasketBall</id_model>
-				<type>1</type>
-			</model>
-		</models>
-	</scene>
-	<scene>
-		<id>4</id>
-		<name>cottage</name>
-		<category>smile</category>
-		<description>un cottage dans la foret</description>
-		<creator>BMR</creator>
-		<activated>false</activated>
-		<model_visible>cottage</model_visible>
-		<location>
-			<longitude>-1.547013888587</longitude>
-			<latitude>47.248122222688465</latitude>
-			<altitude>1</altitude>
-		</location>
-		<models>
-			<number>1</number>
-			<model>
-				<name_model>cottage</name_model>
-				<id_model>cottage</id_model>
 				<type>1</type>
 			</model>
 		</models>

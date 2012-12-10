@@ -13,7 +13,7 @@ public class DataManager extends OADataManager{
 	
 	static DataManager singletonInstance = null;
 	
-	protected static String workingPath="SIGAR";
+	//protected static String workingPath="SIGAR";
 	//protected static String modelPath = "";
 	//protected static String iconPath = "";
 	
@@ -28,10 +28,10 @@ public class DataManager extends OADataManager{
 	
 	public static DataManager getInstance(boolean a) {
 		if(DataManager.singletonInstance == null){
-			DataManager.singletonInstance = new DataManager(workingPath);
+			DataManager.singletonInstance = new DataManager("SIGAR");
 		}
 		if(a){
-			DataManager MAP=new DataManager(workingPath);
+			DataManager MAP=new DataManager("SIGAR");
 			for(OAScene c:DataManager.singletonInstance.getSceneList()){
 				if(((Scene) c).isActivated()){
 					MAP.addScene(c);
@@ -47,6 +47,7 @@ public class DataManager extends OADataManager{
 	/** 
 	 * @see com.hitlabnz.outdoorar.data.OADataManager#setWorkingPath(java.lang.String)
 	 */
+	@Override
 	protected void setWorkingPath(String path) {
 		// TODO Auto-generated method stub
 		super.setWorkingPath(path);

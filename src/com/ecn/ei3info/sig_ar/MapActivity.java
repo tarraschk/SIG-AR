@@ -312,7 +312,7 @@ public class MapActivity extends OAMapComponentBase{
 			Toast.makeText(this, "Satellite Image Deactivated", Toast.LENGTH_SHORT).show();
 		}
 	}
-/*	
+	
 	@Override
 	protected void onSceneSelected(OAScene scene) {
 		super.onSceneSelected(scene);
@@ -323,7 +323,7 @@ public class MapActivity extends OAMapComponentBase{
 			Log.w("myApp",Integer.toString(idSceneOnEdition));
 		}
 		
-	}*/
+	}
 	/**
 	 * Method associate to imageButton to refocus the map on your position.
 	 * @param view
@@ -348,9 +348,10 @@ public class MapActivity extends OAMapComponentBase{
 	 * @param view
 	 */
 	public void onGoBack(View view) {
-		super.onBackPressed();
+		//super.onBackPressed();
 		Intent intent = new Intent(MapActivity.this, MainActivity.class);
 		startActivity(intent);
+		finish();
 		this.plot=false;
 	}	
 	/**
@@ -359,9 +360,10 @@ public class MapActivity extends OAMapComponentBase{
 	 */
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
+		//super.onBackPressed();
 		Intent intent = new Intent(MapActivity.this, MainActivity.class);
 		startActivity(intent);
+		finish();
 		this.plot=false;
 	}
 	

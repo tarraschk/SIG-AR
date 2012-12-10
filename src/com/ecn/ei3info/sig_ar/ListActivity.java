@@ -184,7 +184,7 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 	 * @param view
 	 */
 	public void onGoBack(View view) {
-		super.onBackPressed();
+		//super.onBackPressed();
 		Intent intent = new Intent(ListActivity.this, MainActivity.class);
 		startActivity(intent);
 		finish();
@@ -196,7 +196,7 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 	 */
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
+		//super.onBackPressed();
 		Intent intent = new Intent(ListActivity.this, MainActivity.class);
 		startActivity(intent);
 		finish();

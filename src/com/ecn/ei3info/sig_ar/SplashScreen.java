@@ -95,8 +95,8 @@ public class SplashScreen extends Activity{
 	    	
 	    	
 	    	//File xmlfile = new File(exstPath+"/SIGAR/scene.xml");
-	    	InputStream input = new FileInputStream(exstPath+"/SIGAR/scenes.xml");
-	    	DataManager.getInstance(false).addScenes(test.parse(input));//getAssets().open("SIGAR/scenes.xml")));
+	    //	InputStream input = new FileInputStream(exstPath+"/SIGAR/scenes.xml");
+	    	DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));//input));//
 	    	Log.w("DATAmanager workingpath",DataManager.getInstance(false).getWorkingPath());
 	    	
 	    	//getDir("/SIGAR", 0);

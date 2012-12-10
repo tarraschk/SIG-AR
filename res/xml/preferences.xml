@@ -24,11 +24,27 @@
         android:title="@string/pref_database"
         android:layout="@layout/prefcategory"
         android:key="pref_key_database">
-        <CheckBoxPreference
-            android:key="pref_key_database1"
-            android:summary="summary"
-            android:title="title1"
-            android:defaultValue="false" />
+       <EditTextPreference
+            android:key="pref_db_name"
+            android:summary="Set the database name"
+            android:title="Database name" />
+       <EditTextPreference
+            android:key="pref_db_address"
+            android:summary="Set your database address"
+            android:title="Address" />
+       <EditTextPreference
+            android:key="pref_db_port"
+            android:summary="Set the database port"
+            android:title="Port" />
+       <EditTextPreference
+            android:key="pref_db_login"
+            android:summary="Enter your login"
+            android:title="Login" />
+       <EditTextPreference
+            android:key="pref_db_password"
+            android:summary="Enter your password"
+            android:password="true"
+            android:title="Password" />
     </PreferenceCategory>
     
     <PreferenceCategory 

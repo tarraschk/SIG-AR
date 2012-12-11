@@ -23,6 +23,9 @@
 	<string name="label_altitude">Altitude</string>
 	<string name="label_angle">Angle</string>
 	
+	<string name="ok">OK</string>
+	<string name="cancel">Cancel</string>
+	
 	<string name="label_name">Name</string>
 	<string name="label_category">Category</string>
 	

@@ -27,23 +27,28 @@
        <EditTextPreference
             android:key="pref_db_name"
             android:summary="Set the database name"
+            android:defaultValue="sigar_test"
             android:title="Database name" />
        <EditTextPreference
             android:key="pref_db_address"
             android:summary="Set your database address"
+            android:defaultValue="54.246.97.87"
             android:title="Address" />
        <EditTextPreference
             android:key="pref_db_port"
             android:summary="Set the database port"
+            android:defaultValue="5432"
             android:title="Port" />
        <EditTextPreference
             android:key="pref_db_login"
             android:summary="Enter your login"
+            android:defaultValue="sigar"
             android:title="Login" />
        <EditTextPreference
             android:key="pref_db_password"
             android:summary="Enter your password"
             android:password="true"
+            android:defaultValue="rubyECN#2013"
             android:title="Password" />
     </PreferenceCategory>
     

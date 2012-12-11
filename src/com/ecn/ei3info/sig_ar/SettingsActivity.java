@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +26,7 @@ public class SettingsActivity extends Activity {
 		getFragmentManager().beginTransaction()
 							.replace(android.R.id.content, new SettingsFragment())
 							.commit();
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 	}
 
 	public static class SettingsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener {
@@ -33,6 +35,7 @@ public class SettingsActivity extends Activity {
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			addPreferencesFromResource(R.xml.preferences);
+			
 
 			Preference readabout = (Preference) findPreference("readabout");
 
@@ -75,6 +78,24 @@ public class SettingsActivity extends Activity {
 	            String s = "Click here to modify database name. Your current database is : ";
 	            s = s + sharedPreferences.getString(key, "");
 	            dbNamePref.setSummary(s);
+	        }
+	        if (key.equals("pref_db_address")) {
+	            Preference dbAddressPref = findPreference(key);
+	            String s = "Click here to modify database address. Current address is : ";
+	            s = s + sharedPreferences.getString(key, "");
+	            dbAddressPref.setSummary(s);
+	        }
+	        if (key.equals("pref_db_port")) {
+	            Preference dbPortPref = findPreference(key);
+	            String s = "Click here to modify database port. Current port is : ";
+	            s = s + sharedPreferences.getString(key, "");
+	            dbPortPref.setSummary(s);
+	        }
+	        if (key.equals("pref_db_login")) {
+	            Preference dbLoginPref = findPreference(key);
+	            String s = "Click here to modify your login. Your current login is : ";
+	            s = s + sharedPreferences.getString(key, "");
+	            dbLoginPref.setSummary(s);
 	        }
 	    }
 	}

@@ -1,54 +1,43 @@
 package com.ecn.ei3info.sig_ar;
 
-
-
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import java.sql.*;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hitlabnz.androidar.data.Coordinate;
 import com.hitlabnz.androidar.data.ModelData;
 import com.hitlabnz.androidar.data.SceneLocation;
 import com.hitlabnz.androidar.data.representation.model.Transform;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.Settings;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 /**
  * SigarDBPostgresSQL class allow to connect the Central SIGAR database (PostgreSQL) and dowload new scenes. 
  * @author bastienmarichalragot
@@ -211,17 +200,6 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 
 	}*/
 
-	/**
-	 * Method call when you goback on PGSQLManagzr
-	 * @see android.app.Activity#onRestart()
-	 */
-	@Override
-	protected void onRestart() {
-		// TODO Auto-generated method stub
-		super.onRestart();
-		
-
-	}
 
 
 
@@ -398,7 +376,6 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 
 			//TODO modify toast with result query 
 
-
 			Toast.makeText(SigarDBPostgreSQL.this, infoConnection, Toast.LENGTH_SHORT).show();
 
 			lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
@@ -421,11 +398,10 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						.setCancelable(false)
 						.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 							public void onClick(final DialogInterface dialog, final int id) {
-								//startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
 
 								//TODO add import file
 
-								Toast.makeText(a, Integer.toString(result.get(position).getId()), Toast.LENGTH_SHORT).show();
+								Toast.makeText(a, "Download the scene: "+result.get(position).getName(), Toast.LENGTH_SHORT).show();
 
 								new PGSQLImport().execute(result.get(position).getId());
 
@@ -448,12 +424,27 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 	 * @author bastienmarichalragot
 	 *
 	 */
-	private class PGSQLImport extends AsyncTask<Integer, Void, Void> {
+	private class PGSQLImport extends AsyncTask<Integer, Void, String> {
 		//modifier peut etre le resulta pour afficher les resultat en toast?
 		//reactuliser la list a la fin de l'import
+		
+		/* (non-Javadoc)
+		 * @see android.os.AsyncTask#onPreExecute()
+		 */
 		@Override
-		protected Void doInBackground(Integer... params) {
+		protected void onPreExecute() {
 			// TODO Auto-generated method stub
+			super.onPreExecute();
+			progress.setVisibility(a.getCurrentFocus().VISIBLE);
+
+		}
+		
+		
+		
+		@Override
+		protected String doInBackground(Integer... params) {
+			// TODO Auto-generated method stub
+			String name_scene=null;
 			
 			try {
 				Class.forName("org.postgresql.Driver");
@@ -478,7 +469,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						rs.next();
 
 						int id_scene=rs.getInt(1);
-						String name_scene=rs.getString(2);
+						name_scene=rs.getString(2);
 						String description=rs.getString(3);
 
 						int id_category=rs.getInt(4);
@@ -521,7 +512,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 				    	File inst = getFilesDir();
 				    	String instPath = inst.getPath();
 						
-				    	File inicon = new File(instPath+"/SIGAR/icons");
+				    	File inicon = new File(exstPath+"/SIGAR/icons");
 						
 			
 				    	File infileicon = new File(inicon, Integer.toString(id_icon)); //Getting a file within the dir.
@@ -693,12 +684,6 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						sqlDB.execSQL(sqlInsertScene);
 						*/
 
-				    	
-
-						
-
-
-
 
 						    
 					}else{
@@ -732,18 +717,76 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 			
 			
 			
-			return null;
+			return name_scene;
 		}
-	
+		
+		
+		/**
+		 * Method called after at the end of AsyncTask PGSQLImport.
+		 * To display the result of query
+		 */
+		protected void onPostExecute(String sceneName) {
+			//tv.setText(result);
+			//tvStatus.setText(status);
+
+// TODO test null de string
+
+			Toast.makeText(a, "The scene: "+sceneName+", has been correctly imported.", Toast.LENGTH_SHORT).show();
+			lvResult.setAdapter(lvResult.getAdapter());// useless
+			//lvResult.setAdapter(new PGSQLArrayAdapter(a,R.layout.list_pgsql,result));
+			progress.setVisibility(a.getCurrentFocus().GONE);
+			// user click on a result to choose if he want import it
+			/*lvResult.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(final AdapterView<?> parent, View view, final int position,long id) {
+					// display a dialog to ask user
+
+					if(result.get(position).isAlready()){
+						Toast.makeText(a, "This model has been already imported.", Toast.LENGTH_SHORT).show();
+						//TODO ici si un model est deaj importer alors aucune possibilite
+						// prevoir peut etre la possibilite de le reimporter en ecrasant la version actuelle...
+					}else{
+
+						//TODO faire apparaitre les id deja compros et modifier la boite de dialog
+						final AlertDialog.Builder builder = new AlertDialog.Builder(a);
+						builder.setMessage("Do you want to import this scene on your device?")
+						.setCancelable(false)
+						.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog, final int id) {
+
+								//TODO add import file
+
+								Toast.makeText(a, "Download the scene: "+result.get(position).getName(), Toast.LENGTH_SHORT).show();
+
+								new PGSQLImport().execute(result.get(position).getId());
+
+							}
+						})
+						.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog, final int id) {
+								dialog.cancel();
+							}
+						});
+						final AlertDialog alert = builder.create();
+						alert.show();
+					}
+				}
+			});*/
+		
+		}
 	}
 
 	
 	
 	
 	
-	
+	/**
+	 * Method called when user click on SearchButton 
+	 *	Create SQL query and call PGSQLQuery() AsyncTask
+	 * @param view
+	 */
 	public void onGoSearch(View view){
-		
+		//TODO faire attention au upper, ne prend pas en charge actuellement les majuscules
 		sql="SELECT id_scene, name_scene, description, name_category,name_person, gps_longitude, gps_latitude, gps_altitude" +
 				" FROM scene, category, person" +
 				" WHERE scene.id_category=category.id_category AND" +
@@ -763,7 +806,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 	 */
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
+		//super.onBackPressed();
 		Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
 		startActivity(intent);
 		finish();
@@ -771,7 +814,7 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 
 	
 	public void onGoBack(View view) {
-		super.onBackPressed();
+		//super.onBackPressed();
 		Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
 		startActivity(intent);
 		finish();

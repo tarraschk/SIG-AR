@@ -143,20 +143,34 @@ public class Scene extends OAScene implements Comparable<Scene>{
 	public void setLongitude(double longitude) {
 		this.location.setLongitude(longitude);
 	}
-	
+	/**
+	 * Set the altitude of the scene 
+	 * @param altitude
+	 */
 	public void setAltitude(double altitude) {
 		this.location.setAltitude(altitude);
 	}
-	
+	/**
+	 * get the altitude of the scene
+	 * @return altitude
+	 */
 	public double getAltitude(){
 		return this.location.getAltitude();
 	}
-	
+	/**
+	 * get the icon of scene
+	 * @return Drawable icon
+	 */
 	public Drawable getIcon(){
 		return DataManager.getInstance(false).getIcon(category);
 	}
 	
-	
+	/**
+	 * calculate the distance between a scene and a POI
+	 * @param latitude
+	 * @param longitude
+	 * @return
+	 */
 	public double getDistance(double latitude, double longitude) {
 		//equatorial radius of Earth. No precision necessary, we'll use the distance to compare distances
 		double r=6371000.0 ;
@@ -168,7 +182,7 @@ public class Scene extends OAScene implements Comparable<Scene>{
 		return dist;
 	}
 	
-	// public void setScale()
+
 
 	public int compareTo(Scene another) {
 		

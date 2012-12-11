@@ -7,13 +7,15 @@ import android.os.Environment;
 
 import com.hitlabnz.outdoorar.api.OAScene;
 import com.hitlabnz.outdoorar.data.OADataManager;
+import com.hitlabnz.outdoorar.data.OADataManagerAssets;
+import com.hitlabnz.outdoorar.data.OADataManagerLocal;
 
 
-public class DataManager extends OADataManager{
+public class DataManager extends OADataManagerLocal{
 	
 	static DataManager singletonInstance = null;
 	
-	protected static String workingPath="SIGAR";
+	//protected static String workingPath="SIGAR";
 	//protected static String modelPath = "";
 	//protected static String iconPath = "";
 	
@@ -21,17 +23,33 @@ public class DataManager extends OADataManager{
 	//private static final String ICONS_DIRECTORY = "icons";
 	
 	//protected ArrayList<Scene> scenes = new ArrayList<Scene>();;
+
+	//public DataManager(String Path){
+		//super(Path);
+		//init();
+		//super(Path);
+	//}
 	
-	public DataManager(String Path){
-		super(Path);
+	/**
+	 * 
+	 */
+	public DataManager() {
+		super();
 	}
-	
+
+	/**
+	 * @param workingPath
+	 */
+	public DataManager(String workingPath) {
+		super(workingPath);
+	}
+
 	public static DataManager getInstance(boolean a) {
 		if(DataManager.singletonInstance == null){
-			DataManager.singletonInstance = new DataManager(workingPath);
+			DataManager.singletonInstance = new DataManager("SIGAR");
 		}
 		if(a){
-			DataManager MAP=new DataManager(workingPath);
+			DataManager MAP=new DataManager("SIGAR");
 			for(OAScene c:DataManager.singletonInstance.getSceneList()){
 				if(((Scene) c).isActivated()){
 					MAP.addScene(c);
@@ -47,9 +65,9 @@ public class DataManager extends OADataManager{
 	/** 
 	 * @see com.hitlabnz.outdoorar.data.OADataManager#setWorkingPath(java.lang.String)
 	 */
+	/*@Override
 	protected void setWorkingPath(String path) {
-		// TODO Auto-generated method stub
-		super.setWorkingPath(path);
+		//super.setWorkingPath(path);
 		//workingPath=path;
 		//super.setWorkingPath(Environment.getExternalStorageDirectory().toString() + "/" + path);
 		
@@ -60,9 +78,9 @@ public class DataManager extends OADataManager{
 		
 		modelPath = workingPath + MODELS_DIRECTORY + "/";
 		iconPath  = workingPath + ICONS_DIRECTORY + "/";
-	*/
+	
 		
-	}
+	}*/
 
 	/* (non-Javadoc)
 	 * @see com.hitlabnz.outdoorar.data.OADataManager#loadScenes()
@@ -85,10 +103,6 @@ public class DataManager extends OADataManager{
 		}
 		return ls;
 	}
-
-	
-	
-	
 	
 		//TODO Generate Xml file
 }

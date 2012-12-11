@@ -1,21 +1,13 @@
 package com.ecn.ei3info.sig_ar;
 
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
@@ -95,8 +87,8 @@ public class SplashScreen extends Activity{
 	    	
 	    	
 	    	//File xmlfile = new File(exstPath+"/SIGAR/scene.xml");
-	    	InputStream input = new FileInputStream(exstPath+"/SIGAR/scenes.xml");
-	    	DataManager.getInstance(false).addScenes(test.parse(input));//getAssets().open("SIGAR/scenes.xml")));
+	    //	InputStream input = new FileInputStream(exstPath+"/SIGAR/scenes.xml");
+	    	DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));//input));//
 	    	Log.w("DATAmanager workingpath",DataManager.getInstance(false).getWorkingPath());
 	    	
 	    	//getDir("/SIGAR", 0);

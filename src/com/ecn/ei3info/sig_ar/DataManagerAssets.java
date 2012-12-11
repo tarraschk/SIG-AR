@@ -12,7 +12,6 @@ public class DataManagerAssets extends OADataManagerAssets{
 	
 	public DataManagerAssets(Context context) {
 		super(context);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public DataManagerAssets(String workingPath, Context context){

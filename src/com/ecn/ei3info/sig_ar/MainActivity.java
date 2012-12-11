@@ -1,27 +1,27 @@
 package com.ecn.ei3info.sig_ar;
 
-import com.hitlabnz.outdoorar.api.OAARComponentBase;
-import com.hitlabnz.outdoorar.api.OAScene;
-import com.hitlabnz.outdoorar.data.OADataManager;
-
-//import fr.maraumax.customtabs.MainActivity;
-//import fr.maraumax.customtabs.MapActivity;
-//import fr.maraumax.customtabs.R;
-//import fr.maraumax.customtabs.SettingsActivity;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import android.provider.Settings;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.hitlabnz.outdoorar.api.OAARComponentBase;
+import com.hitlabnz.outdoorar.api.OAScene;
+import com.hitlabnz.outdoorar.data.OADataManager;
+//import fr.maraumax.customtabs.MainActivity;
+//import fr.maraumax.customtabs.MapActivity;
+//import fr.maraumax.customtabs.R;
+//import fr.maraumax.customtabs.SettingsActivity;
 
 //TODO Comment
 //TODO Delete menu bar/tablette
@@ -180,7 +180,6 @@ public class MainActivity extends OAARComponentBase {
 	 */
 	@Override
 	protected int setupOptions() {
-		// TODO Auto-generated method stub
 		return ( options);
 	}
 	/**
@@ -202,14 +201,6 @@ public class MainActivity extends OAARComponentBase {
 		MainActivity.options = options;
 	}
 
-
-
-	/*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
-	 */
 
 	//TODO Option d'affichage du compas et de la grille
 	//TODO Modifier Interface
@@ -233,7 +224,7 @@ public class MainActivity extends OAARComponentBase {
 	 */
 	@Override
 	protected void onSceneSelected(OAScene scene) {
-		// TODO Auto-generated method stub
+		//TODO revoir ce code pour ouvrir une popp d'edition de choix
 		super.onSceneSelected(scene);
 		
 		Toast.makeText(MainActivity.this, scene.getName()+" est seclectionn�e", Toast.LENGTH_SHORT).show();
@@ -242,14 +233,14 @@ public class MainActivity extends OAARComponentBase {
 	/* (non-Javadoc)
 	 * @see com.hitlabnz.outdoorar.api.OAARComponentBase#onTouchedScene(com.hitlabnz.outdoorar.api.OAScene)
 	 */
-	@Override
+/*	@Override
 	protected void onTouchedScene(OAScene scene) {
 		// TODO Auto-generated method stub
 		super.onTouchedScene(scene);
 		
 		Toast.makeText(MainActivity.this, scene.getName()+" est seclect'tgtthththionn�e", Toast.LENGTH_SHORT).show();
 	
-	}
+	}*/
 	/**
 	 * Go to Map View
 	 * @param View

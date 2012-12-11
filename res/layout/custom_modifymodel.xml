@@ -33,7 +33,7 @@
                 android:text="Id :" />
 
             <TextView
-                android:id="@+id/id"
+                android:id="@+id/modelid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"

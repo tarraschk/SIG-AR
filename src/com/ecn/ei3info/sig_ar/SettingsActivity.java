@@ -28,12 +28,12 @@ public class SettingsActivity extends Activity {
 	}
 
 	public static class SettingsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener {
+
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			addPreferencesFromResource(R.xml.preferences);
 
-			// Pour ouvrir la pop-up "About" lors d'un clic sur la préférence readabout
 			Preference readabout = (Preference) findPreference("readabout");
 
 			readabout.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -69,11 +69,14 @@ public class SettingsActivity extends Activity {
 		}
 
 		@Override
-		public void onSharedPreferenceChanged(
-				SharedPreferences sharedPreferences, String key) {
-			// TODO Auto-generated method stub
-
-		}
+	    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+	        if (key.equals("pref_db_name")) {
+	            Preference dbNamePref = findPreference(key);
+	            String s = "Click here to modify database name. Your current database is : ";
+	            s = s + sharedPreferences.getString(key, "");
+	            dbNamePref.setSummary(s);
+	        }
+	    }
 	}
 
 	/* (non-Javadoc)

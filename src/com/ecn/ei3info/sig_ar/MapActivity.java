@@ -351,8 +351,8 @@ public class MapActivity extends OAMapComponentBase{
 		//super.onBackPressed();
 		Intent intent = new Intent(MapActivity.this, MainActivity.class);
 		startActivity(intent);
-		finish();
 		this.plot=false;
+		finish();
 	}	
 	/**
 	 * Method called when you press on BackButton of the tablet. 
@@ -363,8 +363,8 @@ public class MapActivity extends OAMapComponentBase{
 		//super.onBackPressed();
 		Intent intent = new Intent(MapActivity.this, MainActivity.class);
 		startActivity(intent);
-		finish();
 		this.plot=false;
+		finish();
 	}
 	
 	

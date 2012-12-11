@@ -35,7 +35,6 @@ public class DataManager extends OADataManagerLocal{
 	 */
 	public DataManager() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -43,7 +42,6 @@ public class DataManager extends OADataManagerLocal{
 	 */
 	public DataManager(String workingPath) {
 		super(workingPath);
-		// TODO Auto-generated constructor stub
 	}
 
 	public static DataManager getInstance(boolean a) {
@@ -69,7 +67,6 @@ public class DataManager extends OADataManagerLocal{
 	 */
 	/*@Override
 	protected void setWorkingPath(String path) {
-		// TODO Auto-generated method stub
 		//super.setWorkingPath(path);
 		//workingPath=path;
 		//super.setWorkingPath(Environment.getExternalStorageDirectory().toString() + "/" + path);

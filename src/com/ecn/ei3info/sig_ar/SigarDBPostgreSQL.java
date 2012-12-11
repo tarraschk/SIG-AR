@@ -780,9 +780,13 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 	
 	
 	
-	
+	/**
+	 * Method called when user click on SearchButton 
+	 *	Create SQL query and call PGSQLQuery() AsyncTask
+	 * @param view
+	 */
 	public void onGoSearch(View view){
-		
+		//TODO faire attention au upper, ne prend pas en charge actuellement les majuscules
 		sql="SELECT id_scene, name_scene, description, name_category,name_person, gps_longitude, gps_latitude, gps_altitude" +
 				" FROM scene, category, person" +
 				" WHERE scene.id_category=category.id_category AND" +

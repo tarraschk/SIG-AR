@@ -180,7 +180,6 @@ public class MainActivity extends OAARComponentBase {
 	 */
 	@Override
 	protected int setupOptions() {
-		// TODO Auto-generated method stub
 		return ( options);
 	}
 	/**
@@ -202,14 +201,6 @@ public class MainActivity extends OAARComponentBase {
 		MainActivity.options = options;
 	}
 
-
-
-	/*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
-	 */
 
 	//TODO Option d'affichage du compas et de la grille
 	//TODO Modifier Interface
@@ -233,7 +224,7 @@ public class MainActivity extends OAARComponentBase {
 	 */
 	@Override
 	protected void onSceneSelected(OAScene scene) {
-		// TODO Auto-generated method stub
+		//TODO revoir ce code pour ouvrir une popp d'edition de choix
 		super.onSceneSelected(scene);
 		
 		Toast.makeText(MainActivity.this, scene.getName()+" est seclectionn�e", Toast.LENGTH_SHORT).show();

@@ -22,7 +22,6 @@ import android.widget.SearchView;
 import android.widget.Spinner;
 
 public class ListActivity extends Activity implements OnItemSelectedListener {
-	//TODO gestion des données
 	//TODO style de la liste
 	//TODO Moteur de recherche
 
@@ -38,6 +37,7 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		//Set the UI layout
 		setContentView(R.layout.activity_list);
 		
+		//Enable add button when 
 		addButton= (ImageButton) this.findViewById(R.id.addButton);
 		
 		if (((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()==null){
@@ -143,40 +143,6 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 	}*/
 
 
-	//@Override
-
-	//protected void setupUILayout(View listView) {
-
-	// create custom UI layout with a title text
-	/*LinearLayout sampleUIlayout = new LinearLayout(this);
-		sampleUIlayout.setOrientation(LinearLayout.VERTICAL);
-		TextView titleText = new TextView(this);
-		titleText.setText("List");
-		titleText.setTextAppearance(getApplicationContext(), android.R.style.TextAppearance_Large);
-		sampleUIlayout.addView(titleText);
-
-		// add the list view to the custom UI layout
-		sampleUIlayout.addView(listView);
-
-		// set the custom UI layout
-		setContentView(sampleUIlayout);
-
-
-		LayoutInflater controlInflater = LayoutInflater.from(getBaseContext());
-		RelativeLayout sampleUILayout = (RelativeLayout)controlInflater.inflate(R.layout.activity_list, null);
-		addContentView(sampleUILayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));*/
-
-
-
-
-	/* (non-Javadoc)
-	 * @see com.hitlabnz.outdoorar.api.OAListComponentBase#setupDataManager()
-	 */
-	/*	@Override
-	protected OADataManager setupDataManager() {
-		// TODO Auto-generated method stub
-		return DataManager.getInstance(false);
-	}*/	
 	/**
 	 * Navigation button, go back to MainActivity
 	 * @param view

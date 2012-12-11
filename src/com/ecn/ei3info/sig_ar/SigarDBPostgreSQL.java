@@ -801,20 +801,23 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 	}
 
 	/**
-	 * 
+	 * Method call when user clicks on physical "go back" button.
+	 * Close Database inerface to return on List Activity
 	 * @see android.app.Activity#onBackPressed()
 	 */
 	@Override
 	public void onBackPressed() {
-		//super.onBackPressed();
 		Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
 		startActivity(intent);
 		finish();
 	}
 
-	
+	/**
+	 * Method call when user clicks on "go back" button.
+	 * Close Database inerface to return on List Activity
+	 * @param view
+	 */
 	public void onGoBack(View view) {
-		//super.onBackPressed();
 		Intent intent = new Intent(SigarDBPostgreSQL.this, ListActivity.class);
 		startActivity(intent);
 		finish();

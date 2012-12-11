@@ -1,21 +1,13 @@
 package com.ecn.ei3info.sig_ar;
 
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;

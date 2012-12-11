@@ -1,54 +1,43 @@
 package com.ecn.ei3info.sig_ar;
 
-
-
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import java.sql.*;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hitlabnz.androidar.data.Coordinate;
 import com.hitlabnz.androidar.data.ModelData;
 import com.hitlabnz.androidar.data.SceneLocation;
 import com.hitlabnz.androidar.data.representation.model.Transform;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.Settings;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 /**
  * SigarDBPostgresSQL class allow to connect the Central SIGAR database (PostgreSQL) and dowload new scenes. 
  * @author bastienmarichalragot

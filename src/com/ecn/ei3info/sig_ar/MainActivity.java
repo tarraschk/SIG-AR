@@ -1,27 +1,27 @@
 package com.ecn.ei3info.sig_ar;
 
-import com.hitlabnz.outdoorar.api.OAARComponentBase;
-import com.hitlabnz.outdoorar.api.OAScene;
-import com.hitlabnz.outdoorar.data.OADataManager;
-
-//import fr.maraumax.customtabs.MainActivity;
-//import fr.maraumax.customtabs.MapActivity;
-//import fr.maraumax.customtabs.R;
-//import fr.maraumax.customtabs.SettingsActivity;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import android.provider.Settings;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.hitlabnz.outdoorar.api.OAARComponentBase;
+import com.hitlabnz.outdoorar.api.OAScene;
+import com.hitlabnz.outdoorar.data.OADataManager;
+//import fr.maraumax.customtabs.MainActivity;
+//import fr.maraumax.customtabs.MapActivity;
+//import fr.maraumax.customtabs.R;
+//import fr.maraumax.customtabs.SettingsActivity;
 
 //TODO Comment
 //TODO Delete menu bar/tablette

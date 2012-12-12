@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/titlemodelname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Model name:" />
+            <TextView
+                android:id="@+id/modelname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_alignTop="@+id/titlemodelname"
+                android:layout_toRightOf="@+id/titlemodelname"
+                android:text="displayedmodelname" />            
+            <TextView
+                android:id="@+id/titleid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/titlemodelname"
+                android:text="Id :" />
+            <TextView
+                android:id="@+id/modelid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/titlemodelname"
+                android:layout_alignTop="@+id/titleid"
+                android:layout_toRightOf="@+id/titleid"
+                android:text="displayedid" />       
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/titleid"
+                android:text="description" />
+</RelativeLayout>

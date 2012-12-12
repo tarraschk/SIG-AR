@@ -26,22 +26,22 @@
         android:key="pref_key_database">
        <EditTextPreference
             android:key="pref_db_name"
-            android:summary="Set the database name"
+            android:summary="Click here to modify database name. Your current database is : sigar_test"
             android:defaultValue="sigar_test"
             android:title="Database name" />
        <EditTextPreference
             android:key="pref_db_address"
-            android:summary="Set your database address"
+            android:summary="Click here to modify database address. Current address is : 54.246.97.87"
             android:defaultValue="54.246.97.87"
             android:title="Address" />
        <EditTextPreference
             android:key="pref_db_port"
-            android:summary="Set the database port"
+            android:summary="Click here to modify database port. Current port is : 5432"
             android:defaultValue="5432"
             android:title="Port" />
        <EditTextPreference
             android:key="pref_db_login"
-            android:summary="Enter your login"
+            android:summary="Click here to modify your login. Your current login is : sigar"
             android:defaultValue="sigar"
             android:title="Login" />
        <EditTextPreference

@@ -7,7 +7,10 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
+import android.widget.TextView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -49,7 +52,16 @@ public class SettingsActivity extends Activity {
 							dialog.cancel();
 						}
 					});
+					
 					AlertDialog dialog = builder.create();
+					
+					// To display creative commons link in "About"
+					TextView license = (TextView)dialog.findViewById(R.id.license);
+					license.setText(Html.fromHtml(
+				            "SIG-AR is licensed under a " +
+				            "<a href=\"http://creativecommons.org/licenses/by-sa/3.0/> Creative Commons Attribution-ShareAlike 3.0 Unported License</a> "));
+					license.setMovementMethod(LinkMovementMethod.getInstance());
+					
 					dialog.show();
 					return false;
 				}

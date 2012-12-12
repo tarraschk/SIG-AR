@@ -14,12 +14,33 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent" >
 		
+	    
+	    	<ImageView
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:layout_gravity="center"
+    			android:src="@drawable/logo"
+			/>
 			<TextView
 			    android:id="@+id/textView2"
 			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
+			    android:layout_height="wrap_content"
 			    android:text="@string/about"
-			    android:textAppearance="?android:attr/textAppearanceSmall" />
+			    android:textAppearance="?android:attr/textAppearanceSmall" 
+			/>
+			<ImageView
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:layout_gravity="center"
+    			android:src="@drawable/cc"
+			/>
+			<TextView
+			    android:id="@+id/license"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/license"
+			    android:textAppearance="?android:attr/textAppearanceSmall" 
+			/>
 
 	</ScrollView>
 

@@ -15,6 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -63,6 +64,53 @@ public class SceneArrayAdapter extends BaseAdapter{
 			TextView textView = (TextView)view.findViewById(R.id.scene_name);
 			String data = dataSource.get(pos).getName();
 			textView.setText(data);
+			
+			// To display model details on long click
+			textView.setOnLongClickListener(new OnLongClickListener() {
+			    @Override
+			    public boolean onLongClick(View v) {
+			    	
+			    	final Dialog dialog = new Dialog(v.getContext());
+					dialog.setContentView(R.layout.modeldescription);
+					dialog.setTitle("Details");
+					
+					TextView text = (TextView) dialog.findViewById(R.id.modelname);
+					text.setText(dataSource.get(pos).getName());
+					
+					TextView textid = (TextView) dialog.findViewById(R.id.modelid);
+					textid.setText(Integer.toString(dataSource.get(pos).getId()));
+					
+					TextView description = (TextView) dialog.findViewById(R.id.description);
+					description.setText(dataSource.get(pos).getDescription());
+					
+					TextView category = (TextView) dialog.findViewById(R.id.category);
+					category.setText(dataSource.get(pos).getCategory());
+					
+					TextView latitude = (TextView) dialog.findViewById(R.id.latitude);
+					double lat=dataSource.get(pos).getLatitude();
+					latitude.setText(lat+"");
+					
+					TextView longitude = (TextView) dialog.findViewById(R.id.longitude);
+					double longi=dataSource.get(pos).getLongitude();
+					longitude.setText(longi+"");
+
+					TextView altitude = (TextView) dialog.findViewById(R.id.altitude);
+					double alt=dataSource.get(pos).getAltitude();
+					altitude.setText(alt+"");
+					
+					ImageButton okButton = (ImageButton) dialog.findViewById(R.id.ok);
+					okButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+						}
+					});
+					
+					dialog.show();
+					
+			       return false;
+			    }
+			});
 
 			ImageView imageView = (ImageView) view.findViewById(R.id.icons);
 			Drawable icon= dataSource.get(pos).getIcon();

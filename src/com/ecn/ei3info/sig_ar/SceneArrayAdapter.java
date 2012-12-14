@@ -253,6 +253,49 @@ public class SceneArrayAdapter extends BaseAdapter{
 			} );
 			
 			
+			ImageButton infoButton= (ImageButton) view.findViewById(R.id.button_info);
+			infoButton.setOnClickListener(new OnClickListener(){
+				public void onClick(View arg0){
+					final Dialog dialog = new Dialog(arg0.getContext());
+					dialog.setContentView(R.layout.modeldescription);
+					dialog.setTitle("Details");
+					
+					TextView text = (TextView) dialog.findViewById(R.id.modelname);
+					text.setText(dataSource.get(pos).getName());
+					
+					TextView textid = (TextView) dialog.findViewById(R.id.modelid);
+					textid.setText(Integer.toString(dataSource.get(pos).getId()));
+					
+					TextView description = (TextView) dialog.findViewById(R.id.description);
+					description.setText(dataSource.get(pos).getDescription());
+					
+					TextView category = (TextView) dialog.findViewById(R.id.category);
+					category.setText(dataSource.get(pos).getCategory());
+					
+					TextView latitude = (TextView) dialog.findViewById(R.id.latitude);
+					double lat=dataSource.get(pos).getLatitude();
+					latitude.setText(lat+"");
+					
+					TextView longitude = (TextView) dialog.findViewById(R.id.longitude);
+					double longi=dataSource.get(pos).getLongitude();
+					longitude.setText(longi+"");
+
+					TextView altitude = (TextView) dialog.findViewById(R.id.altitude);
+					double alt=dataSource.get(pos).getAltitude();
+					altitude.setText(alt+"");
+					
+					ImageButton okButton = (ImageButton) dialog.findViewById(R.id.ok);
+					okButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+						}
+					});
+					
+					dialog.show();
+				}
+			});
+			
 		}else{
 			view = convertView;
 		}

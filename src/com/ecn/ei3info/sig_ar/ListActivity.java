@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -13,13 +14,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class ListActivity extends Activity implements OnItemSelectedListener {
 	//TODO style de la liste
@@ -53,6 +58,7 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		lv = (ListView) findViewById(R.id.listView1);
 		lv.setAdapter(SAA);
 
+	
 		Spinner spinner = (Spinner) findViewById(R.id.sort_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.sort_array, android.R.layout.simple_spinner_item);
@@ -66,7 +72,7 @@ public class ListActivity extends Activity implements OnItemSelectedListener {
 		SearchView searchView = (SearchView) findViewById(R.id.searchView1);
 		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 		searchView.setBackgroundColor(Color.RED);
-
+		
 		Intent intent = getIntent();
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 			String query = intent.getStringExtra(SearchManager.QUERY);

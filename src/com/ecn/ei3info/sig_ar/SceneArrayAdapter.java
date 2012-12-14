@@ -66,7 +66,7 @@ public class SceneArrayAdapter extends BaseAdapter{
 			textView.setText(data);
 			
 			// To display model details on long click
-			textView.setOnLongClickListener(new OnLongClickListener() {
+			/*textView.setOnLongClickListener(new OnLongClickListener() {
 			    @Override
 			    public boolean onLongClick(View v) {
 			    	
@@ -110,7 +110,7 @@ public class SceneArrayAdapter extends BaseAdapter{
 					
 			       return false;
 			    }
-			});
+			});*/
 
 			ImageView imageView = (ImageView) view.findViewById(R.id.icons);
 			Drawable icon= dataSource.get(pos).getIcon();

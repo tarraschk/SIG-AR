@@ -53,16 +53,18 @@ public class SettingsActivity extends Activity {
 						}
 					});
 					
-					AlertDialog dialog = builder.create();
-					
+					/*AlertDialog dialog = builder.create();
+					*/
 					// To display creative commons link in "About"
-					TextView license = (TextView)dialog.findViewById(R.id.license);
-					license.setText(Html.fromHtml(
+					//TextView license = (TextView) a.findViewById(R.id.license);
+					/*license.setText(Html.fromHtml(
 				            "SIG-AR is licensed under a " +
 				            "<a href=\"http://creativecommons.org/licenses/by-sa/3.0/> Creative Commons Attribution-ShareAlike 3.0 Unported License</a> "));
-					license.setMovementMethod(LinkMovementMethod.getInstance());
 					
-					dialog.show();
+					*/
+					//license.setMovementMethod(LinkMovementMethod.getInstance());
+				
+					builder.show();
 					return false;
 				}
 			});

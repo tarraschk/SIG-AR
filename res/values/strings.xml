@@ -42,7 +42,7 @@
 	
 	<string name="settings">Settings</string>
 	
-	<string name="license">SIG-AR is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License</string>
+	<string name="license">http://creativecommons.org/licenses/by-sa/3.0  Creative Commons Attribution-ShareAlike 3.0 Unported License</string>
 	
     <string-array name="sort_array">
         <item>Name</item>

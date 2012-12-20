@@ -121,7 +121,7 @@ public class DataXMLParser {
 				skip(parser);
 			}
 		}
-		Scene test= new Scene(id,namescene,description,category,creator,activated,modelVisible,location,models);//completer le constructuer en fonctiondes attributs
+		Scene test= new Scene(id,namescene,description,category,creator,activated,modelVisible,location,models,new Transform());//completer le constructuer en fonctiondes attributs
 		test.logScene();
 		return test;
 	}

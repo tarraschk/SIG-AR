@@ -5,9 +5,11 @@ import java.util.List;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import com.hitlabnz.androidar.data.Coordinate;
 import com.hitlabnz.androidar.data.ModelData;
 import com.hitlabnz.androidar.data.SceneData;
 import com.hitlabnz.androidar.data.SceneLocation;
+import com.hitlabnz.androidar.data.representation.model.Transform;
 import com.hitlabnz.outdoorar.api.OAScene;
 
 public class Scene extends OAScene implements Comparable<Scene>{
@@ -93,7 +95,7 @@ public class Scene extends OAScene implements Comparable<Scene>{
 	 * @param Creator
 	 * @param Activated
 	 */
-	public Scene( int ID,String Name, String Description, String Category, String Creator, boolean Activated, String ModelVisible, SceneLocation Location, List<ModelData> models){
+	public Scene( int ID,String Name, String Description, String Category, String Creator, boolean Activated, String ModelVisible, SceneLocation Location, List<ModelData> models, Transform transform){
 		this.id=ID;
 		this.name=Name;
 		this.description=Description;
@@ -103,8 +105,9 @@ public class Scene extends OAScene implements Comparable<Scene>{
 		this.modelVisible=ModelVisible;
 		this.location=Location;
 		this.models=models;
-		//TODO add transfrom!!!!!!!!!!
+		//
 		
+		this.addTransform(transform);
 	}
 
 	// methode de developpement ASUPPRIMER

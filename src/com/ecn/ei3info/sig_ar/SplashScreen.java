@@ -88,9 +88,10 @@ public class SplashScreen extends Activity{
 	    	
 	    	//File xmlfile = new File(exstPath+"/SIGAR/scene.xml");
 	    //	InputStream input = new FileInputStream(exstPath+"/SIGAR/scenes.xml");
-	    	DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));//input));//
+	    	//DataManager.getInstance(false).addScenes(test.parse(getAssets().open("SIGAR/scenes.xml")));//input));//
 	    	Log.w("DATAmanager workingpath",DataManager.getInstance(false).getWorkingPath());
 	    	
+	    	DataManager.getInstance(false).addSceneFromSQLiteDB(this);
 	    	//getDir("/SIGAR", 0);
 	    	
 	    	//File mydir = getDir("SIGAR", Context.MODE_PRIVATE); //Creating an internal dir;
@@ -136,11 +137,11 @@ public class SplashScreen extends Activity{
 		    	
 	    	//    Log.w("myApp", Boolean.toString(success));*/
 	    	
-	    } catch (XmlPullParserException e) {
+	   /* } catch (XmlPullParserException e) {
 	    	e.printStackTrace();
 	    } catch (IOException e) {
 			e.printStackTrace();
-		} catch(SQLException e){
+		*/} catch(SQLException e){
 			e.printStackTrace();
 			Log.w("SQL EXCEPTION", "FUCK");
 		}

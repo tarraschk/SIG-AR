@@ -10,7 +10,7 @@ import android.util.Log;
 public class SigarDB extends SQLiteOpenHelper {
 	
 	private static final String DATABASE_NAME = "sigar.db";
-	private static final int DATABASE_VERSION = 53;
+	private static final int DATABASE_VERSION = 54;
 
 	private static final String DATABASE_INSERT=" INSERT INTO category(name_category) VALUES ('test');" ;
 													
@@ -81,9 +81,9 @@ public class SigarDB extends SQLiteOpenHelper {
 							+"rotation_x real, "
 							+"rotation_y real, "
 							+"rotation_z real, "
-							+"echelle_x real, "
-							+"echelle_y real, "
-							+"echelle_z real, "
+							+"scale_x real, "
+							+"scale_y real, "
+							+"scale_z real, "
 							+"FOREIGN KEY (id_category) REFERENCES category(id_category), "
 							+"FOREIGN KEY (id_icon) REFERENCES icon(id_icon), "
 							+"FOREIGN KEY (id_author) REFERENCES person(id_person), "

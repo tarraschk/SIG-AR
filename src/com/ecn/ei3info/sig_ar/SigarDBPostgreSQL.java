@@ -19,6 +19,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -659,14 +660,14 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 						transform.setRotation(new Coordinate(rotation_x,rotation_y,rotation_z));
 						
 						
-						model.addTransform(transform);
-						models.add(model);
+						//model.addTransform(transform);
+						//models.add(model);
 						
-						DataManager.getInstance(false).addScene(new Scene( id_scene, name_scene, description, name_category, name_person, activation, "inutil", Location, models));
+						DataManager.getInstance(false).addScene(new Scene( id_scene, name_scene, description, name_category, name_person, activation, "inutil", Location, models, transform));
 
 						// insert into SQLite DB
 
-						/*SigarDB database= new SigarDB(a);
+						SigarDB database= new SigarDB(a);
 						SQLiteDatabase sqlDB = database.getWritableDatabase();
 
 
@@ -680,9 +681,11 @@ System.err.println("Failed to Execute" + aSQLScriptFilePath +". The error is"+ e
 								", "+Float.toString(translation_x)+", "+Float.toString(translation_y)+", "+Float.toString(translation_z)+
 								", "+Float.toString(rotation_x)+", "+Float.toString(rotation_y)+", "+Float.toString(rotation_z)+
 						    							", "+Float.toString(scale_x)+", "+Float.toString(scale_y)+", "+Float.toString(scale_z)+"); ";
-						    
+						
+						Log.w("testsqlite",sqlInsertScene);
+						
 						sqlDB.execSQL(sqlInsertScene);
-						*/
+						
 
 
 						    

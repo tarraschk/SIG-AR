@@ -6,10 +6,21 @@
 	<meta charset="utf-8">
 	<title>SIG-AR More than REALITY</title> 
 	<meta name="description" content="Smart Bootstrap Theme"/>
-	<meta name="keywords" content="Template, Theme, web, html5, css3, Bootstrap, SIGAR, réalité augmentée, RA, AR" />
-	<meta name="author" content="L'Equipe SIGAR"/>
+	<meta name="keywords" content="Template, Theme, web, html5, css3, Bootstrap" />
+	<meta name="author" content="Łukasz Holeczek from creativeLabs"/>
 	<!-- end: Meta -->
-
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- end: Mobile Specific -->
+	
+	<!-- start: Facebook Open Graph -->
+	<meta property="og:title" content=""/>
+	<meta property="og:description" content=""/>
+	<meta property="og:type" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content=""/>
+	<!-- end: Facebook Open Graph -->
 
     <!-- start: CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -87,8 +98,7 @@
 			        	</div>
 			      	</div>
 					
-				</div>	
-				<!--end: Navigation -->
+				</div>					<!--end: Navigation -->
 					
 			</div>
 			<!--end: Row -->
@@ -98,191 +108,122 @@
 			
 	</header>
 	<!--end: Header-->
-			
-	<!--start: Wrapper-->
-	<div id="wrapper">
-				
-		<!--start: Container -->
-    	<div class="container">
-			
-			<!-- start: Flexslider -->
-			<div class="slider">
-			
-				<div id="flex1" class="flexslider">
-					<ul class="slides">
 
-						<li>
-							<img src="img/slider/slider1.jpg" alt="" />
-							<div class="slide-caption n hidden-phone">
-								<h3>SIG-AR : More than Reality</h3>
-							</div>
-						</li>
+	<!-- start: Map -->
+	<div>
 
-						<li>
-							<img src="img/slider/slider2.jpg" alt="" />
-							<div class="slide-caption hidden-phone">
-								<h3>Android App</h3>
-								<p>
-									This screen directly taken from the application show the model and user positions.
-								</p>
-							</div>
-						</li>
+		<!-- starts: Google Maps -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<div id="googlemaps-container-top"></div>
+		<div id="googlemaps" class="google-map google-map-full"></div>
+		<div id="googlemaps-container-bottom"></div>
+		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="js/jquery.gmap.min.js"></script>
+		<script type="text/javascript">
+			$('#googlemaps').gMap({
+				maptype: 'ROADMAP',
+				scrollwheel: false,
+				zoom: 13,
+				markers: [
+					{
+						address: 'Ecole Centrale de Nantes, France', // Your Adress Here
+						html: '',
+						popup: false,
+					}
 
-						<li>
-							<img src="img/slider/slider3.jpg" alt="" />
-						</li>
+				],
 
-					</ul>
-				</div>
-			
-			</div>
-			<!-- end: Flexslider -->
-			
-			<hr>
+			});
+		</script>
+		<!-- end: Google Maps -->
+	</div>
+	<!-- end: Map -->	
 	
-      		<!-- start: Hero Unit - Main hero unit for a primary marketing message or call to action -->
-      		<div class="hero-unit">
-        		<p>
-					SIG-AR is an Augmented Reality application developed on Android by six students from the Ecole Centrale (Nantes, France). Designed to help architects show their ideas, it brings 3D models to life in a very easy way. With SIG-AR, your environment becomes more than reality. It is now your field of expression.
-				</p>
-      		</div>
-			<!-- end: Hero Unit -->
-      		
-			<hr>
+	<!-- start: Wrapper -->	
+	<div id="wrapper">		
+
+		<!-- start: Container -->	
+		<div class="container">
 			
 			<!-- start: Row -->
 			<div class="row">
-				
-				<!-- start: Icon Boxes -->
-				<div class="icons-box-vert-container">
+			
+				<!-- start: Contact Info -->
+				<div class="span3">
+					<div class="title"><h3>Contact Info</h3></div>
+					<p>
+						<b>Ecole Centrale de Nantes</b>
+					</p>
+					<p>
+						1 Rue Noë
+					</p>
+					<p>	
+						44300 Nantes, France
+					</p>	
+					<p>	
+						Phone: (+33)2 40 37 16 00
+					</p>
+					<p>
+						Email: myriam.servieres@ec-nantes.fr
+					</p>
+					<p>
+						Web: www.ec-nantes.fr
+					</p>
+				</div>
+				<!-- end: Contact Info -->		
 
-					<!-- start: Icon Box Start -->
-					<div class="span4">
-						<div class="icons-box-vert">
-							<i class="ico-sort ico-white circle-color-full"></i>
-							<div class="icons-box-vert-info">
-								<h3>Features</h3>
-								<p>With SIG-AR, your Android device can :</br>
-  - fetch 3D models from a remote database</br>
-  - display 3D models on assigned GPS coordinates</br>
-  - edit on-site your models geographical information to 
-    handle GPS errors, or to put your creation at the best place.</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<!-- end: Icon Box-->
+				<!-- start: Contact Form -->
+				<div class="span4">
+					<div class="title"><h3>Contact Form</h3></div>
 
-					<!-- start: Icon Box Start -->
-					<div class="span4">
-						<div class="icons-box-vert">
-							<i class="ico-keys  ico-white circle-color-full"></i>
-							<div class="icons-box-vert-info">
-								<h3>Standalone</h3>
-								<p>SIG-AR is also a complete stand-alone suite: built as a Google SketchUp plugin and an Android app, it gives you complete control of the whole workflow from the creation of your model, to the on-site visualization.</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<!-- end: Icon Box -->
+					<!-- start: Contact Form -->
+					<div id="contact-form">
 
-					<!-- start: Icon Box Start -->
-					<div class="span4">
-						<div class="icons-box-vert">
-							<i class="ico-display ico-white circle-color-full"></i>
-							<div class="icons-box-vert-info">
-								<h3>Technology</h3>
-								<p>SIG-AR is a GNU GPL project based on the HitLabNZ 
-Outdoor AR library and the following technologies :<br/>
-  - Ruby, HTML/JavaScript/CSS/PHP and PostgreSQL for
-    the Google SketchUp Plugin <br/>
-  - Java with the Android API for the mobile app</p>
-							</div>
-							<div class="clear"></div>
-						</div>
+						<form method="post" action="">
+
+							<fieldset>
+								<div class="clearfix">
+									<label for="name"><span>Name:</span></label>
+									<div class="input">
+										<input tabindex="1" size="18" id="name" name="name" type="text" value="">
+									</div>
+								</div>
+
+								<div class="clearfix">
+									<label for="email"><span>Email:</span></label>
+									<div class="input">
+										<input tabindex="2" size="25" id="email" name="email" type="text" value="" class="input-xlarge">
+									</div>
+								</div>
+
+								<div class="clearfix">
+									<label for="message"><span>Message:</span></label>
+									<div class="input">
+										<textarea tabindex="3" class="input-xlarge" id="message" name="body" rows="7"></textarea>
+									</div>
+								</div>
+
+								<div class="actions">
+									<button tabindex="3" type="submit" class="btn btn-succes btn-large">Send message</button>
+								</div>
+							</fieldset>
+
+						</form>
+
 					</div>
-					<!-- end: Icon Box -->
+					<!-- end: Contact Form -->
 
 				</div>
-				<!-- end: Icon Boxes -->
-				<div class="clear"></div>
+				<!-- end: Contact Form -->
+
+			
 			</div>
 			<!-- end: Row -->
-			
-			<hr>
-			
-			<!-- start: Row -->
-      		<div class="row">
-	
-				<div class="span9">
-					
-					<div class="title"><h3>Latest Works</h3></div>
-					
-					<!-- start: Row -->
-		      		<div class="row">
-			
-						<div class="span3">
-	
-							<div class="picture">
-								<a href="img/app.jpg" rel="image" title="Android app">
-									<img src="img/app.jpg" >
-									<div class="image-overlay-zoom"></div>
-								</a>
-							</div>
-							<div class="item-description">
-								<h4><a href="#">Android App</a></h4>
-							</div>
-								<p>To do : Detail latest work</p>
-					
-        				</div>
-					
-						<div class="span3">
 
-							<div class="picture">
-								<a href="img/Sketchup.jpg" rel="image" title="SketchUp plugin">
-									<img src="img/Sketchup.jpg" >
-									<div class="image-overlay-zoom"></div>
-								</a>
-							</div>
-							<div class="item-description">
-								<h4><a href="#">Sketchup plugin</a></h4>
-								<p>To do : Detail latest work</p>
-							</div>
-
-		        		</div>
-
-					
-        			</div>
-					<!-- end: Row -->
-					
-				</div>
-
-      		</div>
-			<!-- end: Row -->
-			
-			<hr>
-		
-			<!-- start Clients List -->	
-			<!-- pas encore optimal
-			<div class="clients-carousel">
-		
-				<ul class="slides clients">
-					<li><img src="img/logos/1.png" alt=""/></li>
-					<li><img src="img/logos/2.png" alt=""/></li>	
-				</ul>
-		
-			</div>
-			
-			-->
-			<!-- end Clients List -->
-			
-			
-			<hr>
-			
 		</div>
-		<!--end: Container-->
-	
-	</div>
+		<!-- end: Container -->
+				
+  	</div>
 	<!-- end: Wrapper  -->			
 
     <!-- start: Footer Menu -->
@@ -290,7 +231,7 @@ Outdoor AR library and the following technologies :<br/>
 
 		<!-- start: Container -->
 		<div class="container">
-			
+
 			<!-- start: Row -->
 			<div class="row">
 
@@ -300,6 +241,7 @@ Outdoor AR library and the following technologies :<br/>
 						<div id="logo-eye"></div><a class="brand" href="#">SIG-<span>AR</span></a>
 					</div>
 				</div>
+
 				<!-- end: Footer Menu Logo -->
 
 				<!-- start: Footer Menu Links-->
@@ -324,39 +266,38 @@ Outdoor AR library and the following technologies :<br/>
 
 				<!-- start: Footer Menu Back To Top -->
 				<div class="span1">
-						
+
 					<div id="footer-menu-back-to-top">
 						<a href="#"></a>
 					</div>
-				
+
 				</div>
 				<!-- end: Footer Menu Back To Top -->
-			
+
 			</div>
 			<!-- end: Row -->
-			
+
 		</div>
 		<!-- end: Container  -->	
 
 	</div>	
 	<!-- end: Footer Menu -->
 
-
 	<!-- start: Copyright -->
 	<div id="copyright">
-	
+
 		<!-- start: Container -->
 		<div class="container">
-		
+
 			<div class="span12">
 				<p>
 					&copy; 2012, <a href="http://clabs.co">creativeLabs</a>. Designed by <a href="http://clabs.co">creativeLabs</a> in Poland. Created by SIG-AR <img src="img/poland2.png" alt="Poland" style="margin-top:-4px">
 				</p>
 			</div>
-	
+
 		</div>
 		<!-- end: Container  -->
-		
+
 	</div>	
 	<!-- end: Copyright -->
 
@@ -377,4 +318,3 @@ Outdoor AR library and the following technologies :<br/>
 
 </body>
 </html>
-<!-- Localized -->

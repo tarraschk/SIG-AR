@@ -4,12 +4,23 @@
 
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>SIG-AR More than REALITY</title> 
+	<title>SIG-AR More than REALITY</title>
 	<meta name="description" content="Smart Bootstrap Theme"/>
-	<meta name="keywords" content="Template, Theme, web, html5, css3, Bootstrap, SIGAR, réalité augmentée, RA, AR" />
-	<meta name="author" content="L'Equipe SIGAR"/>
+	<meta name="keywords" content="Template, Theme, web, html5, css3, Bootstrap" />
+	<meta name="author" content="Łukasz Holeczek from creativeLabs"/>
 	<!-- end: Meta -->
-
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- end: Mobile Specific -->
+	
+	<!-- start: Facebook Open Graph -->
+	<meta property="og:title" content=""/>
+	<meta property="og:description" content=""/>
+	<meta property="og:type" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content=""/>
+	<!-- end: Facebook Open Graph -->
 
     <!-- start: CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -87,7 +98,7 @@
 			        	</div>
 			      	</div>
 					
-				</div>	
+				</div>					
 				<!--end: Navigation -->
 					
 			</div>
@@ -98,190 +109,140 @@
 			
 	</header>
 	<!--end: Header-->
-			
+	
+	<!-- start: Page Title -->
+	<div id="page-title">
+
+		<div id="page-title-inner">
+
+			<!-- start: Container -->
+			<div class="container">
+
+				<h2><i class="ico-lightbulb ico-white"></i>Portfolio</h2>
+
+			</div>
+			<!-- end: Container  -->
+
+		</div>	
+
+	</div>
+	<!-- end: Page Title -->
+	
 	<!--start: Wrapper-->
 	<div id="wrapper">
+		
+		<!-- start: Container -->	
+		<div class="container">
+
+			<div id="filters">
+				<ul class="option-set" data-option-key="filter">
+					<li><a href="#filter" class="selected" data-option-value="*">All</a></li>
+					<li><a href="#filter" data-option-value=".app">Android App</a></li>
+					<li><a href="#filter" data-option-value=".sketchup">Sketchup</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<!-- end: Container  -->
 				
 		<!--start: Container -->
     	<div class="container">
-			
-			<!-- start: Flexslider -->
-			<div class="slider">
-			
-				<div id="flex1" class="flexslider">
-					<ul class="slides">
-
-						<li>
-							<img src="img/slider/slider1.jpg" alt="" />
-							<div class="slide-caption n hidden-phone">
-								<h3>SIG-AR : More than Reality</h3>
-							</div>
-						</li>
-
-						<li>
-							<img src="img/slider/slider2.jpg" alt="" />
-							<div class="slide-caption hidden-phone">
-								<h3>Android App</h3>
-								<p>
-									This screen directly taken from the application show the model and user positions.
-								</p>
-							</div>
-						</li>
-
-						<li>
-							<img src="img/slider/slider3.jpg" alt="" />
-						</li>
-
-					</ul>
-				</div>
-			
-			</div>
-			<!-- end: Flexslider -->
-			
-			<hr>
 	
-      		<!-- start: Hero Unit - Main hero unit for a primary marketing message or call to action -->
-      		<div class="hero-unit">
-        		<p>
-					SIG-AR is an Augmented Reality application developed on Android by six students from the Ecole Centrale (Nantes, France). Designed to help architects show their ideas, it brings 3D models to life in a very easy way. With SIG-AR, your environment becomes more than reality. It is now your field of expression.
-				</p>
-      		</div>
-			<!-- end: Hero Unit -->
-      		
-			<hr>
-			
-			<!-- start: Row -->
-			<div class="row">
+			<!-- start: Portfolio -->
+			<div id="portfolio-wrapper" class="row">
+								
+				<div class="span4 portfolio-item app">
+					<div class="picture"><img src="img/app1.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Screen no. 1</a></h5>
+						</div>
+					</div>	
+				</div>
+
+				<div class="span4 portfolio-item sketchup">
+					<div class="picture"><img src="img/sketchup1.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Sketchup Module</a></h5>
+						</div>
+					</div>	
+				</div>
 				
-				<!-- start: Icon Boxes -->
-				<div class="icons-box-vert-container">
-
-					<!-- start: Icon Box Start -->
-					<div class="span4">
-						<div class="icons-box-vert">
-							<i class="ico-sort ico-white circle-color-full"></i>
-							<div class="icons-box-vert-info">
-								<h3>Features</h3>
-								<p>With SIG-AR, your Android device can :</br>
-  - fetch 3D models from a remote database</br>
-  - display 3D models on assigned GPS coordinates</br>
-  - edit on-site your models geographical information to 
-    handle GPS errors, or to put your creation at the best place.</p>
-							</div>
-							<div class="clear"></div>
+				<div class="span4 portfolio-item app">
+					<div class="picture"><img src="img/app2.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Screen no. 2</a></h5>
 						</div>
-					</div>
-					<!-- end: Icon Box-->
-
-					<!-- start: Icon Box Start -->
-					<div class="span4">
-						<div class="icons-box-vert">
-							<i class="ico-keys  ico-white circle-color-full"></i>
-							<div class="icons-box-vert-info">
-								<h3>Standalone</h3>
-								<p>SIG-AR is also a complete stand-alone suite: built as a Google SketchUp plugin and an Android app, it gives you complete control of the whole workflow from the creation of your model, to the on-site visualization.</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<!-- end: Icon Box -->
-
-					<!-- start: Icon Box Start -->
-					<div class="span4">
-						<div class="icons-box-vert">
-							<i class="ico-display ico-white circle-color-full"></i>
-							<div class="icons-box-vert-info">
-								<h3>Technology</h3>
-								<p>SIG-AR is a GNU GPL project based on the HitLabNZ 
-Outdoor AR library and the following technologies :<br/>
-  - Ruby, HTML/JavaScript/CSS/PHP and PostgreSQL for
-    the Google SketchUp Plugin <br/>
-  - Java with the Android API for the mobile app</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<!-- end: Icon Box -->
-
+					</div>	
 				</div>
-				<!-- end: Icon Boxes -->
-				<div class="clear"></div>
-			</div>
-			<!-- end: Row -->
-			
-			<hr>
-			
-			<!-- start: Row -->
-      		<div class="row">
-	
-				<div class="span9">
-					
-					<div class="title"><h3>Latest Works</h3></div>
-					
-					<!-- start: Row -->
-		      		<div class="row">
-			
-						<div class="span3">
-	
-							<div class="picture">
-								<a href="img/app.jpg" rel="image" title="Android app">
-									<img src="img/app.jpg" >
-									<div class="image-overlay-zoom"></div>
-								</a>
-							</div>
-							<div class="item-description">
-								<h4><a href="#">Android App</a></h4>
-							</div>
-								<p>To do : Detail latest work</p>
-					
-        				</div>
-					
-						<div class="span3">
-
-							<div class="picture">
-								<a href="img/Sketchup.jpg" rel="image" title="SketchUp plugin">
-									<img src="img/Sketchup.jpg" >
-									<div class="image-overlay-zoom"></div>
-								</a>
-							</div>
-							<div class="item-description">
-								<h4><a href="#">Sketchup plugin</a></h4>
-								<p>To do : Detail latest work</p>
-							</div>
-
-		        		</div>
-
-					
-        			</div>
-					<!-- end: Row -->
-					
+				
+				
+				
+				<div class="span4 portfolio-item app">
+					<div class="picture"><img src="img/app3.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Screen no. 3</a></h5>
+						</div>
+					</div>	
+				</div>	
+				
+				
+				
+				
+				<div class="span4 portfolio-item app">
+					<div class="picture"><img src="img/app4.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Screen no. 4</a></h5>
+						</div>
+					</div>	
 				</div>
 
-      		</div>
-			<!-- end: Row -->
-			
-			<hr>
 		
-			<!-- start Clients List -->	
-			<!-- pas encore optimal
-			<div class="clients-carousel">
-		
-				<ul class="slides clients">
-					<li><img src="img/logos/1.png" alt=""/></li>
-					<li><img src="img/logos/2.png" alt=""/></li>	
-				</ul>
-		
+
+				<div class="span4 portfolio-item sketchup">
+					<div class="picture"><img src="img/sketchup2.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Sketchup Module</a></h5>
+						</div>
+					</div>	
+				</div>
+
+
+
+
+				
+				<div class="span4 portfolio-item sketchup">
+					<div class="picture"><img src="img/sketchup3.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Sketchup Module</a></h5>
+						</div>
+					</div>	
+				</div>
+				<div class="span4 portfolio-item sketchup">
+					<div class="picture"><img src="img/sketchup4.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Sketchup Module</a></h5>
+						</div>
+					</div>	
+				</div>
+				<div class="span4 portfolio-item app">
+					<div class="picture"><img src="img/app5.png" alt=""/>
+						<div class="item-description alt">
+							<h5><a href="project.html">Screen no. 5</a></h5>
+						</div>
+					</div>	
+				</div>
+				
+
+				
+				
+				
+				
 			</div>
-			
-			-->
-			<!-- end Clients List -->
-			
-			
-			<hr>
-			
+			<!-- end: Portfolio -->
+      	
 		</div>
 		<!--end: Container-->
-	
+				
 	</div>
 	<!-- end: Wrapper  -->			
 
@@ -297,7 +258,7 @@ Outdoor AR library and the following technologies :<br/>
 				<!-- start: Footer Menu Logo -->
 				<div class="span2">
 					<div id="footer-menu-logo">
-						<div id="logo-eye"></div><a class="brand" href="#">SIG-<span>AR</span></a>
+						<div id="logo-chart"></div><a class="brand" href="#">SIG-<span>AR</span></a>
 					</div>
 				</div>
 				<!-- end: Footer Menu Logo -->
@@ -306,6 +267,7 @@ Outdoor AR library and the following technologies :<br/>
 				<div class="span9">
 					
 					<div id="footer-menu-links">
+
 
 						<ul id="footer-nav">
 
@@ -340,6 +302,7 @@ Outdoor AR library and the following technologies :<br/>
 
 	</div>	
 	<!-- end: Footer Menu -->
+
 
 
 	<!-- start: Copyright -->
@@ -377,4 +340,3 @@ Outdoor AR library and the following technologies :<br/>
 
 </body>
 </html>
-<!-- Localized -->
